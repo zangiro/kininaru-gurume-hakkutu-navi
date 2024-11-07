@@ -83,3 +83,6 @@ google map APIでの経路情報取得
 ■ その他：
 ・ VCS: GitHub
 ・ CI/CD: GitHubActions
+
+■ 画面遷移図
+https://www.figma.com/design/fQ8mAXdM7n3zbtiJbPCkt9/%E5%8D%92%E5%88%B6%E4%BD%9C%E7%94%A8?node-id=0-1&node-type=canvas&t=1UZHVQbnnNMYBQ4T-0
