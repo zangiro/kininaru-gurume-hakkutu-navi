@@ -109,6 +109,8 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     deep_merge (1.2.2)
+    dockerfile-rails (1.6.24)
+      rails (>= 3.0.0)
     dotenv (3.1.4)
     drb (2.2.1)
     ed25519 (1.3.0)
@@ -356,6 +358,7 @@ DEPENDENCIES
   config
   cssbundling-rails
   debug
+  dockerfile-rails (>= 1.6)
   jbuilder
   jsbundling-rails
   kamal
