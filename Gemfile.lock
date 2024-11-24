@@ -265,6 +265,8 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.35.0)
       parser (>= 3.3.1.0)
+    rubocop-checkstyle_formatter (0.6.0)
+      rubocop (>= 1.14.0)
     rubocop-minitest (0.36.0)
       rubocop (>= 1.61, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
@@ -281,6 +283,8 @@ GEM
       rubocop-minitest
       rubocop-performance
       rubocop-rails
+    rubocop-rspec (3.2.0)
+      rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     securerandom (0.3.2)
@@ -367,7 +371,12 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.0)
   redis
+  rubocop
+  rubocop-checkstyle_formatter
+  rubocop-performance
+  rubocop-rails
   rubocop-rails-omakase
+  rubocop-rspec
   selenium-webdriver
   solid_cable
   solid_cache
