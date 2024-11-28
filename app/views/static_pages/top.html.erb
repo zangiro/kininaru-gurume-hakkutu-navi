@@ -1,11 +1,43 @@
-<h1>テストテストテスト</h1>
-<h3>testtesttest</h3>
-<div class="mt-3">
-  <%= link_to "Test Bootstrap Button", "#", class: "btn btn-primary", id: "testButton" %>
+<div class="container bg-danger w-25 mt-5">
+  <div class="row">
+    <div class="d-flex align-items-center justify-content-center" style="height: 100px;">
+      タイトル
+    </div>
+  </div>
 </div>
-<script>
-  document.getElementById("testButton").addEventListener("click", function(event) {
-    event.preventDefault(); // リンクのデフォルト動作を防ぐ
-    alert("ボタンがクリックされたダ！");
-  });
-</script>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="bg-info w-50" style="height: 70px; overflow: hidden;">
+      紹介文
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <%= link_to '診断スタート', "#", class: 'd-flex align-items-center justify-content-center w-25 bg-danger text-center display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="bg-info w-75" style="height: 400px;">
+      紹介絵
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="bg-info w-75" style="height: 400px;">
+      紹介絵
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <%= link_to '診断スタート', "#", class: 'd-flex align-items-center justify-content-center w-25 bg-danger text-center display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
+  </div>
+</div>
