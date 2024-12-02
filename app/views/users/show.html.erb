@@ -1,0 +1,4 @@
+<h1><%= @user.name %>の詳細ページ</h1>
+<p>Email: <%= @user.email %></p>
+<p>公開状態: <%= @user.is_public ? '公開' : '非公開' %></p>
+<%= link_to 'トップ', root_path %>
