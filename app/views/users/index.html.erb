@@ -1,0 +1,20 @@
+<h1>ユーザー一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>メールアドレス</th>
+      <th>公開設定</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.is_public ? '許可' : '不許可' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'トップ', root_path %>
