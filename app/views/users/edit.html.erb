@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-lg-8 mx-auto">
-      <h1>@ユーザー登録</h1>
+      <h1>@<%= @user.name %>さんのアカウント情報（editページ）</h1>
       <%= form_with model: @user do |f| %>
 
         <div class="mb-3">
@@ -23,7 +23,12 @@
           <%= f.label :password_confirmation, class: "form-label" %>
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
-        
+
+        <div class="mb-3">
+          <%= f.label :introduction, class: "form-label" %>
+          <%= f.text_field :introduction, class: "form-control" %>
+        </div>
+
         <div class="mb-3">
           <%= f.label :@公開設定 %>
         </div>
@@ -33,22 +38,11 @@
           <%= f.radio_button :is_public, false %> @不許可
         </div>
 
-        <div class="mb-3">
-          <%= f.label :agree_terms, "利用規約に同意しますか？" %>
-          <%= f.check_box :agree_terms %>
-        </div>
-
-        <div class="mb-3">
-          <%= link_to "@利用規約", "#" %>
-          <%= link_to "@プライバシーポリシー", "#" %>
-        </div>
-
-        <%= f.submit "@登録", class: "btn btn-primary" %>
+        <%= f.submit "@変更", class: "btn btn-primary" %>
 
       <% end %>
 
       <div class='text-center'>
-        <%= link_to '@ログインページへ', login_path %>
         <%= link_to '@トップ', root_path %>
       </div>
     </div>
