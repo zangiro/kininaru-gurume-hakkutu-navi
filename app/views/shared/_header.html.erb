@@ -2,7 +2,7 @@
   <div class="py-2">
     <div class="row">
       <div class="col-2 bg-primary my-3">タイトル</div>
-      <div class="col-3">＠＠＠さんはログインしてます</div>
+      <div class="col-3"><%= current_user.name %>さんはログインしてます</div>
       <div class="col-4">
         <form class="d-flex">
           <input class="form-control me-2 my-3" type="search" placeholder="検索" aria-label="Search">
@@ -10,13 +10,14 @@
         </form>
       </div>
       <div class="col-1"></div>
-      <div class="col-1">画像</div>
+      <div class="col-1">アバター（仮）</div>
       <div class="col-1">
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><%= link_to '詳細', user_path(current_user), class: 'dropdown-item' %></li>
-            <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'dropdown-item' %></li>
+            <li><%= link_to '@詳細', user_path(current_user), class: 'dropdown-item' %></li>
+            <li><%= link_to '@アカウント情報', edit_user_path(current_user), class: 'dropdown-item' %></li>
+            <li><%= link_to '@ログアウト', logout_path, data: { turbo_method: :delete }, class: 'dropdown-item' %></li>
           </ul>
         </div>
       </div>

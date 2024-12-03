@@ -1,4 +1,29 @@
-<h1><%= @user.name %>の詳細ページ</h1>
-<p>Email: <%= @user.email %></p>
-<p>公開状態: <%= @user.is_public ? '公開' : '非公開' %></p>
-<%= link_to 'トップ', root_path %>
+<div class="container">
+<div class="row">
+<h1>@<%= @user.name %>さんのマイページ</h1>
+
+<div class="mt-2">
+<%= @user.is_public ? '@公開中' : '@非公開' %>
+</div>
+
+<div class="mt-2">
+<%= "@intriduction :#{@user.introduction}" %>
+</div>
+
+<div class="mt-2">
+<%= link_to "@プレイリスト", "#" %>
+</div>
+
+<div class="mt-2">
+<%= link_to "@投稿一覧", "#" %>
+</div>
+
+<div class="mt-2">
+<%= link_to "@閲覧履歴", "#" %>
+</div>
+
+<div class="mt-2">
+<%= link_to "@トップページへ", root_path %>
+</div>
+</div>
+</div>
