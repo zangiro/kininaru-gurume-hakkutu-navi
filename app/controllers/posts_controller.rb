@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @user_posts = current_user.posts.all
   end
 
   def create
