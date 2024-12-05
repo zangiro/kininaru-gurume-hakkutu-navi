@@ -1,0 +1,12 @@
+<%= form_with model: post do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title, class: "form-control" %>
+
+<%= f.label :source %>
+<%= f.text_field :source, class: "form-control" %>
+
+<%= f.label :store_url %>
+<%= f.text_field :store_url, class: "form-control" %>
+
+<%= f.submit nil, class: "btn btn-primary" %>
+<% end %>

@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true, length: { maximum: 255 }
   validates :is_public, inclusion: { in: [ true, false ] }
+
+  has_many :posts, dependent: :destroy
 end
