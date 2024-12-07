@@ -7,6 +7,8 @@
 <%= post.title %>
 <%= post.source %>
 <%= post.store_url %>
+<%= post.dish.present? ? post.dish.introduction : '後で修正' %>
+<%= post.dish.present? ? post.dish.description : '後で修正' %>
 </div>
 </div>
 <% end %>
@@ -22,6 +24,8 @@
 <%= post.title %>
 <%= post.source %>
 <%= post.store_url %>
+<%= post.dish.present? ? post.dish.introduction : '後で修正' %>
+<%= post.dish.present? ? post.dish.description : '後で修正' %>
 </div>
 </div>
 <% end %>

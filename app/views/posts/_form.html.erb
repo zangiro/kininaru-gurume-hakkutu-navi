@@ -8,5 +8,13 @@
 <%= f.label :store_url %>
 <%= f.text_field :store_url, class: "form-control" %>
 
+<%= f.fields_for :dish do |dish_fields| %>
+  <%= dish_fields.label :introduction %>
+  <%= dish_fields.text_area :introduction, class: "form-control" %>
+
+  <%= dish_fields.label :description %>
+  <%= dish_fields.text_area :description, class: "form-control" %>
+<% end %>
+
 <%= f.submit nil, class: "btn btn-primary" %>
 <% end %>

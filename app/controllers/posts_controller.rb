@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def new
     @post = Post.new
+    @post.build_dish
   end
 
   def index
@@ -20,6 +21,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :source, :store_url)
+    params.require(:post).permit(:title, :source, :store_url, dish_attributes: [ :introduction, :description ])
   end
 end
