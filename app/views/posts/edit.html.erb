@@ -1,0 +1,18 @@
+<h1>@記事編集</h1>
+<%= render 'form', post: @post %>
+
+
+
+
+
+<%= link_to '記事一覧', posts_path %>
+<div class="mt-3">
+  <%= link_to "Test Bootstrap Button", "#", class: "btn btn-primary", id: "testButton" %>
+</div>
+
+<script>
+  document.getElementById("testButton").addEventListener("click", function(event) {
+    event.preventDefault(); // リンクのデフォルト動作を防ぐ
+    alert("ボタンがクリックされたダ！");
+  });
+</script>

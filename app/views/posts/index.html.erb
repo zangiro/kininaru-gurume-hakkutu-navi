@@ -1,14 +1,14 @@
 <div class="container">
 <div class="row">
-<h1>全記事一覧</h1>
+<h1>全記事一覧（テスト用）</h1>
 <% @posts.each do |post| %>
 <div class="container">
 <div class="row">
 <%= post.title %>
 <%= post.source %>
 <%= post.store_url %>
-<%= post.dish.present? ? post.dish.introduction : '後で修正' %>
-<%= post.dish.present? ? post.dish.description : '後で修正' %>
+<%= post.dish.introduction %>
+<%= post.dish.description %>
 </div>
 </div>
 <% end %>
@@ -17,17 +17,38 @@
 
 <div class="container">
 <div class="row">
-<h1>あなたの記事一覧</h1>
+<h1>あなたの記事一覧（テスト用）</h1>
 <% @user_posts.each do |post| %>
-<div class="container">
 <div class="row">
 <%= post.title %>
 <%= post.source %>
 <%= post.store_url %>
-<%= post.dish.present? ? post.dish.introduction : '後で修正' %>
-<%= post.dish.present? ? post.dish.description : '後で修正' %>
+<%= post.dish.introduction %>
+<%= post.dish.description %>
+</div>
+<% end %>
 </div>
 </div>
+
+<div class="container">
+<div class="row">
+<% if @user_posts.present? %>
+
+
+<h1>あなたの記事一覧（実際の内容）</h1>
+<% @user_posts.each do |post| %>
+<div class="row">
+<div class="mt-2">
+<%= link_to post.title, post_path(post) %>
+<%= link_to "編集する", edit_post_path(post) %>
+<%= link_to "削除する", post_path(post), method: :delete %>
+</div>
+</div>
+<% end %>
+
+
+<% else %>
+  <p>投稿がありません</p>
 <% end %>
 </div>
 </div>

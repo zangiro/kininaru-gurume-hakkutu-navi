@@ -1,0 +1,10 @@
+<div class="container">
+<div class="row">
+<%= @post.title %>
+<%= @post.source %>
+<%= @post.store_url %>
+<%= @post.dish.introduction %>
+<%= @post.dish.description %>
+</div>
+</div>
+<%= link_to '記事一覧', posts_path %>
