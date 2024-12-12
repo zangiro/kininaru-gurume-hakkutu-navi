@@ -9,6 +9,12 @@
 <%= post.store_url %>
 <%= post.dish.introduction %>
 <%= post.dish.description %>
+
+<% post.post_genre_tags.each do |post_genre_tag| %>
+  <p><%= post_genre_tag.genre_tag.name %></p>
+<% end %>
+
+
 </div>
 </div>
 <% end %>

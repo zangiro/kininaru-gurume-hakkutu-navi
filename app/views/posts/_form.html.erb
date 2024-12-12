@@ -8,12 +8,19 @@
 <%= f.label :store_url %>
 <%= f.text_field :store_url, class: "form-control" %>
 
-<%= f.fields_for :dish do |dish_fields| %>
-  <%= dish_fields.label :introduction %>
-  <%= dish_fields.text_area :introduction, class: "form-control" %>
+<%= f.fields_for :dish do |dish_f| %>
+  <%= dish_f.label :introduction %>
+  <%= dish_f.text_area :introduction, class: "form-control" %>
 
-  <%= dish_fields.label :description %>
-  <%= dish_fields.text_area :description, class: "form-control" %>
+  <%= dish_f.label :description %>
+  <%= dish_f.text_area :description, class: "form-control" %>
+<% end %>
+
+<%= f.fields_for :post_genre_tags do |post_genre_f| %>
+  <%= post_genre_f.fields_for :genre_tag do |genre_f| %>
+    <%= genre_f.label :genre_tag %>
+    <%= genre_f.text_field :name, class: "form-control" %>
+  <% end %>
 <% end %>
 
 <%= f.submit nil, class: "btn btn-primary" %>

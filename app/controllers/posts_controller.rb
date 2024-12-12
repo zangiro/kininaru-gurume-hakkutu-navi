@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.build_dish
+    @post.post_genre_tags.build.build_genre_tag
   end
 
   def index
@@ -29,7 +30,18 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    filtered_params = post_params.except(:post_genre_tags_attributes)
+
+    @post = current_user.posts.new(filtered_params)
+
+    @old_tags = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] }
+    #oldとnewで分ける必要ないかも
+    @new_tags = @old_tags.join(',').split(',').map(&:strip)
+
+    @new_tags.each do |tag_name|
+       @post.genre_tags.new(name: tag_name)
+    end
+
     if @post.save
       redirect_to root_path
     else
@@ -46,6 +58,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:id, :title, :source, :store_url, dish_attributes: [ :id, :introduction, :description ])
+    params.require(:post).permit(:id, :title, :source, :store_url, dish_attributes: [ :id, :introduction, :description ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ]])
   end
 end
+  
