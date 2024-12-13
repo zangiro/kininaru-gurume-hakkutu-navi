@@ -16,11 +16,20 @@
   <%= dish_f.text_area :description, class: "form-control" %>
 <% end %>
 
+<% if @name.present? %>
+
+<%= label_tag :genre_tag_name, "genre_tag(edit)" %>
+<%= text_field_tag 'post[post_genre_tags_attributes][0][genre_tag_attributes][name]', @name, class: "form-control" %>
+
+<% else %>
+
 <%= f.fields_for :post_genre_tags do |post_genre_f| %>
   <%= post_genre_f.fields_for :genre_tag do |genre_f| %>
-    <%= genre_f.label :genre_tag %>
+    <%= genre_f.label :genre_tag_name %>
     <%= genre_f.text_field :name, class: "form-control" %>
   <% end %>
+<% end %>
+
 <% end %>
 
 <%= f.submit nil, class: "btn btn-primary" %>
