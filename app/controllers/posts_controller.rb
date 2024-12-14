@@ -18,23 +18,19 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
-    @name = @post.genre_tags.pluck(:name).join(",")
+    @genre_tag_name = @post.genre_tags.pluck(:name).join(",")
   end
 
   def update
     filtered_params = post_params.except(:post_genre_tags_attributes)
-
     @post = current_user.posts.find(params[:id])
 
-    @form_input_tag = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] } #フォームの値をそのまま取得
-    @input_tags = @form_input_tag.join(',').split(',').map(&:strip)  #「,」で区切って配列にする
-    
-    
-    @old_tags = @post.genre_tags.pluck(:name) #更新前のタグ配列取得
-    @delete_tags = @old_tags - @input_tags #削除予定タグ
-    @new_tags = @input_tags - @old_tags #新しくインスタンス作成予定タグ
-    
+    @form_input_tag = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] } # フォームの値をそのまま取得
+    @input_tags = @form_input_tag.join(",").split(",").map(&:strip)  # コンマで区切って配列にする
 
+    @old_tags = @post.genre_tags.pluck(:name) unless @post.genre_tags.nil? # 更新前のタグ配列取得
+    @delete_tags = @old_tags - @input_tags # 削除予定タグ
+    @new_tags = @input_tags - @old_tags # 新しくインスタンス作成予定タグ
 
     @delete_tags.each do |old_tag_name|
       old_genre_tag = @post.genre_tags.find_by(name: old_tag_name)
@@ -45,7 +41,6 @@ class PostsController < ApplicationController
       new_genre_tag = GenreTag.find_or_create_by(name: new_tag_name)
       @post.post_genre_tags.new(genre_tag: new_genre_tag) if new_genre_tag
     end
-
 
     if @post.update(filtered_params)
       redirect_to root_path
@@ -59,13 +54,21 @@ class PostsController < ApplicationController
 
     @post = current_user.posts.new(filtered_params)
 
-    @old_tags = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] }
+    @form_input_tag = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] }
+    @input_tags = @form_input_tag.join(",").split(",").map(&:strip)
 
-    @new_tags = @old_tags.join(',').split(',').map(&:strip)
+    @old_tags = @post.genre_tags.pluck(:name) unless @post.genre_tags.nil?
+    @delete_tags = @old_tags - @input_tags
+    @new_tags = @input_tags - @old_tags
 
-    @new_tags.each do |tag_name|
-      genre_tag = GenreTag.find_or_create_by(name: tag_name)
-      @post.post_genre_tags.new(genre_tag: genre_tag)
+    @delete_tags.each do |old_tag_name|
+      old_genre_tag = @post.genre_tags.find_by(name: old_tag_name)
+      old_genre_tag.destroy if old_genre_tag
+    end
+
+    @new_tags.each do |new_tag_name|
+      new_genre_tag = GenreTag.find_or_create_by(name: new_tag_name)
+      @post.post_genre_tags.new(genre_tag: new_genre_tag) if new_genre_tag
     end
 
     if @post.save
@@ -84,7 +87,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:id, :title, :source, :store_url, dish_attributes: [ :id, :introduction, :description ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ]])
+    params.require(:post).permit(:id, :title, :source, :store_url, dish_attributes: [ :id, :introduction, :description ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ] ])
   end
 end
-  

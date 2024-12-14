@@ -16,10 +16,10 @@
   <%= dish_f.text_area :description, class: "form-control" %>
 <% end %>
 
-<% if @name.present? %>
+<% if defined?(@genre_tag_name) %>
 
 <%= label_tag :genre_tag_name, "genre_tag(edit)" %>
-<%= text_field_tag 'post[post_genre_tags_attributes][0][genre_tag_attributes][name]', @name, class: "form-control" %>
+<%= text_field_tag 'post[post_genre_tags_attributes][0][genre_tag_attributes][name]', @genre_tag_name, class: "form-control" %>
 
 <% else %>
 
