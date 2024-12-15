@@ -1,0 +1,2 @@
+class PostAreaTag < ApplicationRecord
+end

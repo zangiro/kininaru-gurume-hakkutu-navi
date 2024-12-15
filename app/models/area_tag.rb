@@ -1,0 +1,2 @@
+class AreaTag < ApplicationRecord
+end
