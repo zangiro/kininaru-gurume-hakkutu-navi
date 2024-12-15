@@ -10,10 +10,21 @@
 <%= post.dish.introduction %>
 <%= post.dish.description %>
 
+<div class="d-flex">
 <% post.post_genre_tags.each do |post_genre_tag| %>
+  <div class="me-3">
   <p><%= post_genre_tag.genre_tag.name %></p>
+  </div>
 <% end %>
+</div>
 
+<div class="d-flex">
+<% post.post_taste_tags.each do |post_taste_tag| %>
+  <div class="me-3">
+  <p><%= post_taste_tag.taste_tag.name %></p>
+  </div>
+<% end %>
+</div>
 
 </div>
 </div>
