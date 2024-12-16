@@ -19,6 +19,21 @@
 
 
 
+<% if defined?(@area_tag_name) %>
+<%= label_tag :area_tag_name, "area_tag(edit)" %>
+<%= text_field_tag 'post[post_area_tags_attributes][0][area_tag_attributes][name]', @area_tag_name, class: "form-control" %>
+<% else %>
+<%= f.fields_for :post_area_tags do |post_area_f| %>
+  <%= post_area_f.fields_for :area_tag do |area_f| %>
+    <%= area_f.label :area_tag_name %>
+    <%= area_f.text_field :name, class: "form-control" %>
+  <% end %>
+<% end %>
+<% end %>
+
+
+
+
 <% if defined?(@genre_tag_name) %>
 <%= label_tag :genre_tag_name, "genre_tag(edit)" %>
 <%= text_field_tag 'post[post_genre_tags_attributes][0][genre_tag_attributes][name]', @genre_tag_name, class: "form-control" %>
@@ -42,6 +57,21 @@
   <%= post_taste_f.fields_for :taste_tag do |taste_f| %>
     <%= taste_f.label :taste_tag_name %>
     <%= taste_f.text_field :name, class: "form-control" %>
+  <% end %>
+<% end %>
+<% end %>
+
+
+
+
+<% if defined?(@outher_tag_name) %>
+<%= label_tag :outher_tag_name, "outher_tag(edit)" %>
+<%= text_field_tag 'post[post_outher_tags_attributes][0][outher_tag_attributes][name]', @outher_tag_name, class: "form-control" %>
+<% else %>
+<%= f.fields_for :post_outher_tags do |post_outher_f| %>
+  <%= post_outher_f.fields_for :outher_tag do |outher_f| %>
+    <%= outher_f.label :outher_tag_name %>
+    <%= outher_f.text_field :name, class: "form-control" %>
   <% end %>
 <% end %>
 <% end %>

@@ -11,6 +11,14 @@
 <%= post.dish.description %>
 
 <div class="d-flex">
+<% post.post_area_tags.each do |post_area_tag| %>
+  <div class="me-3">
+  <p><%= post_area_tag.area_tag.name %></p>
+  </div>
+<% end %>
+</div>
+
+<div class="d-flex">
 <% post.post_genre_tags.each do |post_genre_tag| %>
   <div class="me-3">
   <p><%= post_genre_tag.genre_tag.name %></p>
@@ -26,26 +34,21 @@
 <% end %>
 </div>
 
+<div class="d-flex">
+<% post.post_outher_tags.each do |post_outher_tag| %>
+  <div class="me-3">
+  <p><%= post_outher_tag.outher_tag.name %></p>
+  </div>
+<% end %>
+</div>
+
 </div>
 </div>
 <% end %>
 </div>
 </div>
 
-<div class="container">
-<div class="row">
-<h1>あなたの記事一覧（テスト用）</h1>
-<% @user_posts.each do |post| %>
-<div class="row">
-<%= post.title %>
-<%= post.source %>
-<%= post.store_url %>
-<%= post.dish.introduction %>
-<%= post.dish.description %>
-</div>
-<% end %>
-</div>
-</div>
+
 
 <div class="container">
 <div class="row">
@@ -55,7 +58,7 @@
 <h1>あなたの記事一覧（実際の内容）</h1>
 <% @user_posts.each do |post| %>
 <div class="row">
-<div class="mt-2">
+<div class="py-4 my-1 bg-info">
 <%= link_to post.title, post_path(post) %>
 <%= link_to "編集する", edit_post_path(post) %>
 <%= link_to "削除する", post_path(post), data: { turbo_method: :delete } %>
