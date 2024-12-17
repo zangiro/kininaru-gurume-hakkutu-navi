@@ -1,10 +1,37 @@
 <div class="container">
 <div class="row">
 <%= @post.title %>
+</div>
+
+
+<div class="row">
+<% @post.area_tags.each do |area_tag| %>
+<%= area_tag.name %>
+<% end %>
+<% @post.genre_tags.each do |genre_tag| %>
+<%= genre_tag.name %>
+<% end %>
+<% @post.taste_tags.each do |taste_tag| %>
+<%= taste_tag.name %>
+<% end %>
+<% @post.outher_tags.each do |outher_tag| %>
+<%= outher_tag.name %>
+<% end %>
+</div>
+
+
+<div class="row">
 <%= @post.source %>
+</div>
+<div class="row">
 <%= @post.store_url %>
+</div>
+<div class="row">
 <%= @post.dish.introduction %>
+</div>
+<div class="row">
 <%= @post.dish.description %>
 </div>
+
+<%= link_to '@投稿一覧に戻る', posts_path %>
 </div>
-<%= link_to '記事一覧', posts_path %>
