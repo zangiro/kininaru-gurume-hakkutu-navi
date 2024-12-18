@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :user_sessions, only: %i[new create destroy]
   resources :users, only: %i[new create index show edit update]
   resources :posts
+  resources :tags, only: %i[index]
+  resources :searchs, only: %i[index]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

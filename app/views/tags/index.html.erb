@@ -1,0 +1,60 @@
+<div class="container">
+<h3>@気になるタグを選んでください</h3>
+
+<%= form_with url: searchs_path, method: :get do %>
+
+<h3>@エリア</h3>
+<div class="row bg-info mb-3">
+<% @area_tags.each_with_index do |area_tag, area_index| %>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" name="area_tags[]" id="area_box<%= area_index %>" value="<%= area_tag %>">
+  <label class="form-check-label" for="area_box<%= area_index %>">
+  <%= area_tag %>
+  </label>
+</div>
+<% end %>
+</div>
+
+
+<h3>@ジャンル</h3>
+<div class="row bg-info mb-3">
+<% @genre_tags.each_with_index do |genre_tag, genre_index| %>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" name="genre_tags[]" id="genre_box<%= genre_index %>" value="<%= genre_tag %>">
+  <label class="form-check-label" for="genre_box<%= genre_index %>">
+  <%= genre_tag %>
+  </label>
+</div>
+<% end %>
+</div>
+
+
+<h3>@味</h3>
+<div class="row bg-info mb-3">
+<% @taste_tags.each_with_index do |taste_tag, taste_index| %>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" name="taste_tags[]" id="taste_box<%= taste_index %>" value="<%= taste_tag %>">
+  <label class="form-check-label" for="taste_box<%= taste_index %>">
+  <%= taste_tag %>
+  </label>
+</div>
+<% end %>
+</div>
+
+
+<h3>@その他</h3>
+<div class="row bg-info mb-3">
+<% @outher_tags.each_with_index do |outher_tag, outher_index| %>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" name="outher_tags[]" id="outher_box<%= outher_index %>" value="<%= outher_tag %>">
+  <label class="form-check-label" for="outher_box<%= outher_index %>">
+  <%= outher_tag %>
+  </label>
+</div>
+<% end %>
+</div>
+
+<%= submit_tag "決定" %>
+<% end %>
+
+</div>
