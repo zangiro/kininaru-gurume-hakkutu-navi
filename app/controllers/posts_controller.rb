@@ -111,7 +111,7 @@ class PostsController < ApplicationController
 
       #-----------------------
 
-      redirect_to root_path
+      redirect_to posts_path
     else
       @area_tag_name = @form_input_area_tag
       @genre_tag_name = @form_input_genre_tag
@@ -205,7 +205,7 @@ class PostsController < ApplicationController
 
       #-----------------------
 
-      redirect_to root_path
+      redirect_to posts_path
     else
       @area_tag_name = @form_input_area_tag
       @genre_tag_name = @form_input_genre_tag
@@ -218,7 +218,7 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to posts_path, status: :see_other
   end
 
   private

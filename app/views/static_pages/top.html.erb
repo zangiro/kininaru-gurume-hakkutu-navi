@@ -1,22 +1,17 @@
 <div class="container bg-danger w-25 mt-5">
   <div class="row">
-    <div class="d-flex align-items-center justify-content-center" style="height: 100px;">
-      タイトル
+    <div class="d-flex align-items-center justify-content-center display-6" style="height: 100px;">
+      気になるグルメ発掘ナビ
     </div>
   </div>
 </div>
 
-<%= link_to '新規作成', new_user_path %>
-<%= link_to '一覧', users_path %>
-<%= link_to 'ログイン', login_path %>
-<%= link_to '記事新規作成', new_post_path %>
-<%= link_to '記事一覧', posts_path %>
-<%= link_to 'タグ一覧', tags_path %>
+
 
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="bg-info w-50" style="height: 70px; overflow: hidden;">
-      紹介文
+      @このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです。
     </div>
   </div>
 </div>
@@ -30,7 +25,13 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="bg-info w-75" style="height: 400px;">
-      紹介絵
+      [操作説明]<br>
+      １、診断スタートボタンを押す。<br>
+      ２、興味のあるジャンル、地域などを選ぶ。<br>
+      ３、関連するグルメ情報（画像）が出る。<br>
+      ４、画像にカーソルを合わせると軽い紹介文が表示される。（未実装）<br>
+      ５、クリックで詳細が表示される。<br>
+      ６、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。（未実装）
     </div>
   </div>
 </div>
@@ -45,6 +46,6 @@
 
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <%= link_to '@診断スタート', "#", class: 'd-flex align-items-center justify-content-center w-25 bg-danger text-center display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
+  <%= link_to '@診断スタート', tags_path, class: 'd-flex align-items-center justify-content-center w-25 bg-danger text-center display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
   </div>
 </div>
