@@ -21,10 +21,23 @@
 
 
 <div class="row">
+<% if @post.source.present? %>
 <%= @post.source %>
+<% end %>
 </div>
+
 <div class="row">
+<% if @post.store_url.present? %>
 <%= @post.store_url %>
+<% end %>
+</div>
+
+<div class="row">
+<% if @post.images.attached? %>
+  <% @post.images.each do |image| %>
+    <%= image_tag image %>
+  <% end %>
+<% end %>
 </div>
 <div class="row">
 <%= @post.dish.introduction %>

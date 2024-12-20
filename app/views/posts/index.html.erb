@@ -55,20 +55,20 @@
 <% if @user_posts.present? %>
 
 
-<h1>あなたの記事一覧（実際の内容）</h1>
+<h1>@あなたの記事一覧（実際の内容）</h1>
 <% @user_posts.each do |post| %>
 <div class="row">
 <div class="py-4 my-1 bg-info">
 <%= link_to post.title, post_path(post) %>
-<%= link_to "編集する", edit_post_path(post) %>
-<%= link_to "削除する", post_path(post), data: { turbo_method: :delete } %>
+<%= link_to "@編集する", edit_post_path(post) %>
+<%= link_to "@削除する", post_path(post), data: { turbo_method: :delete } %>
 </div>
 </div>
 <% end %>
 
 
 <% else %>
-  <p>投稿がありません</p>
+  <p>@投稿がありません</p>
 <% end %>
 </div>
 </div>
