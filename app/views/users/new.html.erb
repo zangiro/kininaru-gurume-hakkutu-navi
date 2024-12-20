@@ -5,7 +5,7 @@
       <%= form_with model: @user do |f| %>
 
         <div class="mb-3">
-          <%= f.label :name, class: "form-label" %>
+          <%= f.label :name, "@名前", class: "form-label" %>
           <%= f.text_field :name, class: "form-control" %>
         </div>
 
@@ -15,12 +15,12 @@
         </div>
 
         <div class="mb-3">
-          <%= f.label :password, class: "form-label" %>
+          <%= f.label :password, "@パスワード", class: "form-label" %>
           <%= f.password_field :password, class: "form-control" %>
         </div>
 
         <div class="mb-3">
-          <%= f.label :password_confirmation, class: "form-label" %>
+          <%= f.label :password_confirmation, "@パスワード再確認", class: "form-label" %>
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
         
@@ -34,7 +34,7 @@
         </div>
 
         <div class="mb-3">
-          <%= f.label :agree_terms, "利用規約に同意しますか？" %>
+          <%= f.label :agree_terms, "＠利用規約に同意しますか？" %>
           <%= f.check_box :agree_terms %>
         </div>
 

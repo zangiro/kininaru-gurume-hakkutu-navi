@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: %i[new create edit update destroy]
+  before_action :require_login, only: %i[new index create edit update destroy]
 
   def new
     @post = Post.new
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def edit
