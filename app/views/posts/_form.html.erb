@@ -2,6 +2,11 @@
 <%= f.label :title, "＠料理名（必須）" %>
 <%= f.text_field :title, class: "form-control" %>
 
+<div class="row">
+<%= f.label :images, "＠メイン画像（必須）" %>
+<%= f.file_field :images %>
+</div>
+
 <%= f.label :source, "＠出典" %>
 <%= f.text_field :source, class: "form-control" %>
 

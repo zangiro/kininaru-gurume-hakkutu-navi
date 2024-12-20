@@ -2,7 +2,15 @@
 <div class="row">
 <h3>検索結果</h3>
 <% @search_posts.each do |post| %>
-  <%= render "post_image", post: post %>
+<div class="bg-info">
+<a href="<%= post_path(post) %>">
+<% if post.images.attached? %>
+  <% post.images.each do |image| %>
+    <%= image_tag image %>
+  <% end %>
+<% end %>
+</a>
+</div>
 <% end %>
 </div>
 </div>

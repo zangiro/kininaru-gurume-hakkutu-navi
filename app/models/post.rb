@@ -20,4 +20,6 @@ class Post < ApplicationRecord
   has_many :post_outher_tags, dependent: :destroy
   has_many :outher_tags, through: :post_outher_tags
   accepts_nested_attributes_for :post_outher_tags
+
+  has_many_attached :images
 end
