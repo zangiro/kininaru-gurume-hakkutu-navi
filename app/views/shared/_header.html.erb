@@ -17,6 +17,7 @@
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><%= link_to '@投稿する', new_post_path, class: 'dropdown-item' %></li>
             <li><%= link_to '@マイページ', user_path(current_user), class: 'dropdown-item' %></li>
             <li><%= link_to '@アカウント情報', edit_user_path(current_user), class: 'dropdown-item' %></li>
             <li><%= link_to '@ログアウト', logout_path, data: { turbo_method: :delete }, class: 'dropdown-item' %></li>
