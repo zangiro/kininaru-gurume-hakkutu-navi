@@ -1,3 +1,15 @@
+<div class="container">
+<div class="row">
+<div class="d-flex">
+<% unless logged_in? %>
+<%= link_to '@新規作成', new_user_path %>
+<%= link_to '@ログイン', login_path %>
+<% end %>
+</div>
+</div>
+</div>
+
+
 <div class="container bg-danger w-25 mt-5">
   <div class="row">
     <div class="d-flex align-items-center justify-content-center display-6" style="height: 100px;">

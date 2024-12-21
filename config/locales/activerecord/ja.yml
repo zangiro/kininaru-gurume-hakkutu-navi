@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      user: ユーザーJAAC
+      user: ユーザー(必須)  (JAAC
     attributes:
       user:
-        email: メールアドレスJAAC
+        email: メールアドレス(必須)  (JAAC
