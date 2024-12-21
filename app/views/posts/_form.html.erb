@@ -18,11 +18,11 @@
   <%= dish_f.text_area :introduction, class: "form-control" %>
 
   <%= dish_f.label :description, "@詳細用紹介文(必須)" %>
-  <%= dish_f.text_area :description, class: "form-control" %>
+  <%= dish_f.text_area :description, class: "form-control" , rows: 9 %>
 <% end %>
 
 
-
+<h3>@タグ設定（複数登録する場合は単語の間に「 , 」を入れてください） </h3>
 
 <% if defined?(@area_tag_name) %>
 <%= label_tag :area_tag_name, "@タグ設定(地域)(必須)" %>

@@ -19,16 +19,20 @@
 <% end %>
 </div>
 
+<div class="row">
+投稿者: <%= @post.user.name %>
+</div>
 
 <div class="row">
 <% if @post.source.present? %>
-<%= @post.source %>
+<%= @post.user.name %>
+出典: <%= @post.source %>
 <% end %>
 </div>
 
 <div class="row">
 <% if @post.store_url.present? %>
-<%= @post.store_url %>
+店舗情報: <%= @post.store_url %>
 <% end %>
 </div>
 
@@ -38,9 +42,6 @@
     <%= image_tag image %>
   <% end %>
 <% end %>
-</div>
-<div class="row">
-<%= @post.dish.introduction %>
 </div>
 <div class="row">
 <%= @post.dish.description %>
