@@ -36,10 +36,10 @@ class PostsController < ApplicationController
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
     if @form_input_area_tag != [ "" ] && @post.images.attached? && @post.update(filtered_params)
-      @post.update_tags(@form_input_area_tag, 'area')
-      @post.update_tags(@form_input_genre_tag, 'genre')
-      @post.update_tags(@form_input_taste_tag, 'taste')
-      @post.update_tags(@form_input_outher_tag, 'outher')
+      @post.update_tags(@form_input_area_tag, "area")
+      @post.update_tags(@form_input_genre_tag, "genre")
+      @post.update_tags(@form_input_taste_tag, "taste")
+      @post.update_tags(@form_input_outher_tag, "outher")
       redirect_to posts_path
     else
       @area_tag_name = @form_input_area_tag
@@ -59,10 +59,10 @@ class PostsController < ApplicationController
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
     if @form_input_area_tag != [ "" ] && @post.images.attached? && @post.save
-      @post.update_tags(@form_input_area_tag, 'area')
-      @post.update_tags(@form_input_genre_tag, 'genre')
-      @post.update_tags(@form_input_taste_tag, 'taste')
-      @post.update_tags(@form_input_outher_tag, 'outher')
+      @post.update_tags(@form_input_area_tag, "area")
+      @post.update_tags(@form_input_genre_tag, "genre")
+      @post.update_tags(@form_input_taste_tag, "taste")
+      @post.update_tags(@form_input_outher_tag, "outher")
       redirect_to posts_path
     else
       @area_tag_name = @form_input_area_tag
