@@ -75,6 +75,7 @@ class PostsController < ApplicationController
 
   def destroy
     post = current_user.posts.find(params[:id])
+    post.images.purge
     post.destroy
     redirect_to posts_path, status: :see_other
   end
