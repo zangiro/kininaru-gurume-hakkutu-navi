@@ -13,10 +13,22 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @user_posts = current_user.posts.all
+    @user = current_user
   end
 
   def show
     @post = Post.find(params[:id])
+    @user = current_user
+
+    @area_tags = params[:area_tags] || []
+    @genre_tags = params[:genre_tags] || []
+    @taste_tags = params[:taste_tags] || []
+    @outher_tags = params[:outher_tags] || []
+    if request.referer&.include?(posts_path)
+      @post_path = "1"
+    else
+      @post_path = "2"
+    end
   end
 
   def edit
@@ -25,6 +37,7 @@ class PostsController < ApplicationController
     @genre_tag_name = @post.genre_tags.pluck(:name).join(",")
     @taste_tag_name = @post.taste_tags.pluck(:name).join(",")
     @outher_tag_name = @post.outher_tags.pluck(:name).join(",")
+    @user = current_user
   end
 
   def update
