@@ -1,3 +1,5 @@
+<% breadcrumb :user_show, @user %>
+
 <div class="container">
 <div class="row">
 <h1>@<%= @user.name %>さんのマイページ</h1>
@@ -6,6 +8,8 @@
 <%= @user.is_public ? "@#{@user.name}さんのマイページは現在公開中です" : "@#{@user.name}さんのマイページは現在非公開です" %>
 </div>
 
+
+<% if @user.is_public || @user == current_user %>
 <div class="mt-2">
 <%= "@自己紹介 :#{@user.introduction}" %>
 </div>
@@ -15,15 +19,16 @@
 </div>
 
 <div class="mt-2">
-<%= link_to "@投稿一覧", posts_path %>
+<%= link_to "@投稿一覧", user_posts_path(@user) %>
 </div>
+<% end %>
 
+
+<% if @user == current_user %>
 <div class="mt-2">
 <%= link_to "@閲覧履歴", "#" %>
 </div>
+<% end %>
 
-<div class="mt-2">
-<%= link_to "@トップページへ", root_path %>
-</div>
 </div>
 </div>

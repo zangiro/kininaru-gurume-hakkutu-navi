@@ -30,6 +30,9 @@
       <%= render 'shared/before_login_header' %>
     <% end %>
     <div class="flex-grow-1">
+      <div class="row text-end">
+        <%= breadcrumbs separator: " &rsaquo; " %> 
+      </div>
       <%= yield %>
     </div>
     <%= render "shared/footer" %>

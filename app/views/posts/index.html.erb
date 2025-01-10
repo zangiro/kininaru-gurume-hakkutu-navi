@@ -1,72 +1,51 @@
+<% breadcrumb :post_index, @user %>
+
 <div class="container">
 <div class="row">
-<% if @user_posts.present? %>
 
+<%# -------------------来訪者用--------------------- %>
 
-<h1>@あなたの記事一覧（実際の内容）</h1>
-<% @user_posts.each do |post| %>
-<div class="row">
-<div class="py-4 my-1 bg-info">
-<%= link_to post.title, post_path(post) %>
-<%= link_to "@編集する", edit_post_path(post) %>
-<%= link_to "@削除する", post_path(post), data: { turbo_method: :delete } %>
-</div>
-</div>
-<% end %>
+<% if @user.is_public && @user != current_user %>
+  <% if @user_posts.present? %>
 
+  <h1>@記事一覧</h1>
+  <% @user_posts.each do |post| %>
+  <div class="row">
+  <div class="py-4 my-1 bg-info">
+  <%= link_to post.title, post_path(post) %>
+  </div>
+  </div>
+  <% end %>
+
+  <% else %>
+    <p>投稿がありません</p>
+  <% end %>
 
 <% else %>
-  <p>@投稿がありません</p>
+  <p>非公開されています</p>
 <% end %>
-</div>
-</div>
 
-<div class="container">
-<div class="row">
-<h1>全記事一覧（テスト用）</h1>
-<% @posts.each do |post| %>
-<div class="container">
-<div class="row">
-<%= post.title %>
-<%= post.source %>
-<%= post.store_url %>
-<%= post.dish.introduction %>
-<%= post.dish.description %>
+<%# -------------------本人用------------------- %>
 
-<div class="d-flex">
-<% post.post_area_tags.each do |post_area_tag| %>
-  <div class="me-3">
-  <p><%= post_area_tag.area_tag.name %></p>
+<% if @user == current_user %>
+  <% if @user_posts.present? %>
+  
+  <h1>@本人の記事一覧</h1>
+  <% @user_posts.each do |post| %>
+  <div class="row">
+  <div class="py-4 my-1 bg-info">
+  <%= link_to post.title, post_path(post) %>
+  <%= link_to "@編集する", edit_post_path(post) %>
+  <%= link_to "@削除する", post_path(post), data: { turbo_method: :delete } %>
   </div>
-<% end %>
-</div>
-
-<div class="d-flex">
-<% post.post_genre_tags.each do |post_genre_tag| %>
-  <div class="me-3">
-  <p><%= post_genre_tag.genre_tag.name %></p>
   </div>
+  <% end %>
+  
+  <% else %>
+    <p>@投稿がありません</p>
+  <% end %>
 <% end %>
-</div>
 
-<div class="d-flex">
-<% post.post_taste_tags.each do |post_taste_tag| %>
-  <div class="me-3">
-  <p><%= post_taste_tag.taste_tag.name %></p>
-  </div>
-<% end %>
-</div>
 
-<div class="d-flex">
-<% post.post_outher_tags.each do |post_outher_tag| %>
-  <div class="me-3">
-  <p><%= post_outher_tag.outher_tag.name %></p>
-  </div>
-<% end %>
-</div>
-
-</div>
-</div>
-<% end %>
 </div>
 </div>

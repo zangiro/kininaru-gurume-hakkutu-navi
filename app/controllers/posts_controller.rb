@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: %i[new index create edit update destroy]
+  before_action :require_login, only: %i[new create edit update destroy]
 
   def new
     @post = Post.new
@@ -11,12 +11,23 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
-    @user_posts = current_user.posts.all
+    @user = User.find(params[:user_id])
+    @user_posts = @user.posts.all
   end
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
+
+    @area_tags = params[:area_tags] || []
+    @genre_tags = params[:genre_tags] || []
+    @taste_tags = params[:taste_tags] || []
+    @outher_tags = params[:outher_tags] || []
+    if request.referer&.include?(posts_path)
+      @post_path = "1"
+    else
+      @post_path = "2"
+    end
   end
 
   def edit
@@ -25,6 +36,7 @@ class PostsController < ApplicationController
     @genre_tag_name = @post.genre_tags.pluck(:name).join(",")
     @taste_tag_name = @post.taste_tags.pluck(:name).join(",")
     @outher_tag_name = @post.outher_tags.pluck(:name).join(",")
+    @user = current_user
   end
 
   def update
@@ -35,19 +47,20 @@ class PostsController < ApplicationController
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
-    if @form_input_area_tag != [ "" ] && @post.images.attached? && @post.update(filtered_params)
-      @post.update_tags(@form_input_area_tag, "area")
-      @post.update_tags(@form_input_genre_tag, "genre")
-      @post.update_tags(@form_input_taste_tag, "taste")
-      @post.update_tags(@form_input_outher_tag, "outher")
-      redirect_to posts_path
-    else
-      @area_tag_name = @form_input_area_tag
-      @genre_tag_name = @form_input_genre_tag
-      @taste_tag_name = @form_input_taste_tag
-      @outher_tag_name = @form_input_outher_tag
-      render :edit, status: :unprocessable_entity
-    end
+    # if @form_input_area_tag != [ "" ] && @post.images.attached? && @post.update(filtered_params)
+    #  @post.update_tags(@form_input_area_tag, "area")
+    #  @post.update_tags(@form_input_genre_tag, "genre")
+    #  @post.update_tags(@form_input_taste_tag, "taste")
+    #  @post.update_tags(@form_input_outher_tag, "outher")
+    #  redirect_to posts_path
+    # else
+    #  @area_tag_name = @form_input_area_tag
+    #  @genre_tag_name = @form_input_genre_tag
+    #  @taste_tag_name = @form_input_taste_tag
+    #  @outher_tag_name = @form_input_outher_tag
+    #  render :edit, status: :unprocessable_entity
+    # end
+    redirect_to root_path
   end
 
   def create
@@ -58,19 +71,20 @@ class PostsController < ApplicationController
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
-    if @form_input_area_tag != [ "" ] && @post.images.attached? && @post.save
-      @post.update_tags(@form_input_area_tag, "area")
-      @post.update_tags(@form_input_genre_tag, "genre")
-      @post.update_tags(@form_input_taste_tag, "taste")
-      @post.update_tags(@form_input_outher_tag, "outher")
-      redirect_to posts_path
-    else
-      @area_tag_name = @form_input_area_tag
-      @genre_tag_name = @form_input_genre_tag
-      @taste_tag_name = @form_input_taste_tag
-      @outher_tag_name = @form_input_outher_tag
-      render :new, status: :unprocessable_entity
-    end
+    # if @form_input_area_tag != [ "" ] && @post.images.attached? && @post.save
+    #  @post.update_tags(@form_input_area_tag, "area")
+    #  @post.update_tags(@form_input_genre_tag, "genre")
+    #  @post.update_tags(@form_input_taste_tag, "taste")
+    #  @post.update_tags(@form_input_outher_tag, "outher")
+    #  redirect_to posts_path
+    # else
+    #  @area_tag_name = @form_input_area_tag
+    #  @genre_tag_name = @form_input_genre_tag
+    #  @taste_tag_name = @form_input_taste_tag
+    #  @outher_tag_name = @form_input_outher_tag
+    #  render :new, status: :unprocessable_entity
+    # end
+    redirect_to root_path
   end
 
   def destroy
