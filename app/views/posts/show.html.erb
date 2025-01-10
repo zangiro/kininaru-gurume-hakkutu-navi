@@ -22,8 +22,8 @@
 <% end %>
 </div>
 
-<div class="row">
-投稿者: <%= @post.user.name %>
+<div class="row d-flex">
+<span>投稿者: <%= link_to @user.name, user_path(@user) %></span>
 </div>
 
 <div class="row">

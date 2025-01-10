@@ -30,7 +30,7 @@ crumb :post_new do
 end
 
 crumb :post_index do |user|
-  link "@#{user.name}さんの記事一覧", posts_path
+  link "@#{user.name}さんの記事一覧", user_posts_path(user)
   parent :user_show, user
 end
 

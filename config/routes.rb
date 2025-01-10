@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
   resources :user_sessions, only: %i[new create destroy]
-  resources :users, only: %i[new create index show edit update]
+  resources :users do
+    resources :posts, only: %i[index]
+  end
   resources :posts
   resources :tags, only: %i[index]
   resources :searchs, only: %i[index]

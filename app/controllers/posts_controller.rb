@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: %i[new index create edit update destroy]
+  before_action :require_login, only: %i[new create edit update destroy]
 
   def new
     @post = Post.new
@@ -11,14 +11,13 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
-    @user_posts = current_user.posts.all
-    @user = current_user
+    @user = User.find(params[:user_id])
+    @user_posts = @user.posts.all
   end
 
   def show
     @post = Post.find(params[:id])
-    @user = current_user
+    @user = @post.user
 
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
