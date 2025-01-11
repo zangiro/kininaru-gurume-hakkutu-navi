@@ -52,7 +52,7 @@ class PostsController < ApplicationController
     #  @post.update_tags(@form_input_genre_tag, "genre")
     #  @post.update_tags(@form_input_taste_tag, "taste")
     #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to posts_path
+    #  redirect_to user_posts_path(current_user)
     # else
     #  @area_tag_name = @form_input_area_tag
     #  @genre_tag_name = @form_input_genre_tag
@@ -76,7 +76,7 @@ class PostsController < ApplicationController
     #  @post.update_tags(@form_input_genre_tag, "genre")
     #  @post.update_tags(@form_input_taste_tag, "taste")
     #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to posts_path
+    #  redirect_to user_posts_path(current_user)
     # else
     #  @area_tag_name = @form_input_area_tag
     #  @genre_tag_name = @form_input_genre_tag
