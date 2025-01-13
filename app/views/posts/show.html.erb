@@ -7,6 +7,44 @@
 </div>
 
 
+<%= button_to 'プレイリストに追加', add_to_playlist_post_path(@post), method: :post %>
+
+    <!-- モーダルを開くボタン・リンク -->
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-2">
+                <button type="button" class="btn btn-primary mb-12" data-toggle="modal" data-target="#testModal">ボタンで開く</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ボタン・リンククリック後に表示される画面の内容 -->
+    <div class="modal fade" id="testModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4><div class="modal-title" id="myModalLabel">@プレイリスト選択</h4>
+                </div>
+                <div class="modal-body">
+
+
+
+                    <label>データを削除しますか？</label>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@閉じる</button>
+                    <button type="button" class="btn btn-danger">@追加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 <div class="row">
 <% @post.area_tags.each do |area_tag| %>
 <%= area_tag.name %>

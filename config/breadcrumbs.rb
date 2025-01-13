@@ -51,6 +51,18 @@ end
 
 #----------------------------
 
+crumb :playlist_index do |user|
+  link "@#{user.name}さんのプレイリスト一覧", user_playlists_path(user)
+  parent :user_show, user
+end
+
+crumb :playlist_show do |playlist, user|
+  link "#{playlist.title}"
+  parent :playlist_index, user
+end
+
+#-----------------------------
+
 crumb :tag_index do
   link "@タグ一覧", tags_path
   parent :root

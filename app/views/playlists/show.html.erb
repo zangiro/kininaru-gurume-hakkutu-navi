@@ -1,0 +1,10 @@
+
+
+<div class="container">
+<div class="row">
+<h3>@プレイリスト内</h3>
+<% @playlist_posts.each do |post| %>
+<%= render "post_image", post: post %>
+<% end %>
+</div>
+</div>

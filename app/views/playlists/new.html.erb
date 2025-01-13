@@ -1,0 +1,6 @@
+<%= form_with model: @playlist do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
+
+  <%= f.submit nil, class: "btn btn-primary" %>
+<% end %>

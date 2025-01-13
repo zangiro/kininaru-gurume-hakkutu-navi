@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @playlist = Playlist.find(1)
 
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
@@ -91,7 +92,16 @@ class PostsController < ApplicationController
     post = current_user.posts.find(params[:id])
     post.images.purge
     post.destroy
-    redirect_to posts_path, status: :see_other
+    redirect_to user_posts_path(current_user), status: :see_other
+  end
+
+  def add_to_playlist
+    @post = Post.find(params[:id])
+    playlist = Playlist.find(1)
+    playlist.posts << @post unless playlist.posts.include?(@post)
+  
+    #redirect_to @post
+    redirect_to root_path
   end
 
   private
