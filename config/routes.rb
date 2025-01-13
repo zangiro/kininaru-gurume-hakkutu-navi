@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :searchs, only: %i[index]
   resources :playlists do
     resources :posts, only: %i[show]
+    member do
+      delete "remove_playlist"
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

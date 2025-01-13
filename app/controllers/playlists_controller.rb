@@ -30,7 +30,15 @@ class PlaylistsController < ApplicationController
     playlist.destroy
     redirect_to user_playlists_path(current_user), status: :see_other
   end
-  
+
+  def remove_playlist
+    @post = Post.find(params[:id])
+    @playlist = Playlist.find(params[:playlist_id])
+    @playlist.posts.delete(@post) if @playlist.posts.include?(@post)
+
+    redirect_to playlist_path(@playlist)
+  end
+
   private
 
   def playlist_params

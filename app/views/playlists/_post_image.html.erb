@@ -9,5 +9,6 @@
 </a>
 <div class="row">
 <%= post.dish.introduction %>
+<%= link_to "@プレイリスト削除する", remove_playlist_playlist_path(post, playlist_id: @playlist.id), data: { turbo_method: :delete } %>
 </div>
 </div>
