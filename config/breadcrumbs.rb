@@ -39,10 +39,13 @@ crumb :post_edit do |user|
   parent :post_index, user
 end
 
-crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, post_path|
+crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, playlist, post_path|
   if post_path == "1"
     link "@#{post.title}"
     parent :post_index, user
+  elsif post_path == "2"
+    link "@#{post.title}"
+    parent :playlist_show, playlist, user
   else
     link "@#{post.title}"
     parent :search_index, area_tags, genre_tags, taste_tags, outher_tags
@@ -57,7 +60,7 @@ crumb :playlist_index do |user|
 end
 
 crumb :playlist_show do |playlist, user|
-  link "#{playlist.title}"
+  link "#{playlist.title}", playlist_path(playlist)
   parent :playlist_index, user
 end
 

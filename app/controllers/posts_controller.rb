@@ -26,8 +26,10 @@ class PostsController < ApplicationController
     @outher_tags = params[:outher_tags] || []
     if request.referer&.include?(posts_path)
       @post_path = "1"
-    else
+    elsif request.referer&.include?("playlists/")
       @post_path = "2"
+    else
+      @post_path = "3"
     end
   end
 
