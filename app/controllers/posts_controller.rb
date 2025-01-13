@@ -20,6 +20,8 @@ class PostsController < ApplicationController
     @user = @post.user
     @playlist = params[:playlist_id] ? Playlist.find(params[:playlist_id]) : []
 
+    @user_playlists = current_user.playlists
+
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
     @taste_tags = params[:taste_tags] || []
@@ -99,7 +101,7 @@ class PostsController < ApplicationController
 
   def add_to_playlist
     @post = Post.find(params[:id])
-    playlist = Playlist.find(1)
+    playlist = Playlist.find(params[:playlist_id])
     playlist.posts << @post unless playlist.posts.include?(@post)
   
     #redirect_to @post
