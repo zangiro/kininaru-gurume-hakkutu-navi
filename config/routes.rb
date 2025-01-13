@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   end
   resources :tags, only: %i[index]
   resources :searchs, only: %i[index]
-  resources :playlists
+  resources :playlists do
+    resources :posts, only: %i[show]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

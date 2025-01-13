@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-    @playlist = Playlist.find(1)
+    @playlist = params[:playlist_id] ? Playlist.find(params[:playlist_id]) : []
 
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
