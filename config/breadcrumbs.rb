@@ -22,7 +22,7 @@ crumb :user_show do |user|
   parent :root
 end
 
-#------------------------
+#------------記事関連------------
 
 crumb :post_new do
   link "@新規記事作成", new_post_path
@@ -39,17 +39,37 @@ crumb :post_edit do |user|
   parent :post_index, user
 end
 
-crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, post_path|
+crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, playlist, post_path|
   if post_path == "1"
     link "@#{post.title}"
     parent :post_index, user
+  elsif post_path == "2"
+    link "@#{post.title}"
+    parent :playlist_show, playlist, user
   else
     link "@#{post.title}"
     parent :search_index, area_tags, genre_tags, taste_tags, outher_tags
   end
 end
 
-#----------------------------
+#--------------プレイリスト関連--------------
+
+crumb :playlist_index do |user|
+  link "@#{user.name}さんのプレイリスト一覧", user_playlists_path(user)
+  parent :user_show, user
+end
+
+crumb :playlist_new do |user|
+  link "@プレイリスト作成"
+  parent :playlist_index, user
+end
+
+crumb :playlist_show do |playlist, user|
+  link "#{playlist.title}", playlist_path(playlist)
+  parent :playlist_index, user
+end
+
+#-----------------------------
 
 crumb :tag_index do
   link "@タグ一覧", tags_path

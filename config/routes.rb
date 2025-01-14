@@ -6,10 +6,21 @@ Rails.application.routes.draw do
   resources :user_sessions, only: %i[new create destroy]
   resources :users do
     resources :posts, only: %i[index]
+    resources :playlists, only: %i[index]
   end
-  resources :posts
+  resources :posts do
+    member do
+      post "add_to_playlist"
+    end
+  end
   resources :tags, only: %i[index]
   resources :searchs, only: %i[index]
+  resources :playlists do
+    resources :posts, only: %i[show]
+    member do
+      delete "remove_playlist"
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

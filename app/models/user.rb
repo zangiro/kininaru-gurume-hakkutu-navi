@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates :is_public, inclusion: { in: [ true, false ] }
 
   has_many :posts, dependent: :destroy
+  has_many :playlists, dependent: :destroy
 end

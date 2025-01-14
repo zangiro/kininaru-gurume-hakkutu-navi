@@ -21,6 +21,9 @@ class Post < ApplicationRecord
   has_many :outher_tags, through: :post_outher_tags
   accepts_nested_attributes_for :post_outher_tags
 
+  has_many :post_playlists, dependent: :destroy
+  has_many :playlists, through: :post_playlists
+
   has_many_attached :images
 
   def update_tags(input_tags, tag_type)

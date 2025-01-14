@@ -1,11 +1,10 @@
-<% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @user, @post_path %>
+<% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @user, @playlist, @post_path %>
 <%# パンくずリスト呼ぶとき選択したタグ情報を保持する %>
 
 <div class="container">
 <div class="row">
 <%= @post.title %>
 </div>
-
 
 <div class="row">
 <% @post.area_tags.each do |area_tag| %>
@@ -49,5 +48,35 @@
 <div class="row">
 <%= @post.dish.description %>
 </div>
+
+<% if logged_in? %>
+<div class="col-2">
+<button type="button" class="btn btn-primary mb-12 btn-sm" data-toggle="modal" data-target="#playlist">プレイリストへ追加</button>
+</div>
+
+<div class="modal fade" id="playlist" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4><div class="modal-title" id="myModalLabel">@プレイリストへ追加</h4>
+      </div>
+
+      <div class="modal-body">
+      <%= form_with(url: add_to_playlist_post_path(@post), method: :post) do %>
+        <%= label_tag :playlist_id, "@作成済みのプレイリストを選択" %>
+        <%= select_tag :playlist_id, options_from_collection_for_select(@user_playlists, :id, :title), include_blank: true %>
+        <%= submit_tag "選択" %>
+      <% end %>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">@閉じる</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<% end %>
+
 
 </div>

@@ -18,15 +18,20 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-
+    @playlist = params[:playlist_id] ? Playlist.find(params[:playlist_id]) : []
+    if logged_in?
+    @user_playlists = current_user.playlists
+    end
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
     @taste_tags = params[:taste_tags] || []
     @outher_tags = params[:outher_tags] || []
     if request.referer&.include?(posts_path)
       @post_path = "1"
-    else
+    elsif request.referer&.include?("playlists/")
       @post_path = "2"
+    else
+      @post_path = "3"
     end
   end
 
@@ -52,7 +57,7 @@ class PostsController < ApplicationController
     #  @post.update_tags(@form_input_genre_tag, "genre")
     #  @post.update_tags(@form_input_taste_tag, "taste")
     #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to posts_path
+    #  redirect_to user_posts_path(current_user)
     # else
     #  @area_tag_name = @form_input_area_tag
     #  @genre_tag_name = @form_input_genre_tag
@@ -76,7 +81,7 @@ class PostsController < ApplicationController
     #  @post.update_tags(@form_input_genre_tag, "genre")
     #  @post.update_tags(@form_input_taste_tag, "taste")
     #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to posts_path
+    #  redirect_to user_posts_path(current_user)
     # else
     #  @area_tag_name = @form_input_area_tag
     #  @genre_tag_name = @form_input_genre_tag
@@ -91,7 +96,22 @@ class PostsController < ApplicationController
     post = current_user.posts.find(params[:id])
     post.images.purge
     post.destroy
-    redirect_to posts_path, status: :see_other
+    redirect_to user_posts_path(current_user), status: :see_other
+  end
+
+  def add_to_playlist
+    @post = Post.find(params[:id])
+    @playlist = Playlist.find(params[:playlist_id])
+    @playlist.posts << @post unless @playlist.posts.include?(@post)
+
+    redirect_to root_path
+    # if request.referer&.include?("playlists/")
+    # redirect_to new_user_path
+    # elsif request.referer&.include?(posts_path)
+    # redirect_to post_path(@post)
+    # else
+    # redirect_to post_path(post, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags)
+    # end
   end
 
   private

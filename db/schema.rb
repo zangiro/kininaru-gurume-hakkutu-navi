@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_20_125616) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_11_213920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -69,6 +69,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_20_125616) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "playlists", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
   create_table "post_area_tags", force: :cascade do |t|
     t.bigint "post_id"
     t.bigint "area_tag_id"
@@ -94,6 +102,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_20_125616) do
     t.datetime "updated_at", null: false
     t.index ["outher_tag_id"], name: "index_post_outher_tags_on_outher_tag_id"
     t.index ["post_id"], name: "index_post_outher_tags_on_post_id"
+  end
+
+  create_table "post_playlists", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "playlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playlist_id"], name: "index_post_playlists_on_playlist_id"
+    t.index ["post_id"], name: "index_post_playlists_on_post_id"
   end
 
   create_table "post_taste_tags", force: :cascade do |t|
@@ -136,12 +153,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_20_125616) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dishes", "posts"
+  add_foreign_key "playlists", "users"
   add_foreign_key "post_area_tags", "area_tags"
   add_foreign_key "post_area_tags", "posts"
   add_foreign_key "post_genre_tags", "genre_tags"
   add_foreign_key "post_genre_tags", "posts"
   add_foreign_key "post_outher_tags", "outher_tags"
   add_foreign_key "post_outher_tags", "posts"
+  add_foreign_key "post_playlists", "playlists"
+  add_foreign_key "post_playlists", "posts"
   add_foreign_key "post_taste_tags", "posts"
   add_foreign_key "post_taste_tags", "taste_tags"
   add_foreign_key "posts", "users"
