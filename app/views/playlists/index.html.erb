@@ -5,8 +5,9 @@
 
 <%# -------------------本人用------------------- %>
 <% if @user == current_user %>
+  <h1>@本人のプレイリスト一覧</h1>
+  <%= link_to '@プレイリスト作成', new_playlist_path %>
   <% if @playlist.present? %>
-    <h1>@本人のプレイリスト一覧</h1>
     <% @playlist.each do |playlist| %>
       <div class="row">
       <div class="py-4 my-1 bg-info">

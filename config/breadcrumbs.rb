@@ -22,7 +22,7 @@ crumb :user_show do |user|
   parent :root
 end
 
-#------------------------
+#------------記事関連------------
 
 crumb :post_new do
   link "@新規記事作成", new_post_path
@@ -52,11 +52,16 @@ crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user,
   end
 end
 
-#----------------------------
+#--------------プレイリスト関連--------------
 
 crumb :playlist_index do |user|
   link "@#{user.name}さんのプレイリスト一覧", user_playlists_path(user)
   parent :user_show, user
+end
+
+crumb :playlist_new do |user|
+  link "@プレイリスト作成"
+  parent :playlist_index, user
 end
 
 crumb :playlist_show do |playlist, user|

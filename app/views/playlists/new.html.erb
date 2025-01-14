@@ -1,3 +1,6 @@
+<% breadcrumb :playlist_new, @user %>
+
+
 <%= form_with model: @playlist do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title, class: "form-control" %>

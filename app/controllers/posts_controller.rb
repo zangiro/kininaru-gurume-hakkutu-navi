@@ -19,9 +19,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @playlist = params[:playlist_id] ? Playlist.find(params[:playlist_id]) : []
-
+    if logged_in?
     @user_playlists = current_user.playlists
-
+    end
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
     @taste_tags = params[:taste_tags] || []
@@ -101,11 +101,17 @@ class PostsController < ApplicationController
 
   def add_to_playlist
     @post = Post.find(params[:id])
-    playlist = Playlist.find(params[:playlist_id])
-    playlist.posts << @post unless playlist.posts.include?(@post)
+    @playlist = Playlist.find(params[:playlist_id])
+    @playlist.posts << @post unless @playlist.posts.include?(@post)
   
-    #redirect_to @post
     redirect_to root_path
+    #if request.referer&.include?("playlists/")
+      #redirect_to new_user_path
+    #elsif request.referer&.include?(posts_path)
+      #redirect_to post_path(@post)
+    #else
+      #redirect_to post_path(post, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags)
+    #end
   end
 
   private
