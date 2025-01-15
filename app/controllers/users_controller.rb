@@ -17,13 +17,15 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     unless params[:user][:agree_terms] == "1"
-      render :new and return
+      flash.now[:danger] = '@利用規約に同意されてません'
+      render :new, status: :unprocessable_entity and return
     end
 
     if @user.save
-      redirect_to root_path
+      redirect_to root_path, success: '@ユーザーの新規作成をしました'
     else
-      render :new
+      flash.now[:danger] = '@失敗しました'
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -34,8 +36,9 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), success: '@更新しました'
     else
+      flash.now[:danger] = '@更新失敗しました'
       render :edit, status: :unprocessable_entity
     end
   end
