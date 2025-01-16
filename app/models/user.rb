@@ -14,8 +14,10 @@ class User < ApplicationRecord
   attr_accessor :agree_terms
 
   def agreement
-    unless agree_terms == "1" || agree_terms == true
-      errors.add(:base, "@利用規約に同意されてません")
+    if new_record?
+      unless agree_terms == "1" || agree_terms == true
+        errors.add(:base, "@利用規約に同意されてません")
+      end
     end
   end
 end

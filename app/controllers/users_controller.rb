@@ -15,12 +15,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
-    #unless params[:user][:agree_terms] == "1"
-      #flash.now[:danger] = '@利用規約に同意されてません'
-      #render :new, status: :unprocessable_entity and return
-    #end
-
     if @user.save
       redirect_to root_path, success: '@ユーザーの新規作成をしました'
     else
