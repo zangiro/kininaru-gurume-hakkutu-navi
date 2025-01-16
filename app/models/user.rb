@@ -9,6 +9,9 @@ class User < ApplicationRecord
   validates :is_public, inclusion: { in: [ true, false ], message: "@を選んでください" }
   validate :agreement
 
+  #validate :email_present
+  #validate :password_present
+
   has_many :posts, dependent: :destroy
   has_many :playlists, dependent: :destroy
   attr_accessor :agree_terms
@@ -20,4 +23,12 @@ class User < ApplicationRecord
       end
     end
   end
+
+  #def email_present
+  #  errors.add(:email, "メールアドレスを入力してください") if email.blank?
+  #end
+
+  #def password_present
+  #  errors.add(:password, "パスワードを入力してください") if password.blank?
+  #end
 end
