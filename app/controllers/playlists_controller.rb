@@ -21,9 +21,9 @@ class PlaylistsController < ApplicationController
     @user = current_user
     @playlist = current_user.playlists.new(playlist_params)
     if @playlist.save
-      redirect_to user_playlists_path(current_user), success: '@プレイリストの作成をしました'
+      redirect_to user_playlists_path(current_user), success: "@プレイリストの作成をしました"
     else
-      flash.now[:danger] = '@新規作成失敗しました'
+      flash.now[:danger] = "@新規作成失敗しました"
       render :new, status: :unprocessable_entity
     end
   end
@@ -31,7 +31,7 @@ class PlaylistsController < ApplicationController
   def destroy
     playlist = current_user.playlists.find(params[:id])
     playlist.destroy
-    flash[:success] = '@プレイリストを削除しました'
+    flash[:success] = "@プレイリストを削除しました"
     redirect_to user_playlists_path(current_user), status: :see_other
   end
 
@@ -40,7 +40,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:playlist_id])
     @playlist.posts.delete(@post) if @playlist.posts.include?(@post)
 
-    redirect_to playlist_path(@playlist), success: '@登録を削除しました'
+    redirect_to playlist_path(@playlist), success: "@登録を削除しました"
   end
 
   private

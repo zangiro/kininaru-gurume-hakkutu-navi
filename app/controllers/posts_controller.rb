@@ -51,7 +51,7 @@ class PostsController < ApplicationController
 
   def update
     @user = current_user
-    #filtered_params = post_params.except(:post_area_tags_attributes, :post_genre_tags_attributes, :post_taste_tags_attributes, :post_outher_tags_attributes)
+    # filtered_params = post_params.except(:post_area_tags_attributes, :post_genre_tags_attributes, :post_taste_tags_attributes, :post_outher_tags_attributes)
     @post = current_user.posts.find(params[:id])
     @form_input_area_tag = params[:post][:post_area_tags_attributes].values.map { |tag| tag[:area_tag_attributes][:name] }
     @form_input_genre_tag = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] }
@@ -63,20 +63,20 @@ class PostsController < ApplicationController
     #  @post.update_tags(@form_input_genre_tag, "genre")
     #  @post.update_tags(@form_input_taste_tag, "taste")
     #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to user_posts_path(current_user), success: '@更新しました'
+    #  redirect_to user_posts_path(current_user), success: "@更新しました"
     # else
     #  @area_tag_name = @form_input_area_tag
     #  @genre_tag_name = @form_input_genre_tag
     #  @taste_tag_name = @form_input_taste_tag
     #  @outher_tag_name = @form_input_outher_tag
-    #  flash.now[:danger] = '@更新に失敗しました'
+    #  flash.now[:danger] = "@更新に失敗しました"
     #  render :edit, status: :unprocessable_entity
     # end
     redirect_to root_path
   end
 
   def create
-    #filtered_params = post_params.except(:post_area_tags_attributes, :post_genre_tags_attributes, :post_taste_tags_attributes, :post_outher_tags_attributes)
+    # filtered_params = post_params.except(:post_area_tags_attributes, :post_genre_tags_attributes, :post_taste_tags_attributes, :post_outher_tags_attributes)
     @post = current_user.posts.new(post_params)
     @form_input_area_tag = params[:post][:post_area_tags_attributes].values.map { |tag| tag[:area_tag_attributes][:name] }
     @form_input_genre_tag = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] }
@@ -88,13 +88,13 @@ class PostsController < ApplicationController
     #  @post.update_tags(@form_input_genre_tag, "genre")
     #  @post.update_tags(@form_input_taste_tag, "taste")
     #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to user_posts_path(current_user), success: '@記事の作成をしました'
+    #  redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
     # else
     #  @area_tag_name = @form_input_area_tag
     #  @genre_tag_name = @form_input_genre_tag
     #  @taste_tag_name = @form_input_taste_tag
     #  @outher_tag_name = @form_input_outher_tag
-    #  flash.now[:danger] = '@記事の作成に失敗しました'
+    #  flash.now[:danger] = "@記事の作成に失敗しました"
     #  render :new, status: :unprocessable_entity
     # end
     redirect_to root_path
@@ -104,7 +104,7 @@ class PostsController < ApplicationController
     post = current_user.posts.find(params[:id])
     post.images.purge
     post.destroy
-    flash[:success] = '@記事を削除しました'
+    flash[:success] = "@記事を削除しました"
     redirect_to user_posts_path(current_user), status: :see_other
   end
 
@@ -113,7 +113,7 @@ class PostsController < ApplicationController
     @playlist = Playlist.find(params[:playlist_id])
     @playlist.posts << @post unless @playlist.posts.include?(@post)
 
-    redirect_to root_path, success: '@プレイリストに追加しました'
+    redirect_to root_path, success: "@プレイリストに追加しました"
     # if request.referer&.include?("playlists/")
     # redirect_to new_user_path
     # elsif request.referer&.include?(posts_path)

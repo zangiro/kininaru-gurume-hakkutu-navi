@@ -28,14 +28,14 @@ class Post < ApplicationRecord
   has_many_attached :images
 
 
-  #def check_area_tag_name
+  # def check_area_tag_name
   #  if post_area_tags_attributes.present?
   #    tag_name = post_area_tags_attributes.values[0][:area_tag_attributes][:name]
   #    errors.add(:base, "タグ名を入力してください") if tag_name.blank?
   #  else
   #    errors.add(:base, "タグ名を入力してください")
   #  end
-  #end
+  # end
 
   def images_attached
     errors.add(:base, "画像を添付してください") unless images.attached?
