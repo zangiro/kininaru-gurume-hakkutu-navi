@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
+  validate :images_attached
 
   belongs_to :user
   has_one :dish, dependent: :destroy
@@ -25,6 +26,20 @@ class Post < ApplicationRecord
   has_many :playlists, through: :post_playlists
 
   has_many_attached :images
+
+
+  # def check_area_tag_name
+  #  if post_area_tags_attributes.present?
+  #    tag_name = post_area_tags_attributes.values[0][:area_tag_attributes][:name]
+  #    errors.add(:base, "タグ名を入力してください") if tag_name.blank?
+  #  else
+  #    errors.add(:base, "タグ名を入力してください")
+  #  end
+  # end
+
+  def images_attached
+    errors.add(:base, "画像を添付してください") unless images.attached?
+  end
 
   def update_tags(input_tags, tag_type)
     input_tags = input_tags.join(",").split(",").map(&:strip)  # コンマで区切って配列にする。空白削除 +複数の配列を位置行の文字列へ

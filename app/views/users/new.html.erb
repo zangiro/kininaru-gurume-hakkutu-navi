@@ -5,6 +5,7 @@
     <div class="col-md-10 col-lg-8 mx-auto">
       <h1>@ユーザー登録</h1>
       <%= form_with model: @user do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
         <div class="mb-3">
           <%= f.label :name, "@名前(必須)", class: "form-label" %>
@@ -30,9 +31,11 @@
           <%= f.label :@公開設定（必須） %>
         </div>
 
-        <div class="mb-3">
-          <%= f.radio_button :is_public, true %> @許可
-          <%= f.radio_button :is_public, false %> @不許可
+        <div class="mb-3 d-flex">
+          <%= f.radio_button :is_public, true, id: "is_public_true" %>
+          <label for="is_public_true" class="me-3">@許可</label>
+          <%= f.radio_button :is_public, false, id: "is_public_false" %>
+          <label for="is_public_false" class="me-3">@不許可</label>
         </div>
 
         <div class="mb-3">

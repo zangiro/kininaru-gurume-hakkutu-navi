@@ -1,4 +1,8 @@
 <%= form_with model: post do |f| %>
+
+<%= render 'shared/error_messages', object: f.object %>
+
+
 <%= f.label :title, "＠料理名（必須）" %>
 <%= f.text_field :title, class: "form-control" %>
 
@@ -24,63 +28,17 @@
 
 <h3>@タグ設定（複数登録する場合は単語の間に「 , 」を入れてください） </h3>
 
-<% if defined?(@area_tag_name) %>
 <%= label_tag :area_tag_name, "@タグ設定(地域)(必須)" %>
 <%= text_field_tag 'post[post_area_tags_attributes][0][area_tag_attributes][name]', @area_tag_name, class: "form-control" %>
-<% else %>
-<%= f.fields_for :post_area_tags do |post_area_f| %>
-  <%= post_area_f.fields_for :area_tag do |area_f| %>
-    <%= area_f.label :area_tag_name, "@タグ設定(地域)(必須)" %>
-    <%= area_f.text_field :name, class: "form-control" %>
-  <% end %>
-<% end %>
-<% end %>
 
-
-
-
-<% if defined?(@genre_tag_name) %>
 <%= label_tag :genre_tag_name, "@タグ設定（ジャンル）" %>
 <%= text_field_tag 'post[post_genre_tags_attributes][0][genre_tag_attributes][name]', @genre_tag_name, class: "form-control" %>
-<% else %>
-<%= f.fields_for :post_genre_tags do |post_genre_f| %>
-  <%= post_genre_f.fields_for :genre_tag do |genre_f| %>
-    <%= genre_f.label :genre_tag_name, "@タグ設定（ジャンル）" %>
-    <%= genre_f.text_field :name, class: "form-control" %>
-  <% end %>
-<% end %>
-<% end %>
 
-
-
-
-<% if defined?(@taste_tag_name) %>
 <%= label_tag :taste_tag_name, "@タグ設定（味）" %>
 <%= text_field_tag 'post[post_taste_tags_attributes][0][taste_tag_attributes][name]', @taste_tag_name, class: "form-control" %>
-<% else %>
-<%= f.fields_for :post_taste_tags do |post_taste_f| %>
-  <%= post_taste_f.fields_for :taste_tag do |taste_f| %>
-    <%= taste_f.label :taste_tag_name, "@タグ設定（味）" %>
-    <%= taste_f.text_field :name, class: "form-control" %>
-  <% end %>
-<% end %>
-<% end %>
 
-
-
-
-<% if defined?(@outher_tag_name) %>
 <%= label_tag :outher_tag_name, "@タグ設定（その他）" %>
 <%= text_field_tag 'post[post_outher_tags_attributes][0][outher_tag_attributes][name]', @outher_tag_name, class: "form-control" %>
-<% else %>
-<%= f.fields_for :post_outher_tags do |post_outher_f| %>
-  <%= post_outher_f.fields_for :outher_tag do |outher_f| %>
-    <%= outher_f.label :outher_tag_name, "@タグ設定（その他）" %>
-    <%= outher_f.text_field :name, class: "form-control" %>
-  <% end %>
-<% end %>
-<% end %>
-
 
 
 
