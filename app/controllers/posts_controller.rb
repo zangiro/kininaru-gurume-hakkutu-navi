@@ -8,6 +8,11 @@ class PostsController < ApplicationController
     @post.post_genre_tags.build.build_genre_tag
     @post.post_taste_tags.build.build_taste_tag
     @post.post_outher_tags.build.build_outher_tag
+
+    @area_tag_name = []
+    @genre_tag_name = []
+    @taste_tag_name = []
+    @outher_tag_name = []
   end
 
   def index
@@ -46,14 +51,14 @@ class PostsController < ApplicationController
 
   def update
     @user = current_user
-    filtered_params = post_params.except(:post_area_tags_attributes, :post_genre_tags_attributes, :post_taste_tags_attributes, :post_outher_tags_attributes)
+    #filtered_params = post_params.except(:post_area_tags_attributes, :post_genre_tags_attributes, :post_taste_tags_attributes, :post_outher_tags_attributes)
     @post = current_user.posts.find(params[:id])
     @form_input_area_tag = params[:post][:post_area_tags_attributes].values.map { |tag| tag[:area_tag_attributes][:name] }
     @form_input_genre_tag = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] }
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
-    # if @form_input_area_tag != [ "" ] && @post.images.attached? && @post.update(filtered_params)
+    # if @post.update(post_params)
     #  @post.update_tags(@form_input_area_tag, "area")
     #  @post.update_tags(@form_input_genre_tag, "genre")
     #  @post.update_tags(@form_input_taste_tag, "taste")
@@ -71,14 +76,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    filtered_params = post_params.except(:post_area_tags_attributes, :post_genre_tags_attributes, :post_taste_tags_attributes, :post_outher_tags_attributes)
-    @post = current_user.posts.new(filtered_params)
+    #filtered_params = post_params.except(:post_area_tags_attributes, :post_genre_tags_attributes, :post_taste_tags_attributes, :post_outher_tags_attributes)
+    @post = current_user.posts.new(post_params)
     @form_input_area_tag = params[:post][:post_area_tags_attributes].values.map { |tag| tag[:area_tag_attributes][:name] }
     @form_input_genre_tag = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] }
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
-    # if @form_input_area_tag != [ "" ] && @post.images.attached? && @post.save
+    # if @post.save
     #  @post.update_tags(@form_input_area_tag, "area")
     #  @post.update_tags(@form_input_genre_tag, "genre")
     #  @post.update_tags(@form_input_taste_tag, "taste")
