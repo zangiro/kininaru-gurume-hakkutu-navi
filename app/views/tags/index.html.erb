@@ -9,9 +9,9 @@
 <div class="row bg-info mb-3">
 <% @area_tags.each_with_index do |area_tag, area_index| %>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" name="area_tags[]" id="area_box<%= area_index %>" value="<%= area_tag %>">
+  <input class="form-check-input" type="checkbox" name="area_tags[]" id="area_box<%= area_index %>" value="<%= area_tag.name %>">
   <label class="form-check-label" for="area_box<%= area_index %>">
-  <%= area_tag %>
+  <%= area_tag.name %> (<%= area_tag.count %>)
   </label>
 </div>
 <% end %>
@@ -22,9 +22,9 @@
 <div class="row bg-info mb-3">
 <% @genre_tags.each_with_index do |genre_tag, genre_index| %>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" name="genre_tags[]" id="genre_box<%= genre_index %>" value="<%= genre_tag %>">
+  <input class="form-check-input" type="checkbox" name="genre_tags[]" id="genre_box<%= genre_index %>" value="<%= genre_tag.name %>">
   <label class="form-check-label" for="genre_box<%= genre_index %>">
-  <%= genre_tag %>
+  <%= genre_tag.name %> (<%= genre_tag.count %>)
   </label>
 </div>
 <% end %>
@@ -35,9 +35,9 @@
 <div class="row bg-info mb-3">
 <% @taste_tags.each_with_index do |taste_tag, taste_index| %>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" name="taste_tags[]" id="taste_box<%= taste_index %>" value="<%= taste_tag %>">
+  <input class="form-check-input" type="checkbox" name="taste_tags[]" id="taste_box<%= taste_index %>" value="<%= taste_tag.name %>">
   <label class="form-check-label" for="taste_box<%= taste_index %>">
-  <%= taste_tag %>
+  <%= taste_tag.name %> (<%= taste_tag.count %>)
   </label>
 </div>
 <% end %>
@@ -48,9 +48,9 @@
 <div class="row bg-info mb-3">
 <% @outher_tags.each_with_index do |outher_tag, outher_index| %>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" name="outher_tags[]" id="outher_box<%= outher_index %>" value="<%= outher_tag %>">
+  <input class="form-check-input" type="checkbox" name="outher_tags[]" id="outher_box<%= outher_index %>" value="<%= outher_tag.name %>">
   <label class="form-check-label" for="outher_box<%= outher_index %>">
-  <%= outher_tag %>
+  <%= outher_tag.name %> (<%= outher_tag.count %>)
   </label>
 </div>
 <% end %>
