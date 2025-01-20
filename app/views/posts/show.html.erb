@@ -79,4 +79,11 @@
 <% end %>
 
 
+<% if @post.user_id != current_user.id %>
+  <% if current_user.like?(@post) %>
+    あ
+  <% else %>
+    <%= link_to "登録", likes_path(post_id: @post.id), data: { turbo_method: :post } %>
+  <% end %>
+<% end %>
 </div>
