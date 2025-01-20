@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts, only: %i[index]
     resources :playlists, only: %i[index]
+    resources :likes, only: %i[index]
   end
   resources :posts do
     member do

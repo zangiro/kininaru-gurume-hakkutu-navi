@@ -1,7 +1,10 @@
 class LikesController < ApplicationController
+  def index
+    @user = User.find(params[:user_id])
+    @user_like_posts = @user.like_posts.all
+  end
+
   def create
-    #@board = Board.find(params[:board_id])
-    #current_user.bookmark(@board)
     @post = Post.find(params[:post_id])
     current_user.like(@post)
     redirect_to root_path, success: "@"
