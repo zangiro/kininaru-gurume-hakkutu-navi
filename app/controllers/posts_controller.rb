@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     #@user = @post.user
     @posted_user = @post.user
-    @visited_user = User.find(params[:user_id]) || []
+    @visited_user = params[:user_id] ? User.find(params[:user_id]) : []
     @playlist = params[:playlist_id] ? Playlist.find(params[:playlist_id]) : []
     if logged_in?
     @user_playlists = current_user.playlists
