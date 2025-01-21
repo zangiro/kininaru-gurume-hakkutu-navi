@@ -1,4 +1,4 @@
-<% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @user, @playlist, @post_path %>
+<% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @visited_user, @playlist, @post_path %>
 <%# パンくずリスト呼ぶとき選択したタグ情報を保持する %>
 
 <div class="container">
@@ -22,12 +22,12 @@
 </div>
 
 <div class="row d-flex">
-<span>投稿者: <%= link_to @user.name, user_path(@user) %></span>
+<span>投稿者: <%= link_to @posted_user.name, user_path(@posted_user) %></span>
 </div>
 
 <div class="row">
 <% if @post.source.present? %>
-<%= @post.user.name %>
+<%= @posted_user.name %>
 出典: <%= @post.source %>
 <% end %>
 </div>
@@ -79,4 +79,11 @@
 <% end %>
 
 
+<% if logged_in? && @post.user_id != current_user.id %>
+  <% if current_user.like?(@post) %>
+    <%= link_to "@いいね解除", post_like_path(@post), data: { turbo_method: :delete } %>
+  <% else %>
+    <%= link_to "@いいね", post_likes_path(@post), data: { turbo_method: :post } %>
+  <% end %>
+<% end %>
 </div>

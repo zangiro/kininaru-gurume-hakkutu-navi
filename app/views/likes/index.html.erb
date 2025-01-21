@@ -1,0 +1,25 @@
+<% breadcrumb :like_index, @user %>
+
+
+<div class="container">
+<div class="row">
+
+<%# -------------------本人&来訪者用------------------- %>
+<% if @user == current_user || @user.is_public %>
+  <% if @user_like_posts.present? %>
+    <p>@いいねした記事</p>
+    
+    <% @user_like_posts.each do |post| %>
+      <%= render "post_image", post: post %>
+    <% end %>
+  <% else %>
+    <p>@いいねした記事がありません</p>
+  <% end %>
+
+<% else %>
+  <p>@非公開されています</p>
+<% end %>
+
+
+</div>
+</div>

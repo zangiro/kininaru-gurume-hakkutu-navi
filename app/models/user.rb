@@ -11,6 +11,10 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :playlists, dependent: :destroy
+
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
+
   attr_accessor :agree_terms
 
   def agreement
@@ -19,5 +23,17 @@ class User < ApplicationRecord
         errors.add(:base, "@利用規約に同意されてません")
       end
     end
+  end
+
+  def like(post)
+    like_posts << post
+  end
+
+  def unlike(post)
+    like_posts.destroy(post)
+  end
+
+  def like?(post)
+    like_posts.include?(post)
   end
 end

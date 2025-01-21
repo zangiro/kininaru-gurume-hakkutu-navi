@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts, only: %i[index]
     resources :playlists, only: %i[index]
+    resources :likes, only: %i[index]
   end
   resources :posts do
     member do
       post "add_to_playlist"
     end
+    resources :likes, only: %i[create destroy]
   end
   resources :tags, only: %i[index]
   resources :searchs, only: %i[index]
