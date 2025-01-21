@@ -1,5 +1,5 @@
 <div class="bg-info">
-<a href="<%= playlist_post_path(post, playlist_id: @playlist.id) %>">
+<a href="<%= playlist_post_path(post, playlist_id: @playlist.id, user_id: @user.id) %>">
 
 <% if post.images.attached? %>
   <% post.images.each do |image| %>
