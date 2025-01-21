@@ -81,14 +81,9 @@
 
 <% if logged_in? && @post.user_id != current_user.id %>
   <% if current_user.like?(@post) %>
-    <%= link_to "登録解除", post_like_path(@post), data: { turbo_method: :delete } %>
-    <%# link_to "登録解除", post_like_path(post_id: @post.id), data: { turbo_method: :delete } %>
-    <%# link_to "登録解除ver2", like_path(current_user.likes.find_by(post_id: @post.id)), data: { turbo_method: :delete } %>
-    さくじょーー
+    <%= link_to "@いいね解除", post_like_path(@post), data: { turbo_method: :delete } %>
   <% else %>
-    <%# link_to "登録", likes_path(post_id: @post.id), data: { turbo_method: :post } %>
-    <%= link_to "登録", post_likes_path(@post), data: { turbo_method: :post } %>
-    とうろく＠＠＠
+    <%= link_to "@いいね", post_likes_path(@post), data: { turbo_method: :post } %>
   <% end %>
 <% end %>
 </div>

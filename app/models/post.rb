@@ -26,7 +26,7 @@ class Post < ApplicationRecord
   has_many :playlists, through: :post_playlists
 
   has_many_attached :images
-  
+
   has_many :likes, dependent: :destroy
 
 
