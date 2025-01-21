@@ -1,5 +1,5 @@
 <div class="bg-info">
-<a href="<%= post_path(post) %>">
+<a href="<%= post_path(post, user_id: @user.id) %>">
 
 
 <% if post.images.attached? %>

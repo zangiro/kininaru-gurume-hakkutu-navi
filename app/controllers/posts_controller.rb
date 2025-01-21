@@ -22,13 +22,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    #@user = @post.user
     @posted_user = @post.user
     @visited_user = params[:user_id] ? User.find(params[:user_id]) : []
     @playlist = params[:playlist_id] ? Playlist.find(params[:playlist_id]) : []
-    if logged_in?
-    @user_playlists = current_user.playlists
-    end
+    @user_playlists = logged_in? ? current_user.playlists : []
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
     @taste_tags = params[:taste_tags] || []
@@ -37,8 +34,10 @@ class PostsController < ApplicationController
       @post_path = "1"
     elsif request.referer&.include?("playlists/")
       @post_path = "2"
-    else
+    elsif request.referer&.include?("likes")
       @post_path = "3"
+    else
+      @post_path = "4"
     end
   end
 
