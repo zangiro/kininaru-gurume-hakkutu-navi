@@ -1,0 +1,14 @@
+<div class="bg-info">
+<a href="<%= post_path(post) %>">
+
+
+<% if post.images.attached? %>
+  <% post.images.each do |image| %>
+    <%= image_tag image %>
+  <% end %>
+<% end %>
+</a>
+<div class="row">
+<%= post.dish.introduction %>
+</div>
+</div>

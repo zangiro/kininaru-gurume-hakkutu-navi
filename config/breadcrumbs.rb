@@ -18,7 +18,7 @@ crumb :user_edit do |user|
 end
 
 crumb :user_show do |user|
-  link "#{user.name}さんのマイページ", user_path(user)
+  link "@#{user.name}さんのマイページ", user_path(user)
   parent :root
 end
 
@@ -79,6 +79,11 @@ end
 crumb :search_index do |area_tags, genre_tags, taste_tags, outher_tags|
   link "@検索結果", searchs_path(area_tags: area_tags, genre_tags: genre_tags, taste_tags: taste_tags, outher_tags: outher_tags)
   parent :tag_index
+end
+
+crumb :like_index do |user|
+  link "@いいねした記事", user_likes_path(user)
+  parent :user_show, user
 end
 
 # crumb :projects do
