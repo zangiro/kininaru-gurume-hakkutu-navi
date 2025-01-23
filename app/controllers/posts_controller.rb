@@ -39,6 +39,7 @@ class PostsController < ApplicationController
     else
       @post_path = "3"
     end
+    #binding.pry
   end
 
   def edit

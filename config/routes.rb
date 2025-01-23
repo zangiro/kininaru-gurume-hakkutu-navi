@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       delete "remove_playlist"
     end
   end
+  resources :likes
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
