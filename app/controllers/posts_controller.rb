@@ -30,14 +30,14 @@ class PostsController < ApplicationController
     @genre_tags = params[:genre_tags] || []
     @taste_tags = params[:taste_tags] || []
     @outher_tags = params[:outher_tags] || []
-    if request.referer&.include?("/likes")
-      @post_path = "3"
+    if request.referer&.include?("tags")
+      @post_path = "4"
     elsif request.referer&.include?("/playlists/")
       @post_path = "2"
     elsif request.referer&.include?("/users/")
       @post_path = "1"
     else
-      @post_path = "4"
+      @post_path = "3"
     end
   end
 
