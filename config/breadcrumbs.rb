@@ -47,11 +47,11 @@ crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, visit
     link "@#{post.title}"
     parent :playlist_show, playlist, visited_user
   elsif post_path == "3"
-   link "@#{post.title}"
-   parent :like_index, visited_user
-  else
     link "@#{post.title}"
     parent :search_index, area_tags, genre_tags, taste_tags, outher_tags
+  else
+    link "@#{post.title}"
+    parent :like_index, visited_user
   end
 end
 

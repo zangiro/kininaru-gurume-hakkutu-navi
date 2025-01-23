@@ -30,15 +30,34 @@ class PostsController < ApplicationController
     @genre_tags = params[:genre_tags] || []
     @taste_tags = params[:taste_tags] || []
     @outher_tags = params[:outher_tags] || []
-    if request.referer&.include?("tags")
-      @post_path = "4"
+    
+    if request.referer&.include?("/users/")
+      @post_path = "1"
     elsif request.referer&.include?("/playlists/")
       @post_path = "2"
-    elsif request.referer&.include?("/users/")
-      @post_path = "1"
-    else
+    elsif request.referer&.include?("/searchs")
       @post_path = "3"
+    else
+      @post_path = "4"
     end
+
+    #if request.referer&.include?("/users/")
+    #  @post_path = "1"
+    #  session[:post_path] = @post_path
+    #elsif request.referer&.include?("/playlists/")
+    #  @post_path = "2"
+    #  session[:post_path] = @post_path
+    #elsif request.referer&.include?("/searchs")
+    #  @post_path = "3"
+    #  session[:post_path] = @post_path
+    #else
+    #  @post_path = session[:post_path]
+    #end
+
+    #else
+    #  @post_path = "4"
+    #end
+
     #binding.pry
   end
 
