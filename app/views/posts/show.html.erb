@@ -81,9 +81,13 @@
 
 <% if logged_in? && @post.user_id != current_user.id %>
   <% if current_user.like?(@post) %>
-    <%= link_to "@いいね解除", post_like_path(@post), data: { turbo_method: :delete } %>
+    <%= link_to post_like_path(@post), data: { turbo_method: :delete } do %>
+      <i class="bi bi-hand-thumbs-up-fill"></i>
+    <% end %>
   <% else %>
-    <%= link_to "@いいね", post_likes_path(@post), data: { turbo_method: :post } %>
+    <%= link_to post_likes_path(@post), data: { turbo_method: :post } do %>
+      <i class="bi bi-hand-thumbs-up"></i>
+    <% end %>
   <% end %>
 <% end %>
 </div>
