@@ -8,10 +8,10 @@
 <% if @user == current_user || @user.is_public %>
   <% if @user_like_posts.present? %>
     <p>@いいねした記事</p>
-    
     <% @user_like_posts.each do |post| %>
       <%= render "post_image", post: post %>
     <% end %>
+
   <% else %>
     <p>@いいねした記事がありません</p>
   <% end %>

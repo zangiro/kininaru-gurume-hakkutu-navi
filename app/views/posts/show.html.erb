@@ -1,4 +1,4 @@
-<% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @visited_user, @playlist, @post_path %>
+<% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @user, @playlist, @post_path %>
 <%# パンくずリスト呼ぶとき選択したタグ情報を保持する %>
 
 <div class="container">
@@ -81,9 +81,20 @@
 
 <% if logged_in? && @post.user_id != current_user.id %>
   <% if current_user.like?(@post) %>
-    <%= link_to "@いいね解除", post_like_path(@post), data: { turbo_method: :delete } %>
+
+    <%# link_to post_like_path(current_user.likes.find_by(post_id: @post.id)), id: "bad-#{@post.id}", data: { turbo_method: :delete } do %>
+
+    <%= link_to post_like_path(@post), id: "bad-#{@post.id}", data: { turbo_method: :delete } do %>
+      <i class="bi bi-hand-thumbs-up-fill"></i>
+    <% end %>
+
   <% else %>
-    <%= link_to "@いいね", post_likes_path(@post), data: { turbo_method: :post } %>
+
+    <%= link_to post_likes_path(post_id: @post.id), id: "good-#{@post.id}", data: { turbo_method: :post } do %>
+      <i class="bi bi-hand-thumbs-up"></i>
+    <% end %>
+
+
   <% end %>
 <% end %>
 </div>

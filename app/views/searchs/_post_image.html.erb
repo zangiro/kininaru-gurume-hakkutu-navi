@@ -1,5 +1,5 @@
 <div class="bg-info">
-<a href="<%= post_path(post, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags) %>">
+<a href="<%= post_path(post, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags, post_path: @post_path) %>">
 <%# 記事詳細を呼び出すとき選択したタグ情報も送る %>
 
 <% if post.images.attached? %>

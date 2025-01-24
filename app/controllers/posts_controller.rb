@@ -18,27 +18,29 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @user_posts = @user.posts.all
+    @post_path = "1"
   end
 
   def show
     @post = Post.find(params[:id])
     @posted_user = @post.user
-    @visited_user = params[:user_id] ? User.find(params[:user_id]) : []
+    @user = params[:user_id] ? User.find(params[:user_id]) : []
     @playlist = params[:playlist_id] ? Playlist.find(params[:playlist_id]) : []
     @user_playlists = logged_in? ? current_user.playlists : []
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
     @taste_tags = params[:taste_tags] || []
     @outher_tags = params[:outher_tags] || []
-    if request.referer&.include?(posts_path)
-      @post_path = "1"
-    elsif request.referer&.include?("playlists/")
-      @post_path = "2"
-    elsif request.referer&.include?("likes")
-      @post_path = "3"
-    else
-      @post_path = "4"
-    end
+    @post_path = params[:post_path]
+    # if request.referer&.include?("/users/")
+    #  @post_path = "1"
+    # elsif request.referer&.include?("/playlists/")
+    #  @post_path = "2"
+    # elsif request.referer&.include?("/searchs")
+    #  @post_path = "3"
+    # else
+    #  @post_path = "4"
+    # end
   end
 
   def edit

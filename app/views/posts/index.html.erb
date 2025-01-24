@@ -10,7 +10,7 @@
     <% @user_posts.each do |post| %>
       <div class="row">
       <div class="py-4 my-1 bg-info">
-      <%= link_to post.title, post_path(post, user_id: @user.id) %>
+      <%= link_to post.title, post_path(post, user_id: @user.id, post_path: @post_path) %>
       <%= link_to "@編集する", edit_post_path(post) %>
       <%= link_to "@削除する", post_path(post), data: { turbo_method: :delete } %>
       </div>
@@ -28,7 +28,7 @@
     <% @user_posts.each do |post| %>
       <div class="row">
       <div class="py-4 my-1 bg-info">
-      <%= link_to post.title, post_path(post, user_id: @user.id) %>
+      <%= link_to post.title, post_path(post, user_id: @user.id, post_path: @post_path) %>
       </div>
       </div>
     <% end %>
