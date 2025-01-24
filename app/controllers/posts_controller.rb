@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @posted_user = @post.user
-    @visited_user = params[:user_id] ? User.find(params[:user_id]) : []
+    @user = params[:user_id] ? User.find(params[:user_id]) : []
     @playlist = params[:playlist_id] ? Playlist.find(params[:playlist_id]) : []
     @user_playlists = logged_in? ? current_user.playlists : []
     @area_tags = params[:area_tags] || []
