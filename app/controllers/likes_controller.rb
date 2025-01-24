@@ -7,13 +7,13 @@ class LikesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    #current_user.like(@post)   # userモデルのlikeメソッド
+    current_user.like(@post)   # userモデルのlikeメソッド
     # リダイレクトしない際create.turbo_stream.erbが呼ばれる
   end
 
   def destroy
     @post = current_user.likes.find_by(post_id: params[:post_id]).post
-    #current_user.unlike(@post)   # userモデルのunlikeメソッド
+    current_user.unlike(@post)   # userモデルのunlikeメソッド
     # リダイレクトしない際destroy.turbo_stream.erbが呼ばれる
   end
 end
