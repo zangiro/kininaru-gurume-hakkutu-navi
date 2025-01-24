@@ -14,9 +14,10 @@ class LikesController < ApplicationController
 
   def destroy
     @post = current_user.likes.find_by(post_id: params[:post_id]).post
-    #@post = current_user.likes.find(params[:post_id]).post
-
-    #board = current_user.bookmarks.find(params[:id]).board
+    # @post = current_user.likes.find(params[:post_id]).post
+    # board = current_user.bookmarks.find(params[:id]).board
+    # @likes = @post.likes
+    # @like = @likes.find_by(user_id: @user.id)
     current_user.unlike(@post)   # userモデルのunlikeメソッド
 
     # リダイレクトしない際destroy.turbo_stream.erbが呼ばれる
