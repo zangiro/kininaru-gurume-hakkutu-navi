@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @user_posts = @user.posts.all
+    @post_path = "1"
   end
 
   def show
@@ -31,15 +32,16 @@ class PostsController < ApplicationController
     @taste_tags = params[:taste_tags] || []
     @outher_tags = params[:outher_tags] || []
     
-    if request.referer&.include?("/users/")
-      @post_path = "1"
-    elsif request.referer&.include?("/playlists/")
-      @post_path = "2"
-    elsif request.referer&.include?("/searchs")
-      @post_path = "3"
-    else
-      @post_path = "4"
-    end
+    @post_path = params[:post_path]
+    #if request.referer&.include?("/users/")
+      #@post_path = "1"
+    #elsif request.referer&.include?("/playlists/")
+      #@post_path = "2"
+    #elsif request.referer&.include?("/searchs")
+      #@post_path = "3"
+    #else
+      #@post_path = "4"
+    #end
 
     #if request.referer&.include?("/users/")
     #  @post_path = "1"

@@ -8,15 +8,10 @@
 <% if @user == current_user || @user.is_public %>
   <% if @user_like_posts.present? %>
     <p>@いいねした記事</p>
-    
     <% @user_like_posts.each do |post| %>
-      <%# link_to "記事", post_path(post, user_id: @user.id) %>
-      <%# link_to "記事", user_likes_post_path(post_id: post.id, user_id: @user.id) %>
-      <%# link_to "記事", user_likes_post_path(post: post, user_id: @user.id) %>
-      <%# link_to "記事", user_likes_post_path(@user.id, post.id) %>
-      <%# render "post_image", post: post %>
-      <%= link_to "記事", post_path(post, user_id: @user.id) %>
+      <%= render "post_image", post: post %>
     <% end %>
+
   <% else %>
     <p>@いいねした記事がありません</p>
   <% end %>

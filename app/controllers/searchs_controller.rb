@@ -11,5 +11,6 @@ class SearchsController < ApplicationController
     @outher_posts = Post.joins(:outher_tags).where(outher_tags: { name: @outher_tags })
 
     @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
+    @post_path = "3"
   end
 end

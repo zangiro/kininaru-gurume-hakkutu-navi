@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete "logout", to: "user_sessions#destroy"
   resources :user_sessions, only: %i[new create destroy]
   resources :users do
-    resources :posts, only: %i[index show]
+    resources :posts, only: %i[index]
     resources :playlists, only: %i[index]
     resources :likes, only: %i[index]
   end
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
       delete "remove_playlist"
     end
   end
-  resources :likes
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

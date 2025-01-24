@@ -15,6 +15,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     @playlist_posts = @playlist.posts.all
     @user = @playlist.user
+    @post_path = "2"
   end
 
   def create

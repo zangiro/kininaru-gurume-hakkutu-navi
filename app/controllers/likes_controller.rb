@@ -2,6 +2,7 @@ class LikesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @user_like_posts = @user.like_posts.all
+    @post_path = "4"
   end
 
   def create
