@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       post "add_to_playlist"
     end
     resources :likes, only: %i[create destroy]
-    resources :comments, shallow: true
+    resources :comments, only: %i[create edit destroy], shallow: true
   end
   resources :tags, only: %i[index]
   resources :searchs, only: %i[index]
