@@ -97,10 +97,48 @@
 
   <% end %>
 <% end %>
-</div>
+
+
+<div class="row">
 
 <%= form_with model: @comment, url: post_comments_path(@post) do |f| %>
   <%= f.label :body %>
   <%= f.text_area :body, class: "form-control mb-3" %>
   <%= f.submit nil, class: "btn btn-primary" %>
 <% end %>
+
+<% @post_comments.each do |comment| %>
+  <tr id="comment-<%= comment.id %>">
+    <td>
+      <p><%= simple_format(comment.body) %></p>
+    </td>
+  </tr>
+  <% if current_user.own?(comment) %>
+    <td>
+      <ul>
+        <li>
+
+          <%= link_to "#", class: "edit-comment-link" do %>
+            <i class="bi bi-pencil-fill"></i>
+          <% end %>
+
+        </li>
+        <li>
+
+          <%= link_to "#", class: "delete-comment-link" do %>
+            <i class="bi bi-trash-fill"></i>
+          <% end %>
+          
+        </li>
+      </ul>
+    </td>
+  <% end %>
+<% end %>
+
+</div>
+
+
+
+
+
+</div>
