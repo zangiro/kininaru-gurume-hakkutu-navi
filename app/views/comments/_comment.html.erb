@@ -1,0 +1,24 @@
+<tr id="comment-<%= comment.id %>">
+
+  <td>
+      <p><%= simple_format(comment.body) %></p>
+  </td>
+      <% if current_user.own?(comment) %>
+  <td>
+      <ul class="list-inline">
+      <li class="list-inline-item">
+      <%= link_to "#", class: "edit-comment-link" do %>
+        <i class="bi bi-pencil-fill"></i>
+      <% end %>
+      </li>
+ 
+      <li class="list-inline-item">
+      <%= link_to "#", class: "delete-comment-link" do %>
+        <i class="bi bi-trash-fill"></i>
+      <% end %>
+      </li>
+      </ul>
+      <% end %>
+  </td>
+
+</tr>

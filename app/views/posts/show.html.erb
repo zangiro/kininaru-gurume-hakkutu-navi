@@ -100,7 +100,7 @@
 
 
 
-<div class="row bg-primary-subtle">
+<div class="row bg-primary-subtle justify-content-center">
 
 <%= form_with model: @comment, url: post_comments_path(@post) do |f| %>
   <%= f.label :body %>
@@ -108,29 +108,44 @@
   <%= f.submit nil, class: "btn btn-primary" %>
 <% end %>
 
+
+
+<table class="table">
+<tbody id="table-comment">
   <% @post_comments.each do |comment| %>
-    <div class="col-12">
-      <div class="border p-3 m-2 bg-light">
-        <p><%= simple_format(comment.body) %></p>
-
-        <% if current_user.own?(comment) %>
-        <ul class="list-inline">
-          <li class="list-inline-item">
-            <%= link_to "#", class: "edit-comment-link" do %>
-              <i class="bi bi-pencil-fill"></i>
-            <% end %>
-          </li>
-
-          <li class="list-inline-item">
-            <%= link_to "#", class: "delete-comment-link" do %>
-              <i class="bi bi-trash-fill"></i>
-            <% end %>
-          </li>
-        </ul>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'comments/comment', comment: comment %>
   <% end %>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-12">
+<table class="table">
+    <tbody id="table-comment">
+        <tr>
+            <td>
+                <p>こんにちは</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+  <div class="col-12">
+  <div class="border p-3 m-2 bg-light">
+  a
+  </div>
+  </div>
 </div>
 
 
