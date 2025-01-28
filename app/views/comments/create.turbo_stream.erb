@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "table-comment" do %>
+<%# Prependアクションで「table-comment」のidを持つ要素の内部の最初に下記を追加 %>
+  <%= render 'comments/comment', comment: @comment %>
+<% end %>

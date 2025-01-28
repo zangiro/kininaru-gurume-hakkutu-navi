@@ -102,12 +102,7 @@
 
 <div class="row bg-primary-subtle justify-content-center">
 
-<%= form_with model: @comment, url: post_comments_path(@post) do |f| %>
-  <%= f.label :body %>
-  <%= f.text_area :body, class: "form-control mb-3" %>
-  <%= f.submit nil, class: "btn btn-primary" %>
-<% end %>
-
+<%= render 'comments/form', comment: @comment, post: @post %>
 
 
 <table class="table">
