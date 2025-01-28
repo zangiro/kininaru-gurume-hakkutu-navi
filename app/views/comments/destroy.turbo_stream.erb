@@ -1,0 +1,3 @@
+<%= turbo_stream.remove "comment-#{@comment.id}" do %>
+<%# 特定のidのコメントをremoveアクションでページから消してる。コントローラーでデータベースから削除、removeアクションでページから削除 %>
+<% end %>

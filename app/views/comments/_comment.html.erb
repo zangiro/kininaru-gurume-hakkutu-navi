@@ -7,13 +7,14 @@
   <td>
       <ul class="list-inline">
       <li class="list-inline-item">
-      <%= link_to "#", class: "edit-comment-link" do %>
+      <%= link_to "#" do %>
+      <%# link_to edit_comment_path(comment) do %>
         <i class="bi bi-pencil-fill"></i>
       <% end %>
       </li>
  
       <li class="list-inline-item">
-      <%= link_to "#", class: "delete-comment-link" do %>
+      <%= link_to comment_path(comment), data: { turbo_method: :delete } do %>
         <i class="bi bi-trash-fill"></i>
       <% end %>
       </li>
