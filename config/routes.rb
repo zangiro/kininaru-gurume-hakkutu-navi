@@ -24,9 +24,7 @@ Rails.application.routes.draw do
       delete "remove_playlist"
     end
   end
-
-  #テスト用ルーティング
-  resources :comments
+  resources :comments, only: %i[edit update]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -49,6 +49,9 @@
 <%= @post.dish.description %>
 </div>
 
+
+<%# --------------------プレイリスト関連--------------------- %>
+
 <% if logged_in? %>
 <div class="col-2">
 <button type="button" class="btn btn-primary mb-12 btn-sm" data-toggle="modal" data-target="#playlist">プレイリストへ追加</button>
@@ -79,6 +82,8 @@
 <% end %>
 
 
+<%# -------------いいね機能関連---------------------- %>
+
 <% if logged_in? && @post.user_id != current_user.id %>
   <% if current_user.like?(@post) %>
 
@@ -99,11 +104,12 @@
 <% end %>
 
 
-
+<%# ------------コメント関連------------ %>
 <div class="row bg-primary-subtle justify-content-center">
 
+<% if logged_in? %>
 <%= render 'comments/form', comment: @comment, post: @post %>
-
+<% end %>
 
 <table class="table">
 <tbody id="table-comment">

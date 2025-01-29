@@ -1,4 +1,7 @@
 <%# テスト用インデックス %>
+
+
+
 <table class="table">
 <tbody id="table-comment">
   <% @post_comments.each do |comment| %>
@@ -19,7 +22,9 @@
 
 
 <div class="col-2">
-<button type="button" class="btn btn-primary mb-12 btn-sm" data-toggle="modal" data-target="#comment_edit_<%= comment.id %>">コメント編集</button>
+<button type="button" class="btn btn-primary mb-12 btn-sm" data-toggle="modal" data-target="#comment_edit_<%= comment.id %>">
+<i class="bi bi-pencil-fill"></i>
+</button>
 </div>
 
 <div class="modal fade" id="comment_edit_<%= comment.id %>" tabindex="-1">
@@ -59,6 +64,7 @@
         <i class="bi bi-trash-fill"></i>
       <% end %>
       </li>
+      <%= link_to "編集" , comment_path(comment) %>
       </ul>
       <% end %>
   </td>

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def index
-    #テスト用インデックス
+    # テスト用インデックス
     @post = Post.find(2)
     @post_comments = @post.comments.includes(:user)
   end
@@ -11,9 +11,8 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @com1 = current_user.comments.find(params[:id])
-    @com2 = comment_update_params
-    if @com1.update(comment_update_params)
+    @comment = current_user.comments.find(params[:id])
+    if @comment.update(comment_update_params)
       redirect_to root_path
     else
       redirect_to root_path, status: :unprocessable_entity
