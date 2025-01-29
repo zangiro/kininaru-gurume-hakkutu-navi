@@ -32,6 +32,8 @@ class PostsController < ApplicationController
     @taste_tags = params[:taste_tags] || []
     @outher_tags = params[:outher_tags] || []
     @post_path = params[:post_path]
+    @comment = Comment.new
+    @post_comments = @post.comments.includes(:user)
     # if request.referer&.include?("/users/")
     #  @post_path = "1"
     # elsif request.referer&.include?("/playlists/")

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       post "add_to_playlist"
     end
     resources :likes, only: %i[create destroy]
+    resources :comments, only: %i[create edit destroy], shallow: true
   end
   resources :tags, only: %i[index]
   resources :searchs, only: %i[index]
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
       delete "remove_playlist"
     end
   end
+  resources :comments, only: %i[edit update]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

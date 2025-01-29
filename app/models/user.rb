@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
 
+  has_many :comments, dependent: :destroy
+
   attr_accessor :agree_terms
 
   def agreement
@@ -36,4 +38,9 @@ class User < ApplicationRecord
   def like?(post)
     like_posts.include?(post)
   end
+
+  def own?(object)
+    id == object&.user_id
+  end
+  # current_user.own?(comment)と使い、コメントの作成者がログイン中のユーザーのものか確認してる
 end

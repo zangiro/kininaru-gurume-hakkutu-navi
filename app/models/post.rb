@@ -29,6 +29,8 @@ class Post < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
+  has_many :comments, dependent: :destroy
+
 
   def images_attached
     errors.add(:base, "画像を添付してください") unless images.attached?
