@@ -1,0 +1,69 @@
+<%# テスト用インデックス %>
+<table class="table">
+<tbody id="table-comment">
+  <% @post_comments.each do |comment| %>
+    <tr id="comment-<%= comment.id %>">
+
+  <td>
+      <p><%= simple_format(comment.body) %></p>
+  </td>
+      <% if current_user.own?(comment) %>
+  <td>
+      <ul class="list-inline">
+      <li class="list-inline-item">
+      
+
+
+
+
+
+
+<div class="col-2">
+<button type="button" class="btn btn-primary mb-12 btn-sm" data-toggle="modal" data-target="#comment_edit_<%= comment.id %>">コメント編集</button>
+</div>
+
+<div class="modal fade" id="comment_edit_<%= comment.id %>" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4><div class="modal-title" id="myModalLabel">コメント編集</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_with(model: comment, url: comment_path(comment), method: :patch) do |form| %>
+          <%= form.text_area :body, value: comment.body %>
+          <%= form.submit "変更" %>
+        <% end %>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">@閉じる</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+      </li>
+ 
+      <li class="list-inline-item">
+      <%= link_to comment_path(comment), data: { turbo_method: :delete } do %>
+        <i class="bi bi-trash-fill"></i>
+      <% end %>
+      </li>
+      </ul>
+      <% end %>
+  </td>
+
+</tr>
+  <% end %>
+</tbody>
+</table>

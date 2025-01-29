@@ -1,7 +1,23 @@
 class CommentsController < ApplicationController
+  def index
+    #テスト用インデックス
+    @post = Post.find(2)
+    @post_comments = @post.comments.includes(:user)
+  end
+
   def create
-    @comment = current_user.comments.new(comment_params)
+    @comment = current_user.comments.new(comment_create_params)
     @comment.save
+  end
+
+  def update
+    @com1 = current_user.comments.find(params[:id])
+    @com2 = comment_update_params
+    if @com1.update(comment_update_params)
+      redirect_to root_path
+    else
+      redirect_to root_path, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -11,7 +27,11 @@ class CommentsController < ApplicationController
 
   private
 
-  def comment_params
+  def comment_create_params
     params.require(:comment).permit(:body).merge(post_id: params[:post_id])
+  end
+
+  def comment_update_params
+    params.require(:comment).permit(:body)
   end
 end
