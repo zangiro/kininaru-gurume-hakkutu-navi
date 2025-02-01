@@ -8,6 +8,13 @@
 <%= @user.is_public ? "@#{@user.name}さんのマイページは現在公開中です" : "@#{@user.name}さんのマイページは現在非公開です" %>
 </div>
 
+<div class="mt-2">
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
+  <% else %>
+    アバターは登録されてません
+  <% end %>
+</div>
 
 <% if @user.is_public || @user == current_user %>
 <div class="mt-2">
