@@ -39,10 +39,8 @@
 </div>
 
 <div class="row col-6">
-<% if @post.images.attached? %>
-  <% @post.images.each do |image| %>
-    <%= image_tag image.variant(resize_to_fit: [600, 600]) %>
-  <% end %>
+<% if @post.main_image.attached? %>
+  <%= image_tag @post.main_image.variant(resize_to_fit: [600, 600]) %>
 <% end %>
 </div>
 <div class="row">

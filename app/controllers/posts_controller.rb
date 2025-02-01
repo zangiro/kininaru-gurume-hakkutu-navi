@@ -102,12 +102,28 @@ class PostsController < ApplicationController
     #  flash.now[:danger] = "@記事の作成に失敗しました"
     #  render :new, status: :unprocessable_entity
     # end
-    redirect_to root_path
+
+
+    if @post.save
+      @post.update_tags(@form_input_area_tag, "area")
+      @post.update_tags(@form_input_genre_tag, "genre")
+      @post.update_tags(@form_input_taste_tag, "taste")
+      @post.update_tags(@form_input_outher_tag, "outher")
+      redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
+    else
+      @area_tag_name = @form_input_area_tag
+      @genre_tag_name = @form_input_genre_tag
+      @taste_tag_name = @form_input_taste_tag
+      @outher_tag_name = @form_input_outher_tag
+      flash.now[:danger] = "@記事の作成に失敗しました"
+      render :new, status: :unprocessable_entity
+    end
+    # redirect_to root_path
   end
 
   def destroy
     post = current_user.posts.find(params[:id])
-    post.images.purge
+    post.main_image.purge
     post.destroy
     flash[:success] = "@記事を削除しました"
     redirect_to user_posts_path(current_user), status: :see_other
@@ -131,6 +147,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:id, :title, :source, :store_url, :images, dish_attributes: [ :id, :introduction, :description ], post_area_tags_attributes: [ :id, area_tag_attributes: [ :id, :name ] ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ] ], post_taste_tags_attributes: [ :id, taste_tag_attributes: [ :id, :name ] ], post_outher_tags_attributes: [ :id, outher_tag_attributes: [ :id, :name ] ])
+    params.require(:post).permit(:id, :title, :source, :store_url, :main_image, dish_attributes: [ :id, :introduction, :description ], post_area_tags_attributes: [ :id, area_tag_attributes: [ :id, :name ] ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ] ], post_taste_tags_attributes: [ :id, taste_tag_attributes: [ :id, :name ] ], post_outher_tags_attributes: [ :id, outher_tag_attributes: [ :id, :name ] ])
   end
 end
