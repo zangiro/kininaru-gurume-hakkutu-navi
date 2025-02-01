@@ -38,10 +38,10 @@
 <% end %>
 </div>
 
-<div class="row col-8">
+<div class="row col-6">
 <% if @post.images.attached? %>
   <% @post.images.each do |image| %>
-    <%= image_tag image.variant(resize_and_pad: [200, 200]) %>
+    <%= image_tag image.variant(resize_to_fit: [600, 600]) %>
   <% end %>
 <% end %>
 </div>
