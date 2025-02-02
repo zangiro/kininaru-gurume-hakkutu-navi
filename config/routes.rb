@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :posts, only: %i[index]
     resources :playlists, only: %i[index]
     resources :likes, only: %i[index]
+    member do
+      delete "destroy_avatar"
+      delete "destroy_avatar_vertwo"
+    end
   end
   resources :posts do
     member do
