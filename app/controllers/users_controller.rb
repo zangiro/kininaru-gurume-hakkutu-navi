@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      #redirect_to user_path(current_user), success: "@更新しました"
+      # redirect_to user_path(current_user), success: "@更新しました"
       redirect_to root_path, success: "@更新しました"
     else
       flash.now[:danger] = "@更新失敗しました"

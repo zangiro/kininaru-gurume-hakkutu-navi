@@ -102,23 +102,7 @@ class PostsController < ApplicationController
     #  flash.now[:danger] = "@記事の作成に失敗しました"
     #  render :new, status: :unprocessable_entity
     # end
-
-
-    if @post.save
-      @post.update_tags(@form_input_area_tag, "area")
-      @post.update_tags(@form_input_genre_tag, "genre")
-      @post.update_tags(@form_input_taste_tag, "taste")
-      @post.update_tags(@form_input_outher_tag, "outher")
-      redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
-    else
-      @area_tag_name = @form_input_area_tag
-      @genre_tag_name = @form_input_genre_tag
-      @taste_tag_name = @form_input_taste_tag
-      @outher_tag_name = @form_input_outher_tag
-      flash.now[:danger] = "@記事の作成に失敗しました"
-      render :new, status: :unprocessable_entity
-    end
-    # redirect_to root_path
+    redirect_to root_path
   end
 
   def destroy
