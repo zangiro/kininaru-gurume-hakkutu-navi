@@ -45,13 +45,6 @@ class UsersController < ApplicationController
     redirect_to root_path, success: "@削除しました"
   end
 
-  def destroy_avatar_vertwo
-    @user = current_user
-    @user.avatar.purge_later
-
-    redirect_to root_path, success: "@削除しました"
-  end
-
   private
 
   def user_params

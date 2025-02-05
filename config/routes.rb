@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :likes, only: %i[index]
     member do
       delete "destroy_avatar"
-      delete "destroy_avatar_vertwo"
     end
   end
   resources :posts do

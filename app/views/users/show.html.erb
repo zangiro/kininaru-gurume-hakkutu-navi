@@ -12,7 +12,6 @@
   <% if @user.avatar.attached? %>
     <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
     <%= button_to '画像を削除', destroy_avatar_user_path(@user), method: :delete %>
-    <%= button_to '画像を削除ver2', destroy_avatar_vertwo_user_path(@user), method: :delete %>
   <% else %>
     アバターは登録されてません
   <% end %>
