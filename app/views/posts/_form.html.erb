@@ -11,6 +11,16 @@
 <%= f.file_field :main_image %>
 </div>
 
+<div class="row">
+<%= f.label :sub_image_first, "＠サブ画像１" %>
+<%= f.file_field :sub_image_first %>
+</div>
+
+<div class="row">
+<%= f.label :sub_image_second, "＠サブ画像２" %>
+<%= f.file_field :sub_image_second %>
+</div>
+
 <%= f.label :source, "＠出典" %>
 <%= f.text_field :source, class: "form-control" %>
 

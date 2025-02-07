@@ -26,6 +26,8 @@ class Post < ApplicationRecord
   has_many :playlists, through: :post_playlists
 
   has_one_attached :main_image
+  has_one_attached :sub_image_first
+  has_one_attached :sub_image_second
 
   has_many :likes, dependent: :destroy
 
