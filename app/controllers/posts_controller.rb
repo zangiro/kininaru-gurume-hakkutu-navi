@@ -63,75 +63,7 @@ class PostsController < ApplicationController
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
-    # if @post.update(post_params)
-    #  @post.update_tags(@form_input_area_tag, "area")
-    #  @post.update_tags(@form_input_genre_tag, "genre")
-    #  @post.update_tags(@form_input_taste_tag, "taste")
-    #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to user_posts_path(current_user), success: "@更新しました"
-    # else
-    #  @area_tag_name = @form_input_area_tag
-    #  @genre_tag_name = @form_input_genre_tag
-    #  @taste_tag_name = @form_input_taste_tag
-    #  @outher_tag_name = @form_input_outher_tag
-    #  flash.now[:danger] = "@更新に失敗しました"
-    #  render :edit, status: :unprocessable_entity
-    # end
-    #@post1 = Post.new(post_params)
-    #@post1.build_dish
-    #@post1.post_area_tags.build.build_area_tag
-    #@post1.post_genre_tags.build.build_genre_tag
-    #@post1.post_taste_tags.build.build_taste_tag
-    #@post1.post_outher_tags.build.build_outher_tag
-    #if new_post.valid?
-    #  redirect_to users_path
-    #else
-    #  redirect_to root_path
-    #end
-    #@a0 = @post.attributes
-    #@a1 = @post.attributes.slice
-    #@a2 = @post.attributes.slice('title') 
-
-    #@b1 = @post.main_image
-    #@post2 = @post1.dup
-    #@post2.assign_attributes(post_params)
-    #@post2.assign_attributes(post_params)   # まずパラメータを設定する
-
-    #@b2 = @post.main_image
-    
-    #params = post_params
-    #@c1 = post_params[:title]
-    #@c1a = params[:title]
-    #@c2 = params[:post][:dish_attributes]
-    #@c3 = params[:post][:dish_attributes][:description]
-    #@c4 = params[:post][:post_area_tags_attributes].values.map { |tag| tag[:area_tag_attributes][:name] }
-    #@c5 = params[:post][:post_area_tags_attributes].values.map
-    #@c6 = params[:post][:post_area_tags_attributes].values
-    #@c7 = params[:post][:post_area_tags_attributes]
-    # エラー@c8 = post_params[:post][:dish_attributes]
-    #binding.pry
-
-
-    if post_params[:title].present? && params[:post][:dish_attributes][:description].present? && @form_input_area_tag != [ "" ]
-      @post.main_image.purge
-      @post.sub_image_first.purge
-      @post.sub_image_second.purge
-    end
-
-    if @post.update(post_params)
-      @post.update_tags(@form_input_area_tag, "area")
-      @post.update_tags(@form_input_genre_tag, "genre")
-      @post.update_tags(@form_input_taste_tag, "taste")
-      @post.update_tags(@form_input_outher_tag, "outher")
-      redirect_to user_posts_path(current_user), success: "@更新しました"
-    else
-      @area_tag_name = @form_input_area_tag
-      @genre_tag_name = @form_input_genre_tag
-      @taste_tag_name = @form_input_taste_tag
-      @outher_tag_name = @form_input_outher_tag
-      flash.now[:danger] = "@更新に失敗しました"
-      render :edit, status: :unprocessable_entity
-    end
+    redirect_to root_path
   end
 
   def create
@@ -142,37 +74,7 @@ class PostsController < ApplicationController
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
-    # if @post.save
-    #  @post.update_tags(@form_input_area_tag, "area")
-    #  @post.update_tags(@form_input_genre_tag, "genre")
-    #  @post.update_tags(@form_input_taste_tag, "taste")
-    #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
-    # else
-    #  @area_tag_name = @form_input_area_tag
-    #  @genre_tag_name = @form_input_genre_tag
-    #  @taste_tag_name = @form_input_taste_tag
-    #  @outher_tag_name = @form_input_outher_tag
-    #  flash.now[:danger] = "@記事の作成に失敗しました"
-    #  render :new, status: :unprocessable_entity
-    # end
-
-
-    if @post.save
-      @post.update_tags(@form_input_area_tag, "area")
-      @post.update_tags(@form_input_genre_tag, "genre")
-      @post.update_tags(@form_input_taste_tag, "taste")
-      @post.update_tags(@form_input_outher_tag, "outher")
-      redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
-    else
-      @area_tag_name = @form_input_area_tag
-      @genre_tag_name = @form_input_genre_tag
-      @taste_tag_name = @form_input_taste_tag
-      @outher_tag_name = @form_input_outher_tag
-      flash.now[:danger] = "@記事の作成に失敗しました"
-      render :new, status: :unprocessable_entity
-    end
-    # redirect_to root_path
+    redirect_to root_path
   end
 
   def destroy
