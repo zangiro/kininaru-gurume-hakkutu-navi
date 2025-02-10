@@ -30,20 +30,8 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @avatar = user_params[:avatar]
-    
-    if user_params[:name].present? && user_params[:email].present?
-      unless @avatar.nil?
-        @user.avatar.purge
-      end
-    end
 
-    if @user.update(user_params)
-      # redirect_to user_path(current_user), success: "@更新しました"
-      redirect_to root_path, success: "@更新しました"
-    else
-      flash.now[:danger] = "@更新失敗しました"
-      render :edit, status: :unprocessable_entity
-    end
+    redirect_to root_path
   end
 
   def destroy_avatar
