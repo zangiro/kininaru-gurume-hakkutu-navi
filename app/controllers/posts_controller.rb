@@ -34,15 +34,6 @@ class PostsController < ApplicationController
     @post_path = params[:post_path]
     @comment = Comment.new
     @post_comments = @post.comments.includes(:user)
-    # if request.referer&.include?("/users/")
-    #  @post_path = "1"
-    # elsif request.referer&.include?("/playlists/")
-    #  @post_path = "2"
-    # elsif request.referer&.include?("/searchs")
-    #  @post_path = "3"
-    # else
-    #  @post_path = "4"
-    # end
   end
 
   def edit
@@ -62,21 +53,37 @@ class PostsController < ApplicationController
     @form_input_genre_tag = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] }
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
+    @main_image = post_params[:main_image]
+    @sub_image_first = post_params[:sub_image_first]
+    @sub_image_second = post_params[:sub_image_second]
+
+    # if post_params[:title].present? && params[:post][:dish_attributes][:description].present? && @form_input_area_tag != [ "" ]
+    #   unless @main_image.nil?
+    #     @post.main_image.purge
+    #   end
+    #   unless @sub_image_first.nil?
+    #     @post.sub_image_first.purge
+    #   end
+    #   unless @sub_image_second.nil?
+    #     @post.sub_image_second.purge
+    #   end
+    # end
 
     # if @post.update(post_params)
-    #  @post.update_tags(@form_input_area_tag, "area")
-    #  @post.update_tags(@form_input_genre_tag, "genre")
-    #  @post.update_tags(@form_input_taste_tag, "taste")
-    #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to user_posts_path(current_user), success: "@更新しました"
+    #   @post.update_tags(@form_input_area_tag, "area")
+    #   @post.update_tags(@form_input_genre_tag, "genre")
+    #   @post.update_tags(@form_input_taste_tag, "taste")
+    #   @post.update_tags(@form_input_outher_tag, "outher")
+    #   redirect_to user_posts_path(current_user), success: "@更新しました"
     # else
-    #  @area_tag_name = @form_input_area_tag
-    #  @genre_tag_name = @form_input_genre_tag
-    #  @taste_tag_name = @form_input_taste_tag
-    #  @outher_tag_name = @form_input_outher_tag
-    #  flash.now[:danger] = "@更新に失敗しました"
-    #  render :edit, status: :unprocessable_entity
+    #   @area_tag_name = @form_input_area_tag
+    #   @genre_tag_name = @form_input_genre_tag
+    #   @taste_tag_name = @form_input_taste_tag
+    #   @outher_tag_name = @form_input_outher_tag
+    #   flash.now[:danger] = "@更新に失敗しました"
+    #   render :edit, status: :unprocessable_entity
     # end
+
     redirect_to root_path
   end
 
@@ -89,25 +96,28 @@ class PostsController < ApplicationController
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
     # if @post.save
-    #  @post.update_tags(@form_input_area_tag, "area")
-    #  @post.update_tags(@form_input_genre_tag, "genre")
-    #  @post.update_tags(@form_input_taste_tag, "taste")
-    #  @post.update_tags(@form_input_outher_tag, "outher")
-    #  redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
+    #   @post.update_tags(@form_input_area_tag, "area")
+    #   @post.update_tags(@form_input_genre_tag, "genre")
+    #   @post.update_tags(@form_input_taste_tag, "taste")
+    #   @post.update_tags(@form_input_outher_tag, "outher")
+    #   redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
     # else
-    #  @area_tag_name = @form_input_area_tag
-    #  @genre_tag_name = @form_input_genre_tag
-    #  @taste_tag_name = @form_input_taste_tag
-    #  @outher_tag_name = @form_input_outher_tag
-    #  flash.now[:danger] = "@記事の作成に失敗しました"
-    #  render :new, status: :unprocessable_entity
+    #   @area_tag_name = @form_input_area_tag
+    #   @genre_tag_name = @form_input_genre_tag
+    #   @taste_tag_name = @form_input_taste_tag
+    #   @outher_tag_name = @form_input_outher_tag
+    #   flash.now[:danger] = "@記事の作成に失敗しました"
+    #   render :new, status: :unprocessable_entity
     # end
+
     redirect_to root_path
   end
 
   def destroy
     post = current_user.posts.find(params[:id])
-    post.images.purge
+    post.main_image.purge
+    post.sub_image_first.purge
+    post.sub_image_second.purge
     post.destroy
     flash[:success] = "@記事を削除しました"
     redirect_to user_posts_path(current_user), status: :see_other
@@ -119,18 +129,11 @@ class PostsController < ApplicationController
     @playlist.posts << @post unless @playlist.posts.include?(@post)
 
     redirect_to root_path, success: "@プレイリストに追加しました"
-    # if request.referer&.include?("playlists/")
-    # redirect_to new_user_path
-    # elsif request.referer&.include?(posts_path)
-    # redirect_to post_path(@post)
-    # else
-    # redirect_to post_path(post, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags)
-    # end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:id, :title, :source, :store_url, :images, dish_attributes: [ :id, :introduction, :description ], post_area_tags_attributes: [ :id, area_tag_attributes: [ :id, :name ] ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ] ], post_taste_tags_attributes: [ :id, taste_tag_attributes: [ :id, :name ] ], post_outher_tags_attributes: [ :id, outher_tag_attributes: [ :id, :name ] ])
+    params.require(:post).permit(:id, :title, :source, :store_url, :main_image, :sub_image_first, :sub_image_second, dish_attributes: [ :id, :introduction, :description ], post_area_tags_attributes: [ :id, area_tag_attributes: [ :id, :name ] ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ] ], post_taste_tags_attributes: [ :id, taste_tag_attributes: [ :id, :name ] ], post_outher_tags_attributes: [ :id, outher_tag_attributes: [ :id, :name ] ])
   end
 end

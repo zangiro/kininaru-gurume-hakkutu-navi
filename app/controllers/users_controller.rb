@@ -29,17 +29,34 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(user_params)
-      redirect_to user_path(current_user), success: "@更新しました"
-    else
-      flash.now[:danger] = "@更新失敗しました"
-      render :edit, status: :unprocessable_entity
-    end
+    @avatar = user_params[:avatar]
+
+    # if user_params[:name].present? && user_params[:email].present?
+    #   unless @avatar.nil?
+    #     @user.avatar.purge
+    #   end
+    # end
+
+    # if @user.update(user_params)
+    #   redirect_to user_path(current_user), success: "@更新しました"
+    # else
+    #   flash.now[:danger] = "@更新失敗しました"
+    #   render :edit, status: :unprocessable_entity
+    # end
+
+    redirect_to root_path
+  end
+
+  def destroy_avatar
+    @user = current_user
+    @user.avatar.purge
+
+    redirect_to root_path, success: "@削除しました"
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_public, :introduction, :agree_terms)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_public, :introduction, :agree_terms, :avatar)
   end
 end

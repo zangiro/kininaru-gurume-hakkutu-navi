@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
-  validate :images_attached
+  validate :main_image_attached
 
   belongs_to :user
   has_one :dish, dependent: :destroy
@@ -25,15 +25,17 @@ class Post < ApplicationRecord
   has_many :post_playlists, dependent: :destroy
   has_many :playlists, through: :post_playlists
 
-  has_many_attached :images
+  has_one_attached :main_image
+  has_one_attached :sub_image_first
+  has_one_attached :sub_image_second
 
   has_many :likes, dependent: :destroy
 
   has_many :comments, dependent: :destroy
 
 
-  def images_attached
-    errors.add(:base, "画像を添付してください") unless images.attached?
+  def main_image_attached
+    errors.add(:base, "画像を添付してください") unless main_image.attached?
   end
 
   def update_tags(input_tags, tag_type)

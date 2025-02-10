@@ -2,18 +2,52 @@ FROM ruby:3.2.3
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
 RUN apt-get update -qq \
+# apt-get update:パッケージリストを更新するためのコマンドで実行することで最新のパッケージ情報を取得できる
+# -qq: 出力を最小限に抑え、通常の出力よりもエラーメッセージや警告のみが表示される
 && apt-get install -y ca-certificates curl gnupg \
+# apt-get install：このコマンドは、指定したパッケージをインストールするためのもの
+# -y: インストール時に確認を求めるプロンプトを自動的に「はい」と答えるためのもの
+# ca-certificates：これはSSL/TLS通信を行う際に必要な証明書を管理するパッケージで、セキュアな接続を確立するために必要
+# curl：これはコマンドラインからURLを扱うためのツールで、データを取得したり送信したりするのに使える便利なツール
+# gnupg：これはGPG（GNU Privacy Guard）で、暗号化や署名を行うためのツールで、セキュリティを高めるために使われる
 && mkdir -p /etc/apt/keyrings \
+# /etc/apt/keyrings：これは作成するディレクトリのパスで、APT（Debian系のパッケージ管理ツール）の鍵を保存するためのディレクトリ
 && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+# curl -fsSL 「URL」：この部分は、指定されたURLからGPG鍵をダウンロードするためのコマンド
+# |：パイプは、左側のコマンドの出力を右側のコマンドの入力として渡すためのもの
+# gpg --dearmor -o 「ファイル名」：この部分は、ダウンロードしたGPG鍵をバイナリ形式に変換して指定したファイルに保存するコマンド。-oオプションは出力ファイルを指定するために使われる
 && NODE_MAJOR=20 \
+# 環境変数NODE_MAJORに値20を設定している部分。ここではNode.jsのメジャーバージョンを指定
 && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+# echoの後に続く部分は、NodeSourceのリポジトリ情報を出力しているカ。この中の$NODE_MAJORは、Node.jsのメジャーバージョンを示す環境変数
+# tee /--- : 出力されたリポジトリ情報を指定したファイルに書き込みつつ、画面にも表示するコマンド
 && wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+# wget --quiet -O - /tmp/pubkey.gpg 「URL」 : Yarnの公開鍵を指定したURLからダウンロードしている
 && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+# echoの後に続く部分は、Yarnのリポジトリ情報を出力している
+# tee /etc/apt/sources.list.d/yarn.list : その出力を指定したファイルに書き込みつつ、画面にも表示するコマンド
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn vim
+# apt-get update -qq : パッケージリストを更新するコマンド
+# && : 前のコマンドが成功した場合に次のコマンドを実行するための演算子
+# apt-get install -y : 指定されたパッケージをインストールするコマンド
+# build-essential : 開発に必要な基本ツール
+# libpq-dev : PostgreSQLの開発ライブラリ
+# nodejs : Node.jsのランタイム
+# yarn : JavaScriptのパッケージマネージャー
+# vim : テキストエディタ
+RUN apt-get update -qq && apt-get install -y imagemagick libvips42
+# imagemagick libvips42 : ActiveStrageで画像のリサイズに必要
 RUN mkdir /myapp
+# コンテナ内に/myappというディレクトリを作成するコマンド
 WORKDIR /myapp
+# 以降のコマンドが実行される、作業ディレクトリを/myappに設定する命令
 RUN gem install bundler
+# Rubyのパッケージ管理ツールであるBundlerをインストールするコマンド
 COPY . /myapp
+# ホストマシンのカレントディレクトリのファイルをコンテナ内の/myappにコピーするコマンド
 RUN apt-get update && apt-get install -y curl
+# パッケージリストを更新して、curlというツールをインストールするコマンド。重複してる？
 RUN curl -L https://fly.io/install.sh | sh
+# curlを使って指定したURLからスクリプトをダウンロードし、それを実行するコマンド
 ENV PATH="/root/.fly/bin:${PATH}"
+# Fly.ioのバイナリがインストールされるディレクトリを環境変数PATHに追加する命令だぞ。これによって、Fly.ioのコマンドをどこからでも実行できるようになる

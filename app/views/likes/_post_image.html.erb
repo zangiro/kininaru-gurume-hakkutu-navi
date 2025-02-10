@@ -2,10 +2,8 @@
 <a href="<%= post_path(post, user_id: @user.id, post_path: @post_path) %>">
 
 
-<% if post.images.attached? %>
-  <% post.images.each do |image| %>
-    <%= image_tag image %>
-  <% end %>
+<% if post.main_image.attached? %>
+  <%= image_tag post.main_image %>
 <% end %>
 </a>
 <div class="row">

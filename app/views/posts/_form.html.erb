@@ -7,8 +7,18 @@
 <%= f.text_field :title, class: "form-control" %>
 
 <div class="row">
-<%= f.label :images, "＠メイン画像（必須）" %>
-<%= f.file_field :images %>
+<%= f.label :main_image, "＠メイン画像（必須）" %>
+<%= f.file_field :main_image %>
+</div>
+
+<div class="row">
+<%= f.label :sub_image_first, "＠サブ画像１" %>
+<%= f.file_field :sub_image_first %>
+</div>
+
+<div class="row">
+<%= f.label :sub_image_second, "＠サブ画像２" %>
+<%= f.file_field :sub_image_second %>
 </div>
 
 <%= f.label :source, "＠出典" %>
