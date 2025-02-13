@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @user_like_posts = @user.like_posts.all
+    @user_like_posts = @user.like_posts.all.page(params[:page]).per(6)
     @post_path = "4"
   end
 
