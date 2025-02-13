@@ -12,6 +12,8 @@ gem "puma", ">= 5.0"
 gem "jsbundling-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
+# 非同期通信で使用
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
@@ -43,24 +45,38 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "config"
+# 開発環境と本番環境の設定で使用
 
 gem "redis"
 
 gem "bootstrap-sass", "~> 3.4.1"
 gem "sass-rails", ">= 3.2"
 gem "jquery-rails"
+# レイアウトに使用
 
 gem "sorcery"
+# ログイン関連に使用
 
 gem "rails-i18n"
+# 言語表記に使用
 
 gem "importmap-rails"
+# RailsでJavaScriptを扱う新しい方法
 
 gem "aws-sdk-s3", require: false
+# AWS S3の利用に使用
 
 gem "gretel"
+# パンくずリストの作成
 
 gem "image_processing"
+# 画像のリサイズを行う
+
+gem "kaminari"
+# ページネーションで使用
+
+gem "bootstrap5-kaminari-views"
+# ページネーションのレイアウトで使用
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -76,12 +92,15 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rspec", require: false
+  # Lintチェックツール
 
   gem "rspec-rails"
   gem "factory_bot_rails"
   gem "faker"
+  # SPEC生成で使用
 
   gem "pry-byebug"
+  # デバックモードを使うためのもの
 end
 
 group :development do
