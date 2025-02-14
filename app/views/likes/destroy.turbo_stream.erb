@@ -1,3 +1,5 @@
 <%= turbo_stream.replace "bad-#{@post.id}" do %>
-バッァァァド
+  <%= link_to post_likes_path(post_id: @post.id), id: "good-#{@post.id}", data: { turbo_method: :post } do %>
+    <i class="bi bi-hand-thumbs-up"></i>
+  <% end %>
 <% end %>
