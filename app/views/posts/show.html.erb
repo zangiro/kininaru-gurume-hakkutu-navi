@@ -112,8 +112,6 @@
 <% if logged_in? && @post.user_id != current_user.id %>
   <% if current_user.like?(@post) %>
 
-    <%# link_to post_like_path(current_user.likes.find_by(post_id: @post.id)), id: "bad-#{@post.id}", data: { turbo_method: :delete } do %>
-
     <%= link_to post_like_path(@post), id: "bad-#{@post.id}", data: { turbo_method: :delete } do %>
       <i class="bi bi-hand-thumbs-up-fill"></i>
     <% end %>

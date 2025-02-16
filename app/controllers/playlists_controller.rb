@@ -8,7 +8,7 @@ class PlaylistsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @playlist = @user.playlists.all
+    @playlist = @user.playlists.all.page(params[:page]).per(5)
   end
 
   def show

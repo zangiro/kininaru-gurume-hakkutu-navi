@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @user_posts = @user.posts.all
+    @user_posts = @user.posts.all.page(params[:page]).per(5)
     @post_path = "1"
   end
 

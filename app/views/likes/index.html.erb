@@ -11,7 +11,7 @@
     <% @user_like_posts.each do |post| %>
       <%= render "post_image", post: post %>
     <% end %>
-
+    <%= paginate @user_like_posts, theme: "bootstrap-5" %>
   <% else %>
     <p>@いいねした記事がありません</p>
   <% end %>
