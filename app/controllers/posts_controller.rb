@@ -34,6 +34,12 @@ class PostsController < ApplicationController
     @post_path = params[:post_path]
     @comment = Comment.new
     @post_comments = @post.comments.includes(:user)
+
+    if logged_in?
+      new_history = @post.view_histories.new
+      new_history.user_id = current_user.id
+      new_history.save
+    end
   end
 
   def edit
@@ -110,7 +116,21 @@ class PostsController < ApplicationController
     #   render :new, status: :unprocessable_entity
     # end
 
-    redirect_to root_path
+    #redirect_to root_path
+    if @post.save
+      @post.update_tags(@form_input_area_tag, "area")
+      @post.update_tags(@form_input_genre_tag, "genre")
+      @post.update_tags(@form_input_taste_tag, "taste")
+      @post.update_tags(@form_input_outher_tag, "outher")
+      redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
+     else
+      @area_tag_name = @form_input_area_tag
+      @genre_tag_name = @form_input_genre_tag
+      @taste_tag_name = @form_input_taste_tag
+      @outher_tag_name = @form_input_outher_tag
+      flash.now[:danger] = "@記事の作成に失敗しました"
+      render :new, status: :unprocessable_entity
+     end
   end
 
   def destroy

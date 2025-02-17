@@ -16,7 +16,9 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
 
   has_many :comments, dependent: :destroy
+
   has_many :view_histories, dependent: :destroy
+  has_many :view_history_posts, through: :view_histories, source: :post
 
   has_one_attached :avatar
 
