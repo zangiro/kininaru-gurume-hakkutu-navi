@@ -30,8 +30,8 @@ class Post < ApplicationRecord
   has_one_attached :sub_image_second
 
   has_many :likes, dependent: :destroy
-
   has_many :comments, dependent: :destroy
+  has_many :view_histories, dependent: :destroy
 
 
   def main_image_attached
