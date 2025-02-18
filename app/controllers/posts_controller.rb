@@ -36,10 +36,14 @@ class PostsController < ApplicationController
     @post_comments = @post.comments.includes(:user)
 
     if logged_in?
-      new_history = @post.view_histories.new
-      new_history.user_id = current_user.id
-      new_history.save
+      #new_history = @post.view_histories.new
+      #new_history.user_id = current_user.id
+      if current_user.view_history_include?(@post)
+        current_user.view_history_minus(@post)
+      end
+      current_user.view_history_plus(@post)
     end
+    #binding.pry
   end
 
   def edit

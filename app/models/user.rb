@@ -44,6 +44,18 @@ class User < ApplicationRecord
     like_posts.include?(post)
   end
 
+  def view_history_plus(post)
+    view_history_posts << post
+  end
+
+  def view_history_minus(post)
+    view_history_posts.destroy(post)
+  end
+
+  def view_history_include?(post)
+    view_history_posts.include?(post)
+  end
+
   def own?(object)
     id == object&.user_id
   end
