@@ -89,6 +89,11 @@ crumb :like_index do |user|
   parent :user_show, user
 end
 
+crumb :view_history_index do |user|
+  link "@閲覧履歴", view_histories_path
+  parent :user_show, user
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
