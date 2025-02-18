@@ -2,8 +2,8 @@ class ViewHistoriesController < ApplicationController
   before_action :require_login, only: %i[index]
 
   def index
-    @a1 = current_user.view_histories.includes(:post)
-    @a2 = current_user.view_history_posts
-    #binding.pry
+    @view_history_posts = current_user.view_history_posts
+    @user = current_user
+    @post_path = "5"
   end
 end

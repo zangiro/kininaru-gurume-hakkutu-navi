@@ -1,11 +1,11 @@
-<% breadcrumb :view_history_index, current_user %>
+<% breadcrumb :view_history_index, @user %>
 
 <div class="container">
 <div class="row">
 <h3>ｋじ</h3>
-<% @a2.each do |post| %>
+<% @view_history_posts.each do |post| %>
   <div class="bg-info col-2">
-  <a href="<%= post_path(post) %>">
+  <a href="<%= post_path(post, user_id: @user.id, post_path: @post_path) %>">
   
   <% if post.main_image.attached? %>
     <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>

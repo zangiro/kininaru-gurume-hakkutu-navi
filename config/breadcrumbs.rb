@@ -52,6 +52,9 @@ crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user,
   elsif post_path == "4"
     link "@#{post.title}"
     parent :like_index, user
+  elsif post_path == "5"
+    link "@#{post.title}"
+    parent :view_history_index, user
   end
 end
 
