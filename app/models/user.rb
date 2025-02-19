@@ -17,6 +17,9 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :view_histories, dependent: :destroy
+  has_many :view_history_posts, through: :view_histories, source: :post
+
   has_one_attached :avatar
 
   attr_accessor :agree_terms
@@ -29,16 +32,28 @@ class User < ApplicationRecord
     end
   end
 
-  def like(post)
+  def like_plus(post)
     like_posts << post
   end
 
-  def unlike(post)
+  def like_minus(post)
     like_posts.destroy(post)
   end
 
-  def like?(post)
+  def like_include?(post)
     like_posts.include?(post)
+  end
+
+  def view_history_plus(post)
+    view_history_posts << post
+  end
+
+  def view_history_minus(post)
+    view_history_posts.destroy(post)
+  end
+
+  def view_history_include?(post)
+    view_history_posts.include?(post)
   end
 
   def own?(object)

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     end
   end
   resources :comments, only: %i[edit update]
+  resources :view_histories, only: %i[index]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

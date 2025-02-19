@@ -1,0 +1,16 @@
+<% breadcrumb :view_history_index, @user %>
+
+
+<div class="container">
+<div class="row">
+  <% if @view_history_posts.present? %>
+    <h3>@閲覧履歴</h3>
+    <% @view_history_posts.each do |post| %>
+      <%= render "post_image", post: post %>
+    <% end %>
+    <%= paginate @view_history_posts, theme: "bootstrap-5" %>
+  <% else %>
+    <p>@閲覧した記事がありません</p>
+  <% end %>
+</div>
+</div>

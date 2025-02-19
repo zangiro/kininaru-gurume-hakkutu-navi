@@ -34,6 +34,14 @@ class PostsController < ApplicationController
     @post_path = params[:post_path]
     @comment = Comment.new
     @post_comments = @post.comments.includes(:user)
+
+    if logged_in?
+      # 閲覧履歴を残す処理
+      if current_user.view_history_include?(@post)
+        current_user.view_history_minus(@post)
+      end
+      current_user.view_history_plus(@post)
+    end
   end
 
   def edit
