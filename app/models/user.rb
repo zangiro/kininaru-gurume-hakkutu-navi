@@ -32,15 +32,15 @@ class User < ApplicationRecord
     end
   end
 
-  def like(post)
+  def like_plus(post)
     like_posts << post
   end
 
-  def unlike(post)
+  def like_minus(post)
     like_posts.destroy(post)
   end
 
-  def like?(post)
+  def like_include?(post)
     like_posts.include?(post)
   end
 

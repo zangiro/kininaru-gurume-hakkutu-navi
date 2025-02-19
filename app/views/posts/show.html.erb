@@ -110,7 +110,7 @@
 <%# -------------いいね機能関連---------------------- %>
 
 <% if logged_in? && @post.user_id != current_user.id %>
-  <% if current_user.like?(@post) %>
+  <% if current_user.like_include?(@post) %>
 
     <%= link_to post_like_path(@post), id: "bad-#{@post.id}", data: { turbo_method: :delete } do %>
       <i class="bi bi-hand-thumbs-up-fill"></i>
