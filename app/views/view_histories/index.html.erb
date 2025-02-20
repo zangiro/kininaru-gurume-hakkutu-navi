@@ -5,6 +5,7 @@
 <div class="row">
   <% if @view_history_posts.present? %>
     <h3>@閲覧履歴</h3>
+    <%= link_to "@閲覧履歴を削除する", all_view_history_delete_view_histories_path, data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
     <% @view_history_posts.each do |post| %>
       <%= render "post_image", post: post %>
     <% end %>
