@@ -55,4 +55,35 @@ class Post < ApplicationRecord
       self.send("#{tag_type}_tags") << new_tag
     end
   end
+
+  def self.how_many_posts?(posts_count)
+    if posts_count == 0
+      18
+    elsif posts_count <= 6
+      12
+    elsif posts_count <= 12
+      6
+    else
+      0
+    end
+  end
+  # 本番は1ページ36枚画像にする。テストはデータ少ないから最大12枚画像にする。
+
+  # def self.how_many_posts?(posts_count)
+  #  if posts_count == 0
+  #    36
+  #  elsif posts_count <= 6
+  #    30
+  #  elsif posts_count <= 12
+  #    24
+  #  elsif posts_count <= 18
+  #    18
+  #  elsif posts_count <= 24
+  #    12
+  #  elsif posts_count <= 30
+  #    6
+  #  else
+  #    0
+  #  end
+  # end
 end

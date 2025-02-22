@@ -13,39 +13,28 @@ class SearchsController < ApplicationController
     @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
     @post_path = "3"
 
-    #@all_users_view_histories = ViewHistory.where.not(user_id: 1).order(created_at: :desc).limit(30)
-    #@recommendations = Post.joins(:view_histories).where(view_histories: { id: @all_users_view_histories }).group('posts.id').order('COUNT(posts.id) DESC').limit(6)
-
     # ページネーションありでも動作確認
-    # 本番は1ページ36枚画像にする。テストはデータ少ないから最大12枚画像にする。
 
-    # if @search_posts.count <= 1
-    #   @number = 36
+    @maximum_number = Post.how_many_posts?(@search_posts.count)
+
+    # モデルを使わないパターン　最大画像数18
+    # if @search_posts.count == 0
+    #  @maximum_number = 18
     # elsif @search_posts.count <= 6
-    #   @number = 30
+    #  @maximum_number = 12
     # elsif @search_posts.count <= 12
-    #   @number = 24
-    # elsif @search_posts.count <= 18
-    #   @number = 18
-    # elsif @search_posts.count <= 24
-    #   @number = 12
-    # elsif @search_posts.count <= 30
-    #   @number = 6
+    #  @maximum_number = 6
     # else
-    #   @number = 0
+    #  @maximum_number = 0
     # end
-    if @search_posts.count == 0
-      @number = 18
-    elsif @search_posts.count <= 6
-      @number = 12
-    elsif @search_posts.count <= 12
-      @number = 6
-    else
-      @number = 0
-    end
 
-    #@recommendations = Post.all.limit(@number)
-    @all_users_view_histories = ViewHistory.where.not(user_id: 1).order(created_at: :desc).limit(30)
-    @recommendations = Post.joins(:view_histories).where(view_histories: { id: @all_users_view_histories }).group('posts.id').order('COUNT(posts.id) DESC').limit(@number)
+    # テスト用の閲覧履歴のデータを使わないで記事を取得するパターン
+    # @recommendations = Post.all.limit(@maximum_number)
+    if logged_in?
+      @all_users_view_histories = ViewHistory.where.not(user_id: current_user.id).order(created_at: :desc).limit(30)
+    else
+      @all_users_view_histories = ViewHistory.order(created_at: :desc).limit(30)
+    end
+    @recommendations = Post.joins(:view_histories).where(view_histories: { id: @all_users_view_histories }).group('posts.id').order('COUNT(posts.id) DESC').limit(@maximum_number)
   end
 end
