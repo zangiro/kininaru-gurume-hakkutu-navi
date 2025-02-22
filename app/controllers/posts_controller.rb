@@ -19,6 +19,10 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @user_posts = @user.posts.all.page(params[:page]).per(5)
     @post_path = "1"
+    #@tag = Post.joins(:area_tags).group('area_tags.id', 'area_tags.name').select('area_tags.name, COUNT(area_tags.id)AS tag_count')
+    @tag1 = Post.joins(:area_tags).group('area_tags.name').select('area_tags.name, COUNT(area_tags.id)AS tag_count')
+    @tag2 = Post.joins(:area_tags).group('area_tags.name').select('area_tags.name')
+    #binding.pry
   end
 
   def show
@@ -118,7 +122,21 @@ class PostsController < ApplicationController
     #   render :new, status: :unprocessable_entity
     # end
 
-    redirect_to root_path
+    #redirect_to root_path
+    if @post.save
+      @post.update_tags(@form_input_area_tag, "area")
+      @post.update_tags(@form_input_genre_tag, "genre")
+      @post.update_tags(@form_input_taste_tag, "taste")
+      @post.update_tags(@form_input_outher_tag, "outher")
+      redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
+     else
+      @area_tag_name = @form_input_area_tag
+      @genre_tag_name = @form_input_genre_tag
+      @taste_tag_name = @form_input_taste_tag
+      @outher_tag_name = @form_input_outher_tag
+      flash.now[:danger] = "@記事の作成に失敗しました"
+      render :new, status: :unprocessable_entity
+     end
   end
 
   def destroy

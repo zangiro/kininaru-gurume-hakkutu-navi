@@ -2,9 +2,43 @@
 
 <div class="container">
 <div class="row">
-<h3>@検索結果</h3>
-<% @search_posts.each do |post| %>
-<%= render "post_image", post: post %>
+
+
+<% if @search_posts.count != 0 %>
+  <h3>@検索結果</h3>
+  <% @search_posts.each do |post| %>
+    <%= render "post_image", post: post %>
+  <% end %>
+
+
+  <% if @recommendations.present? %>
+    <div class='row'>
+      <div class='row'>
+        <h6>@みんなが閲覧している記事</h6>
+      </div>
+
+      <% @recommendations.each do |post| %>
+        <%= render "post_image", post: post %>
+      <% end %>
+    </div>
+
+  <% end %>
+
+  <%#= paginate @, theme: "bootstrap-5" %>
+<% else %>
+  <h3>@タグが選択されてません</h3>
+
+  <div class='row'>
+    <div class='row'>
+      <h6>@みんなが閲覧している記事</h6>
+    </div>
+
+    <% @recommendations.each do |post| %>
+      <%= render "post_image", post: post %>
+    <% end %>
+    </div>
 <% end %>
+
+
 </div>
 </div>
