@@ -52,7 +52,7 @@ class Post < ApplicationRecord
 
     new_tags.uniq.each do |new_tag_name|
       new_tag = "#{tag_type.capitalize}Tag".constantize.find_or_create_by(name: new_tag_name)  # capitalizeで大小文字化。constantizeでrubyクラスとして扱う
-      self.send("#{tag_type}_tags") << new_tag
+      self.send("#{tag_type}_tags") << new_tag unless self.send("#{tag_type}_tags").include?(new_tag) # sendは指定したメソッドをオブジェクト(self)に対して呼び出すためのメソッド
     end
   end
 
