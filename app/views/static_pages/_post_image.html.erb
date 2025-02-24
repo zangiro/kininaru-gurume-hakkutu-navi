@@ -1,0 +1,8 @@
+<div class="bg-info col-2">
+<a href="<%= post_path(post) %>">
+
+<% if post.main_image.attached? %>
+  <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
+<% end %>
+</a>
+</div>

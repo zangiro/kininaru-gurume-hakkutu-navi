@@ -1,62 +1,121 @@
 <div class="container">
-<div class="row">
-<div class="d-flex">
-<% unless logged_in? %>
-<%= link_to '@新規作成', new_user_path %>
-<%= link_to '@ログイン', login_path %>
-<% end %>
-</div>
-</div>
-</div>
-
-
-<div class="container bg-danger w-25 mt-5">
   <div class="row">
-    <div class="d-flex align-items-center justify-content-center display-6" style="height: 100px;">
-      気になるグルメ発掘ナビ
+    <div class="d-flex">
+      <% unless logged_in? %>
+        <%= link_to '@新規作成', new_user_path %>
+        <%= link_to '@ログイン', login_path %>
+      <% end %>
     </div>
   </div>
-</div>
+
+  <%# ----------------------------ロゴの行----------------------------- %>
+
+  <div class="d-flex justify-content-around mt-3">
+
+    <div class="row">
+      <% @post.each do |post| %>
+       <%= render "post_image", post: post %>
+      <% end %>
+    </div>
 
 
-<%= link_to '新規作成', new_user_path %>
-<%= link_to 'ユーザー一覧', users_path %>
-<%= link_to 'ログイン', login_path %>
-<%= link_to '記事新規作成', new_post_path %>
-<%= link_to '記事一覧', "#" %>
-<%= link_to 'タグ一覧', tags_path %>
-<%= link_to 'プレイリスト作成', new_playlist_path %>
-<%= link_to 'プレイリスト一覧', playlists_path %>
-<%= link_to 'コメント一覧', "#" %>
+    <div class="row bg-danger w-25 mt-5">
+      <div class="d-flex align-items-center display-6">
+        気になるグルメ発掘ナビ
+      </div>
+    </div>
 
 
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="bg-info w-50" style="height: 70px; overflow: hidden;">
-      @このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです。
+    <div class="row">
+      <% @post.each do |post| %>
+        <%= render "post_image", post: post %>
+       <% end %>
     </div>
   </div>
-</div>
 
-<div class="container mt-3">
-  <div class="row justify-content-center">
-    <%= link_to '@診断スタート', tags_path, class: 'd-flex align-items-center justify-content-center w-25 bg-danger text-center display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
+  <%# ---------------------------アプリ説明の行------------------------------ %>
+
+  <div class="d-flex justify-content-around mt-3">
+
+    <div class="row">
+      <% @post.each do |post| %>
+       <%= render "post_image", post: post %>
+      <% end %>
+    </div>
+
+
+    <div class="row bg-info w-50 mt-5" style="height: 90px;">
+      <div class="d-flex align-items-center">
+        @このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです。
+      </div>
+    </div>
+
+
+    <div class="row">
+      <% @post.each do |post| %>
+        <%= render "post_image", post: post %>
+       <% end %>
+    </div>
   </div>
-</div>
 
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="bg-info w-75" style="height: 400px;">
+  <%# ----------------------------診断のボタンの行----------------------------- %>
+
+  <div class="d-flex justify-content-around mt-3">
+
+    <div class="row">
+      <% @post.each do |post| %>
+       <%= render "post_image", post: post %>
+      <% end %>
+    </div>
+
+
+    <div class="row mt-5">
+        <%= link_to '@診断スタート', tags_path, class: 'd-flex align-items-center justify-content-center bg-danger display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
+    </div>
+
+
+    <div class="row">
+      <% @post.each do |post| %>
+        <%= render "post_image", post: post %>
+       <% end %>
+    </div>
+  </div>
+
+  <%# ----------------------------アプリの使用説明の行----------------------------- %>
+  
+  <div class="d-flex justify-content-around mt-3">
+
+    <div class="row">
+      <% @post.each do |post| %>
+       <%= render "post_image", post: post %>
+      <% end %>
+    </div>
+
+    <div class="row mt-5 bg-info" style="height: 150px;">
+  
       [操作説明]<br>
       １、診断スタートボタンを押す。<br>
       ２、興味のあるジャンル、地域などを選ぶ。<br>
       ３、関連するグルメ情報（画像）が出る。<br>
-      ４、画像にカーソルを合わせると軽い紹介文が表示される。（未実装）<br>
       ５、クリックで詳細が表示される。<br>
       ６、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。（未実装）
     </div>
+
+    <div class="row">
+      <% @post.each do |post| %>
+        <%= render "post_image", post: post %>
+       <% end %>
+    </div>
   </div>
+
+
 </div>
+
+
+
+
+
+
 
 <div class="container mt-5">
   <div class="row justify-content-center">
