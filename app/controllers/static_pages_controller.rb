@@ -1,16 +1,13 @@
 class StaticPagesController < ApplicationController
   def top
-    @money = "お金"
-    @posts = Post.all.order("created_at DESC").limit(8)
-    if logged_in?
-      @user = current_user
-      @aa = current_user.view_history_posts.order("view_histories.created_at DESC").limit(30)
-      @hairetu = AreaTag.joins(:posts).where(posts: { id: @aa }).group('area_tags.id').order('COUNT(area_tags.id) DESC')
-      @test = @hairetu.map(&:name)
-      @rec1 = Post.joins(:area_tags).where(area_tags: { name: @test }).distinct
-      @rec2 = Post.joins(:area_tags).where(area_tags: { name: @test }).where.not(user_id: current_user.id).distinct
-      #.limit(@maximum_number)
-      #binding.pry
+    if logged_in? && current_user.view_history_posts.present?
+      @current_user_view_histories = current_user.view_history_posts.order("view_histories.created_at DESC").limit(30)
+      @area_tags = AreaTag.joins(:posts).where(posts: { id: @current_user_view_histories }).group("area_tags.id").order("COUNT(area_tags.id) DESC").limit(5)
+      @words = @area_tags.map(&:name)
+      # この処理で@area_tagsのAreaTagの情報のnameカラムで["word1","word2","word3"]という配列を作る
+      @recommendations = Post.joins(:area_tags).where(area_tags: { name: @words }).where.not(user_id: current_user.id).distinct.limit(8)
+    else
+      @recommendations = Post.all
     end
   end
 end
