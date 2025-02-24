@@ -1,8 +1,9 @@
-<div class="bg-info col-2">
-<a href="<%= post_path(post) %>">
+<div class="col-2">
 
-<% if post.main_image.attached? %>
-  <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
-<% end %>
-</a>
+  <% if posts[number].present? && posts[number].main_image.attached? %>
+    <a href="<%= post_path(posts[number]) %>">
+      <%= image_tag posts[number].main_image.variant(resize_and_pad: [200, 200]) %>
+    </a>
+  <% end %>
+
 </div>

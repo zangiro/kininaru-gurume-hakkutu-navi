@@ -13,11 +13,10 @@
   <div class="d-flex justify-content-around mt-3">
 
     <div class="row">
-      <% @post.each do |post| %>
-       <%= render "post_image", post: post %>
+      <% if @posts[1].present? %>
+        <%= render "post_image", posts: @posts, number: 0 %>
       <% end %>
     </div>
-
 
     <div class="row bg-danger w-25 mt-5">
       <div class="d-flex align-items-center display-6">
@@ -25,12 +24,10 @@
       </div>
     </div>
 
-
     <div class="row">
-      <% @post.each do |post| %>
-        <%= render "post_image", post: post %>
-       <% end %>
+      <%= render "post_image", posts: @posts, number: 1 %>
     </div>
+
   </div>
 
   <%# ---------------------------アプリ説明の行------------------------------ %>
@@ -38,11 +35,10 @@
   <div class="d-flex justify-content-around mt-3">
 
     <div class="row">
-      <% @post.each do |post| %>
-       <%= render "post_image", post: post %>
+      <% if @posts[3].present? %>
+        <%= render "post_image", posts: @posts, number: 2 %>
       <% end %>
     </div>
-
 
     <div class="row bg-info w-50 mt-5" style="height: 90px;">
       <div class="d-flex align-items-center">
@@ -50,11 +46,8 @@
       </div>
     </div>
 
-
     <div class="row">
-      <% @post.each do |post| %>
-        <%= render "post_image", post: post %>
-       <% end %>
+      <%= render "post_image", posts: @posts, number: 3 %>
     </div>
   </div>
 
@@ -63,21 +56,17 @@
   <div class="d-flex justify-content-around mt-3">
 
     <div class="row">
-      <% @post.each do |post| %>
-       <%= render "post_image", post: post %>
+      <% if @posts[5].present? %>
+        <%= render "post_image", posts: @posts, number: 4 %>
       <% end %>
     </div>
-
 
     <div class="row mt-5">
         <%= link_to '@診断スタート', tags_path, class: 'd-flex align-items-center justify-content-center bg-danger display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
     </div>
 
-
     <div class="row">
-      <% @post.each do |post| %>
-        <%= render "post_image", post: post %>
-       <% end %>
+      <%= render "post_image", posts: @posts, number: 5 %>
     </div>
   </div>
 
@@ -86,13 +75,12 @@
   <div class="d-flex justify-content-around mt-3">
 
     <div class="row">
-      <% @post.each do |post| %>
-       <%= render "post_image", post: post %>
+      <% if @posts[7].present? %>
+        <%= render "post_image", posts: @posts, number: 6 %>
       <% end %>
     </div>
 
     <div class="row mt-5 bg-info" style="height: 150px;">
-  
       [操作説明]<br>
       １、診断スタートボタンを押す。<br>
       ２、興味のあるジャンル、地域などを選ぶ。<br>
@@ -102,9 +90,7 @@
     </div>
 
     <div class="row">
-      <% @post.each do |post| %>
-        <%= render "post_image", post: post %>
-       <% end %>
+      <%= render "post_image", posts: @posts, number: 7 %>
     </div>
   </div>
 

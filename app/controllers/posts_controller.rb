@@ -19,10 +19,6 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @user_posts = @user.posts.all.page(params[:page]).per(5)
     @post_path = "1"
-    #@tag = Post.joins(:area_tags).group('area_tags.id', 'area_tags.name').select('area_tags.name, COUNT(area_tags.id)AS tag_count')
-    @tag1 = Post.joins(:area_tags).group('area_tags.name').select('area_tags.name, COUNT(area_tags.id)AS tag_count')
-    @tag2 = Post.joins(:area_tags).group('area_tags.name').select('area_tags.name')
-    #binding.pry
   end
 
   def show

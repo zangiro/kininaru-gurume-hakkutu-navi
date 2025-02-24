@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def top
     @money = "お金"
-    @post = Post.all.order("created_at ASC").limit(1)
+    @posts = Post.all.order("created_at DESC").limit(8)
     if logged_in?
       @user = current_user
       @aa = current_user.view_history_posts.order("view_histories.created_at DESC").limit(30)
