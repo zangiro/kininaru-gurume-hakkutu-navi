@@ -47,7 +47,7 @@ class Post < ApplicationRecord
 
     delete_tags.each do |old_tag_name|
       old_tag = self.send("#{tag_type}_tags").find_by(name: old_tag_name)
-      old_tag.destroy if old_tag  # 存在する場合だけ削除
+      self.send("#{tag_type}_tags").delete(old_tag) if old_tag  # 存在する場合だけ削除
     end
 
     new_tags.uniq.each do |new_tag_name|

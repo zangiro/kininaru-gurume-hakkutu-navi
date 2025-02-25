@@ -65,36 +65,37 @@ class PostsController < ApplicationController
     @sub_image_first = post_params[:sub_image_first]
     @sub_image_second = post_params[:sub_image_second]
 
-    if post_params[:title].present? && params[:post][:dish_attributes][:description].present? && @form_input_area_tag != [ "" ]
-      unless @main_image.nil?
-        @post.main_image.purge
-      end
-      unless @sub_image_first.nil?
-        @post.sub_image_first.purge
-      end
-      unless @sub_image_second.nil?
-        @post.sub_image_second.purge
-      end
-    end
+    # if post_params[:title].present? && params[:post][:dish_attributes][:description].present? && @form_input_area_tag != [ "" ]
+    #  unless @main_image.nil?
+    #    @post.main_image.purge
+    #  end
+    #  unless @sub_image_first.nil?
+    #    @post.sub_image_first.purge
+    #  end
+    #  unless @sub_image_second.nil?
+    #    @post.sub_image_second.purge
+    #  end
+    # end
 
-    if @form_input_area_tag != [ "" ] && @post.update(filtered_params)
-      @post.update_tags(@form_input_area_tag, "area")
-      @post.update_tags(@form_input_genre_tag, "genre")
-      @post.update_tags(@form_input_taste_tag, "taste")
-      @post.update_tags(@form_input_outher_tag, "outher")
-      redirect_to user_posts_path(current_user), success: "@更新しました"
-    else
-      @area_tag_name = @form_input_area_tag
-      @genre_tag_name = @form_input_genre_tag
-      @taste_tag_name = @form_input_taste_tag
-      @outher_tag_name = @form_input_outher_tag
-      if @form_input_area_tag == [ "" ]
-        flash.now[:danger] = "@タグが入力されてません"
-      else
-        flash.now[:danger] = "@更新に失敗しました"
-      end
-      render :edit, status: :unprocessable_entity
-    end
+    # if @form_input_area_tag != [ "" ] && @post.update(filtered_params)
+    #  @post.update_tags(@form_input_area_tag, "area")
+    #  @post.update_tags(@form_input_genre_tag, "genre")
+    #  @post.update_tags(@form_input_taste_tag, "taste")
+    #  @post.update_tags(@form_input_outher_tag, "outher")
+    #  redirect_to user_posts_path(current_user), success: "@更新しました"
+    #else
+    #  @area_tag_name = @form_input_area_tag
+    #  @genre_tag_name = @form_input_genre_tag
+    #  @taste_tag_name = @form_input_taste_tag
+    #  @outher_tag_name = @form_input_outher_tag
+    #  if @form_input_area_tag == [ "" ]
+    #    flash.now[:danger] = "@タグが入力されてません"
+    #  else
+    #    flash.now[:danger] = "@更新に失敗しました"
+    #  end
+    #  render :edit, status: :unprocessable_entity
+    # end
+    redirect_to root_path
   end
 
   def create
@@ -105,24 +106,25 @@ class PostsController < ApplicationController
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
-    if @form_input_area_tag != [ "" ] && @post.save
-      @post.update_tags(@form_input_area_tag, "area")
-      @post.update_tags(@form_input_genre_tag, "genre")
-      @post.update_tags(@form_input_taste_tag, "taste")
-      @post.update_tags(@form_input_outher_tag, "outher")
-      redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
-    else
-      @area_tag_name = @form_input_area_tag
-      @genre_tag_name = @form_input_genre_tag
-      @taste_tag_name = @form_input_taste_tag
-      @outher_tag_name = @form_input_outher_tag
-      if @form_input_area_tag == [ "" ]
-        flash.now[:danger] = "@タグが入力されてません"
-      else
-        flash.now[:danger] = "@記事の作成に失敗しました"
-      end
-      render :new, status: :unprocessable_entity
-    end
+    # if @form_input_area_tag != [ "" ] && @post.save
+    #  @post.update_tags(@form_input_area_tag, "area")
+    #  @post.update_tags(@form_input_genre_tag, "genre")
+    #  @post.update_tags(@form_input_taste_tag, "taste")
+    #  @post.update_tags(@form_input_outher_tag, "outher")
+    #  redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
+    # else
+    #  @area_tag_name = @form_input_area_tag
+    #  @genre_tag_name = @form_input_genre_tag
+    #  @taste_tag_name = @form_input_taste_tag
+    #  @outher_tag_name = @form_input_outher_tag
+    #  if @form_input_area_tag == [ "" ]
+    #    flash.now[:danger] = "@タグが入力されてません"
+    #  else
+    #    flash.now[:danger] = "@記事の作成に失敗しました"
+    #  end
+    #  render :new, status: :unprocessable_entity
+    # end
+    redirect_to root_path
   end
 
   def destroy
