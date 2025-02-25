@@ -10,8 +10,23 @@ class SearchsController < ApplicationController
     @taste_posts = Post.joins(:taste_tags).where(taste_tags: { name: @taste_tags })
     @outher_posts = Post.joins(:outher_tags).where(outher_tags: { name: @outher_tags })
 
-    @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
+    #@search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
+    @search_posts = Post.all
     @post_path = "3"
+
+    # -------------ページネーション(gemなし)-----------------
+
+    @max_page = 2
+    @page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    # animals_path(page: 1)みたいにしなくてもpageは1になる
+    # @eがnilでもnil.to_iは0になる
+    @paginate_search_posts = @search_posts.slice((@page - 1) * @max_page, @max_page)
+    # @paginate_search_posts は記事情報が入る
+    @total_posts = @search_posts.count
+    # sizeとcountは動作はにてる
+    @total_pages = (@total_posts.to_f / @max_page).ceil
+
+    # ----------------------おすすめ表示--------------------------
 
     # ページネーションありでも動作確認
 

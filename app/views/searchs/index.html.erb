@@ -4,10 +4,20 @@
 <div class="row">
 
 
-<% if @search_posts.count != 0 %>
+<% if @paginate_search_posts.present? %>
   <h3>@検索結果</h3>
-  <% @search_posts.each do |post| %>
+  <% @paginate_search_posts.each do |post| %>
     <%= render "post_image", post: post %>
+  <% end %>
+
+
+
+  <% if @page > 1 %>
+    <%= link_to '前へ', searchs_path(page: @page - 1) %>
+  <% end %>
+
+  <% if @page < @total_pages %>
+    <%= link_to '次へ', searchs_path(page: @page + 1) %>
   <% end %>
 
 
