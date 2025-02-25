@@ -49,6 +49,6 @@ class SearchsController < ApplicationController
     else
       @all_users_view_histories = ViewHistory.order(created_at: :desc).limit(30)
     end
-    @recommendations = Post.joins(:view_histories).where(view_histories: { id: @all_users_view_histories }).group('posts.id').order('COUNT(posts.id) DESC').limit(@maximum_number)
+    @recommendations = Post.joins(:view_histories).where(view_histories: { id: @all_users_view_histories }).group("posts.id").order("COUNT(posts.id) DESC").limit(@maximum_number)
   end
 end
