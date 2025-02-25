@@ -10,13 +10,12 @@ class SearchsController < ApplicationController
     @taste_posts = Post.joins(:taste_tags).where(taste_tags: { name: @taste_tags })
     @outher_posts = Post.joins(:outher_tags).where(outher_tags: { name: @outher_tags })
 
-    #@search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
-    @search_posts = Post.all
+    @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
     @post_path = "3"
 
     # -------------ページネーション(gemなし)-----------------
 
-    @max_page = 2
+    @max_page = 18
     @page = params[:page].to_i > 0 ? params[:page].to_i : 1
     # animals_path(page: 1)みたいにしなくてもpageは1になる
     # @eがnilでもnil.to_iは0になる
