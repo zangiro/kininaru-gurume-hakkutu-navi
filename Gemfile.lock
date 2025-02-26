@@ -130,7 +130,7 @@ GEM
       ostruct
     connection_pool (2.5.0)
     crass (1.0.6)
-    cssbundling-rails (1.4.1)
+    cssbundling-rails (1.4.2)
       railties (>= 6.0.0)
     date (3.4.1)
     debug (1.10.0)
@@ -502,7 +502,7 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
-    uri (1.0.2)
+    uri (1.0.3)
     useragent (0.16.11)
     version_gem (1.1.4)
     web-console (4.2.1)
