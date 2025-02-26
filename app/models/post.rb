@@ -47,12 +47,43 @@ class Post < ApplicationRecord
 
     delete_tags.each do |old_tag_name|
       old_tag = self.send("#{tag_type}_tags").find_by(name: old_tag_name)
-      old_tag.destroy if old_tag  # 存在する場合だけ削除
+      self.send("#{tag_type}_tags").delete(old_tag) if old_tag  # 存在する場合だけ削除
     end
 
     new_tags.uniq.each do |new_tag_name|
       new_tag = "#{tag_type.capitalize}Tag".constantize.find_or_create_by(name: new_tag_name)  # capitalizeで大小文字化。constantizeでrubyクラスとして扱う
-      self.send("#{tag_type}_tags") << new_tag
+      self.send("#{tag_type}_tags") << new_tag unless self.send("#{tag_type}_tags").include?(new_tag) # sendは指定したメソッドをオブジェクト(self)に対して呼び出すためのメソッド
     end
   end
+
+  def self.how_many_posts?(posts_count)
+    if posts_count == 0
+      18
+    elsif posts_count <= 6
+      12
+    elsif posts_count <= 12
+      6
+    else
+      0
+    end
+  end
+  # 本番は1ページ36枚画像にする。テストはデータ少ないから最大12枚画像にする。
+
+  # def self.how_many_posts?(posts_count)
+  #  if posts_count == 0
+  #    36
+  #  elsif posts_count <= 6
+  #    30
+  #  elsif posts_count <= 12
+  #    24
+  #  elsif posts_count <= 18
+  #    18
+  #  elsif posts_count <= 24
+  #    12
+  #  elsif posts_count <= 30
+  #    6
+  #  else
+  #    0
+  #  end
+  # end
 end

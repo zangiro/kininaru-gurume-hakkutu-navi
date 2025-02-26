@@ -28,7 +28,11 @@ Rails.application.routes.draw do
     end
   end
   resources :comments, only: %i[edit update]
-  resources :view_histories, only: %i[index]
+  resources :view_histories, only: %i[index] do
+    collection do
+      delete "all_view_history_delete"
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
