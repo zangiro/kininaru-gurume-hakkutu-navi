@@ -33,6 +33,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :view_histories, dependent: :destroy
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
 
   def main_image_attached
     errors.add(:base, "画像を添付してください") unless main_image.attached?

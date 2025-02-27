@@ -17,7 +17,13 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @user_posts = @user.posts.all.page(params[:page]).per(5)
+    if params[:latest]
+      @user_posts = @user.posts.all.latest.page(params[:page]).per(5)
+    elsif params[:old]
+      @user_posts = @user.posts.all.old.page(params[:page]).per(5)
+    else
+      @user_posts = @user.posts.all.page(params[:page]).per(5)
+    end
     @post_path = "1"
   end
 
@@ -124,7 +130,28 @@ class PostsController < ApplicationController
     #  end
     #  render :new, status: :unprocessable_entity
     # end
-    redirect_to root_path
+
+
+
+    if @form_input_area_tag != [ "" ] && @post.save
+      @post.update_tags(@form_input_area_tag, "area")
+      @post.update_tags(@form_input_genre_tag, "genre")
+      @post.update_tags(@form_input_taste_tag, "taste")
+      @post.update_tags(@form_input_outher_tag, "outher")
+      redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
+    else
+      @area_tag_name = @form_input_area_tag
+      @genre_tag_name = @form_input_genre_tag
+      @taste_tag_name = @form_input_taste_tag
+      @outher_tag_name = @form_input_outher_tag
+      if @form_input_area_tag == [ "" ]
+        flash.now[:danger] = "@タグが入力されてません"
+      else
+        flash.now[:danger] = "@記事の作成に失敗しました"
+      end
+      render :new, status: :unprocessable_entity
+    end
+    #redirect_to root_path
   end
 
   def destroy
