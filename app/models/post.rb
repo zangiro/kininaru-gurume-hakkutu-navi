@@ -88,4 +88,16 @@ class Post < ApplicationRecord
   #    0
   #  end
   # end
+
+  
+  # def post_test(word)
+  #  if word == 'latest'
+  #    latest
+  #  elsif word == 'old'
+  #    old
+  #  else
+  #    nil
+  #  end
+  # end
+  # 記事一覧やタグ検索時の簡略化用メソッド。現在NoMethodErrorで未実装
 end

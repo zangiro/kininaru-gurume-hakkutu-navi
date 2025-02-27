@@ -24,6 +24,10 @@ class PostsController < ApplicationController
     else
       @user_posts = @user.posts.all.page(params[:page]).per(5)
     end
+
+    # @user_posts = @user.posts.test(params[:latest] ? 'latest' : (params[:old] ? 'old' : nil)).page(params[:page]).per(5)
+    # 簡略化用メソッド「post_test」を実装したい。現在NoMethodErrorで未実装
+
     @post_path = "1"
   end
 
@@ -131,27 +135,7 @@ class PostsController < ApplicationController
     #  render :new, status: :unprocessable_entity
     # end
 
-
-
-    if @form_input_area_tag != [ "" ] && @post.save
-      @post.update_tags(@form_input_area_tag, "area")
-      @post.update_tags(@form_input_genre_tag, "genre")
-      @post.update_tags(@form_input_taste_tag, "taste")
-      @post.update_tags(@form_input_outher_tag, "outher")
-      redirect_to user_posts_path(current_user), success: "@記事の作成をしました"
-    else
-      @area_tag_name = @form_input_area_tag
-      @genre_tag_name = @form_input_genre_tag
-      @taste_tag_name = @form_input_taste_tag
-      @outher_tag_name = @form_input_outher_tag
-      if @form_input_area_tag == [ "" ]
-        flash.now[:danger] = "@タグが入力されてません"
-      else
-        flash.now[:danger] = "@記事の作成に失敗しました"
-      end
-      render :new, status: :unprocessable_entity
-    end
-    #redirect_to root_path
+    redirect_to root_path
   end
 
   def destroy
