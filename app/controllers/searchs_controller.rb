@@ -18,7 +18,7 @@ class SearchsController < ApplicationController
       @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
     end
     # 簡略化用メソッドを実装したい。現在NoMethodErrorで未実装。記事一覧と同様処理で行けそう
-    
+
     @post_path = "3"
 
     # -------------ページネーション(gemなし)-----------------
