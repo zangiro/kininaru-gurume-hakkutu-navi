@@ -10,7 +10,15 @@ class SearchsController < ApplicationController
     @taste_posts = Post.joins(:taste_tags).where(taste_tags: { name: @taste_tags })
     @outher_posts = Post.joins(:outher_tags).where(outher_tags: { name: @outher_tags })
 
-    @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
+    if params[:latest]
+      @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq.sort_by(&:created_at)
+    elsif params[:old]
+      @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq.sort_by(&:created_at).reverse
+    else
+      @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
+    end
+    # 簡略化用メソッドを実装したい。現在NoMethodErrorで未実装。記事一覧と同様処理で行けそう
+
     @post_path = "3"
 
     # -------------ページネーション(gemなし)-----------------

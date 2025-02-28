@@ -1,3 +1,4 @@
+<% content_for(:title, "@検索結果") %>
 <% breadcrumb :search_index %>
 
 <div class="container">
@@ -5,7 +6,19 @@
 
 
 <% if @paginate_search_posts.present? %>
-  <h3>@検索結果</h3>
+  <div class="d-flex">
+    <h3>@検索結果</h3>
+    <h1 class="ms-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><%= link_to '@昇順にする', searchs_path(latest: "true", area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags), class: 'dropdown-item' %></li>
+            <li><%= link_to '@降順にする', searchs_path(old: "true", area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags), class: 'dropdown-item' %></li>
+          </ul>
+      </div>
+    </h1>
+  </div>
+
   <% @paginate_search_posts.each do |post| %>
     <%= render "post_image", post: post %>
   <% end %>
@@ -31,10 +44,8 @@
         <%= render "post_image", post: post %>
       <% end %>
     </div>
-
   <% end %>
 
-  <%#= paginate @, theme: "bootstrap-5" %>
 <% else %>
   <h3>@タグが選択されてません</h3>
 

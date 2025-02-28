@@ -17,7 +17,17 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @user_posts = @user.posts.all.page(params[:page]).per(5)
+    if params[:latest]
+      @user_posts = @user.posts.all.latest.page(params[:page]).per(5)
+    elsif params[:old]
+      @user_posts = @user.posts.all.old.page(params[:page]).per(5)
+    else
+      @user_posts = @user.posts.all.page(params[:page]).per(5)
+    end
+
+    # @user_posts = @user.posts.test(params[:latest] ? 'latest' : (params[:old] ? 'old' : nil)).page(params[:page]).per(5)
+    # 簡略化用メソッド「post_test」を実装したい。現在NoMethodErrorで未実装
+
     @post_path = "1"
   end
 
@@ -124,6 +134,7 @@ class PostsController < ApplicationController
     #  end
     #  render :new, status: :unprocessable_entity
     # end
+
     redirect_to root_path
   end
 
