@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Myappp" %></title>
+    <title><%= page_title(yield(:title)) %></title>
+    # application_helperのpage_titleメソッドの呼び出し。各ビューのcontent_forの:titleがここに代入される。
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
