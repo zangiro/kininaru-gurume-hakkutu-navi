@@ -55,6 +55,12 @@ class UsersController < ApplicationController
     redirect_to root_path, success: "@削除しました"
   end
 
+  def aws_test_delete
+    #@test1 = ActiveStorage::Blob.unattached.find_each   #エラー出ず
+    ActiveStorage::Blob.unattached.find_each(&:purge)
+    redirect_to root_path
+  end
+
   private
 
   def user_params

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     member do
       delete "destroy_avatar"
     end
+    collection do
+      delete "aws_test_delete"
+    end
   end
   resources :posts do
     member do
