@@ -82,11 +82,17 @@
 
 
 <%= turbo_frame_tag 'test' do %>
-  <div class="row">1</div>
-  <div class="row">2</div>
-  <div class="row">3</div>
-<% end %>
+  <div class="row bg-info mb-3">
+    <% @area_tags.each_with_index do |area_tag, area_index| %>
+      <div class="row col-4">
+        <%= area_tag.name %> (<%= area_tag.count %>)
+      </div>
+    <% end %>
+  </div>
 
-<%= turbo_frame_tag 'append' do %>
-  <%= link_to 'あぺんど', append_tags_path %>
+
+  <%= turbo_frame_tag 'replace_area_tags' do %>
+    <%= link_to '追加する', replace_area_tags_tags_path %>
+  <% end %>
+
 <% end %>

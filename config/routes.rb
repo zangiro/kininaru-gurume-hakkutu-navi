@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
   resources :tags, only: %i[index] do
     collection do
-      get "append"
+      get "replace_area_tags"
     end
   end
   resources :searchs, only: %i[index]

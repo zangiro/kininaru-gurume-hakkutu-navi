@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "test" do %>
+  <div class="row bg-info mb-3">
+  <% @area_tags.each_with_index do |area_tag, area_index| %>
+    <div class="row col-4">
+      <%= area_tag.name %> (<%= area_tag.count %>)
+    </div>
+  <% end %>
+  </div>
+<% end %>
