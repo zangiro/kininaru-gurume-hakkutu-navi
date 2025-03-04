@@ -57,7 +57,36 @@
 <% end %>
 </div>
 
+
+<%# ------------------------------------------------------ %>
+
+<div class="row bg-info mb-3">
+<% @area_tags.each_with_index do |area_tag, area_index| %>
+<div class="row col-4">
+  <%= area_tag.name %> (<%= area_tag.count %>)
+</div>
+<% end %>
+</div>
+
+
+
+
+
 <%= submit_tag "決定" %>
 <% end %>
 
-</div>
+<%# ------------------------------------------ %>
+
+<h1>数字表示</h1>
+
+
+
+<%= turbo_frame_tag 'test' do %>
+  <div class="row">1</div>
+  <div class="row">2</div>
+  <div class="row">3</div>
+<% end %>
+
+<%= turbo_frame_tag 'append' do %>
+  <%= link_to 'あぺんど', append_tags_path %>
+<% end %>

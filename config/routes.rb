@@ -22,7 +22,11 @@ Rails.application.routes.draw do
     resources :likes, only: %i[create destroy]
     resources :comments, only: %i[create edit destroy], shallow: true
   end
-  resources :tags, only: %i[index]
+  resources :tags, only: %i[index] do
+    collection do
+      get "append"
+    end
+  end
   resources :searchs, only: %i[index]
   resources :playlists do
     resources :posts, only: %i[show]

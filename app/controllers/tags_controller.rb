@@ -5,4 +5,8 @@ class TagsController < ApplicationController
     @taste_tags = TasteTag.joins(:posts).group(:name).select("name, COUNT(*) as count")
     @outher_tags = OutherTag.joins(:posts).group(:name).select("name, COUNT(*) as count")
   end
+
+  def append
+    render 'tags/prepend', content_type: 'text/vnd.turbo-stream.html'
+  end
 end
