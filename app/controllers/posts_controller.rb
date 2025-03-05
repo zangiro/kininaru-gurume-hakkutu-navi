@@ -105,7 +105,7 @@ class PostsController < ApplicationController
     #  end
     #  render :edit, status: :unprocessable_entity
     # end
-    #redirect_to root_path
+    # redirect_to root_path
     if post_params[:title].present? && params[:post][:dish_attributes][:description].present? && @form_input_area_tag != [ "" ]
       unless @main_image.nil?
         @post.main_image.purge
@@ -165,7 +165,7 @@ class PostsController < ApplicationController
     #  render :new, status: :unprocessable_entity
     # end
 
-    #redirect_to root_path
+    # redirect_to root_path
     if @form_input_area_tag != [ "" ] && @post.save
       @post.update_tags(@form_input_area_tag, "area")
       @post.update_tags(@form_input_genre_tag, "genre")

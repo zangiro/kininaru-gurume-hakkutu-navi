@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def aws_test_delete
-    #@test1 = ActiveStorage::Blob.unattached.find_each   #エラー出ず
+    # @test1 = ActiveStorage::Blob.unattached.find_each   #エラー出ず
     ActiveStorage::Blob.unattached.find_each(&:purge)
     redirect_to root_path
   end
