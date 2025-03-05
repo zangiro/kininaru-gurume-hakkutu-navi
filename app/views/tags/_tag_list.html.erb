@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "area_tags_turbo_stream" do %>
   <div class="row bg-info mb-3">
-    <% @area_tags.each_with_index do |tag, index| %>
+    <% tags.each_with_index do |tag, index| %>
       <div class="form-check form-check-inline col-3">
-        <input class="form-check-input" type="checkbox" name="area_tags[]" id="box<%= index %>" value="<%= tag.name %>">
+        <input class="form-check-input" type="checkbox" name="<%= tag_type %>[]" id="box<%= index %>" value="<%= tag.name %>">
         <label class="form-check-label" for="box<%= index %>">
           <%= tag.name %> (<%= tag.count %>)
         </label>
