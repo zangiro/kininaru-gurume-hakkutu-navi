@@ -18,16 +18,7 @@
 
 <%# -----------------genre_tags_turbo_streamの範囲-------------------- %>
 
-<div class="row bg-info mb-3">
-<% @genre_tags.each_with_index do |genre_tag, genre_index| %>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" name="genre_tags[]" id="genre_box<%= genre_index %>" value="<%= genre_tag.name %>">
-  <label class="form-check-label" for="genre_box<%= genre_index %>">
-  <%= genre_tag.name %> (<%= genre_tag.count %>)
-  </label>
-</div>
-<% end %>
-</div>
+<%= render "tag_list", tags: @genre_tags, tag_type: "genre_tags" %>
 
 <%# -----------------genre_tags_turbo_streamの範囲-------------------- %>
 

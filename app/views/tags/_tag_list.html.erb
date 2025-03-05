@@ -2,13 +2,16 @@
   <div class="row bg-info mb-3">
     <% tags.each_with_index do |tag, index| %>
       <div class="form-check form-check-inline col-3">
-        <input class="form-check-input" type="checkbox" name="<%= tag_type %>[]" id="box<%= index %>" value="<%= tag.name %>">
-        <label class="form-check-label" for="box<%= index %>">
+        <input class="form-check-input" type="checkbox" name="<%= tag_type %>[]" id="<%= tag_type %>_box_<%= index %>" value="<%= tag.name %>">
+        <label class="form-check-label" for="<%= tag_type %>_box_<%= index %>">
           <%= tag.name %> (<%= tag.count %>)
         </label>
       </div>
     <% end %>
 
+    <%# ---------解説 tag_type _box_ index: タグ名を選択時、該当するチェックボックスにマークをいれるのに必要。先頭にtag_typeを入れないとタグ名を選択時、関係ないチェックボックスにマークが入ってしまうことがある。----------------------- %>
+
+    
     <%= turbo_frame_tag "replace_#{tag_type}" do %>
       <%= link_to '追加する', send("replace_#{tag_type}_tags_path") %>
       <%# -------------  sendメソッドを使うことで、動的にパスを呼び出せる。sendメソッド使わないとエラーが出る  ------------- %>

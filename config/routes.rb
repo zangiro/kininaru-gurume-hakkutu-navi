@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :tags, only: %i[index] do
     collection do
       get "replace_area_tags"
+      get "replace_genre_tags"
     end
   end
   resources :searchs, only: %i[index]
