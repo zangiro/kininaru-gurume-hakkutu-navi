@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "area_tags_turbo_stream" do %>
+<%= turbo_frame_tag "#{tag_type}_turbo_stream" do %>
   <div class="row bg-info mb-3">
     <% tags.each_with_index do |tag, index| %>
       <div class="form-check form-check-inline col-3">
@@ -9,8 +9,9 @@
       </div>
     <% end %>
 
-    <%= turbo_frame_tag "replace_area_tags" do %>
-      <%= link_to '追加する', replace_area_tags_tags_path %>
+    <%= turbo_frame_tag "replace_#{tag_type}" do %>
+      <%= link_to '追加する', send("replace_#{tag_type}_tags_path") %>
+      <%# -------------  sendメソッドを使うことで、動的にパスを呼び出せる。sendメソッド使わないとエラーが出る  ------------- %>
     <% end %>
   </div>
 <% end %>
