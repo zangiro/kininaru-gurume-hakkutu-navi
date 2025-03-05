@@ -7,17 +7,27 @@
 <%= form_with url: searchs_path, method: :get do %>
 
 <h3>@エリア</h3>
-<div class="row bg-info mb-3">
-<% @area_tags.each_with_index do |area_tag, area_index| %>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" name="area_tags[]" id="area_box<%= area_index %>" value="<%= area_tag.name %>">
-  <label class="form-check-label" for="area_box<%= area_index %>">
-  <%= area_tag.name %> (<%= area_tag.count %>)
-  </label>
-</div>
-<% end %>
-</div>
 
+<%# -----------------area_tags_turbo_streamの範囲-------------------- %>
+
+<%= turbo_frame_tag "area_tags_turbo_stream" do %>
+  <div class="row bg-info mb-3">
+    <% @area_tags.each_with_index do |area_tag, area_index| %>
+      <div class="form-check form-check-inline col-3">
+        <input class="form-check-input" type="checkbox" name="area_tags[]" id="area_box<%= area_index %>" value="<%= area_tag.name %>">
+        <label class="form-check-label" for="area_box<%= area_index %>">
+          <%= area_tag.name %> (<%= area_tag.count %>)
+        </label>
+      </div>
+    <% end %>
+
+    <%= turbo_frame_tag "replace_area_tags" do %>
+      <%= link_to '追加する', replace_area_tags_tags_path %>
+    <% end %>
+  </div>
+<% end %>
+
+<%# -----------------area_tags_turbo_streamの範囲-------------------- %>
 
 <h3>@ジャンル</h3>
 <div class="row bg-info mb-3">
@@ -58,41 +68,5 @@
 </div>
 
 
-<%# ------------------------------------------------------ %>
-
-<div class="row bg-info mb-3">
-<% @area_tags.each_with_index do |area_tag, area_index| %>
-<div class="row col-4">
-  <%= area_tag.name %> (<%= area_tag.count %>)
-</div>
-<% end %>
-</div>
-
-
-
-
-
 <%= submit_tag "決定" %>
-<% end %>
-
-<%# ------------------------------------------ %>
-
-<h1>数字表示</h1>
-
-
-
-<%= turbo_frame_tag 'test' do %>
-  <div class="row bg-info mb-3">
-    <% @area_tags.each_with_index do |area_tag, area_index| %>
-      <div class="row col-4">
-        <%= area_tag.name %> (<%= area_tag.count %>)
-      </div>
-    <% end %>
-  </div>
-
-
-  <%= turbo_frame_tag 'replace_area_tags' do %>
-    <%= link_to '追加する', replace_area_tags_tags_path %>
-  <% end %>
-
 <% end %>

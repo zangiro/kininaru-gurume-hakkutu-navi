@@ -1,9 +1,12 @@
-<%= turbo_stream.replace "test" do %>
+<%= turbo_stream.replace "area_tags_turbo_stream" do %>
   <div class="row bg-info mb-3">
-  <% @area_tags.each_with_index do |area_tag, area_index| %>
-    <div class="row col-4">
-      <%= area_tag.name %> (<%= area_tag.count %>)
-    </div>
-  <% end %>
+    <% @area_tags.each_with_index do |area_tag, area_index| %>
+      <div class="form-check form-check-inline col-3">
+        <input class="form-check-input" type="checkbox" name="area_tags[]" id="area_box<%= area_index %>" value="<%= area_tag.name %>">
+        <label class="form-check-label" for="area_box<%= area_index %>">
+          <%= area_tag.name %> (<%= area_tag.count %>)
+        </label>
+      </div>
+    <% end %>
   </div>
 <% end %>
