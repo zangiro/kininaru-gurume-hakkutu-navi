@@ -23,29 +23,21 @@
 <%# -----------------genre_tags_turbo_streamの範囲-------------------- %>
 
 <h3>@味</h3>
-<div class="row bg-info mb-3">
-<% @taste_tags.each_with_index do |taste_tag, taste_index| %>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" name="taste_tags[]" id="taste_box<%= taste_index %>" value="<%= taste_tag.name %>">
-  <label class="form-check-label" for="taste_box<%= taste_index %>">
-  <%= taste_tag.name %> (<%= taste_tag.count %>)
-  </label>
-</div>
-<% end %>
-</div>
+
+<%# -----------------taste_tags_turbo_streamの範囲-------------------- %>
+
+<%= render "tag_list", tags: @taste_tags, tag_type: "taste_tags" %>
+
+<%# -----------------taste_tags_turbo_streamの範囲-------------------- %>
 
 
 <h3>@その他</h3>
-<div class="row bg-info mb-3">
-<% @outher_tags.each_with_index do |outher_tag, outher_index| %>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" name="outher_tags[]" id="outher_box<%= outher_index %>" value="<%= outher_tag.name %>">
-  <label class="form-check-label" for="outher_box<%= outher_index %>">
-  <%= outher_tag.name %> (<%= outher_tag.count %>)
-  </label>
-</div>
-<% end %>
-</div>
+
+<%# -----------------outher_tags_turbo_streamの範囲-------------------- %>
+
+<%= render "tag_list", tags: @outher_tags, tag_type: "outher_tags" %>
+
+<%# -----------------outher_tags_turbo_streamの範囲-------------------- %>
 
 
 <%= submit_tag "決定" %>
