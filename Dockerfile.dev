@@ -37,6 +37,9 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ya
 # vim : テキストエディタ
 RUN apt-get update -qq && apt-get install -y imagemagick libvips42
 # imagemagick libvips42 : ActiveStrageで画像のリサイズに必要
+RUN apt-get update -qq && apt-get install -y cron
+# 定時処理を行うwheneverを使うためのcronパッケージのインストールをする
+
 RUN mkdir /myapp
 # コンテナ内に/myappというディレクトリを作成するコマンド
 WORKDIR /myapp

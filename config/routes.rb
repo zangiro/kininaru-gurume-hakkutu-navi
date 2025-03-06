@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     member do
       delete "destroy_avatar"
     end
+    collection do
+      delete "aws_test_delete"
+    end
   end
   resources :posts do
     member do
@@ -19,7 +22,14 @@ Rails.application.routes.draw do
     resources :likes, only: %i[create destroy]
     resources :comments, only: %i[create edit destroy], shallow: true
   end
-  resources :tags, only: %i[index]
+  resources :tags, only: %i[index] do
+    collection do
+      get "replace_area_tags"
+      get "replace_genre_tags"
+      get "replace_taste_tags"
+      get "replace_outher_tags"
+    end
+  end
   resources :searchs, only: %i[index]
   resources :playlists do
     resources :posts, only: %i[show]

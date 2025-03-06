@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      auto_login(@user)
       redirect_to root_path, success: "@ユーザーの新規作成をしました"
     else
       flash.now[:danger] = "@失敗しました"
@@ -52,6 +53,12 @@ class UsersController < ApplicationController
     @user.avatar.purge
 
     redirect_to root_path, success: "@削除しました"
+  end
+
+  def aws_test_delete
+    # @test1 = ActiveStorage::Blob.unattached.find_each   #エラー出ず
+    ActiveStorage::Blob.unattached.find_each(&:purge)
+    redirect_to root_path
   end
 
   private

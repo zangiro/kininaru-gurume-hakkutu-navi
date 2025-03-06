@@ -1,0 +1,12 @@
+<%= turbo_stream.replace "outher_tags_turbo_stream" do %>
+  <div class="row bg-info mb-3">
+    <% @outher_tags.each_with_index do |outher_tag, outher_index| %>
+      <div class="form-check form-check-inline col-3">
+        <input class="form-check-input" type="checkbox" name="outher_tags[]" id="outher_box<%= outher_index %>" value="<%= outher_tag.name %>">
+        <label class="form-check-label" for="outher_box<%= outher_index %>">
+          <%= outher_tag.name %> (<%= outher_tag.count %>)
+        </label>
+      </div>
+    <% end %>
+  </div>
+<% end %>
