@@ -1,0 +1,14 @@
+ja:
+  helpers:
+    label:
+      #form_withの 「f.label :email」 などに適用される
+      email: メールアドレス？
+      password: パスワード？
+    submit:
+      create: 登録?
+  user_sessions:
+    new:
+      page_title: ログイン？
+      login: ログイン？
+      to_register_page: 新規登録ページへ？
+      forgot_password?: パスワードをお忘れの方はこちら？

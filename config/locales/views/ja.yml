@@ -1,9 +1,0 @@
-ja:
-  helpers:
-    label:
-      email: メールアドレス(JA
-      password: パスワード(JA
-  user_sessions:
-    new:
-      to_register_page: 新規登録ページへ(JA
-      password_forget: パスワードをお忘れの方(JA

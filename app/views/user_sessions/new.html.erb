@@ -1,21 +1,21 @@
-<% content_for(:title, "@ログイン") %>
+<% content_for(:title, t(".page_title")) %>
 <% breadcrumb :login %>
 
 <div class="container">
-<div class="row">
-<%= form_with url: login_path do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email, class: "form-control" %>
+  <div class="row">
+    <%= form_with url: login_path do |f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
   
-  <%= f.label :password %>
-  <%= f.password_field :password, class: "form-control" %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
   
-  <%= f.submit "@ログイン", class: "btn btn-primary" %>
-<% end %>
+      <%= f.submit t('.login'), class: "btn btn-primary" %>
+    <% end %>
 
-<div class='text-center'>
-    <%= link_to t('user_sessions.new.to_register_page'), new_user_path %>
-    <%= link_to '@パスワードをお忘れの方はこちら', '#' %>
-</div>
-</div>
+    <div class='text-center'>
+      <%= link_to t(".to_register_page"), new_user_path %>
+      <%= link_to t(".forgot_password?"), '#' %>
+    </div>
+  </div>
 </div>
