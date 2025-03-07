@@ -1,14 +1,14 @@
 crumb :root do
-  link "Home", root_path
+  link t("breadcrumbs.top"), root_path
 end
 
 crumb :login do
-  link "@ログイン"
+  link t("breadcrumbs.login")
   parent :root
 end
 
 crumb :user_new do
-  link "@ユーザー登録"
+  link t("breadcrumbs.user_register")
   parent :root
 end
 

@@ -6,9 +6,29 @@ ja:
       password: パスワード？
     submit:
       create: 登録?
+  breadcrumbs:
+    top: トップページ！！
+    login: ログイン！！
+    user_register: ユーザー登録！！
   user_sessions:
     new:
       page_title: ログイン？
       login: ログイン？
       to_register_page: 新規登録ページへ？
       forgot_password?: パスワードをお忘れの方はこちら？
+  users:
+    new:
+      page_title: ユーザー登録？
+      user_registration: ユーザー登録?
+      name_required: 名前(必須)?
+      email_required: メールアドレス(必須)?
+      password_required: パスワード(必須)?
+      password_confirmation_required: パスワード再確認(必須)？
+      is_public: 公開設定（必須）?
+      permit: 許可？
+      not_permit: 不許可?
+      accept_terms_of_use: 利用規約に同意しますか？(必須)？？？？
+      agree_terms: 利用規約？
+      privacy_policy: プライバシーポリシー？
+      to_login_page: ログインページへ？
+      to_top_page: トップページへ？
