@@ -13,7 +13,7 @@ crumb :user_new do
 end
 
 crumb :user_edit do |user|
-  link "@#{user.name}さんのアカウント情報"
+  link t("breadcrumbs.user_edit", name: user.name)
   parent :root
 end
 
