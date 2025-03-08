@@ -91,7 +91,7 @@ crumb :search_index do |area_tags, genre_tags, taste_tags, outher_tags|
 end
 
 crumb :like_index do |user|
-  link "@いいねした記事", user_likes_path(user)
+  link t("breadcrumbs.liked_posts_index"), user_likes_path(user)
   parent :user_show, user
 end
 

@@ -13,6 +13,7 @@ ja:
     user_register: ユーザー登録！！
     user_show: "%{name}さんのマイページ!!!"
     user_edit: "%{name}さんのアカウント情報!!!"
+    liked_posts_index: いいねした記事!!
   user_sessions:
     new:
       page_title: ログイン？
@@ -63,3 +64,9 @@ ja:
       privacy_policy: プライバシーポリシー？
       to_login_page: ログインページへ？
       to_top_page: トップページへ？
+  likes:
+    index:
+      page_title: いいねした記事？？
+      liked_posts: いいねした記事??
+      no_liked_posts: いいねした記事がありません??
+      closed_to_public: 非公開中??
