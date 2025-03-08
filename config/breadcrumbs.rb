@@ -18,7 +18,7 @@ crumb :user_edit do |user|
 end
 
 crumb :user_show do |user|
-  link "@#{user.name}さんのマイページ", user_path(user)
+  link t("breadcrumbs.user_show", name: user.name), user_path(user)
   parent :root
 end
 

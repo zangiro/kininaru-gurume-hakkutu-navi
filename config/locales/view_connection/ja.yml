@@ -10,6 +10,7 @@ ja:
     top: トップページ！！
     login: ログイン！！
     user_register: ユーザー登録！！
+    user_show: "%{name}さんのマイページ!!!"
   user_sessions:
     new:
       page_title: ログイン？
@@ -32,3 +33,14 @@ ja:
       privacy_policy: プライバシーポリシー？
       to_login_page: ログインページへ？
       to_top_page: トップページへ？
+    show:
+      page_title: ユーザー詳細?
+      my_page_with_name: "%{name}さんのマイページ??"
+      # t("oo", name: 名前) で「名前」を「name」という形で渡す
+      your_my_page_now_open: "%{name}さんのマイページは現在公開中です??"
+      your_my_page_now_closed: "%{name}さんのマイページは現在非公開です??"
+      avatar_not_registered: アバターは登録されてません??
+      introduction: "自己紹介 :%{introduction}?????"
+      to_posts_list: 投稿一覧??
+      to_likes_list: いいねした記事??
+      to_view_histories: 閲覧履歴？？？
