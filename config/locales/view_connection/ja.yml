@@ -162,3 +162,7 @@ ja:
       no_postings: 投稿がありません？？
       closed_to_public: 非公開中??
       delete_confirm: 本当に削除しますか？??
+    show:
+      posted_by: 投稿者:？
+      source: 出典:？
+      store_url: 店舗情報:？

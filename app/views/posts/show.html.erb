@@ -23,19 +23,18 @@
 </div>
 
 <div class="row d-flex">
-<span>投稿者: <%= link_to @posted_user.name, user_path(@posted_user) %></span>
+<span><%= t(".posted_by") %> <%= link_to @posted_user.name, user_path(@posted_user) %></span>
 </div>
 
 <div class="row">
 <% if @post.source.present? %>
-<%= @posted_user.name %>
-出典: <%= @post.source %>
+<%= t(".source") %> <%= @post.source %>
 <% end %>
 </div>
 
 <div class="row">
 <% if @post.store_url.present? %>
-店舗情報: <%= @post.store_url %>
+<%= t(".store_url") %> <%= @post.store_url %>
 <% end %>
 </div>
 
