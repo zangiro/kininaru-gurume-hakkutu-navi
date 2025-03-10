@@ -31,6 +31,23 @@ ja:
       operation_explanation_third: ３、関連するグルメ情報（画像）が出る。??
       operation_explanation_fourth: ４、クリックで詳細が表示される。？？？
       operation_explanation_fifth: ５、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。???
+  shared:
+    header:
+      app_title: 気になるグルメ発掘ナビ??
+      login_now: ログイン中？
+      posted_in: 投稿する？？
+      my_page: マイページ？？
+      your_account_information: アカウント情報？？
+      logout: ログアウト？？
+    before_login_header:
+      app_title: 気になるグルメ発掘ナビ????
+      not_login: ログインしてません??
+      to_login_page: ログイン？
+      to_register_page: 新規登録？
+    footer:
+      inquiry: お問い合わせ？？？
+      agree_terms: 利用規約？
+      privacy_policy: プライバシーポリシー？
   user_sessions:
     new:
       page_title: ログイン？
