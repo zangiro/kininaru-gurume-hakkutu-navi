@@ -21,6 +21,7 @@ ja:
     search_results: 検索結果！！
     post_new: 記事新規作成！！
     post_edit: 記事編集！！！
+    post_index: 記事一覧！！
   static_pages:
     top:
       to_login_page: ログインページへ？
@@ -151,3 +152,13 @@ ja:
       genre_tag_setting: タグ設定(ジャンル)???
       taste_tag_setting: タグ設定(味)???
       outher_tag_setting: タグ設定(その他)????
+    index:
+      page_title: 記事一覧？？
+      post_index: 記事一覧？？
+      post_edit: 編集する？？
+      post_delete: 削除する？？
+      ascending-order: 昇順にする？
+      descending-order: 降順にする？
+      no_postings: 投稿がありません？？
+      closed_to_public: 非公開中??
+      delete_confirm: 本当に削除しますか？??
