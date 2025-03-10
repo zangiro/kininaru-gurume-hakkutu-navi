@@ -2,8 +2,12 @@
   <div class="row">
     <div class="d-flex">
       <% unless logged_in? %>
-        <%= link_to '@新規作成', new_user_path %>
-        <%= link_to '@ログイン', login_path %>
+        <div class="row me-3">
+          <%= link_to t(".to_register_page"), new_user_path %>
+        </div>
+        <div class="row">
+          <%= link_to t(".to_login_page"), login_path %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -20,7 +24,7 @@
 
     <div class="row bg-danger w-25 mt-5">
       <div class="d-flex align-items-center display-6">
-        気になるグルメ発掘ナビ
+        <%= t(".app_title") %>
       </div>
     </div>
 
@@ -42,7 +46,7 @@
 
     <div class="row bg-info w-50 mt-5" style="height: 90px;">
       <div class="d-flex align-items-center">
-        @このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです。
+        <%= t(".app_description") %>
       </div>
     </div>
 
@@ -62,7 +66,7 @@
     </div>
 
     <div class="row mt-5">
-        <%= link_to '@診断スタート', tags_path, class: 'd-flex align-items-center justify-content-center bg-danger display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
+        <%= link_to t(".diagnosis_start"), tags_path, class: 'd-flex align-items-center justify-content-center bg-danger display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
     </div>
 
     <div class="row">
@@ -81,12 +85,12 @@
     </div>
 
     <div class="row mt-5 bg-info" style="height: 150px;">
-      [操作説明]<br>
-      １、診断スタートボタンを押す。<br>
-      ２、興味のあるジャンル、地域などを選ぶ。<br>
-      ３、関連するグルメ情報（画像）が出る。<br>
-      ５、クリックで詳細が表示される。<br>
-      ６、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。（未実装）
+      <%= t(".operation_explanation") %><br>
+      <%= t(".operation_explanation_first") %><br>
+      <%= t(".operation_explanation_second") %><br>
+      <%= t(".operation_explanation_third") %><br>
+      <%= t(".operation_explanation_fourth") %><br>
+      <%= t(".operation_explanation_fifth") %>
     </div>
 
     <div class="row">
@@ -113,6 +117,6 @@
 
 <div class="container mt-3">
   <div class="row justify-content-center">
-  <%= link_to '@診断スタート', tags_path, class: 'd-flex align-items-center justify-content-center w-25 bg-danger text-center display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
+  <%= link_to t(".diagnosis_start"), tags_path, class: 'd-flex align-items-center justify-content-center w-25 bg-danger text-center display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
   </div>
 </div>
