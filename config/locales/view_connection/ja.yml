@@ -17,6 +17,7 @@ ja:
     liked_posts_index: いいねした記事!!
     view_histories: 閲覧履歴！！
     tags_index: タグ一覧！！
+    search_results: 検索結果！！
   user_sessions:
     new:
       page_title: ログイン？
@@ -88,3 +89,11 @@ ja:
       genre: ジャンル？
       taste: 味？
       outher: その他？
+  searchs:
+    index:
+      page_title: 検索結果？
+      search_results: 検索結果？
+      ascending-order: 昇順にする？
+      descending-order: 降順にする？
+      everyone_view_histories: みんなが閲覧している記事??
+      no_tag_selected: タグが選択されてません??

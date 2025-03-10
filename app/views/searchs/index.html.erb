@@ -1,4 +1,4 @@
-<% content_for(:title, "@検索結果") %>
+<% content_for(:title, t(".page_title")) %>
 <% breadcrumb :search_index %>
 
 <div class="container">
@@ -7,13 +7,14 @@
 
 <% if @paginate_search_posts.present? %>
   <div class="d-flex">
-    <h3>@検索結果</h3>
+    <h3><%= t(".search_results") %></h3>
     <h1 class="ms-auto">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><%= link_to '@昇順にする', searchs_path(latest: "true", area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags), class: 'dropdown-item' %></li>
-            <li><%= link_to '@降順にする', searchs_path(old: "true", area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags), class: 'dropdown-item' %></li>
+            <li><%= link_to t(".ascending-order"), searchs_path(latest: "true", area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags), class: 'dropdown-item' %></li>
+            <li><%= link_to t(".descending-order"), searchs_path(old: "true", area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags), class: 'dropdown-item' %></li>
+            <%# ---------------補足:  ascending-order 昇順。  descending-order 降順----------------------------- %>
           </ul>
       </div>
     </h1>
@@ -26,18 +27,18 @@
 
 
   <% if @page > 1 %>
-    <%= link_to '前へ', searchs_path(page: @page - 1, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags) %>
+    <%= link_to '@@@前へ', searchs_path(page: @page - 1, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags) %>
   <% end %>
 
   <% if @page < @total_pages %>
-    <%= link_to '次へ', searchs_path(page: @page + 1, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags) %>
+    <%= link_to '@@@次へ', searchs_path(page: @page + 1, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags) %>
   <% end %>
 
 
   <% if @recommendations.present? %>
     <div class='row'>
       <div class='row'>
-        <h6>@みんなが閲覧している記事</h6>
+        <h6><%= t(".everyone_view_histories") %></h6>
       </div>
 
       <% @recommendations.each do |post| %>
@@ -47,11 +48,11 @@
   <% end %>
 
 <% else %>
-  <h3>@タグが選択されてません</h3>
+  <h3><%= t(".no_tag_selected") %></h3>
 
   <div class='row'>
     <div class='row'>
-      <h6>@みんなが閲覧している記事</h6>
+      <h6><%= t(".everyone_view_histories") %></h6>
     </div>
 
     <% @recommendations.each do |post| %>

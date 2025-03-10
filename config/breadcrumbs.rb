@@ -86,7 +86,7 @@ crumb :tag_index do
 end
 
 crumb :search_index do |area_tags, genre_tags, taste_tags, outher_tags|
-  link "@検索結果", searchs_path(area_tags: area_tags, genre_tags: genre_tags, taste_tags: taste_tags, outher_tags: outher_tags)
+  link t("breadcrumbs.search_results"), searchs_path(area_tags: area_tags, genre_tags: genre_tags, taste_tags: taste_tags, outher_tags: outher_tags)
   parent :tag_index
 end
 
