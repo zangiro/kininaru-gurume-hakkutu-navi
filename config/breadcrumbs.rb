@@ -25,7 +25,7 @@ end
 #------------記事関連------------
 
 crumb :post_new do
-  link "@新規記事作成", new_post_path
+  link t("breadcrumbs.post_new"), new_post_path
   parent :root
 end
 
@@ -35,7 +35,7 @@ crumb :post_index do |user|
 end
 
 crumb :post_edit do |user|
-  link "@記事編集"
+  link t("breadcrumbs.post_edit")
   parent :post_index, user
 end
 

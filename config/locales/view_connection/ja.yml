@@ -6,6 +6,7 @@ ja:
       password: パスワード？
     submit:
       create: 登録?
+      update: 更新？
       change: 変更？
       decision: 決定？
   breadcrumbs:
@@ -18,6 +19,8 @@ ja:
     view_histories: 閲覧履歴！！
     tags_index: タグ一覧！！
     search_results: 検索結果！！
+    post_new: 記事新規作成！！
+    post_edit: 記事編集！！！
   static_pages:
     top:
       to_login_page: ログインページへ？
@@ -28,7 +31,7 @@ ja:
       operation_explanation: [操作説明？？]
       operation_explanation_first: １、診断スタートボタンを押す。???
       operation_explanation_second: ２、興味のあるジャンル、地域などを選ぶ。???
-      operation_explanation_third: ３、関連するグルメ情報（画像）が出る。??
+      operation_explanation_third: ３、関連するグルメ情報(画像)が出る。??
       operation_explanation_fourth: ４、クリックで詳細が表示される。？？？
       operation_explanation_fifth: ５、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。???
   shared:
@@ -114,7 +117,7 @@ ja:
   tags:
     index:
       page_title: タグ選択？
-      please_select_tag: 気になるタグを選び「決定」を押してください（複数選択可）???
+      please_select_tag: 気になるタグを選び「決定」を押してください(複数選択可)???
       area: エリア？
       genre: ジャンル？
       taste: 味？
@@ -127,3 +130,24 @@ ja:
       descending-order: 降順にする？
       everyone_view_histories: みんなが閲覧している記事??
       no_tag_selected: タグが選択されてません??
+  posts:
+    new:
+      page_title: 記事新規作成??
+      create_new_post: 記事新規作成？？
+    edit:
+      page_title: 記事編集？？
+      edit_post: 記事編集？？
+    post_info:
+      title: 料理名（必須）??
+      main_image: メイン画像(必須)??
+      sub_image_first: サブ画像１??
+      sub_image_second: サブ画像２？？
+      source: 出典？？
+      store_url: 店舗情報？？？
+      introduction: 一覧用紹介文？？
+      description: 詳細用紹介文(必須)
+      tag_setting_info: タグ設定情報 (複数登録する場合は単語の間に「 , 」を入れてください)????
+      area_tag_setting: タグ設定(地域)(必須)???
+      genre_tag_setting: タグ設定(ジャンル)???
+      taste_tag_setting: タグ設定(味)???
+      outher_tag_setting: タグ設定(その他)????
