@@ -96,7 +96,7 @@ crumb :like_index do |user|
 end
 
 crumb :view_history_index do |user|
-  link "@閲覧履歴", view_histories_path
+  link t("breadcrumbs.view_histories"), view_histories_path
   parent :user_show, user
 end
 

@@ -14,6 +14,7 @@ ja:
     user_show: "%{name}さんのマイページ!!!"
     user_edit: "%{name}さんのアカウント情報!!!"
     liked_posts_index: いいねした記事!!
+    view_histories: 閲覧履歴！！
   user_sessions:
     new:
       page_title: ログイン？
@@ -70,3 +71,10 @@ ja:
       liked_posts: いいねした記事??
       no_liked_posts: いいねした記事がありません??
       closed_to_public: 非公開中??
+  view_histories:
+    index:
+      page_title: 閲覧履歴？？
+      view_histories: 閲覧履歴？？？
+      delete_confirm: 本当に削除しますか？??
+      view_histories_delete: 閲覧履歴を削除する???
+      no_view_histories: 閲覧した記事がありません???
