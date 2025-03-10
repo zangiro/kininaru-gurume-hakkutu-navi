@@ -81,7 +81,7 @@ end
 #-----------------------------
 
 crumb :tag_index do
-  link "@タグ一覧", tags_path
+  link t("breadcrumbs.tags_index"), tags_path
   parent :root
 end
 

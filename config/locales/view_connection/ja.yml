@@ -7,6 +7,7 @@ ja:
     submit:
       create: 登録?
       change: 変更？
+      decision: 決定？
   breadcrumbs:
     top: トップページ！！
     login: ログイン！！
@@ -15,6 +16,7 @@ ja:
     user_edit: "%{name}さんのアカウント情報!!!"
     liked_posts_index: いいねした記事!!
     view_histories: 閲覧履歴！！
+    tags_index: タグ一覧！！
   user_sessions:
     new:
       page_title: ログイン？
@@ -78,3 +80,11 @@ ja:
       delete_confirm: 本当に削除しますか？??
       view_histories_delete: 閲覧履歴を削除する???
       no_view_histories: 閲覧した記事がありません???
+  tags:
+    index:
+      page_title: タグ選択？
+      please_select_tag: 気になるタグを選び「決定」を押してください（複数選択可）???
+      area: エリア？
+      genre: ジャンル？
+      taste: 味？
+      outher: その他？

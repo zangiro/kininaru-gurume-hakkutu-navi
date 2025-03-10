@@ -1,12 +1,12 @@
-<% content_for(:title, "@タグ検索") %>
+<% content_for(:title, t(".page_title")) %>
 <% breadcrumb :tag_index %>
 
 <div class="container">
-<h3>@気になるタグを選び「決定」を押してください（複数選択可）</h3>
+<h3><%= t(".please_select_tag") %></h3>
 
 <%= form_with url: searchs_path, method: :get do %>
 
-<h3>@エリア</h3>
+<h3><%= t(".area") %></h3>
 
 <%# -----------------area_tags_turbo_streamの範囲-------------------- %>
 
@@ -14,7 +14,7 @@
 
 <%# -----------------area_tags_turbo_streamの範囲-------------------- %>
 
-<h3>@ジャンル</h3>
+<h3><%= t(".genre") %></h3>
 
 <%# -----------------genre_tags_turbo_streamの範囲-------------------- %>
 
@@ -22,7 +22,7 @@
 
 <%# -----------------genre_tags_turbo_streamの範囲-------------------- %>
 
-<h3>@味</h3>
+<h3><%= t(".taste") %></h3>
 
 <%# -----------------taste_tags_turbo_streamの範囲-------------------- %>
 
@@ -31,7 +31,7 @@
 <%# -----------------taste_tags_turbo_streamの範囲-------------------- %>
 
 
-<h3>@その他</h3>
+<h3><%= t(".outher") %></h3>
 
 <%# -----------------outher_tags_turbo_streamの範囲-------------------- %>
 
@@ -40,5 +40,5 @@
 <%# -----------------outher_tags_turbo_streamの範囲-------------------- %>
 
 
-<%= submit_tag "決定" %>
+<%= submit_tag t("helpers.submit.decision") %>
 <% end %>
