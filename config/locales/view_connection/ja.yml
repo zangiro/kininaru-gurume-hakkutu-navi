@@ -1,0 +1,181 @@
+ja:
+  helpers:
+    label:
+      #form_withの 「f.label :email」 などに適用される
+      email: メールアドレス？
+      password: パスワード？
+    submit:
+      create: 登録?
+      update: 更新？
+      change: 変更？
+      decision: 決定？
+  flash_message:
+    user_create: ユーザーの新規作成をしました???
+    post_create: 記事の作成をしました??
+    post_create_failure: 記事の作成に失敗しました??
+    failure: 失敗しました？？
+    update_success: 更新しました？？
+    update_failure: 更新失敗しました？？
+    login_success: ログインしました？？
+    login_failure: ログインに失敗しました??
+    logout: ログアウトしました???
+    delete_post: 記事を削除しました？？
+    delete_view_histories: 閲覧履歴を削除しました??
+    no_tag_entered: タグが入力されてません？？
+  breadcrumbs:
+    top: トップページ！！
+    login: ログイン！！
+    user_register: ユーザー登録！！
+    user_show: "%{name}さんのマイページ!!!"
+    user_edit: "%{name}さんのアカウント情報!!!"
+    liked_posts_index: いいねした記事!!
+    view_histories: 閲覧履歴！！
+    tags_index: タグ一覧！！
+    search_results: 検索結果！！
+    post_new: 記事新規作成！！
+    post_edit: 記事編集！！！
+    post_index: 記事一覧！！
+  static_pages:
+    top:
+      to_login_page: ログインページへ？
+      to_register_page: 新規登録ページへ？
+      app_title: 気になるグルメ発掘ナビ??
+      app_description: このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです。??
+      diagnosis_start: 診断スタート？？
+      operation_explanation: [操作説明？？]
+      operation_explanation_first: １、診断スタートボタンを押す。???
+      operation_explanation_second: ２、興味のあるジャンル、地域などを選ぶ。???
+      operation_explanation_third: ３、関連するグルメ情報(画像)が出る。??
+      operation_explanation_fourth: ４、クリックで詳細が表示される。？？？
+      operation_explanation_fifth: ５、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。???
+  shared:
+    header:
+      app_title: 気になるグルメ発掘ナビ??
+      login_now: ログイン中？
+      posted_in: 投稿する？？
+      my_page: マイページ？？
+      your_account_information: アカウント情報？？
+      logout: ログアウト？？
+    before_login_header:
+      app_title: 気になるグルメ発掘ナビ????
+      not_login: ログインしてません??
+      to_login_page: ログイン？
+      to_register_page: 新規登録？
+    footer:
+      inquiry: お問い合わせ？？？
+      agree_terms: 利用規約？
+      privacy_policy: プライバシーポリシー？
+  user_sessions:
+    new:
+      page_title: ログイン？
+      login: ログイン？
+      to_register_page: 新規登録ページへ？
+      forgot_password?: パスワードをお忘れの方はこちら？
+  users:
+    new:
+      page_title: ユーザー登録？
+      user_registration: ユーザー登録?
+      name_required: 名前(必須)?
+      email_required: メールアドレス(必須)?
+      password_required: パスワード(必須)?
+      password_confirmation_required: パスワード再確認(必須)？
+      is_public: 公開設定（必須）?
+      permit: 許可？
+      not_permit: 不許可?
+      accept_terms_of_use: 利用規約に同意しますか？(必須)？？？？
+      agree_terms: 利用規約？
+      privacy_policy: プライバシーポリシー？
+      to_login_page: ログインページへ？
+      to_top_page: トップページへ？
+    show:
+      page_title: ユーザー詳細?
+      my_page_with_name: "%{name}さんのマイページ??"
+      # t("oo", name: 名前) で「名前」を「name」という形で渡す
+      your_my_page_now_open: "%{name}さんのマイページは現在公開中です??"
+      your_my_page_now_closed: "%{name}さんのマイページは現在非公開です??"
+      avatar_not_registered: アバターは登録されてません??
+      introduction: "自己紹介 :%{introduction}?????"
+      to_posts_list: 投稿一覧??
+      to_likes_list: いいねした記事??
+      to_view_histories: 閲覧履歴？？？
+    edit:
+      page_title: アカウント情報？？
+      your_account_information: "%{name}さんのアカウント情報???"
+      name_required: 名前?
+      email_required: メールアドレス?
+      password_required: パスワードの変更?
+      password_confirmation_required: パスワード変更時の再確認？
+      introduction: 自己紹介？？
+      avatar: アバター設定？？
+      is_public: 公開設定?
+      permit: 許可？
+      not_permit: 不許可?
+      accept_terms_of_use: 利用規約に同意しますか？(必須)？？？？
+      agree_terms: 利用規約？
+      privacy_policy: プライバシーポリシー？
+      to_login_page: ログインページへ？
+      to_top_page: トップページへ？
+  likes:
+    index:
+      page_title: いいねした記事？？
+      liked_posts: いいねした記事??
+      no_liked_posts: いいねした記事がありません??
+      closed_to_public: 非公開中??
+  view_histories:
+    index:
+      page_title: 閲覧履歴？？
+      view_histories: 閲覧履歴？？？
+      delete_confirm: 本当に削除しますか？??
+      view_histories_delete: 閲覧履歴を削除する???
+      no_view_histories: 閲覧した記事がありません???
+  tags:
+    index:
+      page_title: タグ選択？
+      please_select_tag: 気になるタグを選び「決定」を押してください(複数選択可)???
+      area: エリア？
+      genre: ジャンル？
+      taste: 味？
+      outher: その他？
+  searchs:
+    index:
+      page_title: 検索結果？
+      search_results: 検索結果？
+      ascending-order: 昇順にする？
+      descending-order: 降順にする？
+      everyone_view_histories: みんなが閲覧している記事??
+      no_tag_selected: タグが選択されてません??
+  posts:
+    new:
+      page_title: 記事新規作成??
+      create_new_post: 記事新規作成？？
+    edit:
+      page_title: 記事編集？？
+      edit_post: 記事編集？？
+    post_info:
+      title: 料理名（必須）??
+      main_image: メイン画像(必須)??
+      sub_image_first: サブ画像１??
+      sub_image_second: サブ画像２？？
+      source: 出典？？
+      store_url: 店舗情報？？？
+      introduction: 一覧用紹介文？？
+      description: 詳細用紹介文(必須)
+      tag_setting_info: タグ設定情報 (複数登録する場合は単語の間に「 , 」を入れてください)????
+      area_tag_setting: タグ設定(地域)(必須)???
+      genre_tag_setting: タグ設定(ジャンル)???
+      taste_tag_setting: タグ設定(味)???
+      outher_tag_setting: タグ設定(その他)????
+    index:
+      page_title: 記事一覧？？
+      post_index: 記事一覧？？
+      post_edit: 編集する？？
+      post_delete: 削除する？？
+      ascending-order: 昇順にする？
+      descending-order: 降順にする？
+      no_postings: 投稿がありません？？
+      closed_to_public: 非公開中??
+      delete_confirm: 本当に削除しますか？??
+    show:
+      posted_by: 投稿者:？
+      source: 出典:？
+      store_url: 店舗情報:？

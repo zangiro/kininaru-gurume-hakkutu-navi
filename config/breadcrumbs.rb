@@ -1,41 +1,41 @@
 crumb :root do
-  link "Home", root_path
+  link t("breadcrumbs.top"), root_path
 end
 
 crumb :login do
-  link "@ログイン"
+  link t("breadcrumbs.login")
   parent :root
 end
 
 crumb :user_new do
-  link "@ユーザー登録"
+  link t("breadcrumbs.user_register")
   parent :root
 end
 
 crumb :user_edit do |user|
-  link "@#{user.name}さんのアカウント情報"
+  link t("breadcrumbs.user_edit", name: user.name)
   parent :root
 end
 
 crumb :user_show do |user|
-  link "@#{user.name}さんのマイページ", user_path(user)
+  link t("breadcrumbs.user_show", name: user.name), user_path(user)
   parent :root
 end
 
 #------------記事関連------------
 
 crumb :post_new do
-  link "@新規記事作成", new_post_path
+  link t("breadcrumbs.post_new"), new_post_path
   parent :root
 end
 
 crumb :post_index do |user|
-  link "@#{user.name}さんの記事一覧", user_posts_path(user)
+  link t("breadcrumbs.post_index"), user_posts_path(user)
   parent :user_show, user
 end
 
 crumb :post_edit do |user|
-  link "@記事編集"
+  link t("breadcrumbs.post_edit")
   parent :post_index, user
 end
 
@@ -81,22 +81,22 @@ end
 #-----------------------------
 
 crumb :tag_index do
-  link "@タグ一覧", tags_path
+  link t("breadcrumbs.tags_index"), tags_path
   parent :root
 end
 
 crumb :search_index do |area_tags, genre_tags, taste_tags, outher_tags|
-  link "@検索結果", searchs_path(area_tags: area_tags, genre_tags: genre_tags, taste_tags: taste_tags, outher_tags: outher_tags)
+  link t("breadcrumbs.search_results"), searchs_path(area_tags: area_tags, genre_tags: genre_tags, taste_tags: taste_tags, outher_tags: outher_tags)
   parent :tag_index
 end
 
 crumb :like_index do |user|
-  link "@いいねした記事", user_likes_path(user)
+  link t("breadcrumbs.liked_posts_index"), user_likes_path(user)
   parent :user_show, user
 end
 
 crumb :view_history_index do |user|
-  link "@閲覧履歴", view_histories_path
+  link t("breadcrumbs.view_histories"), view_histories_path
   parent :user_show, user
 end
 

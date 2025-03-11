@@ -1,48 +1,50 @@
-<% content_for(:title, "@ユーザー詳細") %>
+<% content_for(:title, t(".page_title")) %>
 <% breadcrumb :user_show, @user %>
+
 
 <div class="container">
 <div class="row">
-<h1>@<%= @user.name %>さんのマイページ</h1>
+  <h1><%= t(".my_page_with_name", name: @user.name) %></h1>
 
-<div class="mt-2">
-<%= @user.is_public ? "@#{@user.name}さんのマイページは現在公開中です" : "@#{@user.name}さんのマイページは現在非公開です" %>
-</div>
+  <div class="mt-2">
+    <%= @user.is_public ? t(".your_my_page_now_open", name: @user.name) : t(".your_my_page_now_closed", name: @user.name) %>
+  </div>
 
-<div class="mt-2">
-  <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
-    <%= button_to '画像を削除', destroy_avatar_user_path(@user), method: :delete %>
-  <% else %>
-    アバターは登録されてません
+  <div class="mt-2">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
+      <%= button_to '@@@画像を削除（仮）', destroy_avatar_user_path(@user), method: :delete %>
+    <% else %>
+      <%= t(".avatar_not_registered") %>
+      <%# -------補足: avatar_not_registered アバターは登録されてません--------- %>
+    <% end %>
+  </div>
+
+  <% if @user.is_public || @user == current_user %>
+    <div class="mt-2">
+      <%= t(".introduction", introduction: @user.introduction) %>
+    </div>
+
+    <div class="mt-2">
+      <%= link_to "@プレイリスト(項目破棄予定)", user_playlists_path(@user) %>
+    </div>
+
+    <div class="mt-2">
+      <%= link_to t(".to_posts_list"), user_posts_path(@user) %>
+    </div>
+
+    <div class="mt-2">
+      <%= link_to t(".to_likes_list"), user_likes_path(@user) %>
+    </div>
   <% end %>
-</div>
-
-<% if @user.is_public || @user == current_user %>
-<div class="mt-2">
-<%= "@自己紹介 :#{@user.introduction}" %>
-</div>
-
-<div class="mt-2">
-<%= link_to "@プレイリスト", user_playlists_path(@user) %>
-</div>
-
-<div class="mt-2">
-<%= link_to "@投稿一覧", user_posts_path(@user) %>
-</div>
-
-<div class="mt-2">
-<%= link_to "@いいねした記事", user_likes_path(@user) %>
-</div>
-<% end %>
 
 
-<% if @user == current_user %>
-<div class="mt-2">
-<%= link_to "@閲覧履歴", view_histories_path %>
-</div>
-<% end %>
+  <% if @user == current_user %>
+    <div class="mt-2">
+      <%= link_to t(".to_view_histories"), view_histories_path %>
+    </div>
+  <% end %>
 
-<%= link_to "@AWS非関連画像テスト", aws_test_delete_users_path, data: { turbo_method: :delete } %>
+  <%= link_to "@AWS非関連画像テスト（項目破棄予定）", aws_test_delete_users_path, data: { turbo_method: :delete } %>
 </div>
 </div>

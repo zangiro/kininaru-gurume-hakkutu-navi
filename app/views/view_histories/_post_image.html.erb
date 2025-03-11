@@ -1,11 +1,12 @@
 <div class="bg-info col-2">
-<a href="<%= post_path(post, user_id: @user.id, post_path: @post_path) %>">
+  <a href="<%= post_path(post, user_id: @user.id, post_path: @post_path) %>">
 
-<% if post.main_image.attached? %>
-  <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
-<% end %>
-</a>
-<div class="row">
-<%= post.dish.introduction %>
-</div>
+  <% if post.main_image.attached? %>
+    <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
+  <% end %>
+  </a>
+
+  <div class="row">
+    <%= post.dish.introduction %>
+  </div>
 </div>

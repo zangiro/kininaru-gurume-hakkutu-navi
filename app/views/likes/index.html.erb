@@ -1,4 +1,4 @@
-<% content_for(:title, "@いいねした記事") %>
+<% content_for(:title, t(".page_title")) %>
 <% breadcrumb :like_index, @user %>
 
 
@@ -8,17 +8,17 @@
 <%# -------------------本人&来訪者用------------------- %>
 <% if @user == current_user || @user.is_public %>
   <% if @user_like_posts.present? %>
-    <p>@いいねした記事</p>
+    <h3><%= t(".liked_posts")%></h3>
     <% @user_like_posts.each do |post| %>
       <%= render "post_image", post: post %>
     <% end %>
     <%= paginate @user_like_posts, theme: "bootstrap-5" %>
   <% else %>
-    <p>@いいねした記事がありません</p>
+    <h3><%= t(".no_liked_posts") %></h3>
   <% end %>
 
 <% else %>
-  <p>@非公開されています</p>
+  <h3><%= t(".closed_to_public") %></h3>
 <% end %>
 
 

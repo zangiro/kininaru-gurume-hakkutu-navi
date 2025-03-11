@@ -1,61 +1,72 @@
-<% content_for(:title, "@新規作成") %>
+<% content_for(:title, t(".page_title")) %>
 <% breadcrumb :user_new %>
+
 
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-lg-8 mx-auto">
-      <h1>@ユーザー登録</h1>
+      <h1><%= t(".user_registration") %></h1>
+      <%# ---------補足: registration 登録--------- %>
+
       <%= form_with model: @user do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
         <div class="mb-3">
-          <%= f.label :name, "@名前(必須)", class: "form-label" %>
+          <%= f.label :name, t(".name_required"), class: "form-label" %>
           <%= f.text_field :name, class: "form-control" %>
         </div>
 
         <div class="mb-3">
-          <%= f.label :email, class: "form-label" %>
+          <%= f.label :email, t(".email_required"), class: "form-label" %>
           <%= f.email_field :email, class: "form-control" %>
         </div>
 
         <div class="mb-3">
-          <%= f.label :password, "@パスワード(必須)", class: "form-label" %>
+          <%= f.label :password, t(".password_required"), class: "form-label" %>
           <%= f.password_field :password, class: "form-control" %>
         </div>
 
         <div class="mb-3">
-          <%= f.label :password_confirmation, "@パスワード再確認(必須)", class: "form-label" %>
+          <%= f.label :password_confirmation, t(".password_confirmation_required"), class: "form-label" %>
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
         
         <div class="mb-3">
-          <%= f.label :@公開設定（必須） %>
+          <%= f.label :is_public, t(".is_public") %>
         </div>
 
         <div class="mb-3 d-flex">
           <%= f.radio_button :is_public, true, id: "is_public_true" %>
-          <label for="is_public_true" class="me-3">@許可</label>
+          <label for="is_public_true" class="me-3">
+            <%= t(".permit") %>
+            <%# ---------補足: permit 許可--------- %>
+          </label>
+
           <%= f.radio_button :is_public, false, id: "is_public_false" %>
-          <label for="is_public_false" class="me-3">@不許可</label>
+          <label for="is_public_false" class="me-3">
+            <%= t(".not_permit") %>
+            <%# ---------補足: not_permit 不許可--------- %>
+          </label>
         </div>
 
         <div class="mb-3">
-          <%= f.label :agree_terms, "＠利用規約に同意しますか？(必須)" %>
+          <%= f.label :agree_terms, t(".accept_terms_of_use") %>
           <%= f.check_box :agree_terms %>
+          <%# ---------補足: agree_terms 利用規約, accept_terms_of_use 利用規約に同意しますか？--------- %>
         </div>
 
         <div class="mb-3">
-          <%= link_to "@利用規約", "#" %>
-          <%= link_to "@プライバシーポリシー", "#" %>
+          <%= link_to t(".agree_terms"), "#" %>
+          <%= link_to t(".privacy_policy"), "#" %>
         </div>
 
-        <%= f.submit "@登録", class: "btn btn-primary" %>
+        <%= f.submit t("helpers.submit.create"), class: "btn btn-primary" %>
 
       <% end %>
 
       <div class='text-center'>
-        <%= link_to '@ログインページへ', login_path %>
-        <%= link_to '@トップ', root_path %>
+        <%= link_to t(".to_login_page"), login_path %>
+        <%= link_to t(".to_top_page"), root_path %>
       </div>
     </div>
   </div>

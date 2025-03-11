@@ -9,6 +9,6 @@ class ViewHistoriesController < ApplicationController
 
   def all_view_history_delete
     current_user.view_histories.destroy_all
-    redirect_to view_histories_path, success: "@閲覧履歴を削除しました"
+    redirect_to view_histories_path, success: t("flash_message.delete_view_histories")
   end
 end

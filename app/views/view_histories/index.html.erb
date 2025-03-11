@@ -1,17 +1,19 @@
-<% content_for(:title, "@閲覧履歴") %>
+<% content_for(:title, t(".page_title")) %>
 <% breadcrumb :view_history_index, @user %>
 
 <div class="container">
 <div class="row">
   <% if @view_history_posts.present? %>
-    <h3>@閲覧履歴</h3>
-    <%= link_to "@閲覧履歴を削除する", all_view_history_delete_view_histories_path, data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
+    <h3><%= t(".view_histories") %></h3>
+    <%= link_to t(".view_histories_delete"), all_view_history_delete_view_histories_path, data: { turbo_method: :delete, turbo_confirm: t(".delete_confirm") } %>
+
     <% @view_history_posts.each do |post| %>
       <%= render "post_image", post: post %>
     <% end %>
+
     <%= paginate @view_history_posts, theme: "bootstrap-5" %>
   <% else %>
-    <p>@閲覧した記事がありません</p>
+    <h3><%= t(".no_view_histories") %></h3>
   <% end %>
 </div>
 </div>

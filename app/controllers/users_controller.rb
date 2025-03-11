@@ -17,9 +17,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to root_path, success: "@ユーザーの新規作成をしました"
+      redirect_to root_path, success: t("flash_message.user_create")
     else
-      flash.now[:danger] = "@失敗しました"
+      flash.now[:danger] = t("flash_message.failure")
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,27 +32,26 @@ class UsersController < ApplicationController
     @user = current_user
     @avatar = user_params[:avatar]
 
-    # if user_params[:name].present? && user_params[:email].present?
-    #   unless @avatar.nil?
-    #     @user.avatar.purge
-    #   end
-    # end
+    if user_params[:name].present? && user_params[:email].present?
+      unless @avatar.nil?
+        @user.avatar.purge
+      end
+    end
 
-    # if @user.update(user_params)
-    #   redirect_to user_path(current_user), success: "@更新しました"
-    # else
-    #   flash.now[:danger] = "@更新失敗しました"
-    #   render :edit, status: :unprocessable_entity
-    # end
-
-    redirect_to root_path
+    if @user.update(user_params)
+      # redirect_to user_path(current_user), success: t("flash_message.update_success")
+      redirect_to root_path, success: t("flash_message.update_success")
+    else
+      flash.now[:danger] = t("flash_message.update_failure")
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy_avatar
     @user = current_user
     @user.avatar.purge
 
-    redirect_to root_path, success: "@削除しました"
+    redirect_to root_path, success: "@仮----削除しました----------"
   end
 
   def aws_test_delete
