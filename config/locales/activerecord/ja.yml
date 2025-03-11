@@ -4,4 +4,8 @@ ja:
       user: ユーザー(必須)  (JAAC
     attributes:
       user:
-        email: メールアドレス(必須)  (JAAC
+        password: パスワード~~
+        password_confirmation: 再確認用パスワード~~
+        email: メールアドレス~~
+        name: 名前~~
+        is_public: 公開設定~~

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true, length: { maximum: 255 }
   validates :is_public, inclusion: { in: [ true, false ], message: "@を選んでください" }
+        #  あとでrailsi-18n化したい
   validate :agreement
 
   has_many :posts, dependent: :destroy
@@ -28,6 +29,7 @@ class User < ApplicationRecord
     if new_record?
       unless agree_terms == "1" || agree_terms == true
         errors.add(:base, "@利用規約に同意されてません")
+        #  あとでrailsi-18n化したい
       end
     end
   end
