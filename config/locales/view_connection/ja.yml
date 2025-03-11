@@ -11,9 +11,17 @@ ja:
       decision: 決定？
   flash_message:
     user_create: ユーザーの新規作成をしました???
+    post_create: 記事の作成をしました??
+    post_create_failure: 記事の作成に失敗しました??
     failure: 失敗しました？？
     update_success: 更新しました？？
     update_failure: 更新失敗しました？？
+    login_success: ログインしました？？
+    login_failure: ログインに失敗しました??
+    logout: ログアウトしました???
+    delete_post: 記事を削除しました？？
+    delete_view_histories: 閲覧履歴を削除しました??
+    no_tag_entered: タグが入力されてません？？
   breadcrumbs:
     top: トップページ！！
     login: ログイン！！

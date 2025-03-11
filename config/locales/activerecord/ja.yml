@@ -9,3 +9,7 @@ ja:
         email: メールアドレス~~
         name: 名前~~
         is_public: 公開設定~~
+      post:
+        title: タイトル〜〜
+      dish:
+        description: 詳細用紹介文~~~
