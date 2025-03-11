@@ -39,6 +39,7 @@ class Post < ApplicationRecord
   def main_image_attached
     errors.add(:base, "画像を添付してください") unless main_image.attached?
   end
+  # あとでrailsi-18n化したい
 
   def update_tags(input_tags, tag_type)
     input_tags = input_tags.join(",").split(",").map(&:strip)  # コンマで区切って配列にする。空白削除 +複数の配列を位置行の文字列へ
