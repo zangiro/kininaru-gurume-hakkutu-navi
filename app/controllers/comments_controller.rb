@@ -10,6 +10,11 @@ class CommentsController < ApplicationController
     @comment.save
   end
 
+  def edit
+    @comment = current_user.comments.find(params[:id])
+    render "comments/edit", content_type: "text/vnd.turbo-stream.html"
+  end
+
   def update
     @comment = current_user.comments.find(params[:id])
     if @comment.update(comment_update_params)

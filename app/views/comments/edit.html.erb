@@ -1,0 +1,13 @@
+<%= turbo_stream.replace "comment-#{@comment.id}" do %>
+<tr>
+<td>
+
+<%= form_with model: @comment, url: comment_path(@comment) do |f| %>
+  <%= f.label :body %>
+  <%= f.text_area :body, class: "form-control mb-3" %>
+  <%= f.submit nil, class: "btn btn-primary" %>
+<% end %>
+
+</td>
+</tr>
+<% end %>

@@ -130,19 +130,42 @@
 <%# ------------コメント関連------------ %>
 <div class="row bg-primary-subtle justify-content-center">
 
-<% if logged_in? %>
-<%= render 'comments/form', comment: @comment, post: @post %>
-<% end %>
+<div class="row mb-3" id="comment-form">
+  <%= form_with model: @comment, url: post_comments_path(@post) do |f| %>
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control mb-3" %>
+    <%= f.submit nil, class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 <table class="table">
-<tbody id="table-comment">
-  <% @post_comments.each do |comment| %>
-    <%= render 'comments/comment', comment: comment %>
-  <% end %>
-</tbody>
+  <tbody id="table-comment">
+    <% @post_comments.each do |comment| %>
+      <tr id="comment-<%= comment.id %>">
+
+        <td>
+            <p><%= simple_format(comment.body) %></p>
+        </td>
+
+        <td>
+            
+            <%= turbo_frame_tag 'edit' do %>
+              <%= link_to "編集", edit_comment_path(comment) %>
+            <% end %>
+
+            <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-
+<%# --------------------------- %>
+<%= turbo_frame_tag 'comme' do %>
+  <% @post_comments.each do |comment| %>
+    <p><%= simple_format(comment.body) %></p>
+  <% end %>
+<% end %>
 
 
 
