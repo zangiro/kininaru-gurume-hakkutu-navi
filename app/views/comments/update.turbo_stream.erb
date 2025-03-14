@@ -1,6 +1,14 @@
 <% if @comment.errors.present? %>
   <%= turbo_stream.replace "comment-#{@comment.id}" do %>
-  あ
+    <div id="comment-<%= @comment.id %>">
+      <%= form_with(model: @comment, url: comment_path(@comment), method: :patch) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :body %>
+        <%= f.text_area :body, class: "form-control mb-3" %>
+        <%= f.submit nil, class: "btn btn-primary" %>
+      <% end %>
+    </div>
   <% end %>
 <% else %>
   <%= turbo_stream.replace "comment-#{@comment.id}" do %>

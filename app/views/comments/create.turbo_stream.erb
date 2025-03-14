@@ -3,6 +3,7 @@
     <div class="row mb-3" id="comment-form">
       <%= form_with model: @comment, url: post_comments_path(@post) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
+        <%# ------------------エラーが存在する場合、上記のrenderでエラーメッセージが表示される--------------------- %>
         
         <%= f.label :body %>
         <%= f.text_area :body, class: "form-control mb-3" %>
