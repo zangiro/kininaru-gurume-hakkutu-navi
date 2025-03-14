@@ -17,11 +17,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = current_user.comments.find(params[:id])
-    if @comment.update(comment_update_params)
-      redirect_to root_path
-    else
-      redirect_to root_path, status: :unprocessable_entity
-    end
+    @comment.update(comment_update_params)
   end
 
   def destroy

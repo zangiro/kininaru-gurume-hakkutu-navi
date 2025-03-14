@@ -37,7 +37,6 @@ Rails.application.routes.draw do
       delete "remove_playlist"
     end
   end
-  # ---------------------------------resources :comments, only: %i[edit update]
   resources :view_histories, only: %i[index] do
     collection do
       delete "all_view_history_delete"
