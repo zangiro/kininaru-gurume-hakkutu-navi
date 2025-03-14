@@ -1,7 +1,13 @@
-<%= turbo_stream.replace "comment-#{@comment.id}" do %>
-  <div id="comment-<%= @comment.id %>">
-    <p><%= @comment.body %></p>
-    <%= link_to "編集", edit_comment_path(@comment) %>
-    <%= link_to "削除", comment_path(@comment), data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
-  </div>
+<% if @comment.errors.present? %>
+  <%= turbo_stream.replace "comment-#{@comment.id}" do %>
+  あ
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace "comment-#{@comment.id}" do %>
+    <div id="comment-<%= @comment.id %>">
+      <p><%= @comment.body %></p>
+      <%= link_to "編集", edit_comment_path(@comment) %>
+      <%= link_to "削除", comment_path(@comment), data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
+    </div>
+  <% end %>
 <% end %>

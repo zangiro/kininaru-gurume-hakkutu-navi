@@ -1,6 +1,8 @@
 <%= turbo_stream.replace "comment-#{@comment.id}" do %>
   <div id="comment-<%= @comment.id %>">
     <%= form_with(model: @comment, url: comment_path(@comment), method: :patch) do |f| %>
+      <%# ------- render 'shared/error_messages', object: f.object %>
+
       <%= f.label :body %>
       <%= f.text_area :body, class: "form-control mb-3" %>
       <%= f.submit nil, class: "btn btn-primary" %>
