@@ -1,21 +1,19 @@
 <% if @comment.errors.present? %>
   <%= turbo_stream.replace "comment-form" do %>
-    <div class="row mt-3 pt-1 bg-primary-subtle justify-content-center">
-      <div class="row mb-3" id="comment-form">
-        <%= form_with model: @comment, url: post_comments_path(@post) do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
-          <%# ------------------エラーが存在する場合、上記のrenderでエラーメッセージが表示される--------------------- %>
+    <div class="row mt-3 p-2 bg-primary-subtle" id="comment-form">
+      <%= form_with model: @comment, url: post_comments_path(@post) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%# ------------------エラーが存在する場合、上記のrenderでエラーメッセージが表示される--------------------- %>
         
-          <%= f.label :body %>
-          <%= f.text_area :body, class: "form-control mb-3" %>
-          <%= f.submit nil, class: "btn btn-primary" %>
-        <% end %>
-      </div>
+        <%= f.label :body %>
+        <%= f.text_area :body, class: "form-control mb-3" %>
+        <%= f.submit nil, class: "btn btn-primary" %>
+      <% end %>
     </div>
   <% end %>
 <% else %>
   <%= turbo_stream.prepend "cometest" do %>
-    <div id="comment-<%= @comment.id %>">
+    <div class="row mt-3 py-1 bg-danger" id="comment-<%= @comment.id %>">
       <p><%= @comment.body %></p>
       <%= link_to "編集", edit_comment_path(@comment) %>
       <%= link_to "削除", comment_path(@comment), data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
