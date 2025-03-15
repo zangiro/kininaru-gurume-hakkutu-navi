@@ -128,35 +128,11 @@
 
 
 <%# ------------コメント関連------------ %>
-<div class="row mt-3 p-2 bg-primary-subtle" id="comment-form">
-  <%= form_with model: @comment, url: post_comments_path(@post) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+<%= render "comments/form", comment: @comment, post: @post %>
 
-    <%= f.label :body %>
-    <%= f.text_area :body, class: "form-control mb-3" %>
-    <%= f.submit nil, class: "btn btn-primary" %>
-  <% end %>
-</div>
-
-
-
-
-
-<%# -------------コメント全部（途中）-------------- %>
 <%= turbo_frame_tag "all_comments" do %>
   <% @post_comments.each do |comment| %>
-    <div class="row mt-3 p-2 bg-danger" id="comment-<%= comment.id %>">
-      <div class="d-flex justify-content-between">
-        <div class="d-flex flex-row">
-          <p><%= t(".whose_comment", user_name: comment.user.name) %></p>
-          <%= link_to "編集", edit_comment_path(comment) %>
-          <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
-        </div>
-        <p><%= comment.updated_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
-      </div>
-
-      <p><%= comment.body %></p>
-    </div>
+    <%= render "comments/comment", comment: comment %>
   <% end %>
 <% end %>
 

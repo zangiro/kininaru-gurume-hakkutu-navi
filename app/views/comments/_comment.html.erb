@@ -1,26 +1,11 @@
-
+<div class="row mt-3 p-2 bg-danger" id="comment-<%= comment.id %>">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex flex-row">
+      <p><%= t("posts.show.whose_comment", user_name: comment.user.name) %></p>
+      <%= link_to "編集", edit_comment_path(comment) %>
+      <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
+    </div>
+    <p><%= comment.updated_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
+  </div>
   <p><%= comment.body %></p>
-
-
-
-  <table class="table">
-  <tbody id="table-comment">
-    <% @post_comments.each do |comment| %>
-      <tr id="comment-<%= comment.id %>">
-
-        <td>
-            <p><%= simple_format(comment.body) %></p>
-        </td>
-
-        <td>
-            
-            <%= turbo_frame_tag 'edit' do %>
-              <%= link_to "編集", edit_comment_path(comment) %>
-            <% end %>
-
-            <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
