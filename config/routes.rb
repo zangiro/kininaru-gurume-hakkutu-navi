@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       member do
         get "edit_cancel"
       end
+      collection do
+        get "replace_all_comments"
+      end
     end
   end
   resources :tags, only: %i[index] do

@@ -134,9 +134,12 @@
   <%= render "comments/form", comment: @comment, post: @post %>
 <% end %>
 
-<%= turbo_frame_tag "all_comments" do %>
+<%= turbo_frame_tag "limit_comments" do %>
   <% @post_comments.each do |comment| %>
     <%= render "comments/comment", comment: comment %>
+  <% end %>
+  <%= turbo_frame_tag "show_all" do %>
+    <%= link_to 'すべて表示する', replace_all_comments_post_comments_path(post_id: @post.id) %>
   <% end %>
 <% end %>
 

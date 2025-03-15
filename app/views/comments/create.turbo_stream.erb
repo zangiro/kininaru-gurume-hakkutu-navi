@@ -3,7 +3,7 @@
     <%= render "comments/form", comment: @comment, post: @post %>
   <% end %>
 <% else %>
-  <%= turbo_stream.prepend "all_comments" do %>
+  <%= turbo_stream.prepend "limit_comments" do %>
     <%= render "comments/comment", comment: @comment %>
   <% end %>
 
@@ -12,6 +12,6 @@
   <% end %>
 <% end %>
 
-<%# Prependアクションで「all_comments」のidを持つ要素の内部の最初に下記を追加 %>
+<%# Prependアクションで「limit_comments」のidを持つ要素の内部の最初に下記を追加 %>
 
 <%# replaceアクションで「comment-form」のidを持つ要素と下記を入れ替える %>

@@ -27,6 +27,10 @@ class CommentsController < ApplicationController
     render "comments/edit_cancel", content_type: "text/vnd.turbo-stream.html"
   end
 
+  def replace_all_comments
+    render "comments/replace_all_comments", content_type: "text/vnd.turbo-stream.html"
+  end
+
   private
 
   def comment_create_params
