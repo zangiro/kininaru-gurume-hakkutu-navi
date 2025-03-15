@@ -1,3 +1,10 @@
 <%= turbo_stream.replace "limit_comments" do %>
-  a
+  <%= turbo_frame_tag "limit_comments" do %>
+    <% @post_comments.each do |comment| %>
+      <%= render "comments/comment", comment: comment %>
+    <% end %>
+  <% end %>
 <% end %>
+
+<%# ------------------表示数制限状態は「limit_comments」。すべて表示するときも「limit_comments」。------------ %>
+<%# ---------------createのprependはどちらもOKだった。表示を折りたたむときも「limit_comments」を対象にすればうまくいくかな？--------------------- %>

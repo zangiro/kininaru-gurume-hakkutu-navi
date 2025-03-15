@@ -28,6 +28,8 @@ class CommentsController < ApplicationController
   end
 
   def replace_all_comments
+    @post = Post.find(params[:post_id])
+    @post_comments = @post.comments.includes(:user).order(updated_at: :desc)
     render "comments/replace_all_comments", content_type: "text/vnd.turbo-stream.html"
   end
 
