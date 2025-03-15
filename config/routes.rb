@@ -20,7 +20,11 @@ Rails.application.routes.draw do
       post "add_to_playlist"
     end
     resources :likes, only: %i[create destroy]
-    resources :comments, only: %i[create edit update destroy], shallow: true
+    resources :comments, only: %i[create edit update destroy], shallow: true do
+      member do
+        get "edit_cancel"
+      end
+    end
   end
   resources :tags, only: %i[index] do
     collection do

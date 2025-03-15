@@ -22,6 +22,11 @@ class CommentsController < ApplicationController
     @comment.destroy!
   end
 
+  def edit_cancel
+    @comment = current_user.comments.find(params[:id])
+    render "comments/edit_cancel", content_type: "text/vnd.turbo-stream.html"
+  end
+
   private
 
   def comment_create_params

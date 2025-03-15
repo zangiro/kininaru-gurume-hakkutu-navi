@@ -1,3 +1,11 @@
 <%= turbo_stream.replace "comment-#{@comment.id}" do %>
-  <%= render "comments/form_edit", comment: @comment %>
+  <div id="comment-<%= @comment.id %>">
+    <%= form_with(model: @comment, url: comment_path(@comment), method: :patch) do |f| %>
+
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "form-control mb-3" %>
+      <%= f.submit nil, class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to "キャンセル", edit_cancel_comment_path(@comment) %>
+  </div>
 <% end %>
