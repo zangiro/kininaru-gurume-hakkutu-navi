@@ -128,7 +128,9 @@
 
 
 <%# ------------コメント関連------------ %>
-<%= render "comments/form", comment: @comment, post: @post %>
+<% if logged_in? %>
+  <%= render "comments/form", comment: @comment, post: @post %>
+<% end %>
 
 <%= turbo_frame_tag "all_comments" do %>
   <% @post_comments.each do |comment| %>
