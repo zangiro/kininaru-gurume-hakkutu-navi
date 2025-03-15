@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
-  def index
-    # テスト用インデックス
-    @post = Post.find(2)
-    @post_comments = @post.comments.includes(:user)
-  end
+  before_action :require_login, only: %i[create edit update destroy]
 
   def create
     @comment = current_user.comments.new(comment_create_params)

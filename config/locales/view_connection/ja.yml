@@ -176,7 +176,7 @@ ja:
       closed_to_public: 非公開中??
       delete_confirm: 本当に削除しますか？??
     show:
-      posted_by: 投稿者:？
-      source: 出典:？
-      store_url: 店舗情報:？
+      posted_by: "投稿者:??"
+      source: "出典: %{post_source}????"
+      store_url: "店舗情報: %{post_store_url}???"
       whose_comment: "%{user_name}さんのコメント???"
