@@ -179,3 +179,4 @@ ja:
       posted_by: 投稿者:？
       source: 出典:？
       store_url: 店舗情報:？
+      whose_comment: "%{user_name}さんのコメント???"

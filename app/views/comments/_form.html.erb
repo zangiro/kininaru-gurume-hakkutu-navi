@@ -1,4 +1,4 @@
-<div class="row mb-3" id="comment-form">
+<div class="row mt-3 p-2 bg-primary-subtle" id="comment-form">
   <%= form_with model: comment, url: post_comments_path(post) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     
