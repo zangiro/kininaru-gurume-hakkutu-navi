@@ -4,6 +4,7 @@
 
     <%= f.label :body %>
     <%= f.text_area :body, class: "form-control mb-3" %>
+    <%= link_to t("helpers.submit.cancel"), edit_cancel_comment_path(comment), class: "btn btn-primary" %>
     <%= f.submit nil, class: "btn btn-primary" %>
   <% end %>
 </div>

@@ -9,6 +9,7 @@ ja:
       update: 更新？
       change: 変更？
       decision: 決定？
+      cancel: キャンセル？
   flash_message:
     user_create: ユーザーの新規作成をしました???
     post_create: 記事の作成をしました??
