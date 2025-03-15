@@ -1,28 +1,9 @@
 <% if @comment.errors.present? %>
   <%= turbo_stream.replace "comment-#{@comment.id}" do %>
-    <div class="row mt-3 p-2 bg-danger" id="comment-<%= @comment.id %>">
-      <%= form_with(model: @comment, url: comment_path(@comment), method: :patch) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-
-        <%= f.label :body %>
-        <%= f.text_area :body, class: "form-control mb-3" %>
-        <%= f.submit nil, class: "btn btn-primary" %>
-      <% end %>
-    </div>
+    <%= render "comments/form_edit", comment: @comment %>
   <% end %>
 <% else %>
   <%= turbo_stream.replace "comment-#{@comment.id}" do %>
-    <div class="row mt-3 p-2 bg-danger" id="comment-<%= @comment.id %>">
-      <div class="d-flex justify-content-between">
-        <div class="d-flex flex-row">
-          <p><%= t("posts.show.whose_comment", user_name: @comment.user.name) %></p>
-          <%= link_to "編集", edit_comment_path(@comment) %>
-          <%= link_to "削除", comment_path(@comment), data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
-        </div>
-        <p><%= @comment.updated_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
-      </div>
-
-      <p><%= @comment.body %></p>
-    </div>
+    <%= render "comments/comment", comment: @comment %>
   <% end %>
 <% end %>
