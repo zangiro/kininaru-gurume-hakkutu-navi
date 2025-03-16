@@ -20,7 +20,14 @@ Rails.application.routes.draw do
       post "add_to_playlist"
     end
     resources :likes, only: %i[create destroy]
-    resources :comments, only: %i[create edit destroy], shallow: true
+    resources :comments, only: %i[create edit update destroy], shallow: true do
+      member do
+        get "edit_cancel"
+      end
+      collection do
+        get "replace_all_comments"
+      end
+    end
   end
   resources :tags, only: %i[index] do
     collection do
@@ -37,7 +44,6 @@ Rails.application.routes.draw do
       delete "remove_playlist"
     end
   end
-  resources :comments, only: %i[edit update]
   resources :view_histories, only: %i[index] do
     collection do
       delete "all_view_history_delete"

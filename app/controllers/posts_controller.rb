@@ -43,7 +43,7 @@ class PostsController < ApplicationController
     @outher_tags = params[:outher_tags] || []
     @post_path = params[:post_path]
     @comment = Comment.new
-    @post_comments = @post.comments.includes(:user)
+    @post_comments = @post.comments.includes(:user).order(updated_at: :desc).limit(3)
 
     if logged_in?
       # 閲覧履歴を残す処理

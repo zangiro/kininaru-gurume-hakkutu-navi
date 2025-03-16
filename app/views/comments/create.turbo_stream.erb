@@ -1,15 +1,17 @@
 <% if @comment.errors.present? %>
   <%= turbo_stream.replace "comment-form" do %>
-    <%= render 'comments/form', comment: @comment, post: @comment.post %>
+    <%= render "comments/form", comment: @comment, post: @post %>
   <% end %>
 <% else %>
-  <%= turbo_stream.prepend "table-comment" do %>
-  <%# Prependアクションで「table-comment」のidを持つ要素の内部の最初に下記を追加 %>
-    <%= render 'comments/comment', comment: @comment %>
+  <%= turbo_stream.prepend "limit_comments" do %>
+    <%= render "comments/comment", comment: @comment %>
   <% end %>
 
   <%= turbo_stream.replace "comment-form" do %>
-  <%# replaceアクションで「comment-form」のidを持つ要素と下記を入れ替える（文字入力後のフォームと空のフォームを入れ替える） %>
-    <%= render 'comments/form', comment: Comment.new, post: @comment.post %>
+    <%= render "comments/form", comment: Comment.new, post: @post %>
   <% end %>
 <% end %>
+
+<%# Prependアクションで「limit_comments」のidを持つ要素の内部の最初に下記を追加 %>
+
+<%# replaceアクションで「comment-form」のidを持つ要素と下記を入れ替える %>

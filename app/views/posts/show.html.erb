@@ -2,40 +2,42 @@
 <% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @user, @playlist, @post_path %>
 <%# パンくずリスト呼ぶとき選択したタグ情報を保持する %>
 
+
 <div class="container">
 <div class="row">
-<%= @post.title %>
+  <%= @post.title %>
 </div>
 
 <div class="row">
-<% @post.area_tags.each do |area_tag| %>
-<%= area_tag.name %>
-<% end %>
-<% @post.genre_tags.each do |genre_tag| %>
-<%= genre_tag.name %>
-<% end %>
-<% @post.taste_tags.each do |taste_tag| %>
-<%= taste_tag.name %>
-<% end %>
-<% @post.outher_tags.each do |outher_tag| %>
-<%= outher_tag.name %>
-<% end %>
+  <% @post.area_tags.each do |area_tag| %>
+    <%= area_tag.name %>
+  <% end %>
+  <% @post.genre_tags.each do |genre_tag| %>
+    <%= genre_tag.name %>
+  <% end %>
+  <% @post.taste_tags.each do |taste_tag| %>
+    <%= taste_tag.name %>
+  <% end %>
+  <% @post.outher_tags.each do |outher_tag| %>
+    <%= outher_tag.name %>
+  <% end %>
 </div>
 
-<div class="row d-flex">
-<span><%= t(".posted_by") %> <%= link_to @posted_user.name, user_path(@posted_user) %></span>
-</div>
-
-<div class="row">
-<% if @post.source.present? %>
-<%= t(".source") %> <%= @post.source %>
-<% end %>
+<div class="d-flex flex-row">
+  <div><%= t(".posted_by") %></div>
+  <div><%= link_to @posted_user.name, user_path(@posted_user) %></div>
 </div>
 
 <div class="row">
-<% if @post.store_url.present? %>
-<%= t(".store_url") %> <%= @post.store_url %>
-<% end %>
+  <% if @post.source.present? %>
+    <%= t(".source", post_source: @post.source) %>
+  <% end %>
+</div>
+
+<div class="row">
+  <% if @post.store_url.present? %>
+    <%= t(".store_url", post_store_url: @post.store_url) %>
+  <% end %>
 </div>
 
 <%# -----------------------画像関連-------------------------- %>
@@ -128,53 +130,20 @@
 
 
 <%# ------------コメント関連------------ %>
-<div class="row bg-primary-subtle justify-content-center">
-
 <% if logged_in? %>
-<%= render 'comments/form', comment: @comment, post: @post %>
+  <%= render "comments/form", comment: @comment, post: @post %>
 <% end %>
 
-<table class="table">
-<tbody id="table-comment">
+<%= turbo_frame_tag "limit_comments" do %>
   <% @post_comments.each do |comment| %>
-    <%= render 'comments/comment', comment: comment %>
+    <%= render "comments/comment", comment: comment %>
   <% end %>
-</tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="col-12">
-<table class="table">
-    <tbody id="table-comment">
-        <tr>
-            <td>
-                <p>こんにちは</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
-</div>
-  <div class="col-12">
-  <div class="border p-3 m-2 bg-light">
-  a
-  </div>
-  </div>
-</div>
-
-
-
-
+  <% if @post_comments.present? %>
+    <%= turbo_frame_tag "show_all" do %>
+       <%= link_to "すべて表示する(あとでアイコン化)", replace_all_comments_post_comments_path(post_id: @post.id) %>
+    <% end %>
+  <% end %>
+<% end %>
 
 
 </div> 
