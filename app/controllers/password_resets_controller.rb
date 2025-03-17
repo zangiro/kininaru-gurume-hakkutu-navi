@@ -1,6 +1,4 @@
 class PasswordResetsController < ApplicationController
-  skip_before_action :require_login
-
   def new; end
 
   def create
@@ -11,9 +9,9 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    @token = params[:id]
-    @user = User.load_from_reset_password_token(params[:id])
-    not_authenticated if @user.blank?
+    #@token = params[:id]
+    #@user = User.load_from_reset_password_token(params[:id])
+    #not_authenticated if @user.blank?
   end
 
   def update
