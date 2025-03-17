@@ -9,6 +9,9 @@ class User < ApplicationRecord
   validates :is_public, inclusion: { in: [ true, false ], message: "@を選んでください" }
   # あとでrailsi-18n化したい
   validate :agreement
+  validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
+  # 値が存在するならユニークな値、 もしくは値がない場合ならバリデーションが通る。
+  # トークンが必要なときにだけバリデーションを厳しくして、トークンが不要な場合にはエラーが出ないようにするため
 
   has_many :posts, dependent: :destroy
   has_many :playlists, dependent: :destroy
