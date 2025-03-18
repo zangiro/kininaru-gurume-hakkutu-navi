@@ -1,4 +1,6 @@
 class PasswordResetsController < ApplicationController
+  before_action :redirect_if_logged_in, only: %i[new create edit update]
+
   def new; end
 
   def create
@@ -31,10 +33,10 @@ class PasswordResetsController < ApplicationController
       redirect_to login_path
       flash[:success]= 'パスワードがリセットされました'
     else
-      render action: 'edit'
-      # もしくは
-      flash.now[:danger] = t('.fail')
+      flash.now[:danger] = "失敗"
       render :edit, status: :unprocessable_entity
     end
   end
+  # 「change_password」はsorceryのメソッド。新しいパスワードをユーザーオブジェクトに設定し、パスワードを更新する処理を実行。
+  # 成功でtrue、失敗（確認用のパスワードと異なる場合）でfalseを返す。
 end

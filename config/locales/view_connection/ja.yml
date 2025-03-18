@@ -11,6 +11,7 @@ ja:
       decision: 決定？
       cancel: キャンセル？
   flash_message:
+    logged_in: ログイン中です？？
     user_create: ユーザーの新規作成をしました???
     post_create: 記事の作成をしました??
     post_create_failure: 記事の作成に失敗しました??
