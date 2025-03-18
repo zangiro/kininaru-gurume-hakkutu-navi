@@ -9,10 +9,16 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    #@token = params[:id]
-    #@user = User.load_from_reset_password_token(params[:id])
-    #not_authenticated if @user.blank?
+    @token = params[:id]
+    @user = User.load_from_reset_password_token(params[:id])
+    not_authenticated if @user.blank?
   end
+  # 「load_from_reset_password_token」はsorcery のメソッド。
+  # 与えられたトークンを使ってユーザーを検索し、該当するユーザーオブジェクトを返す。
+  # もしトークンが無効だったり、ユーザーが見つからなかったりすると、nil を返すことになる。
+  
+  # 「not_authenticated」はユーザーが認証されていない場合に呼び出されるメソッド。
+  # このメソッドが実行されると、通常はサインインページにリダイレクトしたり、エラーメッセージを表示したりする処理が行われる
 
   def update
     @token = params[:id]
