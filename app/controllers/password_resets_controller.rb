@@ -39,4 +39,5 @@ class PasswordResetsController < ApplicationController
   end
   # 「change_password」はsorceryのメソッド。新しいパスワードをユーザーオブジェクトに設定し、パスワードを更新する処理を実行。
   # 成功でtrue、失敗（確認用のパスワードと異なる場合）でfalseを返す。
+  # 「@user.password_confirmation」は後のif文がfalseでも値が更新されたままになりそうだけど弊害はなさそう。
 end
