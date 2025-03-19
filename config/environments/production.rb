@@ -65,17 +65,17 @@ Rails.application.configure do
   # falseでメールのテンプレートや部分テンプレートのキャッシュが無効になる
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "myapp-young-night-9527.fly.dev", protocol: "https" }
+  config.action_mailer.default_url_options = Settings.default_url_options.to_h
 
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              "smtp.gmail.com",
     port:                 587,
-    domain:               'myapp-young-night-9527.fly.dev',
-    user_name:            ENV['GMAIL_USERNAME'],
-    password:             ENV['GMAIL_PASSWORD'],
-    authentication:       'plain',
+    domain:               "myapp-young-night-9527.fly.dev",
+    user_name:            ENV["GMAIL_USERNAME"],
+    password:             ENV["GMAIL_PASSWORD"],
+    authentication:       "plain",
     enable_starttls_auto: true
   }
 
