@@ -1,14 +1,22 @@
+<div class="container">
+<div class="row">
+<p>ページタイトル（仮）</p>
+<p>パンくずリスト（仮）</p>
 <h3>パスワード再設定</h3>
 
 <%= form_with model: @user, url: password_reset_path(@token) do |f| %>
+  <div class="form-group">
   <%= f.label :email %>
   <%= @user.email %>
-
+  </div>
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, class: "form-control" %>
 
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :password_confirmation, class: "form-control" %>
 
   <%= f.submit 'リセット' %>
 <% end %>
+
+</div>
+</div>
