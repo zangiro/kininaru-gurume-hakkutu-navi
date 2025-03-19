@@ -19,8 +19,7 @@ class PasswordResetsController < ApplicationController
   # 与えられたトークンを使ってユーザーを検索し、該当するユーザーオブジェクトを返す。
   # もしトークンが無効だったり、ユーザーが見つからなかったりすると、nil を返すことになる。
   
-  # 「not_authenticated」はユーザーが認証されていない場合に呼び出されるメソッド。
-  # このメソッドが実行されると、通常はサインインページにリダイレクトしたり、エラーメッセージを表示したりする処理が行われる
+  # 「not_authenticated」はユーザーが認証されていない場合に呼び出されるメソッド。applicationコントローラーに記載。
 
   def update
     @token = params[:id]
