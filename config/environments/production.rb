@@ -58,8 +58,14 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.raise_delivery_errors = true
+  #メール送信に失敗した場合にエラーを発生させる
+
+  config.action_mailer.perform_caching = false
+  # falseでメールのテンプレートや部分テンプレートのキャッシュが無効になる
+
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "example.com" }
+  config.action_mailer.default_url_options = { host: "myapp-young-night-9527.fly.dev", protocol: "https" }
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.smtp_settings = {
