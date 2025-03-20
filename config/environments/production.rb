@@ -59,7 +59,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.raise_delivery_errors = true
-  #メール送信に失敗した場合にエラーを発生させる
+  # メール送信に失敗した場合にエラーを発生させる
 
   config.action_mailer.perform_caching = false
   # falseでメールのテンプレートや部分テンプレートのキャッシュが無効になる

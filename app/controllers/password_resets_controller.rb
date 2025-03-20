@@ -18,7 +18,7 @@ class PasswordResetsController < ApplicationController
   # 「load_from_reset_password_token」はsorcery のメソッド。
   # 与えられたトークンを使ってユーザーを検索し、該当するユーザーオブジェクトを返す。
   # もしトークンが無効だったり、ユーザーが見つからなかったりすると、nil を返すことになる。
-  
+
   # 「not_authenticated」はユーザーが認証されていない場合に呼び出されるメソッド。applicationコントローラーに記載。
 
   def update
@@ -30,7 +30,7 @@ class PasswordResetsController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.change_password(params[:user][:password])
       redirect_to login_path
-      flash[:success]= 'パスワードがリセットされました'
+      flash[:success]= "パスワードがリセットされました"
     else
       flash.now[:danger] = "失敗"
       render :edit, status: :unprocessable_entity
