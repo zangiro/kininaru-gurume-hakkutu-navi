@@ -32,13 +32,23 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
+  # ----メールの送信に失敗してもエラーを raise（投げ）しないようにする設定。不要？------
+
+  config.action_mailer.delivery_method = :letter_opener_web
+
+  config.action_mailer.perform_deliveries = true
+  # Action Mailer が実際にメールを送信するかどうかを制御するもの
 
   # Make template changes take effect immediately.
   config.action_mailer.perform_caching = false
+  # Action Mailer におけるメールキャッシュの動作を制御するもの。不要？
+  # falseでメールのテンプレートや部分テンプレートのキャッシュが無効になる
+  # つまり、メールを送信するたびに、毎回最新のテンプレートが使われテンプレートの変更がすぐに反映される
+  # 本番環境ではキャッシュを有効にしておくことで、パフォーマンスが向上することが多い
 
   # Set localhost to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.default_url_options = Settings.default_url_options.to_h
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

@@ -1,3 +1,6 @@
+default_url_options:
+  protcol: "https"
+  host: "myapp-young-night-9527.fly.dev"
 redis:
   host: redis
   port: 6379

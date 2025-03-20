@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   root "static_pages#top"
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"
@@ -49,6 +51,7 @@ Rails.application.routes.draw do
       delete "all_view_history_delete"
     end
   end
+  resources :password_resets, only: %i[new create edit update]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

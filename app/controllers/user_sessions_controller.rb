@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
   before_action :require_login, only: %i[destroy]
+  before_action :redirect_if_logged_in, only: %i[new create]
 
   def new; end
 
