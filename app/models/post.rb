@@ -107,6 +107,6 @@ class Post < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    [ "dish", "area_tags", "genre_tags" ]
+    [ "dish", "area_tags", "genre_tags", "taste_tags", "outher_tags" ]
   end
 end
