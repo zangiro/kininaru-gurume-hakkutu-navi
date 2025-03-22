@@ -103,10 +103,10 @@ class Post < ApplicationRecord
   # 記事一覧やタグ検索時の簡略化用メソッド。現在NoMethodErrorで未実装
 
   def self.ransackable_attributes(auth_object = nil)
-    ["title"]  # 検索可能な属性をここに追加
+    [ "title" ]  # 検索可能な属性をここに追加
   end
 
   def self.ransackable_associations(auth_object = nil)
-    [ "dish", "area_tags", "genre_tags", "taste_tags", "outher_tags" ]
+    [ "dish", "area_tags", "genre_tags", "taste_tags", "outher_tags" ] # 同時に検索したいテーブルを記す
   end
 end

@@ -4,7 +4,7 @@ class Dish < ApplicationRecord
   belongs_to :post
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "description" ]
+    [ "description", "introduction" ]
   end
 
   def self.ransackable_associations(auth_object = nil)
