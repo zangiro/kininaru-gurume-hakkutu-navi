@@ -35,6 +35,15 @@
     <%# ----------補足: no_postings  投稿がありません---------- %>
   <% end %>
 
+  ----------------------検索テスト--------------------
+  <%= link_to "検索テスト", index_test_posts_path %>
+
+  <%= search_form_for @q, url: index_test_posts_path do |f| %>
+    <%= f.search_field :title_or_dish_description_cont, class: 'form-control', placeholder: '検索ワード' %>
+    <%= f.submit '検索', class: 'btn btn-primary' %>
+  <% end %>
+
+
 <%# -------------------来訪者用--------------------- %>
 
 <% elsif @user.is_public %>

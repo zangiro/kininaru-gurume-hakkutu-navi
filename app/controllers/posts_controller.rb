@@ -14,7 +14,13 @@ class PostsController < ApplicationController
     @taste_tag_name = []
     @outher_tag_name = []
   end
-
+# ------------------------------
+  def index_test
+    @test = "eee"
+    @q = Post.ransack(params[:q])
+    @tests = @q.result(distinct: true).includes(:user, :dish)
+  end
+# ------------------------------
   def index
     @user = User.find(params[:user_id])
     if params[:latest]
@@ -29,6 +35,10 @@ class PostsController < ApplicationController
     # 簡略化用メソッド「post_test」を実装したい。現在NoMethodErrorで未実装
 
     @post_path = "1"
+    # ------------------------------
+    @q = Post.ransack(params[:q])
+    #@tests = @q.result(distinct: true).includes(:user, :dish)
+    # ------------------------------
   end
 
   def show

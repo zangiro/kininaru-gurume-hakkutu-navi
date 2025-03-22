@@ -30,6 +30,11 @@ Rails.application.routes.draw do
         get "replace_all_comments"
       end
     end
+# ------------------------------
+    collection do
+      get "index_test"
+    end
+    # ------------------------------
   end
   resources :tags, only: %i[index] do
     collection do
