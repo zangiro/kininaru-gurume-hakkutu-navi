@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def index_test
     @test = "eee"
     @q = Post.ransack(params[:q])
-    @tests = @q.result(distinct: true).includes(:user, :dish)
+    @tests = @q.result(distinct: true).includes(:user, :dish, :area_tags)
   end
 # ------------------------------
   def index
