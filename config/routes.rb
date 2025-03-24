@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 # ------------------------------
     collection do
       get "index_test"
+      get "search"
+      get "autocomplete"
     end
     # ------------------------------
   end

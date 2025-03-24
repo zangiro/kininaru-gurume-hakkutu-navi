@@ -163,9 +163,43 @@ class PostsController < ApplicationController
     redirect_to root_path, success: "@プレイリストに追加しました"
   end
 
+  def search
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
+    respond_to do |format|
+      format.js # JSリクエストに対応
+      format.html { render :search }  # format.jsのみだとhtmlのリクエスト来たときエラーになるのでformat.htmlつける
+    end
+  end
+
+  def autocomplete
+    @posts = search_posts(params[:q])
+    respond_to do |format|
+      format.js
+      format.json { render json: @posts.pluck(:title) }
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:id, :title, :source, :store_url, :main_image, :sub_image_first, :sub_image_second, dish_attributes: [ :id, :introduction, :description ], post_area_tags_attributes: [ :id, area_tag_attributes: [ :id, :name ] ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ] ], post_taste_tags_attributes: [ :id, taste_tag_attributes: [ :id, :name ] ], post_outher_tags_attributes: [ :id, outher_tag_attributes: [ :id, :name ] ])
+  end
+
+  def search_posts(query)
+    conditions = [
+        "title ILIKE ?",
+        "title ILIKE ?",
+        "title ILIKE ?",
+        "title ILIKE ?",
+        "title ILIKE ?" ]
+
+    search_queries = [
+        "%#{query}%",
+        "%#{query.tr('ぁ-ん', 'ァ-ン')}%",
+        "%#{query.tr('ァ-ン', 'ぁ-ん')}%",
+        "%#{query.tr('a-zA-Z', '')}%" ]
+    posts = Post.where(conditions.join(" OR "), *search_queries)
+    posts
   end
 end

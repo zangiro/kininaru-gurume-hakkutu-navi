@@ -1,0 +1,7 @@
+<ul class="list-group absolute">
+  <% @posts.each do |post| %>
+    <li class="autocomplete-item" role="option">
+      <%= post.title %>
+    </li>
+  <% end %>
+</ul>

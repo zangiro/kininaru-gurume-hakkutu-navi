@@ -38,12 +38,21 @@
   ----------------------検索テスト--------------------
   <%= link_to "検索テスト", index_test_posts_path %>
 
-  <%= search_form_for @q, url: index_test_posts_path do |f| %>
-    <%= f.search_field :title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont, class: 'form-control', placeholder: '検索ワード' %>
+  <%= search_form_for @q, url: search_posts_path do |f| %>
+    <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_posts_path %>" role="combobox">
+
+      <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, placeholder: '検索ワード' %>
+      <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
+      <ul class="list-group bg-white absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
+      <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4"></div>
+
+    </div>
     <%= f.submit '検索', class: 'btn btn-primary' %>
   <% end %>
 
 
+  <%# search_form_for @q, url: index_test_posts_path do |f| %>
+  <%# f.search_field :title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont, class: 'form-control', placeholder: '検索ワード' %>
 <%# -------------------来訪者用--------------------- %>
 
 <% elsif @user.is_public %>
