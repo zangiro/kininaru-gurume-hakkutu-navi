@@ -5,6 +5,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
+  end
+
+  def search
+    @users = User.where("name like ?", "%#{params[:q]}%")
+    render partial: "search"
+  end
+
   def show
     @user = User.find(params[:id])
   end

@@ -14,13 +14,13 @@ class PostsController < ApplicationController
     @taste_tag_name = []
     @outher_tag_name = []
   end
-# ------------------------------
+  # ------------------------------
   def index_test
     @test = "eee"
     @q = Post.ransack(params[:q])
     @tests = @q.result(distinct: true).includes(:user, :dish, :area_tags, :genre_tags, :taste_tags, :outher_tags)
   end
-# ------------------------------
+  # ------------------------------
   def index
     @user = User.find(params[:user_id])
     if params[:latest]
@@ -166,19 +166,15 @@ class PostsController < ApplicationController
   def search
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true)
-    respond_to do |format|
-      format.js # JSリクエストに対応
-      format.html { render :search }  # format.jsのみだとhtmlのリクエスト来たときエラーになるのでformat.htmlつける
-    end
+    #respond_to do |format|
+    #  format.js # JSリクエストに対応
+    #  format.html { render :search }  # format.jsのみだとhtmlのリクエスト来たときエラーになるのでformat.htmlつける
+    #end
   end
 
   def autocomplete
-    #@posts = search_posts(params[:q])
-    @posts = Post.all
-    respond_to do |format|
-      format.js
-      format.json { render json: @posts.pluck(:title) }
-    end
+    @posts = Post.where("title like ?", "%#{params[:q]}%")
+    render partial: "autocomplete"
   end
 
   private
@@ -187,20 +183,20 @@ class PostsController < ApplicationController
     params.require(:post).permit(:id, :title, :source, :store_url, :main_image, :sub_image_first, :sub_image_second, dish_attributes: [ :id, :introduction, :description ], post_area_tags_attributes: [ :id, area_tag_attributes: [ :id, :name ] ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ] ], post_taste_tags_attributes: [ :id, taste_tag_attributes: [ :id, :name ] ], post_outher_tags_attributes: [ :id, outher_tag_attributes: [ :id, :name ] ])
   end
 
-  def search_posts(query)
-    conditions = [
-        "title ILIKE ?",
-        "title ILIKE ?",
-        "title ILIKE ?",
-        "title ILIKE ?",
-        "title ILIKE ?" ]
+  #def search_posts(query)
+  #  conditions = [
+  #      "title ILIKE ?",
+  #      "title ILIKE ?",
+  #      "title ILIKE ?",
+  #      "title ILIKE ?",
+  #      "title ILIKE ?" ]
 
-    search_queries = [
-        "%#{query}%",
-        "%#{query.tr('ぁ-ん', 'ァ-ン')}%",
-        "%#{query.tr('ァ-ン', 'ぁ-ん')}%",
-        "%#{query.tr('a-zA-Z', '')}%" ]
-    posts = Post.where(conditions.join(" OR "), *search_queries)
-    posts
-  end
+  #  search_queries = [
+  #      "%#{query}%",
+  #      "%#{query.tr('ぁ-ん', 'ァ-ン')}%",
+  #      "%#{query.tr('ァ-ン', 'ぁ-ん')}%",
+  #      "%#{query.tr('a-zA-Z', '')}%" ]
+  #  posts = Post.where(conditions.join(" OR "), *search_queries)
+  #  posts
+  #end
 end

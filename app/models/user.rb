@@ -65,4 +65,8 @@ class User < ApplicationRecord
     id == object&.user_id
   end
   # current_user.own?(comment)と使い、コメントの作成者がログイン中のユーザーのものか確認してる
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "name" ]
+  end
 end

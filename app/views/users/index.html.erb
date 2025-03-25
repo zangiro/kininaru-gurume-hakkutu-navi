@@ -7,22 +7,29 @@
 
 
 <h1>ユーザー一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>メールアドレス</th>
-      <th>公開設定</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.is_public ? '許可' : '不許可' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'トップ', root_path %>
+
+<%= search_form_for @q, url: users_path do |f| %>
+  <div data-controller="autocomplete" data-autocomplete-url-value="/users/search" role="combobox" class="flex-grow">
+    <%= f.search_field :name_cont, data: { autocomplete_target: 'input' }, class: 'form-control', placeholder: 'ジム名で検索' %>
+    <%= f.hidden_field :name, data: { autocomplete_target: 'hidden' } %>
+    <ul class="list-group z-10 bg-base-100 dark:bg-base-200 hover:bg-base-200 dark:hover:bg-base-100 absolute w-full md:text-sm" data-autocomplete-target="results">
+    </ul>
+    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-3">
+      <span class="material-symbols-outlined text-gray-400">search</span>
+    </div>
+  </div>
+
+  <%= f.submit "BBB" %>
+<% end %>
+
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= user.name %>
+  <% end %>
+</div>
+
+
+
+
+

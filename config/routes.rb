@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     collection do
       delete "aws_test_delete"
     end
+    get :search, on: :collection
   end
   resources :posts do
     member do
@@ -34,8 +35,9 @@ Rails.application.routes.draw do
     collection do
       get "index_test"
       get "search"
-      get "autocomplete"
+      
     end
+    get :autocomplete, on: :collection
     # ------------------------------
   end
   resources :tags, only: %i[index] do
