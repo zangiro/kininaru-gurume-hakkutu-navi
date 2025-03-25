@@ -173,7 +173,8 @@ class PostsController < ApplicationController
   end
 
   def autocomplete
-    @posts = search_posts(params[:q])
+    #@posts = search_posts(params[:q])
+    @posts = Post.all
     respond_to do |format|
       format.js
       format.json { render json: @posts.pluck(:title) }
