@@ -31,11 +31,10 @@ Rails.application.routes.draw do
         get "replace_all_comments"
       end
     end
-# ------------------------------
+    # ------------------------------
     collection do
       get "index_test"
       get "search"
-      
     end
     get :autocomplete, on: :collection
     # ------------------------------

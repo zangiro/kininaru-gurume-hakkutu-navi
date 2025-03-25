@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     @post_path = "1"
     # ------------------------------
     @q = Post.ransack(params[:q])
-    #@tests = @q.result(distinct: true).includes(:user, :dish)
+    # @tests = @q.result(distinct: true).includes(:user, :dish)
     # ------------------------------
   end
 
@@ -166,10 +166,10 @@ class PostsController < ApplicationController
   def search
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true)
-    #respond_to do |format|
+    # respond_to do |format|
     #  format.js # JSリクエストに対応
     #  format.html { render :search }  # format.jsのみだとhtmlのリクエスト来たときエラーになるのでformat.htmlつける
-    #end
+    # end
   end
 
   def autocomplete
@@ -183,7 +183,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:id, :title, :source, :store_url, :main_image, :sub_image_first, :sub_image_second, dish_attributes: [ :id, :introduction, :description ], post_area_tags_attributes: [ :id, area_tag_attributes: [ :id, :name ] ], post_genre_tags_attributes: [ :id, genre_tag_attributes: [ :id, :name ] ], post_taste_tags_attributes: [ :id, taste_tag_attributes: [ :id, :name ] ], post_outher_tags_attributes: [ :id, outher_tag_attributes: [ :id, :name ] ])
   end
 
-  #def search_posts(query)
+  # def search_posts(query)
   #  conditions = [
   #      "title ILIKE ?",
   #      "title ILIKE ?",
@@ -198,5 +198,5 @@ class PostsController < ApplicationController
   #      "%#{query.tr('a-zA-Z', '')}%" ]
   #  posts = Post.where(conditions.join(" OR "), *search_queries)
   #  posts
-  #end
+  # end
 end
