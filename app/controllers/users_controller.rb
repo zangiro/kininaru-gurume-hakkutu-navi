@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: %i[edit update]
+  before_action :require_login, only: %i[edit update destroy_avatar]
 
   def new
     @user = User.new
@@ -35,8 +35,7 @@ class UsersController < ApplicationController
     end
 
     if @user.update(user_params)
-      # redirect_to user_path(current_user), success: t("flash_message.update_success")
-      redirect_to root_path, success: t("flash_message.update_success")
+      redirect_to user_path(current_user), success: t("flash_message.update_success")
     else
       flash.now[:danger] = t("flash_message.update_failure")
       render :edit, status: :unprocessable_entity
@@ -47,13 +46,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.avatar.purge
 
-    redirect_to root_path, success: "@仮----削除しました----------"
-  end
-
-  def aws_test_delete
-    # @test1 = ActiveStorage::Blob.unattached.find_each   #エラー出ず
-    ActiveStorage::Blob.unattached.find_each(&:purge)
-    redirect_to root_path
+    redirect_to user_path(current_user), success: "@仮----削除しました----------"
   end
 
   private

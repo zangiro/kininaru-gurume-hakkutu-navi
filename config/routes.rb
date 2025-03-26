@@ -13,9 +13,6 @@ Rails.application.routes.draw do
     member do
       delete "destroy_avatar"
     end
-    collection do
-      delete "aws_test_delete"
-    end
   end
   resources :posts do
     member do
@@ -39,7 +36,12 @@ Rails.application.routes.draw do
       get "replace_outher_tags"
     end
   end
-  resources :searchs, only: %i[index]
+  resources :searchs, only: %i[index] do
+    collection do
+      get "search_by_form"
+      get "autocomplete"
+    end
+  end
   resources :playlists do
     resources :posts, only: %i[show]
     member do
