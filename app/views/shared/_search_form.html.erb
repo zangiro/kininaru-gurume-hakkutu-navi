@@ -1,4 +1,14 @@
-<%= search_form_for @q, url: search_by_form_path do |f| %>
-  <%= f.search_field :title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont, class: 'form-control', placeholder: '検索ワード' %>
+<%= search_form_for @q, url: search_by_form_searchs_path do |f| %>
+  <div data-controller="autocomplete" data-autocomplete-url-value="/searchs/autocomplete" role="combobox" class="flex-grow">
+
+    <%= f.search_field :title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont, data: { autocomplete_target: 'input' }, class: 'form-control', placeholder: '検索ワード' %>
+    <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
+
+    <ul class="list-group z-10 bg-base-100 dark:bg-base-200 hover:bg-base-200 dark:hover:bg-base-100 absolute w-full md:text-sm" data-autocomplete-target="results">
+    </ul>
+
+    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-3">
+    </div>
+  </div>
   <%= f.submit '検索', class: 'btn btn-primary' %>
 <% end %>

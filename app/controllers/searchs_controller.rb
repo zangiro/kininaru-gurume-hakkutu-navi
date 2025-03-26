@@ -1,9 +1,4 @@
 class SearchsController < ApplicationController
-  def search_by_form
-    @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page]).per(5)
-  end
-
   def index
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
@@ -63,5 +58,15 @@ class SearchsController < ApplicationController
       @all_users_view_histories = ViewHistory.order(created_at: :desc).limit(30)
     end
     @recommendations = Post.joins(:view_histories).where(view_histories: { id: @all_users_view_histories }).group("posts.id").order("COUNT(posts.id) DESC").limit(@maximum_number)
+  end
+
+  def search_by_form
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).page(params[:page]).per(5)
+  end
+
+  def autocomplete
+    @posts = Post.where("title like ?", "%#{params[:q]}%")
+    render partial: "autocomplete"
   end
 end
