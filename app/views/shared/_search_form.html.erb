@@ -1,0 +1,4 @@
+<%= search_form_for @q, url: search_by_form_path do |f| %>
+  <%= f.search_field :title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont, class: 'form-control', placeholder: '検索ワード' %>
+  <%= f.submit '検索', class: 'btn btn-primary' %>
+<% end %>

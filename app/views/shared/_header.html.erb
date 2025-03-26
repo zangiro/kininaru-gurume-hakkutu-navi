@@ -6,10 +6,7 @@
       </div>
       <div class="col-3"><%= t(".login_now") %></div>
       <div class="col-4">
-        <form class="d-flex">
-          <input class="form-control me-2 my-3" type="search" placeholder="あいまい検索用（未実装）" aria-label="Search">
-          <button class="btn btn-outline-success py-2" type="submit">@検索</button>
-        </form>
+        <%= render "shared/search_form" %>
       </div>
       <div class="col-1"></div>
       <div class="col-1">

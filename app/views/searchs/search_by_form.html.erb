@@ -1,0 +1,5 @@
+ああ
+<% @posts.each do |post| %>
+  <%= post.title %>
+<% end %>
+<%= paginate @posts, theme: "bootstrap-5" %>

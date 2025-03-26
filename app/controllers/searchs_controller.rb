@@ -1,4 +1,9 @@
 class SearchsController < ApplicationController
+  def search_by_form
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).page(params[:page]).per(5)
+  end
+
   def index
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
