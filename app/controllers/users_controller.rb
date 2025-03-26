@@ -5,16 +5,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def index
-    @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
-  end
-
-  def search
-    @users = User.where("name like ?", "%#{params[:q]}%")
-    render partial: "search"
-  end
-
   def show
     @user = User.find(params[:id])
   end
@@ -58,12 +48,6 @@ class UsersController < ApplicationController
     @user.avatar.purge
 
     redirect_to root_path, success: "@仮----削除しました----------"
-  end
-
-  def aws_test_delete
-    # @test1 = ActiveStorage::Blob.unattached.find_each   #エラー出ず
-    ActiveStorage::Blob.unattached.find_each(&:purge)
-    redirect_to root_path
   end
 
   private

@@ -13,10 +13,6 @@ Rails.application.routes.draw do
     member do
       delete "destroy_avatar"
     end
-    collection do
-      delete "aws_test_delete"
-    end
-    get :search, on: :collection
   end
   resources :posts do
     member do
@@ -31,13 +27,6 @@ Rails.application.routes.draw do
         get "replace_all_comments"
       end
     end
-    # ------------------------------
-    collection do
-      get "index_test"
-      get "search"
-    end
-    get :autocomplete, on: :collection
-    # ------------------------------
   end
   resources :tags, only: %i[index] do
     collection do
