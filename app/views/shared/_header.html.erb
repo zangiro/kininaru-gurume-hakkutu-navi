@@ -12,8 +12,7 @@
       <div class="col-1">
       <% if current_user.avatar.attached? %>
         <a href="<%= user_path(current_user) %>">
-          アバター
-          <%# image_tag current_user.avatar.variant(resize_to_fit: [55, 55]) %>
+          <%= image_tag current_user.avatar.variant(resize_to_fit: [55, 55]) %>
         </a>
       <% end %>
       </div>
