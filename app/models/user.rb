@@ -24,6 +24,9 @@ class User < ApplicationRecord
   has_many :view_histories, dependent: :destroy
   has_many :view_history_posts, through: :view_histories, source: :post
 
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
+
   has_one_attached :avatar
 
   attr_accessor :agree_terms
