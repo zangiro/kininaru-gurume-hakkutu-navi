@@ -1,4 +1,4 @@
-class CreateAreaTags < ActiveRecord::Migration[8.0]
+class CreateAreaTags < ActiveRecord::Migration[7.2]
   def change
     create_table :area_tags do |t|
       t.string :name, null: false
