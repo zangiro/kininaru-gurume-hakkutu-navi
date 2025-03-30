@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true, length: { maximum: 255 }
-  validates :is_public, inclusion: { in: [ true, false ], message: "@を選んでください" }
+  # validates :is_public, inclusion: { in: [ true, false ], message: "@を選んでください" }
   # あとでrailsi-18n化したい
   validate :agreement
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
