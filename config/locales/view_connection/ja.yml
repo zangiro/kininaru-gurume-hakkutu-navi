@@ -19,7 +19,9 @@ ja:
     update_success: 更新しました？？
     update_failure: 更新失敗しました？？
     login_success: ログインしました？？
+    google_login_success: Googleアカウントでログインしました??
     login_failure: ログインに失敗しました??
+    google_login_failure: Googleアカウントでログインに失敗しました??
     logout: ログアウトしました???
     delete_post: 記事を削除しました？？
     delete_view_histories: 閲覧履歴を削除しました??

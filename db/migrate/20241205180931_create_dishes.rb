@@ -1,4 +1,4 @@
-class CreateDishes < ActiveRecord::Migration[8.0]
+class CreateDishes < ActiveRecord::Migration[7.2]
   def change
     create_table :dishes do |t|
       t.string :introduction
