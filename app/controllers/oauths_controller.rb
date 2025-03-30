@@ -1,21 +1,24 @@
 class OauthsController < ApplicationController
   def oauth
-    #指定されたプロバイダの認証ページにユーザーをリダイレクトさせる
     login_at(auth_params[:provider])
+    # 指定されたプロバイダの認証ページにユーザーをリダイレクトさせる
   end
 
   def callback
     provider = auth_params[:provider]
-    # 既存のユーザーをプロバイダ情報を元に検索し、存在すればログイン
     if (@user = login_from(provider))
-      redirect_to searchs_path
+      # 既存のユーザーをプロバイダ情報を元に検索し、存在すればログイン
+
+      redirect_to root_path, success: t("flash_message.google_login_success")
     else
       begin
-        # ユーザーが存在しない場合はプロバイダ情報を元に新規ユーザーを作成し、ログイン
         signup_and_login(provider)
-        redirect_to tags_path
-      rescue
-        redirect_to root_path
+        # ユーザーが存在しない場合はプロバイダ情報を元に新規ユーザーを作成し、ログイン
+
+        redirect_to root_path, success: t("flash_message.google_login_success")
+      rescue StandardError => e
+        # Rubyの例外クラスの一つ。rescueの部分で発生した例外を捕まえ、「e」に格納する
+        redirect_to root_path, danger: t("flash_message.google_login_failure")
       end
     end
   end
