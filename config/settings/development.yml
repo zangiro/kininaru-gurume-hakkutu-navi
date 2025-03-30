@@ -1,7 +1,7 @@
 default_url_options:
   host: "localhost:3000"
 sorcery:
-  google_callback_url: 'http://localhost:3000/oauth/callback?provider=google'
+  google_callback_url: "http://localhost:3000/oauth/callback?provider=google"
 redis:
   host: redis
   port: 6379
