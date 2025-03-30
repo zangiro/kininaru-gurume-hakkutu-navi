@@ -4,7 +4,7 @@
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
-Rails.application.config.sorcery.submodules = [:reset_password, :external]
+Rails.application.config.sorcery.submodules = [ :reset_password, :external ]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -160,8 +160,9 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.google.key = Rails.application.credentials.dig(:google, :google_client_id)
   config.google.secret = Rails.application.credentials.dig(:google, :google_client_secret)
+  # API設定で承認済みのリダイレクトURIとして登録したurlを設定
   config.google.callback_url = Settings.sorcery[:google_callback_url]
-  config.google.user_info_mapping = {:email => "email", :name => "name"}
+  config.google.user_info_mapping = { email: "email", name: "name" }
   # config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
   # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.

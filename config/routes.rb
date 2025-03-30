@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post "oauth/callback", to: "oauths#callback"
   get "oauth/callback", to: "oauths#callback"
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
+  # Googleログインで使用する Oauthルーディング
+
   resources :user_sessions, only: %i[new create destroy]
   resources :users do
     resources :posts, only: %i[index]
