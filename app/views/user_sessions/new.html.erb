@@ -14,10 +14,29 @@
       <%= f.submit t('.login'), class: "btn btn-primary" %>
     <% end %>
 
+    <hr class="my-4">
+
+    <div class="d-flex justify-content-center">
+      <div>
+
+        <div class="mb-3">
+          <h5><%= t(".or_login_with_your_google_account") %></h5>
+        </div>
+
+        <div>
+          <%= link_to auth_at_provider_path(provider: :google) do %>
+            <%= image_tag "sign_in@2x.png" %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="my-4">
+
     <div class='text-center'>
       <%= link_to t(".to_register_page"), new_user_path %>
-      <%= link_to t(".forgot_password?"), '#' %>
-      <%= link_to 'passwordをお忘れの方はコチラ', new_password_reset_path %>
+      <%= link_to t(".forgot_password?"), new_password_reset_path %>
     </div>
   </div>
 </div>
