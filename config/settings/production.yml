@@ -3,7 +3,3 @@ default_url_options:
   host: "myapp-young-night-9527.fly.dev"
 sorcery:
   google_callback_url: "https://myapp-young-night-9527.fly.dev/oauth/callback?provider=google"
-redis:
-  host: redis
-  port: 6379
-  db: 0

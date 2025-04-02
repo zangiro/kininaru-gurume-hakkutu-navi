@@ -74,6 +74,7 @@ ja:
     new:
       page_title: ログイン？
       login: ログイン？
+      or_login_with_your_google_account: またはGoogleアカウントでログイン??
       to_register_page: 新規登録ページへ？
       forgot_password?: パスワードをお忘れの方はこちら？
   users:
@@ -90,6 +91,7 @@ ja:
       accept_terms_of_use: 利用規約に同意しますか？(必須)？？？？
       agree_terms: 利用規約？
       privacy_policy: プライバシーポリシー？
+      or_register_with_your_google_account: またはGoogleアカウントで新規登録??
       to_login_page: ログインページへ？
       to_top_page: トップページへ？
     show:

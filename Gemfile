@@ -47,7 +47,7 @@ gem "thruster", require: false
 gem "config"
 # 開発環境と本番環境の設定で使用
 
-gem "redis"
+# gem "redis"
 
 gem "bootstrap-sass", "~> 3.4.1"
 gem "sass-rails", ">= 3.2"

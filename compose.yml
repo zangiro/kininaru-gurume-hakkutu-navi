@@ -33,14 +33,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-  redis:
-    container_name: redis
-    restart: always
-    image: "redis:latest"
-    ports:
-      - "6379:6379"
-    volumes:
-      - "./data/redis:/data"
 volumes:
   bundle_data:
   postgresql_data:
