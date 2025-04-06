@@ -1,56 +1,92 @@
 <%= form_with model: post do |f| %>
 
-<%= render 'shared/error_messages', object: f.object %>
+  <%= render 'shared/error_messages', object: f.object %>
 
 
-<%= f.label :title, t("posts.post_info.title") %>
-<%= f.text_field :title, class: "form-control" %>
+  <%= f.label :title, t("posts.post_info.title") %>
+  <%= f.text_field :title, class: "form-control" %>
 
-<div class="row">
-<%= f.label :main_image, t("posts.post_info.main_image") %>
-<%= f.file_field :main_image %>
-</div>
+  <%# ーーーーーーーメイン画像選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
 
-<div class="row">
-<%= f.label :sub_image_first, t("posts.post_info.sub_image_first") %>
-<%= f.file_field :sub_image_first %>
-</div>
+  <div class="row" data-controller="preview">
+    <%= f.label :main_image, t("posts.post_info.main_image") %>
+    <%= f.file_field :main_image, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
 
-<div class="row">
-<%= f.label :sub_image_second, t("posts.post_info.sub_image_second") %>
-<%= f.file_field :sub_image_second %>
-</div>
+    <%# ーーー"change->xxxxx"のchangeは、ファイル選択の入力フィールドでユーザーがファイルを選択したときに発火するイベントーー %>
+    <%#  ーーーーー今回はchangeイベントが発火すると「preview_controller.js」の「previewImage」のメソッドが呼び出されるーーーー%>
 
-<%= f.label :source, t("posts.post_info.source") %>
-<%= f.text_field :source, class: "form-control" %>
+    <div data-preview-target="existing">
+      <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) if post.main_image.attached? %>
+    </div>
 
-<%= f.label :store_url, t("posts.post_info.store_url") %>
-<%= f.text_field :store_url, class: "form-control" %>
+    <div data-preview-target="preview">
+    </div>
+  </div>
 
-<%= f.fields_for :dish do |dish_f| %>
-  <%= dish_f.label :introduction, t("posts.post_info.introduction") %>
-  <%= dish_f.text_area :introduction, class: "form-control" %>
+  <%# ーーーーーーーーーーーーーーーーーーーー %>
 
-  <%= dish_f.label :description, t("posts.post_info.description") %>
-  <%= dish_f.text_area :description, class: "form-control" , rows: 9 %>
-<% end %>
+  <%# ーーーーーーーサブ画像1選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
+
+  <div class="row" data-controller="preview">
+    <%= f.label :sub_image_first, t("posts.post_info.sub_image_first") %>
+    <%= f.file_field :sub_image_first, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
+
+    <div data-preview-target="existing">
+      <%= image_tag post.sub_image_first.variant(resize_and_pad: [200, 200]) if post.sub_image_first.attached? %>
+    </div>
+
+    <div data-preview-target="preview">
+    </div>
+  </div>
+
+  <%# ーーーーーーーーーーーーーーーーーーーーー %>
+
+  <%# ーーーーーーーサブ画像2選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
+
+  <div class="row" data-controller="preview">
+    <%= f.label :sub_image_second, t("posts.post_info.sub_image_second") %>
+    <%= f.file_field :sub_image_second, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
+
+    <div data-preview-target="existing">
+      <%= image_tag post.sub_image_second.variant(resize_and_pad: [200, 200]) if post.sub_image_second.attached? %>
+    </div>
+
+    <div data-preview-target="preview">
+    </div>
+  </div>
+
+  <%# ーーーーーーーーーーーーーーーーーーーーー %>
+
+  <%= f.label :source, t("posts.post_info.source") %>
+  <%= f.text_field :source, class: "form-control" %>
+
+  <%= f.label :store_url, t("posts.post_info.store_url") %>
+  <%= f.text_field :store_url, class: "form-control" %>
+
+  <%= f.fields_for :dish do |dish_f| %>
+    <%= dish_f.label :introduction, t("posts.post_info.introduction") %>
+    <%= dish_f.text_area :introduction, class: "form-control" %>
+
+    <%= dish_f.label :description, t("posts.post_info.description") %>
+    <%= dish_f.text_area :description, class: "form-control" , rows: 9 %>
+  <% end %>
 
 
-<h3><%= t("posts.post_info.tag_setting_info") %></h3>
+  <h3><%= t("posts.post_info.tag_setting_info") %></h3>
 
-<%= label_tag :area_tag_name, t("posts.post_info.area_tag_setting") %>
-<%= text_field_tag 'post[post_area_tags_attributes][0][area_tag_attributes][name]', @area_tag_name, class: "form-control" %>
+  <%= label_tag :area_tag_name, t("posts.post_info.area_tag_setting") %>
+  <%= text_field_tag 'post[post_area_tags_attributes][0][area_tag_attributes][name]', @area_tag_name, class: "form-control" %>
 
-<%= label_tag :genre_tag_name, t("posts.post_info.genre_tag_setting") %>
-<%= text_field_tag 'post[post_genre_tags_attributes][0][genre_tag_attributes][name]', @genre_tag_name, class: "form-control" %>
+  <%= label_tag :genre_tag_name, t("posts.post_info.genre_tag_setting") %>
+  <%= text_field_tag 'post[post_genre_tags_attributes][0][genre_tag_attributes][name]', @genre_tag_name, class: "form-control" %>
 
-<%= label_tag :taste_tag_name, t("posts.post_info.taste_tag_setting") %>
-<%= text_field_tag 'post[post_taste_tags_attributes][0][taste_tag_attributes][name]', @taste_tag_name, class: "form-control" %>
+  <%= label_tag :taste_tag_name, t("posts.post_info.taste_tag_setting") %>
+  <%= text_field_tag 'post[post_taste_tags_attributes][0][taste_tag_attributes][name]', @taste_tag_name, class: "form-control" %>
 
-<%= label_tag :outher_tag_name, t("posts.post_info.outher_tag_setting") %>
-<%= text_field_tag 'post[post_outher_tags_attributes][0][outher_tag_attributes][name]', @outher_tag_name, class: "form-control" %>
+  <%= label_tag :outher_tag_name, t("posts.post_info.outher_tag_setting") %>
+  <%= text_field_tag 'post[post_outher_tags_attributes][0][outher_tag_attributes][name]', @outher_tag_name, class: "form-control" %>
 
 
 
-<%= f.submit nil, class: "btn btn-primary" %>
+  <%= f.submit nil, class: "btn btn-primary" %>
 <% end %>
