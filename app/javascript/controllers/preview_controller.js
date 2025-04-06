@@ -19,7 +19,7 @@ export default class extends Controller {
       // new FileReaderを使うために特別な準備は必要ない。FileReaderはブラウザが提供するAPIだから、JavaScriptを実行できる環境があればすぐに使える。
       // FileReaderテーブルみたいなのは不必要
   
-      reader.onload = (e) => {preview.innerHTML = `<img src="${e.target.result}">`;}
+      reader.onload = (e) => {preview.innerHTML = `<img src="${e.target.result}" style="max-width: 200px; max-height: 200px;">`;}
       // onloadはFileReaderのプロパティの一つ。ファイルの読み込みが完了したときに呼ばれるイベントハンドラーを設定するためのもの。
       // ファイルの読み込みが成功したときに、指定された関数（ここではアロー関数）が実行される
       // 「(e) => { ... }」はアロー関数の定義。eはイベントオブジェクトで、読み込みが完了したファイルに関する情報を持っている。
