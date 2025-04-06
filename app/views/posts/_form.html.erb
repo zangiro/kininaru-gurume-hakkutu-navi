@@ -6,7 +6,7 @@
   <%= f.label :title, t("posts.post_info.title") %>
   <%= f.text_field :title, class: "form-control" %>
 
-  <%# ーーーーーーー画像選択でプレビューの表示のStimulus設定ーーーーーーーーー %>
+  <%# ーーーーーーーメイン画像選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
 
   <div class="row" data-controller="preview">
     <%= f.label :main_image, t("posts.post_info.main_image") %>
@@ -15,23 +15,47 @@
     <%# ーーー"change->xxxxx"のchangeは、ファイル選択の入力フィールドでユーザーがファイルを選択したときに発火するイベントーー %>
     <%#  ーーーーー今回はchangeイベントが発火すると「preview_controller.js」の「previewImage」のメソッドが呼び出されるーーーー%>
 
-    <div class="row" data-preview-target="existing">
-      <%= image_tag post.main_image if post.main_image.attached? %>
+    <div data-preview-target="existing">
+      <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) if post.main_image.attached? %>
     </div>
 
-    <div class="row" data-preview-target="preview">
+    <div data-preview-target="preview">
     </div>
   </div>
 
-  <div class="row">
+  <%# ーーーーーーーーーーーーーーーーーーーー %>
+
+  <%# ーーーーーーーサブ画像1選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
+
+  <div class="row" data-controller="preview">
     <%= f.label :sub_image_first, t("posts.post_info.sub_image_first") %>
-    <%= f.file_field :sub_image_first %>
+    <%= f.file_field :sub_image_first, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
+
+    <div data-preview-target="existing">
+      <%= image_tag post.sub_image_first.variant(resize_and_pad: [200, 200]) if post.sub_image_first.attached? %>
+    </div>
+
+    <div data-preview-target="preview">
+    </div>
   </div>
 
-  <div class="row">
+  <%# ーーーーーーーーーーーーーーーーーーーーー %>
+
+  <%# ーーーーーーーサブ画像2選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
+
+  <div class="row" data-controller="preview">
     <%= f.label :sub_image_second, t("posts.post_info.sub_image_second") %>
-    <%= f.file_field :sub_image_second %>
+    <%= f.file_field :sub_image_second, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
+
+    <div data-preview-target="existing">
+      <%= image_tag post.sub_image_second.variant(resize_and_pad: [200, 200]) if post.sub_image_second.attached? %>
+    </div>
+
+    <div data-preview-target="preview">
+    </div>
   </div>
+
+  <%# ーーーーーーーーーーーーーーーーーーーーー %>
 
   <%= f.label :source, t("posts.post_info.source") %>
   <%= f.text_field :source, class: "form-control" %>
