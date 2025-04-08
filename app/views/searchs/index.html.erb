@@ -5,7 +5,7 @@
 <div class="row">
 
 
-<% if @paginate_search_posts.present? %>
+<% if @search_posts.present? %>
   <div class="d-flex">
     <h3><%= t(".search_results") %></h3>
     <h1 class="ms-auto">
@@ -20,19 +20,11 @@
     </h1>
   </div>
 
-  <% @paginate_search_posts.each do |post| %>
+  <% @search_posts.each do |post| %>
     <%= render "post_image", post: post %>
   <% end %>
 
-
-
-  <% if @page > 1 %>
-    <%= link_to '@@@前へ', searchs_path(page: @page - 1, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags) %>
-  <% end %>
-
-  <% if @page < @total_pages %>
-    <%= link_to '@@@次へ', searchs_path(page: @page + 1, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags) %>
-  <% end %>
+  <%= paginate @search_posts, theme: "bootstrap-5" %>
 
 
   <% if @recommendations.present? %>
