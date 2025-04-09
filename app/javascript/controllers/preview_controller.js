@@ -9,7 +9,7 @@ export default class extends Controller {
     const existing = this.existingTarget
     const files = input.files   
     // HTMLの<input type="file">要素から選択されたファイルの配列を取得できる
-    // 直接ビューに<input type="file">はないが「form.file_field :avatar」がそれを生成するRailsのヘルパーメソッド
+    // 直接ビューに<input type="file">はないが「form.file_field :main_image」がそれを生成するRailsのヘルパーメソッド
 
     if (existing) {existing.style.display = 'none';}
     // 編集時、既存の画像は初期表示。この処理で非表示にする。

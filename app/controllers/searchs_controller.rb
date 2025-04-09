@@ -10,28 +10,18 @@ class SearchsController < ApplicationController
     @taste_posts = Post.joins(:taste_tags).where(taste_tags: { name: @taste_tags })
     @outher_posts = Post.joins(:outher_tags).where(outher_tags: { name: @outher_tags })
 
+    @post_ids = @area_posts.pluck(:id) + @genre_posts.pluck(:id) + @taste_posts.pluck(:id) + @outher_posts.pluck(:id)
+
     if params[:latest]
-      @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq.sort_by(&:created_at)
+      @search_posts = Post.where(id: @post_ids).order(created_at: :desc).page(params[:page]).per(3)
     elsif params[:old]
-      @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq.sort_by(&:created_at).reverse
+      @search_posts = Post.where(id: @post_ids).order(created_at: :asc).page(params[:page]).per(3)
     else
-      @search_posts = (@area_posts + @genre_posts + @taste_posts + @outher_posts).uniq
+      @search_posts = Post.where(id: @post_ids).page(params[:page]).per(3)
     end
     # 簡略化用メソッドを実装したい。現在NoMethodErrorで未実装。記事一覧と同様処理で行けそう
 
     @post_path = "3"
-
-    # -------------ページネーション(gemなし)-----------------
-
-    @max_page = 18
-    @page = params[:page].to_i > 0 ? params[:page].to_i : 1
-    # animals_path(page: 1)みたいにしなくてもpageは1になる
-    # @eがnilでもnil.to_iは0になる
-    @paginate_search_posts = @search_posts.slice((@page - 1) * @max_page, @max_page)
-    # @paginate_search_posts は記事情報が入る
-    @total_posts = @search_posts.count
-    # sizeとcountは動作はにてる
-    @total_pages = (@total_posts.to_f / @max_page).ceil
 
     # ----------------------おすすめ表示--------------------------
 
