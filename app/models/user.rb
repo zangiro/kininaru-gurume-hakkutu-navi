@@ -31,6 +31,12 @@ class User < ApplicationRecord
 
   attr_accessor :agree_terms
 
+  geocoded_by :address
+  # addressカラムの内容を緯度・経度に変換する
+
+  after_validation :geocode
+  # バリデーションの実行後に変換処理を実行後、latitudeカラム・longitudeカラムに緯度・経度の値が入力される
+
   def agreement
     if new_record?
       unless agree_terms == "1" || agree_terms == true
