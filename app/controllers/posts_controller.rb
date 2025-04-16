@@ -52,6 +52,9 @@ class PostsController < ApplicationController
       end
       current_user.view_history_plus(@post)
     end
+
+    @client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
+    @store = @client.spots(35.6803997, 139.7690174, :name => '味噌カレー牛乳ラーメン', :language => 'ja')
   end
 
   def edit

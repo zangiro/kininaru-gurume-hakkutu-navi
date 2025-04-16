@@ -147,4 +147,45 @@
 
 
 </div> 
-<%# 4行のcontainer %>
+
+
+<div id="map" style="height: 600px;"></div>
+
+<script>
+  // 地図を初期化する関数
+  function initMap() {
+    // 地図のオプション
+    const mapOptions = {
+      center: { lat: 35.6803997, lng: 139.7690174 },
+      zoom: 13
+    };
+
+    // 地図を指定した要素に表示
+    const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    <% @store.each_with_index do |store, i| %>
+
+      contentString_<%= i %> = 
+      '<div><%= store.name %></div>';
+
+      infowindow_<%= i %> = new google.maps.InfoWindow({
+        content: contentString_<%= i %>,
+      });
+
+
+      marker_<%= i %> = new google.maps.Marker({
+        position: { lat: <%= store.lat %>, lng: <%= store.lng %> },
+        map: map
+      });
+
+      marker_<%= i %>.addListener("click", () => {
+        infowindow_<%= i %>.open({
+          anchor: marker_<%= i %>,
+          map,
+        });
+      });
+
+    <% end %>
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap"></script>
