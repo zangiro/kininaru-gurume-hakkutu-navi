@@ -113,6 +113,7 @@ ja:
       password_required: パスワードの変更?
       password_confirmation_required: パスワード変更時の再確認？
       introduction: 自己紹介？？
+      address: 所在地??
       avatar: アバター設定？？
       is_public: 公開設定?
       permit: 許可？
