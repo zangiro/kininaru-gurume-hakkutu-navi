@@ -53,8 +53,17 @@ class PostsController < ApplicationController
       current_user.view_history_plus(@post)
     end
 
-    @client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
-    @store = @client.spots(35.6803997, 139.7690174, :name => '味噌カレー牛乳ラーメン', :language => 'ja')
+    if logged_in? && current_user.address != nil && current_user.address != ""
+      @map_center_latitude = current_user.latitude
+      @map_center_longitude = current_user.longitude
+      @client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
+      @store = @client.spots(@map_center_latitude, @map_center_longitude, :name => '味噌カレー牛乳ラーメン', :language => 'ja')
+    else
+      @map_center_latitude = 35.6803997   # 東京の緯度
+      @map_center_longitude = 139.7690174   # 東京の経度
+      @client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
+      @store = @client.spots(35.6803997, 139.7690174, :name => '味噌カレー牛乳ラーメン', :language => 'ja')
+    end
   end
 
   def edit

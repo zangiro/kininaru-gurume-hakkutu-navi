@@ -184,19 +184,21 @@
 <script>
   // 地図を初期化する関数
   function initMap() {
-    // 地図のオプション
     const mapOptions = {
-      center: { lat: 35.6803997, lng: 139.7690174 },
+      center: { lat: <%= @map_center_latitude %>, lng: <%= @map_center_longitude %> },
+      // 地図の中心を決める
       zoom: 14
+      // 地図の初期の倍率を指定
     };
 
-    // 地図を指定した要素に表示
     const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    // 地図を指定した要素に表示
 
     <% @store.each_with_index do |store, i| %>
 
       contentString_<%= i %> = 
       '<div><%= store.name %></div>';
+      // マーカーをクリックしたときの表示項目
 
       infowindow_<%= i %> = new google.maps.InfoWindow({
         content: contentString_<%= i %>,
@@ -207,6 +209,7 @@
         position: { lat: <%= store.lat %>, lng: <%= store.lng %> },
         map: map
       });
+      // マーカーの表示位置
 
       marker_<%= i %>.addListener("click", () => {
         infowindow_<%= i %>.open({
@@ -214,6 +217,7 @@
           map,
         });
       });
+      // マーカーをクリックしたときの処理
 
     <% end %>
   }
