@@ -149,28 +149,25 @@
 
   <% if !logged_in? %>
     <div class="mt-3">
-      ログインするとこの料理が提供されている近隣店舗を調べることができます
+      <%= t(".not_login_description") %>
     </div>
     <div>
-      例  出身地「東京」  料理名「味噌カレー牛乳ラーメン」の場合
+      <%= t(".search_example") %>
     </div>
   <% elsif logged_in? && current_user.address != nil && current_user.address != "" && @store.length != 0 %>
     <div class="mt-3">
-      こちらの店舗で提供されている可能性があります
+      <%= t(".google_map_description") %>
     </div>
   <% elsif current_user.address == nil || current_user.address == "" %>
     <div class="mt-3">
-      出身地が設定されてません
+      <%= t(".not_address_description") %>
     </div>
     <div>
-      設定するとこの料理が提供されている近隣店舗を調べることができます
-    </div>
-    <div>
-      例  出身地「東京」  料理名「味噌カレー牛乳ラーメン」の場合
+      <%= t(".search_example") %>
     </div>
   <% elsif @store.length == 0 %>
     <div class="mt-3">
-      あなたの近隣ではこの料理が提供されている店舗は見つかりませんでした
+      <%= t(".not_found_description") %>
     </div>
   <% end %>
 
