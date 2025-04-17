@@ -203,6 +203,7 @@
       infowindow_<%= i %> = new google.maps.InfoWindow({
         content: contentString_<%= i %>,
       });
+      // マーカーをクリックしたときに表示される情報ウィンドウを作成している
 
 
       marker_<%= i %> = new google.maps.Marker({
@@ -218,6 +219,7 @@
         });
       });
       // マーカーをクリックしたときの処理
+      // anchorは情報ウィンドウがどのマーカーに対して表示されるかを指定している
 
     <% end %>
   }

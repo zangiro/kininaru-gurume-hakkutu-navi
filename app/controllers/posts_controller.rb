@@ -57,12 +57,12 @@ class PostsController < ApplicationController
       @map_center_latitude = current_user.latitude
       @map_center_longitude = current_user.longitude
       @client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
-      @store = @client.spots(@map_center_latitude, @map_center_longitude, :name => '味噌カレー牛乳ラーメン', :language => 'ja')
+      @store = @client.spots(@map_center_latitude, @map_center_longitude, :name => @post.title, :radius => 2500, :language => 'ja')
     else
       @map_center_latitude = 35.6803997   # 東京の緯度
       @map_center_longitude = 139.7690174   # 東京の経度
       @client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
-      @store = @client.spots(35.6803997, 139.7690174, :name => '味噌カレー牛乳ラーメン', :language => 'ja')
+      @store = @client.spots(35.6803997, 139.7690174, :name => '味噌カレー牛乳ラーメン', :radius => 2500, :language => 'ja')
     end
   end
 
