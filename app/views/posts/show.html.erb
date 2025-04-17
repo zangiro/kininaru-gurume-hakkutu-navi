@@ -4,152 +4,182 @@
 
 
 <div class="container">
-<div class="row">
-  <%= @post.title %>
-</div>
+  <div class="row">
+    <%= @post.title %>
+  </div>
 
-<div class="row">
-  <% @post.area_tags.each do |area_tag| %>
-    <%= area_tag.name %>
+  <div class="row">
+    <% @post.area_tags.each do |area_tag| %>
+      <%= area_tag.name %>
+    <% end %>
+    <% @post.genre_tags.each do |genre_tag| %>
+      <%= genre_tag.name %>
+    <% end %>
+    <% @post.taste_tags.each do |taste_tag| %>
+      <%= taste_tag.name %>
+    <% end %>
+    <% @post.outher_tags.each do |outher_tag| %>
+      <%= outher_tag.name %>
+    <% end %>
+  </div>
+
+  <div class="d-flex flex-row">
+    <div><%= t(".posted_by") %></div>
+    <div><%= link_to @posted_user.name, user_path(@posted_user) %></div>
+  </div>
+
+  <div class="row">
+    <% if @post.source.present? %>
+      <%= t(".source", post_source: @post.source) %>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <% if @post.store_url.present? %>
+      <%= t(".store_url", post_store_url: @post.store_url) %>
+    <% end %>
+  </div>
+
+  <%# -----------------------画像関連-------------------------- %>
+
+  <div class="d-flex justify-content-center">
+
+  <div class="row mb-2">
+  <% if @post.main_image.attached? %>
+    <%= image_tag @post.main_image.variant(resize_to_fit: [600, 600]) %>
   <% end %>
-  <% @post.genre_tags.each do |genre_tag| %>
-    <%= genre_tag.name %>
-  <% end %>
-  <% @post.taste_tags.each do |taste_tag| %>
-    <%= taste_tag.name %>
-  <% end %>
-  <% @post.outher_tags.each do |outher_tag| %>
-    <%= outher_tag.name %>
-  <% end %>
-</div>
+  </div>
 
-<div class="d-flex flex-row">
-  <div><%= t(".posted_by") %></div>
-  <div><%= link_to @posted_user.name, user_path(@posted_user) %></div>
-</div>
-
-<div class="row">
-  <% if @post.source.present? %>
-    <%= t(".source", post_source: @post.source) %>
-  <% end %>
-</div>
-
-<div class="row">
-  <% if @post.store_url.present? %>
-    <%= t(".store_url", post_store_url: @post.store_url) %>
-  <% end %>
-</div>
-
-<%# -----------------------画像関連-------------------------- %>
-
-<div class="d-flex justify-content-center">
-
-<div class="row mb-2">
-<% if @post.main_image.attached? %>
-  <%= image_tag @post.main_image.variant(resize_to_fit: [600, 600]) %>
-<% end %>
-</div>
-
-</div>
+  </div>
 
 
-<div class="d-flex justify-content-center align-items-start">
+  <div class="d-flex justify-content-center align-items-start">
 
-<div class="row">
-  <% if @post.sub_image_first.attached? %>
-    <%= image_tag @post.sub_image_first.variant(resize_to_fit: [400, 400]) %>
-  <% end %>
-</div>
-
-<div class="col-1">
-</div>
-
-<div class="row">
-  <% if @post.sub_image_second.attached? %>
-    <%= image_tag @post.sub_image_second.variant(resize_to_fit: [400, 400]) %>
-  <% end %>
-</div>
-
-</div>
-
-<div class="row">
-<%= @post.dish.description %>
-</div>
-
-
-<%# --------------------プレイリスト関連--------------------- %>
-
-<% if logged_in? %>
-<div class="col-2">
-<button type="button" class="btn btn-primary mb-12 btn-sm" data-toggle="modal" data-target="#playlist">プレイリストへ追加</button>
-</div>
-
-<div class="modal fade" id="playlist" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4><div class="modal-title" id="myModalLabel">@プレイリストへ追加</h4>
-      </div>
-
-      <div class="modal-body">
-      <%= form_with(url: add_to_playlist_post_path(@post), method: :post) do %>
-        <%= label_tag :playlist_id, "@作成済みのプレイリストを選択" %>
-        <%= select_tag :playlist_id, options_from_collection_for_select(@user_playlists, :id, :title), include_blank: true %>
-        <%= submit_tag "選択" %>
+    <div class="row">
+      <% if @post.sub_image_first.attached? %>
+        <%= image_tag @post.sub_image_first.variant(resize_to_fit: [400, 400]) %>
       <% end %>
-      </div>
+    </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">@閉じる</button>
-      </div>
+    <div class="col-1">
+    </div>
+
+    <div class="row">
+      <% if @post.sub_image_second.attached? %>
+        <%= image_tag @post.sub_image_second.variant(resize_to_fit: [400, 400]) %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <%= @post.dish.description %>
+  </div>
+
+
+    <%# --------------------プレイリスト関連--------------------- %>
+
+    <% if logged_in? %>
+    <div class="col-2">
+    <button type="button" class="btn btn-primary mb-12 btn-sm" data-toggle="modal" data-target="#playlist">プレイリストへ追加</button>
+    </div>
+
+    <div class="modal fade" id="playlist" tabindex="-1">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+    <h4><div class="modal-title" id="myModalLabel">@プレイリストへ追加</h4>
+    </div>
+
+    <div class="modal-body">
+    <%= form_with(url: add_to_playlist_post_path(@post), method: :post) do %>
+    <%= label_tag :playlist_id, "@作成済みのプレイリストを選択" %>
+    <%= select_tag :playlist_id, options_from_collection_for_select(@user_playlists, :id, :title), include_blank: true %>
+    <%= submit_tag "選択" %>
+    <% end %>
+    </div>
+
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">@閉じる</button>
+    </div>
 
     </div>
-  </div>
-</div>
-<% end %>
-
-
-<%# -------------いいね機能関連---------------------- %>
-
-<% if logged_in? && @post.user_id != current_user.id %>
-  <% if current_user.like_include?(@post) %>
-
-    <%= link_to post_like_path(@post), id: "bad-#{@post.id}", data: { turbo_method: :delete } do %>
-      <i class="bi bi-hand-thumbs-up-fill"></i>
-    <% end %>
-
-  <% else %>
-
-    <%= link_to post_likes_path(post_id: @post.id), id: "good-#{@post.id}", data: { turbo_method: :post } do %>
-      <i class="bi bi-hand-thumbs-up"></i>
+    </div>
+    </div>
     <% end %>
 
 
-  <% end %>
-<% end %>
+  <%# -------------いいね機能関連---------------------- %>
+
+  <% if logged_in? && @post.user_id != current_user.id %>
+    <% if current_user.like_include?(@post) %>
+
+      <%= link_to post_like_path(@post), id: "bad-#{@post.id}", data: { turbo_method: :delete } do %>
+        <i class="bi bi-hand-thumbs-up-fill"></i>
+      <% end %>
+
+    <% else %>
+
+      <%= link_to post_likes_path(post_id: @post.id), id: "good-#{@post.id}", data: { turbo_method: :post } do %>
+        <i class="bi bi-hand-thumbs-up"></i>
+      <% end %>
 
 
-<%# ------------コメント関連------------ %>
-<% if logged_in? %>
-  <%= render "comments/form", comment: @comment, post: @post %>
-<% end %>
-
-<%= turbo_frame_tag "limit_comments" do %>
-  <% @post_comments.each do |comment| %>
-    <%= render "comments/comment", comment: comment %>
-  <% end %>
-  <% if @post_comments.present? %>
-    <%= turbo_frame_tag "show_all" do %>
-       <%= link_to "すべて表示する(あとでアイコン化)", replace_all_comments_post_comments_path(post_id: @post.id) %>
     <% end %>
   <% end %>
-<% end %>
 
+
+  <%# ------------コメント関連------------ %>
+  <% if logged_in? %>
+    <%= render "comments/form", comment: @comment, post: @post %>
+  <% end %>
+
+  <%= turbo_frame_tag "limit_comments" do %>
+    <% @post_comments.each do |comment| %>
+      <%= render "comments/comment", comment: comment %>
+    <% end %>
+    <% if @post_comments.present? %>
+      <%= turbo_frame_tag "show_all" do %>
+         <%= link_to "すべて表示する(あとでアイコン化)", replace_all_comments_post_comments_path(post_id: @post.id) %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%# ---------------google map関連-------------- %>
+
+  <% if !logged_in? %>
+    <div class="mt-3">
+      ログインするとこの料理が提供されている近隣店舗を調べることができます
+    </div>
+    <div>
+      例  出身地「東京」  料理名「味噌カレー牛乳ラーメン」の場合
+    </div>
+  <% elsif logged_in? && current_user.address != nil && current_user.address != "" && @store.length != 0 %>
+    <div class="mt-3">
+      こちらの店舗で提供されている可能性があります
+    </div>
+  <% elsif current_user.address == nil || current_user.address == "" %>
+    <div class="mt-3">
+      出身地が設定されてません
+    </div>
+    <div>
+      設定するとこの料理が提供されている近隣店舗を調べることができます
+    </div>
+    <div>
+      例  出身地「東京」  料理名「味噌カレー牛乳ラーメン」の場合
+    </div>
+  <% elsif @store.length == 0 %>
+    <div class="mt-3">
+      あなたの近隣ではこの料理が提供されている店舗は見つかりませんでした
+    </div>
+  <% end %>
+
+  <div class="mt-3" id="map" style="height: 600px;"></div>
 
 </div> 
 
 
-<div id="map" style="height: 600px;"></div>
+
 
 <script>
   // 地図を初期化する関数
@@ -157,7 +187,7 @@
     // 地図のオプション
     const mapOptions = {
       center: { lat: 35.6803997, lng: 139.7690174 },
-      zoom: 13
+      zoom: 14
     };
 
     // 地図を指定した要素に表示

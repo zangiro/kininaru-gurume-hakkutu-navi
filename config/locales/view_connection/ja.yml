@@ -85,7 +85,7 @@ ja:
       email_required: メールアドレス(必須)?
       password_required: パスワード(必須)?
       password_confirmation_required: パスワード再確認(必須)？
-      is_public: 公開設定（必須）?
+      is_public: 公開設定?
       permit: 許可？
       not_permit: 不許可?
       accept_terms_of_use: 利用規約に同意しますか？(必須)？？？？
