@@ -56,16 +56,16 @@ class PostsController < ApplicationController
     if logged_in? && current_user.address != nil && current_user.address != ""
       @map_center_latitude = current_user.latitude
       @map_center_longitude = current_user.longitude
-      @client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
-      @store = @client.spots(@map_center_latitude, @map_center_longitude, :name => @post.title, :radius => 2500, :language => 'ja')
+      @client = GooglePlaces::Client.new(ENV["GOOGLE_MAPS_API_KEY"])
+      @store = @client.spots(@map_center_latitude, @map_center_longitude, name: @post.title, radius: 2500, language: "ja")
       # google_placesで店舗の検索を行う。
       # @map_center_latitude, @map_center_longitudeでマップ中心を決める。
       # nameで単語検索。radiusで検索する範囲（半径/m）を指定。languageで日本語で情報を取得。
     else
       @map_center_latitude = 35.6803997   # 東京の緯度
       @map_center_longitude = 139.7690174   # 東京の経度
-      @client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
-      @store = @client.spots(35.6803997, 139.7690174, :name => I18n.t('controller.posts.map_search_target'), :radius => 2500, :language => 'ja')
+      @client = GooglePlaces::Client.new(ENV["GOOGLE_MAPS_API_KEY"])
+      @store = @client.spots(35.6803997, 139.7690174, name: I18n.t("controller.posts.map_search_target"), radius: 2500, language: "ja")
     end
   end
 
