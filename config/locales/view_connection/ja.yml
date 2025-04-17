@@ -188,3 +188,6 @@ ja:
       source: "出典: %{post_source}????"
       store_url: "店舗情報: %{post_store_url}???"
       whose_comment: "%{user_name}さんのコメント???"
+  controller:
+    posts:
+      map_search_target: "味噌カレー牛乳ラーメン"
