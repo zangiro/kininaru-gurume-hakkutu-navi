@@ -87,6 +87,15 @@ gem "meta-tags"
 gem "ransack"
 # 検索機能に使用
 
+gem "dotenv-rails"
+# 開発環境"のみ"で.envファイルを用いて環境変数を扱えるようにする
+
+gem "geocoder"
+# 地名を緯度経度に変換
+
+gem "google_places"
+# google Place APIを使用するときに使う
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

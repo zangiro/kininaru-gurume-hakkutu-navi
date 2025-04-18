@@ -28,6 +28,12 @@ class UsersController < ApplicationController
     @user = current_user
     @avatar = user_params[:avatar]
 
+    result = Geocoder.search(@user.address).first
+    if result
+      @user.latitude = result.latitude
+      @user.longitude = result.longitude
+    end
+
     if user_params[:name].present? && user_params[:email].present?
       unless @avatar.nil?
         @user.avatar.purge
@@ -52,6 +58,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_public, :introduction, :agree_terms, :avatar)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_public, :introduction, :address, :agree_terms, :avatar)
   end
 end

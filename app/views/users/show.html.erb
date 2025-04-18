@@ -20,6 +20,12 @@
     <% end %>
   </div>
 
+  <% if @user == current_user %>
+    <div class="mt-2">
+      <%= @user.address %>
+    </div>
+  <% end %>
+
   <% if @user.is_public || @user == current_user %>
     <div class="mt-2">
       <%= t(".introduction", introduction: @user.introduction) %>
