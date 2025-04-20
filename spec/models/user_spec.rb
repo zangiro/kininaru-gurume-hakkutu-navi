@@ -21,17 +21,12 @@ RSpec.describe User, type: :model do
     # factory botで定義したデータの特定の値を上書き
     # create(:xxx, name: "Bさん")
 
-    it '名前、メールアドレス、パスワードの再入力は必須項目であること' do
-      user = build(:user, name: nil, email: nil, password_confirmation: nil)
+    it '名前、メールアドレス、パスワードの再入力、利用規約の同意は必須項目であること' do
+      user = build(:user, name: nil, email: nil, password_confirmation: nil, agree_terms: nil)
       user.valid?
       expect(user.errors[:name]).to include('を入力してください')
       expect(user.errors[:email]).to include('を入力してください')
       expect(user.errors[:password_confirmation]).to include('を入力してください')
-    end
-
-    it '利用規約の同意は必須項目であること' do
-      user = build(:user, agree_terms: nil)
-      user.valid?
       expect(user.errors[:agree_terms]).to include('に同意されてません')
     end
 
