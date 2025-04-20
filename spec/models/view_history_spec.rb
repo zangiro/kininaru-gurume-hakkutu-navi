@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ViewHistory, type: :model do
-  describe 'バリデーションチェック' do
-    it 'ユーザーが記事を見たとき閲覧履歴に追加できること' do
+  describe 'アソシエーション' do
+    it 'ユーザーと記事に対して閲覧履歴の関連付けができること' do
       user = create(:user)
       post = create(:post)
       view_history = create(:view_history, user: user, post: post)  # 閲覧履歴を作成

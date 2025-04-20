@@ -8,4 +8,7 @@ RSpec.describe Post, type: :model do
       expect(post.errors).to be_empty
     end
   end
+
+  # 複数のタグを持てること
+  # 記事を消したらtagもきえること
 end
