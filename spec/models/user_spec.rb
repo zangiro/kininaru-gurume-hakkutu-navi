@@ -56,12 +56,12 @@ RSpec.describe User, type: :model do
     end
   end
 
-  #describe 'アソシエーション' do
-  #  it 'ユーザーは複数のポストを持てること' do
-  #    user = create(:user)
-  #    post1 = create(:post, user_id: user.id)
-  #    post2 = create(:post, user_id: user.id)
-  #    expect(user.posts).to include(post1, post2)
-  #  end
-  #end
+  describe 'アソシエーション' do
+    it 'ユーザーは複数のポストを持てること' do
+      user = create(:user)
+      post1 = create(:post, user_id: user.id)
+      post2 = create(:post, user_id: user.id)
+      expect(user.posts).to include(post1, post2)
+    end
+  end
 end
