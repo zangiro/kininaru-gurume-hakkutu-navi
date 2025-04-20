@@ -40,11 +40,12 @@ class User < ApplicationRecord
   def agreement
     if new_record?
       unless agree_terms == "1" || agree_terms == true
-        errors.add(:base, "@利用規約に同意されてません")
+        errors.add(:agree_terms, "に同意されてません")
         #  あとでrailsi-18n化したい
       end
     end
   end
+  # agree_termsのチェックボックスを押すと値が"1"かtrueになる
 
   def like_plus(post)
     like_posts << post
