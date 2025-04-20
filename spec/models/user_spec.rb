@@ -46,6 +46,13 @@ RSpec.describe User, type: :model do
     # to include...配列の中にその値があればOK
     # to eq...文字列と完全に一致するかをチェックしている。これは単一の値の比較になるから、配列全体がその文字列である必要がある
     # エラーメッセージが配列に含まれているか確認したい場合はincludeを使うのが一般的
-    
+
+    it 'メールアドレスはユニークであること' do
+      user1 = create(:user)
+      user2 = build(:user)
+      user2.email = user1.email
+      user2.valid?
+      expect(user2.errors[:email]).to include('はすでに存在します')
+    end
   end
 end
