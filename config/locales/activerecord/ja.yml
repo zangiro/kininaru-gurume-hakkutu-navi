@@ -9,6 +9,7 @@ ja:
         email: メールアドレス~~
         name: 名前~~
         is_public: 公開設定~~
+        agree_terms: 利用規約〜〜
       post:
         title: タイトル〜〜
       dish:
