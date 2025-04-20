@@ -30,6 +30,18 @@ RSpec.describe User, type: :model do
       expect(user.errors[:agree_terms]).to include('に同意されてません')
     end
 
+    it 'パスワードは3文字以上であること' do
+      user = build(:user, password: 'aa')
+      user.valid?
+      expect(user.errors[:password]).to include('は3文字以上で入力してください')
+    end
+
+    it '名前は255文字以下であること' do
+      user = build(:user, name: 'a' * 256)
+      user.valid?
+      expect(user.errors[:name]).to include('は255文字以内で入力してください')
+    end
+
     # 特定の文字を含むか確認「to include」「to eq」
     # to include...配列の中にその値があればOK
     # to eq...文字列と完全に一致するかをチェックしている。これは単一の値の比較になるから、配列全体がその文字列である必要がある
