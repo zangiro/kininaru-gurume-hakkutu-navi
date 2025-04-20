@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'バリデーションチェック' do
-  # describeブロックはテスト対象のクラスやメソッドなどのグループを定義
+    # describeブロックはテスト対象のクラスやメソッドなどのグループを定義
 
     it 'userモデルに定義したバリデーションが全て機能しているか' do
       user = build(:user)

@@ -36,7 +36,7 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.include FactoryBot::Syntax::Methods
   # specファイルでfactory botが利用できるようする
-  
+
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
   ]
