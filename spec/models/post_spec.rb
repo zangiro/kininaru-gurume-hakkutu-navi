@@ -30,6 +30,9 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'アソシエーション' do
+
+    # ーーーーーーーーーーーー関連付け確認ーーーーーーーーーーーーー
+
     it 'ひとつの記事が複数のエリアタグに関連付けできること' do
       post = create(:post)
       area_tag1 = create(:area_tag, posts: [post])  # 1つ目のタグを作成
@@ -62,11 +65,47 @@ RSpec.describe Post, type: :model do
       expect(post.outher_tags).to include(outher_tag1, outher_tag2)
     end
 
-    it 'postとdishが関連付けできること' do
+    it '記事と記事説明(dish)が関連付けできること' do
       post = create(:post)
       dish = create(:dish, post: post)
     
       expect(post.dish).to eq(dish)
+    end
+
+    # ーーーーーーーーーーーー関連付け確認ーーーーーーーーーーーーー
+
+    # ーーーーーーーーーーーー削除確認ーーーーーーーーーーーーー
+
+    it '記事を削除すると関連するpost_area_tagsも削除されるか' do
+      post = create(:post)
+      area_tag = create(:area_tag)
+      post_area_tag = create(:post_area_tag, post: post, area_tag: area_tag)
+    
+      expect { post.destroy }.to change { PostAreaTag.count }.by(-1) # ポストを削除したときにpost_area_tagsの数が1減るか確認
+    end
+
+    it '記事を削除すると関連するpost_genre_tagsも削除されるか' do
+      post = create(:post)
+      genre_tag = create(:genre_tag)
+      post_genre_tag = create(:post_genre_tag, post: post, genre_tag: genre_tag)
+    
+      expect { post.destroy }.to change { PostGenreTag.count }.by(-1) # ポストを削除したときに中間テーブルの数が1減るか確認
+    end
+
+    it '記事を削除すると関連するpost_taste_tagsも削除されるか' do
+      post = create(:post)
+      taste_tag = create(:taste_tag)
+      post_taste_tag = create(:post_taste_tag, post: post, taste_tag: taste_tag)
+    
+      expect { post.destroy }.to change { PostTasteTag.count }.by(-1) # ポストを削除したときに中間テーブルの数が1減るか確認
+    end
+
+    it '記事を削除すると関連するpost_outher_tagsも削除されるか' do
+      post = create(:post)
+      outher_tag = create(:outher_tag)
+      post_outher_tag = create(:post_outher_tag, post: post, outher_tag: outher_tag)
+    
+      expect { post.destroy }.to change { PostOutherTag.count }.by(-1) # ポストを削除したときに中間テーブルの数が1減るか確認
     end
 
     it 'postを削除すると関連するdishも削除されるか' do
@@ -75,5 +114,7 @@ RSpec.describe Post, type: :model do
     
       expect { post.destroy }.to change { Dish.count }.by(-1) # ポストを削除したときにディッシュの数が1減るか確認
     end
+
+    # ーーーーーーーーーーーー削除確認ーーーーーーーーーーーーー
   end
 end
