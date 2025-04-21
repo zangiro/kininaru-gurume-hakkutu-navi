@@ -88,12 +88,14 @@ RSpec.describe User, type: :model do
       
       expect(user.view_histories).to include(view_history1, view_history2)
     end
-    #it 'ユーザーは複数のいいね(like)を持てること' do
-    #  user = create(:user)
-    #  1 = create(:, user: user)
-    #  2 = create(:, user: user)
-    #  
-    #  expect(user.s).to include(1, 2)
-    #end
+
+    it 'ユーザーは複数のauthenticationsを持てること' do
+      user = create(:user)
+      authentication1 = create(:authentication, user: user, provider: 'github', uid: '12345')
+      authentication2 = create(:authentication, user: user, provider: 'google', uid: '67890')
+
+      expect(user.authentications.count).to eq(2) # 認証情報の数を確認
+      expect(user.authentications).to include(authentication1, authentication2) # 認証情報の存在を確認
+    end
   end
 end
