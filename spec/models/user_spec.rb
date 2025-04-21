@@ -59,9 +59,41 @@ RSpec.describe User, type: :model do
   describe 'アソシエーション' do
     it 'ユーザーは複数のポストを持てること' do
       user = create(:user)
-      post1 = create(:post, user_id: user.id)
-      post2 = create(:post, user_id: user.id)
+      post1 = create(:post, user: user)
+      post2 = create(:post, user: user)
+
       expect(user.posts).to include(post1, post2)
     end
+
+    it 'ユーザーは複数のいいね(like)を持てること' do
+      user = create(:user)
+      like1 = create(:like, user: user)
+      like2 = create(:like, user: user)
+      
+      expect(user.likes).to include(like1, like2)
+    end
+
+    it 'ユーザーは複数のコメントを持てること' do
+      user = create(:user)
+      comment1 = create(:comment, user: user)
+      comment2 = create(:comment, user: user)
+      
+      expect(user.comments).to include(comment1, comment2)
+    end
+
+    it 'ユーザーは複数の閲覧履歴を持てること' do
+      user = create(:user)
+      view_history1 = create(:view_history, user: user)
+      view_history2 = create(:view_history, user: user)
+      
+      expect(user.view_histories).to include(view_history1, view_history2)
+    end
+    #it 'ユーザーは複数のいいね(like)を持てること' do
+    #  user = create(:user)
+    #  1 = create(:, user: user)
+    #  2 = create(:, user: user)
+    #  
+    #  expect(user.s).to include(1, 2)
+    #end
   end
 end
