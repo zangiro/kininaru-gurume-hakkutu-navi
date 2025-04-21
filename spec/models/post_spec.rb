@@ -139,6 +139,27 @@ RSpec.describe Post, type: :model do
       expect { post.destroy }.to change { Dish.count }.by(-1) # ポストを削除したときにディッシュの数が1減るか確認
     end
 
+    it '記事を削除すると関連するいいね(like)も削除されるか' do
+      post = create(:post)
+      like = create(:like, post: post)
+    
+      expect { post.destroy }.to change { Like.count }.by(-1)
+    end
+
+    it '記事を削除すると関連するコメントも削除されるか' do
+      post = create(:post)
+      comment = create(:comment, post: post)
+    
+      expect { post.destroy }.to change { Comment.count }.by(-1)
+    end
+
+    it '記事を削除すると関連する閲覧履歴も削除されるか' do
+      post = create(:post)
+      view_history = create(:view_history, post: post)
+    
+      expect { post.destroy }.to change { ViewHistory.count }.by(-1)
+    end
+
     # ーーーーーーーーーーーー削除確認ーーーーーーーーーーーーー
   end
 end
