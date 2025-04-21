@@ -72,6 +72,30 @@ RSpec.describe Post, type: :model do
       expect(post.dish).to eq(dish)
     end
 
+    it 'ひとつの記事が複数のいいね(like)に関連付けできること' do
+      post = create(:post)
+      like1 = create(:like, post: post)
+      like2 = create(:like, post: post)
+
+      expect(post.likes).to include(like1, like2)
+    end
+
+    it 'ひとつの記事が複数のコメントに関連付けできること' do
+      post = create(:post)
+      comment1 = create(:comment, post: post)
+      comment2 = create(:comment, post: post)
+
+      expect(post.comments).to include(comment1, comment2)
+    end
+
+    it 'ひとつの記事が閲覧履歴に関連付けできること' do
+      post = create(:post)
+      view_history1 = create(:view_history, post: post)
+      view_history2 = create(:view_history, post: post)
+
+      expect(post.view_histories).to include(view_history1, view_history2)
+    end
+
     # ーーーーーーーーーーーー関連付け確認ーーーーーーーーーーーーー
 
     # ーーーーーーーーーーーー削除確認ーーーーーーーーーーーーー
