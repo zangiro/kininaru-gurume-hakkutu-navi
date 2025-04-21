@@ -61,7 +61,19 @@ RSpec.describe Post, type: :model do
 
       expect(post.outher_tags).to include(outher_tag1, outher_tag2)
     end
-  end
 
-  # 記事を消したらtagもきえること
+    it 'postとdishが関連付けできること' do
+      post = create(:post)
+      dish = create(:dish, post: post)
+    
+      expect(post.dish).to eq(dish)
+    end
+
+    it 'postを削除すると関連するdishも削除されるか' do
+      post = create(:post)
+      create(:dish, post: post)
+    
+      expect { post.destroy }.to change { Dish.count }.by(-1) # ポストを削除したときにディッシュの数が1減るか確認
+    end
+  end
 end
