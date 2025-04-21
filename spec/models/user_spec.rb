@@ -57,6 +57,9 @@ RSpec.describe User, type: :model do
   end
 
   describe 'アソシエーション' do
+
+    # ーーーーーーーーーーーー関連付け確認ーーーーーーーーーーーーー
+
     it 'ユーザーは複数のポストを持てること' do
       user = create(:user)
       post1 = create(:post, user: user)
@@ -97,5 +100,46 @@ RSpec.describe User, type: :model do
       expect(user.authentications.count).to eq(2) # 認証情報の数を確認
       expect(user.authentications).to include(authentication1, authentication2) # 認証情報の存在を確認
     end
+
+    # ーーーーーーーーーーーー関連付け確認ーーーーーーーーーーーーー
+
+    # ーーーーーーーーーーーー削除確認ーーーーーーーーーーーーー
+
+    it 'ユーザーを削除すると記事も削除されるか' do
+      user = create(:user)
+      post = create(:post, user: user)
+    
+      expect { user.destroy }.to change { Post.count }.by(-1)
+    end
+
+    it 'ユーザーを削除するといいね(like)も削除されるか' do
+      user = create(:user)
+      like = create(:like, user: user)
+    
+      expect { user.destroy }.to change { Like.count }.by(-1)
+    end
+
+    it 'ユーザーを削除するとコメントも削除されるか' do
+      user = create(:user)
+      comment = create(:comment, user: user)
+    
+      expect { user.destroy }.to change { Comment.count }.by(-1)
+    end
+
+    it 'ユーザーを削除すると閲覧履歴も削除されるか' do
+      user = create(:user)
+      view_history = create(:view_history, user: user)
+    
+      expect { user.destroy }.to change { ViewHistory.count }.by(-1)
+    end
+
+    it 'ユーザーを削除するとauthenticationも削除されるか' do
+      user = create(:user)
+      authentication = create(:authentication, user: user, provider: 'github', uid: '12345')
+    
+      expect { user.destroy }.to change { Authentication.count }.by(-1)
+    end
+
+    # ーーーーーーーーーーーー削除確認ーーーーーーーーーーーーー
   end
 end
