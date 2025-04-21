@@ -29,6 +29,39 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  # 複数のタグを持てること
+  describe 'アソシエーション' do
+    it 'ひとつの記事が複数のエリアタグに関連付けできること' do
+      post = create(:post)
+      area_tag1 = create(:area_tag, posts: [post])  # 1つ目のタグを作成
+      area_tag2 = create(:area_tag, posts: [post])  # 2つ目のタグを作成
+
+      expect(post.area_tags).to include(area_tag1, area_tag2)
+    end
+
+    it 'ひとつの記事が複数のジャンルタグに関連付けできること' do
+      post = create(:post)
+      genre_tag1 = create(:genre_tag, posts: [post])  # 1つ目のタグを作成
+      genre_tag2 = create(:genre_tag, posts: [post])  # 2つ目のタグを作成
+
+      expect(post.genre_tags).to include(genre_tag1, genre_tag2)
+    end
+
+    it 'ひとつの記事が複数の味のタグに関連付けできること' do
+      post = create(:post)
+      taste_tag1 = create(:taste_tag, posts: [post])  # 1つ目のタグを作成
+      taste_tag2 = create(:taste_tag, posts: [post])  # 2つ目のタグを作成
+
+      expect(post.taste_tags).to include(taste_tag1, taste_tag2)
+    end
+
+    it 'ひとつの記事が複数のその他のタグに関連付けできること' do
+      post = create(:post)
+      outher_tag1 = create(:outher_tag, posts: [post])  # 1つ目のタグを作成
+      outher_tag2 = create(:outher_tag, posts: [post])  # 2つ目のタグを作成
+
+      expect(post.outher_tags).to include(outher_tag1, outher_tag2)
+    end
+  end
+
   # 記事を消したらtagもきえること
 end
