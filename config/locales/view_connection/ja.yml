@@ -73,7 +73,7 @@ ja:
   user_sessions:
     new:
       page_title: ログイン？
-      login: ログイン？
+      login: ログイン
       or_login_with_your_google_account: またはGoogleアカウントでログイン??
       to_register_page: 新規登録ページへ？
       forgot_password?: パスワードをお忘れの方はこちら？
