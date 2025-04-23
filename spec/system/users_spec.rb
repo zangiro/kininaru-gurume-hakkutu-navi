@@ -86,6 +86,51 @@ RSpec.describe "Users", type: :system do
         end
       end
 
+      context "利用規約に同意されてない" do
+        it "ユーザーの新規作成が失敗する" do
+          visit new_user_path
+          fill_in "名前", with: "田中"
+          fill_in "メールアドレス", with: "email@example.com"
+          fill_in "パスワード", with: "password"
+          fill_in "再確認", with: "password"
+          click_button "登録"
+          expect(page).to have_content "失敗しました"
+          expect(page).to have_content "利用規約に同意されてません"
+          expect(current_path).to eq users_path
+        end
+      end
+
+      context "パスワードとパスワード再確認が一致しない" do
+        it "ユーザーの新規作成が失敗する" do
+          visit new_user_path
+          fill_in "名前", with: "田中"
+          fill_in "メールアドレス", with: "email@example.com"
+          fill_in "パスワード", with: "password"
+          fill_in "再確認", with: "aiueo"
+          check "利用規約に同意しますか？"
+          click_button "登録"
+          expect(page).to have_content "失敗しました"
+          expect(page).to have_content "再確認用パスワードとパスワードの入力が一致しません"
+          expect(current_path).to eq users_path
+        end
+      end
+
+      context "メールアドレスがすでに存在する" do
+        it "ユーザーの新規作成が失敗する" do
+          existed_user = create(:user, email: "email@example.com")
+          visit new_user_path
+          fill_in "名前", with: "田中"
+          fill_in "メールアドレス", with: "email@example.com"
+          fill_in "パスワード", with: "password"
+          fill_in "再確認", with: "password"
+          check "利用規約に同意しますか？"
+          click_button "登録"
+          expect(page).to have_content "失敗しました"
+          expect(page).to have_content "メールアドレスはすでに存在します"
+          expect(current_path).to eq users_path
+        end
+      end
+
     end
   end
 end
