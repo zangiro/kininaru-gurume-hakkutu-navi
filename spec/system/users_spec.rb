@@ -149,6 +149,34 @@ RSpec.describe "Users", type: :system do
           expect(current_path).to eq user_path(user)
         end
       end
+
+      context "名前が空白" do
+        it "ユーザーの編集が失敗する" do
+          visit edit_user_path(user)
+          fill_in "名前", with: ""
+          fill_in "メールアドレス", with: "update@example.com"
+          fill_in "自己紹介", with: "こんにちは"
+          click_button "変更"
+          expect(page).to have_content "失敗しました"
+          expect(page).to have_content "名前を入力してください"
+          expect(current_path).to eq user_path(user)
+          # current_pathはedit_user_path(user)ではなくこっちが正常なよう
+        end
+      end
+
+      context "メールアドレスが空白" do
+        it "ユーザーの編集が失敗する" do
+          visit edit_user_path(user)
+          fill_in "名前", with: "佐藤"
+          fill_in "メールアドレス", with: ""
+          fill_in "自己紹介", with: "こんにちは"
+          click_button "変更"
+          expect(page).to have_content "失敗しました"
+          expect(page).to have_content "メールアドレスを入力してください"
+          expect(current_path).to eq user_path(user)
+        end
+      end
     end
+    
   end
 end
