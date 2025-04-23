@@ -133,4 +133,22 @@ RSpec.describe "Users", type: :system do
 
     end
   end
+
+  describe "ログイン後" do
+    before { login_as(user) }
+
+    describe "ユーザー編集" do
+      context "フォームの入力値が正常" do
+        it "ユーザーの編集が成功する" do
+          visit edit_user_path(user)
+          fill_in "名前", with: "佐藤"
+          fill_in "メールアドレス", with: "update@example.com"
+          fill_in "自己紹介", with: "こんにちは"
+          click_button "変更"
+          expect(page).to have_content "更新しました"
+          expect(current_path).to eq user_path(user)
+        end
+      end
+    end
+  end
 end

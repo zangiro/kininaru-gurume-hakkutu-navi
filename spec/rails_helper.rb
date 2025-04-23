@@ -76,8 +76,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  config.include FactoryBot::Syntax::Methods
-
   # システムスペック実行前にテストを動かすブラウザを設定
   config.before(:each, type: :system) do
     # 各テストの前に実行されるブロックを定義
