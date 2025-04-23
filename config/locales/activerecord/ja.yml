@@ -4,12 +4,12 @@ ja:
       user: ユーザー(必須)  (JAAC
     attributes:
       user:
-        password: パスワード~~
-        password_confirmation: 再確認用パスワード~~
-        email: メールアドレス~~
-        name: 名前~~
-        is_public: 公開設定~~
-        agree_terms: 利用規約〜〜
+        password: パスワード
+        password_confirmation: 再確認用パスワード
+        email: メールアドレス
+        name: 名前
+        is_public: 公開設定
+        agree_terms: 利用規約
       post:
         title: タイトル〜〜
         main_image: メイン画像〜〜

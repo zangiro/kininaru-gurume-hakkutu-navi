@@ -15,7 +15,7 @@ RSpec.describe "Users", type: :system do
         it "ユーザーの新規作成が成功する" do
           visit new_user_path
           fill_in "名前", with: "田中"
-          fill_in "メールアドレス", with: 'email@example.com'
+          fill_in "メールアドレス", with: "email@example.com"
           fill_in "パスワード", with: "password"
           fill_in "再確認", with: "password"
           check "利用規約に同意しますか？"
@@ -24,7 +24,68 @@ RSpec.describe "Users", type: :system do
           expect(current_path).to eq root_path
         end
       end
-    end
 
+      context "メールアドレスが未入力" do
+        it "ユーザーの新規作成が失敗する" do
+          visit new_user_path
+          fill_in "名前", with: "田中"
+          fill_in "メールアドレス", with: ""
+          fill_in "パスワード", with: "password"
+          fill_in "再確認", with: "password"
+          check "利用規約に同意しますか？"
+          click_button "登録"
+          expect(page).to have_content "失敗しました"
+          expect(page).to have_content "メールアドレスを入力してください"
+          expect(current_path).to eq users_path
+          # render :newが行わてたときnew_user_pathではなくusers_pathと判定されるみたい
+        end
+      end
+
+      context "名前が未入力" do
+        it "ユーザーの新規作成が失敗する" do
+          visit new_user_path
+          fill_in "名前", with: ""
+          fill_in "メールアドレス", with: "email@example.com"
+          fill_in "パスワード", with: "password"
+          fill_in "再確認", with: "password"
+          check "利用規約に同意しますか？"
+          click_button "登録"
+          expect(page).to have_content "失敗しました"
+          expect(page).to have_content "名前を入力してください"
+          expect(current_path).to eq users_path
+        end
+      end
+
+      context "パスワードが未入力" do
+        it "ユーザーの新規作成が失敗する" do
+          visit new_user_path
+          fill_in "名前", with: "田中"
+          fill_in "メールアドレス", with: "email@example.com"
+          fill_in "パスワード", with: ""
+          fill_in "再確認", with: "password"
+          check "利用規約に同意しますか？"
+          click_button "登録"
+          expect(page).to have_content "失敗しました"
+          expect(page).to have_content "パスワードは3文字以上で入力してください"
+          expect(current_path).to eq users_path
+        end
+      end
+
+      context "パスワード再確認が未入力" do
+        it "ユーザーの新規作成が失敗する" do
+          visit new_user_path
+          fill_in "名前", with: "田中"
+          fill_in "メールアドレス", with: "email@example.com"
+          fill_in "パスワード", with: "password"
+          fill_in "再確認", with: ""
+          check "利用規約に同意しますか？"
+          click_button "登録"
+          expect(page).to have_content "失敗しました"
+          expect(page).to have_content "再確認用パスワードを入力してください"
+          expect(current_path).to eq users_path
+        end
+      end
+
+    end
   end
 end
