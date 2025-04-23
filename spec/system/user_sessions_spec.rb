@@ -31,6 +31,5 @@ RSpec.describe "UserSessions", type: :system do
         expect(current_path).to eq login_path
       end
     end
-
   end
 end

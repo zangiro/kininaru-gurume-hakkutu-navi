@@ -84,7 +84,7 @@ ja:
       name_required: 名前(必須)?
       email_required: メールアドレス(必須)?
       password_required: パスワード(必須)?
-      password_confirmation_required: パスワード再確認(必須)？
+      password_confirmation_required: 再確認(必須)？
       is_public: 公開設定?
       permit: 許可？
       not_permit: 不許可?
