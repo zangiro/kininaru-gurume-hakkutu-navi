@@ -130,7 +130,6 @@ RSpec.describe "Users", type: :system do
           expect(current_path).to eq users_path
         end
       end
-
     end
   end
 
@@ -177,6 +176,5 @@ RSpec.describe "Users", type: :system do
         end
       end
     end
-    
   end
 end
