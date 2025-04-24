@@ -57,7 +57,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'アソシエーション' do
-
     # ーーーーーーーーーーーー関連付け確認ーーーーーーーーーーーーー
 
     it 'ユーザーは複数のポストを持てること' do

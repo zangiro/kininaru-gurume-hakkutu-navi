@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe AreaTag, type: :model do
-  
   describe 'バリデーションチェック' do
     it 'エリアタグモデルに定義したバリデーションが全て機能しているか' do
       area_tag = build(:area_tag)

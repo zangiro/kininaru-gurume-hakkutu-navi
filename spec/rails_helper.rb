@@ -81,7 +81,7 @@ RSpec.configure do |config|
     # 各テストの前に実行されるブロックを定義
 
     driven_by :remote_chrome
-    #テストをリモートのChromeブラウザで実行するための設定をしている。これにより、ブラウザの操作がテストで行えるようになる
+    # テストをリモートのChromeブラウザで実行するための設定をしている。これにより、ブラウザの操作がテストで行えるようになる
 
     Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
     # テストサーバーのホスト名を取得して、Capybaraのサーバーホストに設定している。これで、テストがどのホストで実行されるかを正しく指定してる
