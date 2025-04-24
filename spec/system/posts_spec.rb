@@ -52,7 +52,7 @@ RSpec.describe "Posts", type: :system do
           fill_in "post[post_outher_tags_attributes][0][outher_tag_attributes][name]", with: "その他A,その他B"
           click_button "登録"
           expect(page).to have_content "記事の作成に失敗しました"
-          expect(page).to have_content "タイトルを入力してください"
+          expect(page).to have_content "料理名を入力してください"
           expect(current_path).to eq posts_path
           # render :new実行後はnew_post_pathではなくposts_path
         end
