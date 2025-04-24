@@ -122,5 +122,35 @@ RSpec.describe "Posts", type: :system do
         end
       end
     end
+
+    describe "記事編集" do
+      let(:dish) { create(:dish) }
+      let(:area_tag) { create(:area_tag) }
+      let(:genre_tag) { create(:genre_tag) }
+      let(:taste_tag) { create(:taste_tag) }
+      let(:outher_tag) { create(:outher_tag) }
+      let(:post) { create(:post, user: user, dish: dish, area_tags: [area_tag], genre_tags: [genre_tag], taste_tags: [taste_tag], outher_tags: [outher_tag]) }
+      context "フォームの入力値が正常" do
+        it "記事の編集が成功する" do
+          visit edit_post_path(post)
+          fill_in "料理名", with: "パン"
+          attach_file "メイン画像", Rails.root.join("spec/fixtures/files/susi.jpg")
+          attach_file "サブ画像１", Rails.root.join("spec/fixtures/files/susi.jpg")
+          attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/susi.jpg")
+          fill_in "出典", with: "出典B"
+          fill_in "店舗情報", with: "店B"
+          fill_in "一覧用紹介文", with: "いちらんせつめいB"
+          fill_in "詳細用紹介文", with: "しょうさいせつめいB"
+          fill_in "post[post_area_tags_attributes][0][area_tag_attributes][name]", with: "エリアA,エリアB"
+          fill_in "post[post_genre_tags_attributes][0][genre_tag_attributes][name]", with: "ジャンルA,ジャンルB"
+          fill_in "post[post_taste_tags_attributes][0][taste_tag_attributes][name]", with: "味A,味B"
+          fill_in "post[post_outher_tags_attributes][0][outher_tag_attributes][name]", with: "その他A,その他B"
+          # text_field_tagを使っている場合は、fill_inで指定する名前も実際の名前に合わせる必要がある
+          click_button "更新"
+          expect(page).to have_content "更新しました"
+          expect(current_path).to eq user_posts_path(user)
+        end
+      end
+    end
   end
 end
