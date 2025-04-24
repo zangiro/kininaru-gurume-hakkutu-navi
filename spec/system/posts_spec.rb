@@ -18,6 +18,8 @@ RSpec.describe "Posts", type: :system do
           visit new_post_path
           fill_in "料理名", with: "ごはん"
           attach_file "メイン画像", Rails.root.join("spec/fixtures/files/1.jpg")
+          attach_file "サブ画像１", Rails.root.join("spec/fixtures/files/1.jpg")
+          attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
           fill_in "一覧用紹介文", with: "いちらんせつめい"
@@ -38,6 +40,8 @@ RSpec.describe "Posts", type: :system do
           visit new_post_path
           fill_in "料理名", with: ""
           attach_file "メイン画像", Rails.root.join("spec/fixtures/files/1.jpg")
+          attach_file "サブ画像１", Rails.root.join("spec/fixtures/files/1.jpg")
+          attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
           fill_in "一覧用紹介文", with: "いちらんせつめい"
@@ -58,6 +62,8 @@ RSpec.describe "Posts", type: :system do
         it "記事の作成が失敗する" do
           visit new_post_path
           fill_in "料理名", with: "ごはん"
+          attach_file "サブ画像１", Rails.root.join("spec/fixtures/files/1.jpg")
+          attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
           fill_in "一覧用紹介文", with: "いちらんせつめい"
@@ -78,6 +84,8 @@ RSpec.describe "Posts", type: :system do
           visit new_post_path
           fill_in "料理名", with: "ごはん"
           attach_file "メイン画像", Rails.root.join("spec/fixtures/files/1.jpg")
+          attach_file "サブ画像１", Rails.root.join("spec/fixtures/files/1.jpg")
+          attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
           fill_in "一覧用紹介文", with: "いちらんせつめい"
@@ -98,6 +106,8 @@ RSpec.describe "Posts", type: :system do
           visit new_post_path
           fill_in "料理名", with: "ごはん"
           attach_file "メイン画像", Rails.root.join("spec/fixtures/files/1.jpg")
+          attach_file "サブ画像１", Rails.root.join("spec/fixtures/files/1.jpg")
+          attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
           fill_in "一覧用紹介文", with: "いちらんせつめい"

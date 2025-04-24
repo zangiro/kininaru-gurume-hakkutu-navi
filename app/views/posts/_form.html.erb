@@ -34,7 +34,9 @@
     <%= f.file_field :sub_image_first, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
 
     <div data-preview-target="existing">
-      <%= image_tag post.sub_image_first.variant(resize_and_pad: [200, 200]) if post.sub_image_first.attached? %>
+      <% if post.persisted? && post.sub_image_first.attached? %>
+        <%= image_tag post.sub_image_first.variant(resize_and_pad: [200, 200]) %>
+      <% end %>
     </div>
 
     <div data-preview-target="preview">
@@ -50,7 +52,9 @@
     <%= f.file_field :sub_image_second, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
 
     <div data-preview-target="existing">
-      <%= image_tag post.sub_image_second.variant(resize_and_pad: [200, 200]) if post.sub_image_second.attached? %>
+      <% if post.persisted? && post.sub_image_second.attached? %>
+        <%= image_tag post.sub_image_second.variant(resize_and_pad: [200, 200]) %>
+      <% end %>
     </div>
 
     <div data-preview-target="preview">
