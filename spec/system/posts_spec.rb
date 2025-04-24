@@ -13,7 +13,7 @@ RSpec.describe "Posts", type: :system do
   let(:genre_tag) { create(:genre_tag) }
   let(:taste_tag) { create(:taste_tag) }
   let(:outher_tag) { create(:outher_tag) }
-  let(:post) { create(:post, user: user, dish: dish, area_tags: [area_tag], genre_tags: [genre_tag], taste_tags: [taste_tag], outher_tags: [outher_tag]) }
+  let(:post) { create(:post, user: user, dish: dish, area_tags: [ area_tag ], genre_tags: [ genre_tag ], taste_tags: [ taste_tag ], outher_tags: [ outher_tag ]) }
 
   describe "ログイン前" do
     describe "ページ遷移確認" do
