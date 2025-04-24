@@ -55,4 +55,80 @@ RSpec.describe User, type: :model do
       expect(user2.errors[:email]).to include('はすでに存在します')
     end
   end
+
+  describe 'アソシエーション' do
+    # ーーーーーーーーーーーー関連付け確認ーーーーーーーーーーーーー
+
+    it 'ユーザーは複数のポストを持てること' do
+      user = create(:user)
+      post1 = create(:post, user: user)
+      post2 = create(:post, user: user)
+      expect(user.posts).to include(post1, post2)
+    end
+
+    it 'ユーザーは複数のいいね(like)を持てること' do
+      user = create(:user)
+      like1 = create(:like, user: user)
+      like2 = create(:like, user: user)
+      expect(user.likes).to include(like1, like2)
+    end
+
+    it 'ユーザーは複数のコメントを持てること' do
+      user = create(:user)
+      comment1 = create(:comment, user: user)
+      comment2 = create(:comment, user: user)
+      expect(user.comments).to include(comment1, comment2)
+    end
+
+    it 'ユーザーは複数の閲覧履歴を持てること' do
+      user = create(:user)
+      view_history1 = create(:view_history, user: user)
+      view_history2 = create(:view_history, user: user)
+      expect(user.view_histories).to include(view_history1, view_history2)
+    end
+
+    it 'ユーザーは複数のauthenticationsを持てること' do
+      user = create(:user)
+      authentication1 = create(:authentication, user: user, provider: 'github', uid: '12345')
+      authentication2 = create(:authentication, user: user, provider: 'google', uid: '67890')
+      expect(user.authentications.count).to eq(2) # 認証情報の数を確認
+      expect(user.authentications).to include(authentication1, authentication2) # 認証情報の存在を確認
+    end
+
+    # ーーーーーーーーーーーー関連付け確認ーーーーーーーーーーーーー
+
+    # ーーーーーーーーーーーー削除確認ーーーーーーーーーーーーー
+
+    it 'ユーザーを削除すると記事も削除されるか' do
+      user = create(:user)
+      post = create(:post, user: user)
+      expect { user.destroy }.to change { Post.count }.by(-1)
+    end
+
+    it 'ユーザーを削除するといいね(like)も削除されるか' do
+      user = create(:user)
+      like = create(:like, user: user)
+      expect { user.destroy }.to change { Like.count }.by(-1)
+    end
+
+    it 'ユーザーを削除するとコメントも削除されるか' do
+      user = create(:user)
+      comment = create(:comment, user: user)
+      expect { user.destroy }.to change { Comment.count }.by(-1)
+    end
+
+    it 'ユーザーを削除すると閲覧履歴も削除されるか' do
+      user = create(:user)
+      view_history = create(:view_history, user: user)
+      expect { user.destroy }.to change { ViewHistory.count }.by(-1)
+    end
+
+    it 'ユーザーを削除するとauthenticationも削除されるか' do
+      user = create(:user)
+      authentication = create(:authentication, user: user, provider: 'github', uid: '12345')
+      expect { user.destroy }.to change { Authentication.count }.by(-1)
+    end
+
+    # ーーーーーーーーーーーー削除確認ーーーーーーーーーーーーー
+  end
 end

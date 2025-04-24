@@ -4,15 +4,16 @@ ja:
       user: ユーザー(必須)  (JAAC
     attributes:
       user:
-        password: パスワード~~
-        password_confirmation: 再確認用パスワード~~
-        email: メールアドレス~~
-        name: 名前~~
-        is_public: 公開設定~~
-        agree_terms: 利用規約〜〜
+        password: パスワード
+        password_confirmation: 再確認用パスワード
+        email: メールアドレス
+        name: 名前
+        is_public: 公開設定
+        agree_terms: 利用規約
       post:
-        title: タイトル〜〜
+        title: 料理名
+        main_image: メイン画像
       dish:
-        description: 詳細用紹介文~~~
+        description: 詳細用紹介文
       comment:
         body: コメント〜〜〜

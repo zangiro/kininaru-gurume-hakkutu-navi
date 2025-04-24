@@ -37,7 +37,7 @@ class Post < ApplicationRecord
   scope :old, -> { order(created_at: :asc) }
 
   def main_image_attached
-    errors.add(:base, "画像を添付してください") unless main_image.attached?
+    errors.add(:main_image, "を添付してください") unless main_image.attached?
   end
   # あとでrailsi-18n化したい
 

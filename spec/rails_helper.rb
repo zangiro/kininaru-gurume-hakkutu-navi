@@ -23,7 +23,12 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+# capybara等ファイルの読み込み設定のため、コメントアウトを解除。（spec/support内の.rbファイルをすべて見つけて読み込み）
+# sort_by(&:to_s): 見つけたファイルを文字列としてソートしている。これで、ファイルが決まった順序で読み込まれる。
+# each { |f| require f }: ソートされたファイルを一つずつrequireで読み込んでいる。これにより、テストに必要な設定やメソッドを使えるようになる。
+# ----「Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }」似てるけど意味や処理違う？
+# ファイルを取得する方法が異なるだけで、最終的な目的は同じ
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -70,4 +75,24 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # システムスペック実行前にテストを動かすブラウザを設定
+  config.before(:each, type: :system) do
+    # 各テストの前に実行されるブロックを定義
+
+    driven_by :remote_chrome
+    # テストをリモートのChromeブラウザで実行するための設定をしている。これにより、ブラウザの操作がテストで行えるようになる
+
+    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    # テストサーバーのホスト名を取得して、Capybaraのサーバーホストに設定している。これで、テストがどのホストで実行されるかを正しく指定してる
+
+    Capybara.server_port = 4444
+    # テストサーバーがリッスンするポートを4444に設定している
+
+    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+    # アプリケーションのホストURLを設定している。これにより、テスト中にアクセスするURLが正しく指定される
+
+    Capybara.ignore_hidden_elements = false
+    # 隠れた要素を無視しない設定にしている。これにより、テスト中に隠れた要素もチェックすることができるようになる
+  end
 end
