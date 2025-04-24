@@ -187,5 +187,20 @@ RSpec.describe "Posts", type: :system do
         end
       end
     end
+
+    describe "記事削除" do
+      let(:dish) { create(:dish) }
+      let(:area_tag) { create(:area_tag) }
+      let(:genre_tag) { create(:genre_tag) }
+      let(:taste_tag) { create(:taste_tag) }
+      let(:outher_tag) { create(:outher_tag) }
+      let!(:post) { create(:post, user: user, dish: dish, area_tags: [area_tag], genre_tags: [genre_tag], taste_tags: [taste_tag], outher_tags: [outher_tag]) }
+      it "記事の削除が成功する" do
+        visit user_posts_path(user)
+        click_link "削除する"
+        expect(page).to have_content "記事を削除しました"
+        expect(current_path).to eq user_posts_path(user)
+      end
+    end
   end
 end
