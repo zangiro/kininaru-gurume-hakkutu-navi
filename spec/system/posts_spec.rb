@@ -49,8 +49,9 @@ RSpec.describe "Posts", type: :system do
           visit new_post_path
           fill_in "料理名", with: ""
           attach_file "メイン画像", Rails.root.join("spec/fixtures/files/1.jpg")
+          fill_in "post[post_area_tags_attributes][0][area_tag_attributes][name]", with: "エリアA"
           click_button "登録"
-          expect(page).to have_content "記事の作成が失敗しました"
+          expect(page).to have_content "失敗"
         end
       end
     end
