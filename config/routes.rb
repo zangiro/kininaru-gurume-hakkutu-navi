@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   root "static_pages#top"
+  get "policy", to: "static_pages#policy"
+  get "terms", to: "static_pages#terms"
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
