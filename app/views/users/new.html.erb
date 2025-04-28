@@ -56,8 +56,8 @@
         </div>
 
         <div class="mb-3">
-          <%= link_to t(".agree_terms"), "#" %>
-          <%= link_to t(".privacy_policy"), "#" %>
+          <%= link_to t(".agree_terms"), terms_path %>
+          <%= link_to t(".privacy_policy"), policy_path %>
         </div>
 
         <%= f.submit t("helpers.submit.create"), class: "btn btn-primary" %>
