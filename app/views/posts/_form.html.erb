@@ -45,16 +45,28 @@
   <%# ーーーーーーーサブ画像1選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
 
   <div class="row" data-controller="preview">
-    <%= f.label :sub_image_first, t("posts.post_info.sub_image_first") %>
-    <%= f.file_field :sub_image_first, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
-
-    <div data-preview-target="existing">
-      <% if post.persisted? && post.sub_image_first.attached? && @select_new_sub_image_first != "1" %>
-        <%= image_tag post.sub_image_first.variant(resize_and_pad: [200, 200]) %>
-      <% end %>
+    <div class="mt-2">
+      <%= f.label :sub_image_first, t("posts.post_info.sub_image_first") %>
+    </div>
+    <div class="mt-1">
+      <%= f.file_field :sub_image_first, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
     </div>
 
-    <div data-preview-target="preview">
+    <div class="mt-2">
+      <div data-preview-target="existing">
+        <% if post.persisted? && post.sub_image_first.attached? && @select_new_sub_image_first != "1" %>
+          <%= image_tag post.sub_image_first.variant(resize_and_pad: [200, 200]) %>
+        <% end %>
+
+        <% if @select_new_sub_image_first == "1" %>
+          <div class="py-2 ps-2 bg-danger-subtle">
+            もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
+          </div>
+        <% end %>
+      </div>
+
+      <div data-preview-target="preview">
+      </div>
     </div>
   </div>
 
@@ -63,16 +75,28 @@
   <%# ーーーーーーーサブ画像2選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
 
   <div class="row" data-controller="preview">
-    <%= f.label :sub_image_second, t("posts.post_info.sub_image_second") %>
-    <%= f.file_field :sub_image_second, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
-
-    <div data-preview-target="existing">
-      <% if post.persisted? && post.sub_image_second.attached? && @select_new_sub_image_second != "1" %>
-        <%= image_tag post.sub_image_second.variant(resize_and_pad: [200, 200]) %>
-      <% end %>
+    <div class="mt-2">
+      <%= f.label :sub_image_second, t("posts.post_info.sub_image_second") %>
+    </div>
+    <div class="mt-1">
+      <%= f.file_field :sub_image_second, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
     </div>
 
-    <div data-preview-target="preview">
+    <div class="mt-2">
+      <div data-preview-target="existing">
+        <% if post.persisted? && post.sub_image_second.attached? && @select_new_sub_image_second != "1" %>
+          <%= image_tag post.sub_image_second.variant(resize_and_pad: [200, 200]) %>
+        <% end %>
+
+        <% if @select_new_sub_image_second == "1" %>
+          <div class="py-2 ps-2 bg-danger-subtle">
+            もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
+          </div>
+        <% end %>
+      </div>
+
+      <div data-preview-target="preview">
+      </div>
     </div>
   </div>
 
