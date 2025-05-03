@@ -11,24 +11,32 @@
   <%# ーーーーーーーメイン画像選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
 
   <div class="row" data-controller="preview">
-    <%= f.label :main_image, t("posts.post_info.main_image") %>
-    <%= f.file_field :main_image, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
-
+    <div class="mt-3">
+      <%= f.label :main_image, t("posts.post_info.main_image") %>
+    </div>
+    <div class="mt-1">
+      <%= f.file_field :main_image, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
+    </div>
     <%# ーーー"change->xxxxx"のchangeは、ファイル選択の入力フィールドでユーザーがファイルを選択したときに発火するイベントーー %>
     <%#  ーーーーー今回はchangeイベントが発火すると「preview_controller.js」の「previewImage」のメソッドが呼び出されるーーーー%>
 
-    <div data-preview-target="existing">
-      <% if post.persisted? && post.main_image.attached? && @select_new_main_image != "1" %>
-        <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
-      <% end %>
-      <% if @select_new_main_image == "1" %>
-        <div class="mt-3">
-        もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
-        </div>
-      <% end %>
-    </div>
+    <div class="mt-2">
+      <div data-preview-target="existing">
+        <% if post.persisted? && post.main_image.attached? && @select_new_main_image != "1" %>
+          <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
+        <% end %>
+        <%# ----persisted?はpostオブジェクトがデータベースに保存されているかどうかを確認するメソッド。システムスペック時にエラーを出さないため設定---- %>
+        <%# ----記事編集時、画像を選択してから編集失敗した場合のエラーを防ぐため、変数で編集失敗した場合かを識別---- %>
 
-    <div data-preview-target="preview">
+        <% if @select_new_main_image == "1" %>
+          <div class="py-2 ps-2 bg-danger-subtle">
+            もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
+          </div>
+        <% end %>
+      </div>
+
+      <div data-preview-target="preview">
+      </div>
     </div>
   </div>
 
