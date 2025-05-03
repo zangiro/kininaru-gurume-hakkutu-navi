@@ -28,7 +28,7 @@
       <div data-preview-target="existing">
         <% if post.persisted? && post.main_image.attached? && @select_new_main_image != "1" %>
           <div class="mt-1">
-            メイン画像に以下の画像が選択されてます
+            <%= t("posts.post_info.selected_main_image") %>
           </div>
           <div class="mt-1">
             <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
@@ -39,7 +39,7 @@
 
         <% if @select_new_main_image == "1" %>
           <div class="py-2 ps-2 bg-danger-subtle">
-            もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
+            <%= t("posts.post_info.please_select_image_again") %>
           </div>
         <% end %>
       </div>
@@ -65,7 +65,7 @@
       <div data-preview-target="existing">
         <% if post.persisted? && post.sub_image_first.attached? && @select_new_sub_image_first != "1" %>
           <div class="mt-1">
-            〜サブ画像1に以下の画像が選択されてます〜
+            <%= t("posts.post_info.selected_sub_image_first") %>
           </div>
           <div class="mt-1">
             <%= image_tag post.sub_image_first.variant(resize_and_pad: [200, 200]) %>
@@ -74,7 +74,7 @@
 
         <% if @select_new_sub_image_first == "1" %>
           <div class="py-2 ps-2 bg-danger-subtle">
-            もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
+            <%= t("posts.post_info.please_select_image_again") %>
           </div>
         <% end %>
       </div>
@@ -100,7 +100,7 @@
       <div data-preview-target="existing">
         <% if post.persisted? && post.sub_image_second.attached? && @select_new_sub_image_second != "1" %>
           <div class="mt-1">
-            サブ画像2に以下の画像が選択されてます
+            <%= t("posts.post_info.selected_sub_image_second") %>
           </div>
           <div class="mt-1">
             <%= image_tag post.sub_image_second.variant(resize_and_pad: [200, 200]) %>
@@ -109,7 +109,7 @@
 
         <% if @select_new_sub_image_second == "1" %>
           <div class="py-2 ps-2 bg-danger-subtle">
-            もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
+            <%= t("posts.post_info.please_select_image_again") %>
           </div>
         <% end %>
       </div>

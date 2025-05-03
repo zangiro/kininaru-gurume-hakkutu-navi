@@ -165,6 +165,10 @@ ja:
       main_image: メイン画像(必須)??
       sub_image_first: サブ画像１??
       sub_image_second: サブ画像２？？
+      selected_main_image: 〜メイン画像に以下の画像が選択されてます〜
+      selected_sub_image_first: 〜サブ画像1に以下の画像が選択されてます〜
+      selected_sub_image_second: 〜サブ画像2に以下の画像が選択されてます〜
+      please_select_image_again: もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
       source: 出典？？
       store_url: 店舗情報？？？
       introduction: 一覧用紹介文？？
