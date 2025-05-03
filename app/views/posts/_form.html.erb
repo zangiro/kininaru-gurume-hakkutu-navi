@@ -3,8 +3,10 @@
   <%= render 'shared/error_messages', object: f.object %>
 
 
-  <%= f.label :title, t("posts.post_info.title") %>
-  <%= f.text_field :title, class: "form-control" %>
+  <div class="mt-3">
+    <%= f.label :title, t("posts.post_info.title") %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
 
   <%# ーーーーーーーメイン画像選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
 
@@ -18,6 +20,11 @@
     <div data-preview-target="existing">
       <% if post.persisted? && post.main_image.attached? && @select_new_main_image != "1" %>
         <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
+      <% end %>
+      <% if @select_new_main_image == "1" %>
+        <div class="mt-3">
+        もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
+        </div>
       <% end %>
     </div>
 
@@ -63,36 +70,53 @@
 
   <%# ーーーーーーーーーーーーーーーーーーーーー %>
 
-  <%= f.label :source, t("posts.post_info.source") %>
-  <%= f.text_field :source, class: "form-control" %>
+  <div class="mt-3">
+    <%= f.label :source, t("posts.post_info.source") %>
+    <%= f.text_field :source, class: "form-control" %>
+  </div>
 
-  <%= f.label :store_url, t("posts.post_info.store_url") %>
-  <%= f.text_field :store_url, class: "form-control" %>
+  <div class="mt-3">
+    <%= f.label :store_url, t("posts.post_info.store_url") %>
+    <%= f.text_field :store_url, class: "form-control" %>
+  </div>
 
   <%= f.fields_for :dish do |dish_f| %>
-    <%= dish_f.label :introduction, t("posts.post_info.introduction") %>
-    <%= dish_f.text_area :introduction, class: "form-control" %>
+    <div class="mt-3">
+      <%= dish_f.label :introduction, t("posts.post_info.introduction") %>
+      <%= dish_f.text_area :introduction, class: "form-control" %>
+    </div>
 
-    <%= dish_f.label :description, t("posts.post_info.description") %>
-    <%= dish_f.text_area :description, class: "form-control" , rows: 9 %>
+    <div class="mt-3">
+      <%= dish_f.label :description, t("posts.post_info.description") %>
+      <%= dish_f.text_area :description, class: "form-control" , rows: 9 %>
+    </div>
   <% end %>
 
+  <div class="mt-3">
+    <h3><%= t("posts.post_info.tag_setting_info") %></h3>
+  </div>
 
-  <h3><%= t("posts.post_info.tag_setting_info") %></h3>
+  <div class="mt-3">
+    <%= label_tag :area_tag_name, t("posts.post_info.area_tag_setting") %>
+    <%= text_field_tag 'post[post_area_tags_attributes][0][area_tag_attributes][name]', @area_tag_name, class: "form-control" %>
+  </div>
 
-  <%= label_tag :area_tag_name, t("posts.post_info.area_tag_setting") %>
-  <%= text_field_tag 'post[post_area_tags_attributes][0][area_tag_attributes][name]', @area_tag_name, class: "form-control" %>
+  <div class="mt-3">
+    <%= label_tag :genre_tag_name, t("posts.post_info.genre_tag_setting") %>
+    <%= text_field_tag 'post[post_genre_tags_attributes][0][genre_tag_attributes][name]', @genre_tag_name, class: "form-control" %>
+  </div>
 
-  <%= label_tag :genre_tag_name, t("posts.post_info.genre_tag_setting") %>
-  <%= text_field_tag 'post[post_genre_tags_attributes][0][genre_tag_attributes][name]', @genre_tag_name, class: "form-control" %>
+  <div class="mt-3">
+    <%= label_tag :taste_tag_name, t("posts.post_info.taste_tag_setting") %>
+    <%= text_field_tag 'post[post_taste_tags_attributes][0][taste_tag_attributes][name]', @taste_tag_name, class: "form-control" %>
+  </div>
 
-  <%= label_tag :taste_tag_name, t("posts.post_info.taste_tag_setting") %>
-  <%= text_field_tag 'post[post_taste_tags_attributes][0][taste_tag_attributes][name]', @taste_tag_name, class: "form-control" %>
+  <div class="mt-3">
+    <%= label_tag :outher_tag_name, t("posts.post_info.outher_tag_setting") %>
+    <%= text_field_tag 'post[post_outher_tags_attributes][0][outher_tag_attributes][name]', @outher_tag_name, class: "form-control" %>
+  </div>
 
-  <%= label_tag :outher_tag_name, t("posts.post_info.outher_tag_setting") %>
-  <%= text_field_tag 'post[post_outher_tags_attributes][0][outher_tag_attributes][name]', @outher_tag_name, class: "form-control" %>
-
-
-
-  <%= f.submit nil, class: "btn btn-primary" %>
+  <div class="mt-3">
+    <%= f.submit nil, class: "btn btn-primary" %>
+  </div>
 <% end %>
