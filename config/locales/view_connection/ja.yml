@@ -161,6 +161,7 @@ ja:
       edit_post: 記事編集？？
     post_info:
       title: 料理名（必須）??
+      image_setting_info: 画像選択 / 以下の拡張子の画像が利用できます[ jpg, jpeg, png ]
       main_image: メイン画像(必須)??
       sub_image_first: サブ画像１??
       sub_image_second: サブ画像２？？
