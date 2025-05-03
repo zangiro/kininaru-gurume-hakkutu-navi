@@ -101,6 +101,17 @@ class PostsController < ApplicationController
     #    @post.sub_image_second.purge
     #  end
     #end
+    if params[:post][:main_image].present?
+      @select_new_main_image = "1"
+    end
+
+    if params[:post][:sub_image_first].present?
+      @select_new_sub_image_first = "1"
+    end
+
+    if params[:post][:sub_image_second].present?
+      @select_new_sub_image_second = "1"
+    end
 
     if @form_input_area_tag != [ "" ] && @post.update(filtered_params)
       @post.update_tags(@form_input_area_tag, "area")

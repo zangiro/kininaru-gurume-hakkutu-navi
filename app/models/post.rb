@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
-  validate :main_image_attached
+  #validate :main_image_attached
+  validates :main_image, presence: true, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
+  validates :sub_image_first, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
+  validates :sub_image_second, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
 
   belongs_to :user
   has_one :dish, dependent: :destroy
@@ -36,9 +39,9 @@ class Post < ApplicationRecord
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }
 
-  def main_image_attached
-    errors.add(:main_image, "を添付してください") unless main_image.attached?
-  end
+  #def main_image_attached
+  #  errors.add(:main_image, "を添付してください") unless main_image.attached?
+  #end
   # あとでrailsi-18n化したい
 
   def update_tags(input_tags, tag_type)

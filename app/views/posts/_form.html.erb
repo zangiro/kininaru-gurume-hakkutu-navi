@@ -16,7 +16,7 @@
     <%#  ーーーーー今回はchangeイベントが発火すると「preview_controller.js」の「previewImage」のメソッドが呼び出されるーーーー%>
 
     <div data-preview-target="existing">
-      <% if post.persisted? && post.main_image.attached? %>
+      <% if post.persisted? && post.main_image.attached? && @select_new_main_image != "1" %>
         <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
       <% end %>
     </div>
@@ -34,7 +34,7 @@
     <%= f.file_field :sub_image_first, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
 
     <div data-preview-target="existing">
-      <% if post.persisted? && post.sub_image_first.attached? %>
+      <% if post.persisted? && post.sub_image_first.attached? && @select_new_sub_image_first != "1" %>
         <%= image_tag post.sub_image_first.variant(resize_and_pad: [200, 200]) %>
       <% end %>
     </div>
@@ -52,7 +52,7 @@
     <%= f.file_field :sub_image_second, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
 
     <div data-preview-target="existing">
-      <% if post.persisted? && post.sub_image_second.attached? %>
+      <% if post.persisted? && post.sub_image_second.attached? && @select_new_sub_image_second != "1" %>
         <%= image_tag post.sub_image_second.variant(resize_and_pad: [200, 200]) %>
       <% end %>
     </div>
