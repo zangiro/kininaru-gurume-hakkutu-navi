@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
-  #validate :main_image_attached
   validates :main_image, presence: true, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
   validates :sub_image_first, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
   validates :sub_image_second, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
@@ -38,11 +37,6 @@ class Post < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }
-
-  #def main_image_attached
-  #  errors.add(:main_image, "を添付してください") unless main_image.attached?
-  #end
-  # あとでrailsi-18n化したい
 
   def update_tags(input_tags, tag_type)
     input_tags = input_tags.join(",").split(",").map(&:strip)  # コンマで区切って配列にする。空白削除 +複数の配列を位置行の文字列へ
