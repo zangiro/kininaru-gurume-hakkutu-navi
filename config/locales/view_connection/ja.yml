@@ -114,7 +114,8 @@ ja:
       password_confirmation_required: パスワード変更時の再確認？
       introduction: 自己紹介？？
       address: 所在地??
-      avatar: アバター設定？？
+      avatar: アバター設定 / 以下の拡張子の画像が利用できます[ jpg, jpeg, png ]
+      selected_avatar: 〜アバターに以下の画像が選択されてます〜
       is_public: 公開設定?
       permit: 許可？
       not_permit: 不許可?
@@ -161,9 +162,14 @@ ja:
       edit_post: 記事編集？？
     post_info:
       title: 料理名（必須）??
+      image_setting_info: 画像選択 / 以下の拡張子の画像が利用できます[ jpg, jpeg, png ]
       main_image: メイン画像(必須)??
       sub_image_first: サブ画像１??
       sub_image_second: サブ画像２？？
+      selected_main_image: 〜メイン画像に以下の画像が選択されてます〜
+      selected_sub_image_first: 〜サブ画像1に以下の画像が選択されてます〜
+      selected_sub_image_second: 〜サブ画像2に以下の画像が選択されてます〜
+      please_select_image_again: もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
       source: 出典？？
       store_url: 店舗情報？？？
       introduction: 一覧用紹介文？？

@@ -10,9 +10,12 @@ ja:
         name: 名前
         is_public: 公開設定
         agree_terms: 利用規約
+        avatar: アバター
       post:
         title: 料理名
         main_image: メイン画像
+        sub_image_first: サブ画像1
+        sub_image_second: サブ画像2
       dish:
         description: 詳細用紹介文
       comment:

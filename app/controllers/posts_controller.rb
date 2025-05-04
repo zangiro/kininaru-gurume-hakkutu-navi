@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     end
 
     # @user_posts = @user.posts.test(params[:latest] ? 'latest' : (params[:old] ? 'old' : nil)).page(params[:page]).per(5)
-    # 簡略化用メソッド「post_test」を実装したい。現在NoMethodErrorで未実装
+    # 簡略化用メソッド「post_test」を実装したい。現在NoMethodErrorで未実装。
 
     @post_path = "1"
   end
@@ -86,20 +86,17 @@ class PostsController < ApplicationController
     @form_input_genre_tag = params[:post][:post_genre_tags_attributes].values.map { |tag| tag[:genre_tag_attributes][:name] }
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
-    @main_image = post_params[:main_image]
-    @sub_image_first = post_params[:sub_image_first]
-    @sub_image_second = post_params[:sub_image_second]
 
-    if post_params[:title].present? && params[:post][:dish_attributes][:description].present? && @form_input_area_tag != [ "" ]
-      unless @main_image.nil?
-        @post.main_image.purge
-      end
-      unless @sub_image_first.nil?
-        @post.sub_image_first.purge
-      end
-      unless @sub_image_second.nil?
-        @post.sub_image_second.purge
-      end
+    if params[:post][:main_image].present?
+      @select_new_main_image = "1"
+    end
+
+    if params[:post][:sub_image_first].present?
+      @select_new_sub_image_first = "1"
+    end
+
+    if params[:post][:sub_image_second].present?
+      @select_new_sub_image_second = "1"
     end
 
     if @form_input_area_tag != [ "" ] && @post.update(filtered_params)
@@ -130,6 +127,18 @@ class PostsController < ApplicationController
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
+    if params[:post][:main_image].present?
+      @select_new_main_image = "1"
+    end
+
+    if params[:post][:sub_image_first].present?
+      @select_new_sub_image_first = "1"
+    end
+
+    if params[:post][:sub_image_second].present?
+      @select_new_sub_image_second = "1"
+    end
+
     if @form_input_area_tag != [ "" ] && @post.save
       @post.update_tags(@form_input_area_tag, "area")
       @post.update_tags(@form_input_genre_tag, "genre")
@@ -152,9 +161,6 @@ class PostsController < ApplicationController
 
   def destroy
     post = current_user.posts.find(params[:id])
-    post.main_image.purge
-    post.sub_image_first.purge
-    post.sub_image_second.purge
     post.destroy
     flash[:success] = t("flash_message.delete_post")
     redirect_to user_posts_path(current_user), status: :see_other

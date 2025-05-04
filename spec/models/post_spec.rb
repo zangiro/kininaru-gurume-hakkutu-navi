@@ -18,7 +18,7 @@ RSpec.describe Post, type: :model do
       user = create(:user)
       post = Post.new(title: "記事A", user: user)
       post.valid?
-      expect(post.errors[:main_image]).to include('を添付してください')
+      expect(post.errors[:main_image]).to include('を入力してください')
     end
     # build(:post, main_image: nil)では作成できないのでテストケース内でPost作成
 
