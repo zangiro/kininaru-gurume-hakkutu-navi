@@ -40,10 +40,40 @@
           <%= f.text_field :address, class: "form-control" %>
         </div>
 
-        <div class="row mb-3">
-          <%= f.label :avatar, t(".avatar") %>
-          <%= f.file_field :avatar %>
+        <%# ーーーーーーーアバター画像選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
+
+        <div class="row" data-controller="preview">
+          <div class="mt-3">
+            <%= f.label :avatar, t(".avatar") %>
+          </div>
+          <div class="mt-1">
+            <%= f.file_field :avatar, data: { "preview-target": "input", action: "change->preview#previewImage"} %>
+          </div>
+
+          <div class="mt-2">
+            <div data-preview-target="existing">
+              <% if @user.avatar.attached? && @select_new_avatar != "1" %>
+                <div class="mt-1">
+                  以下の画像が登録されるん
+                </div>
+                <div class="mt-1">
+                  <%= image_tag @user.avatar.variant(resize_and_pad: [200, 200]) %>
+                </div>
+              <% end %>
+
+              <% if @select_new_avatar == "1" %>
+                <div class="py-2 ps-2 bg-danger-subtle">
+                  <%= t("posts.post_info.please_select_image_again") %>
+                </div>
+              <% end %>
+            </div>
+
+            <div data-preview-target="preview">
+            </div>
+          </div>
         </div>
+
+        <%# ーーーーーーーアバター画像選択でプレビューの表示のStimulus設定有りーーーーーーーーー %>
 
         <div class="mb-3">
           <%= f.label :is_public, t(".is_public") %>

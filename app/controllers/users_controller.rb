@@ -26,7 +26,6 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @avatar = user_params[:avatar]
 
     result = Geocoder.search(@user.address).first
     if result
@@ -34,11 +33,9 @@ class UsersController < ApplicationController
       @user.longitude = result.longitude
     end
 
-  #  if user_params[:name].present? && user_params[:email].present?
-  #    unless @avatar.nil?
-  #      @user.avatar.purge
-  #    end
-  #  end
+    if params[:user][:avatar].present?
+      @select_new_avatar = "1"
+    end
 
     if @user.update(user_params)
       redirect_to user_path(current_user), success: t("flash_message.update_success")

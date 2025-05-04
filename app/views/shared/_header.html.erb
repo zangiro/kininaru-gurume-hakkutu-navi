@@ -10,7 +10,7 @@
       </div>
       <div class="col-1"></div>
       <div class="col-1">
-      <% if current_user.avatar.attached? %>
+      <% if current_user.avatar.attached? && @select_new_avatar != "1" %>
         <a href="<%= user_path(current_user) %>">
           <%= image_tag current_user.avatar.variant(resize_to_fit: [40, 40]) %>
         </a>
