@@ -114,7 +114,8 @@ ja:
       password_confirmation_required: パスワード変更時の再確認？
       introduction: 自己紹介？？
       address: 所在地??
-      avatar: アバター設定？？
+      avatar: アバター設定 / 以下の拡張子の画像が利用できます[ jpg, jpeg, png ]
+      selected_avatar: 〜アバターに以下の画像が選択されてます〜
       is_public: 公開設定?
       permit: 許可？
       not_permit: 不許可?
