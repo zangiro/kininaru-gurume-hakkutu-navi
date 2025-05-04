@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
-  validates :main_image, presence: true, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
-  validates :sub_image_first, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
-  validates :sub_image_second, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
+  validates :main_image, presence: true, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
+  validates :sub_image_first, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
+  validates :sub_image_second, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
 
   belongs_to :user
   has_one :dish, dependent: :destroy

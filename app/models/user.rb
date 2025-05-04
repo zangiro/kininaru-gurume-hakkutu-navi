@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
   # 値が存在するならユニークな値、 もしくは値がない場合ならバリデーションが通る。
   # トークンが必要なときにだけバリデーションを厳しくして、トークンが不要な場合にはエラーが出ないようにするため
-  validates :avatar, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'] }
+  validates :avatar, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
 
   has_many :posts, dependent: :destroy
   has_many :playlists, dependent: :destroy
