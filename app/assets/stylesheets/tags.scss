@@ -1,0 +1,8 @@
+.title {
+  color: #f44336;
+}
+
+.form-check-label {
+  word-break: break-all; /* 英単語を途中で折り返す */
+  overflow-wrap: break-word; /* 長い単語を適切に折り返す */
+}

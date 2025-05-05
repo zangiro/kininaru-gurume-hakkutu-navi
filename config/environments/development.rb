@@ -85,6 +85,4 @@ Rails.application.configure do
   config.assets.quiet = true
   config.active_support.disallowed_deprecation = :raise
   config.active_support.disallowed_deprecation_warnings = []
-  config.active_record.verbose_query_logs = true
-  config.assets.quiet = true
 end
