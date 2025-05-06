@@ -22,6 +22,16 @@ crumb :user_show do |user|
   parent :root
 end
 
+crumb :policy do
+  link t("breadcrumbs.policy")
+  parent :root
+end
+
+crumb :terms do
+  link t("breadcrumbs.terms")
+  parent :root
+end
+
 #------------記事関連------------
 
 crumb :post_new do

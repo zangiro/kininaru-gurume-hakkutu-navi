@@ -32,6 +32,8 @@ ja:
     user_register: ユーザー登録！！
     user_show: "%{name}さんのマイページ!!!"
     user_edit: "%{name}さんのアカウント情報!!!"
+    policy: プライバシーポリシー
+    terms: 利用規約
     liked_posts_index: いいねした記事!!
     view_histories: 閲覧履歴！！
     tags_index: タグ一覧！！
@@ -52,6 +54,10 @@ ja:
       operation_explanation_third: ３、関連するグルメ情報(画像)が出る。??
       operation_explanation_fourth: ４、クリックで詳細が表示される。？？？
       operation_explanation_fifth: ５、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。???
+    policy:
+      page_title: プライバシーポリシー
+    terms:
+      page_title: 利用規約
   shared:
     header:
       app_title: 気になるグルメ発掘ナビ??
