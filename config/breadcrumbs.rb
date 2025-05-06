@@ -32,6 +32,11 @@ crumb :terms do
   parent :root
 end
 
+crumb :search_by_form do
+  link t("breadcrumbs.search_results"), search_by_form_searchs_path
+  parent :root
+end
+
 #------------記事関連------------
 
 crumb :post_new do
@@ -65,6 +70,9 @@ crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user,
   elsif post_path == "5"
     link "@#{post.title}"
     parent :view_history_index, user
+  elsif post_path == "9"
+    link "@#{post.title}"
+    parent :search_by_form
   else
     link "@#{post.title}"
     parent :root

@@ -159,6 +159,8 @@ ja:
       descending-order: 降順にする？
       everyone_view_histories: みんなが閲覧している記事??
       no_tag_selected: タグが選択されてません??
+    search_by_form:
+      page_title: 検索結果
   posts:
     new:
       page_title: 記事新規作成??

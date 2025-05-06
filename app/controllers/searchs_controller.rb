@@ -53,6 +53,7 @@ class SearchsController < ApplicationController
   def search_by_form
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).page(params[:page]).per(5)
+    @post_path = "9"
   end
 
   def autocomplete
