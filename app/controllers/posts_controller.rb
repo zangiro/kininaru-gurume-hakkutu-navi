@@ -44,6 +44,7 @@ class PostsController < ApplicationController
     @post_path = params[:post_path]
     @comment = Comment.new
     @post_comments = @post.comments.includes(:user).order(updated_at: :desc).limit(3)
+    @word = params[:word] || []
 
     if logged_in?
       # 閲覧履歴を残す処理
