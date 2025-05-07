@@ -1,8 +1,7 @@
 <% content_for(:title, "@#{@post.title}") %>
-<% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @user, @playlist, @post_path %>
+<% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @user, @word, @post_path %>
 <%# パンくずリスト呼ぶとき選択したタグ情報を保持する %>
-<%= link_to "検索結果", search_by_form_searchs_path %>
-<%= link_to "検索結果", search_by_form_searchs_path(q: { title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont: @word }) %>
+
 
 <div class="container">
   <div class="row">

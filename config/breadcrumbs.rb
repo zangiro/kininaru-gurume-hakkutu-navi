@@ -32,8 +32,8 @@ crumb :terms do
   parent :root
 end
 
-crumb :search_by_form do
-  link t("breadcrumbs.search_results"), search_by_form_searchs_path
+crumb :search_by_form do |word|
+  link t("breadcrumbs.search_results"), search_by_form_searchs_path(q: { title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont: word })
   parent :root
 end
 
@@ -54,7 +54,7 @@ crumb :post_edit do |user|
   parent :post_index, user
 end
 
-crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, playlist, post_path|
+crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, word, post_path|
   if post_path == "1"
     link "@#{post.title}"
     parent :post_index, user
@@ -72,7 +72,7 @@ crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user,
     parent :view_history_index, user
   elsif post_path == "9"
     link "@#{post.title}"
-    parent :search_by_form
+    parent :search_by_form, word
   else
     link "@#{post.title}"
     parent :root

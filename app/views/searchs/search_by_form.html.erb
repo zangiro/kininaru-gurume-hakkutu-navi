@@ -1,5 +1,5 @@
 <% content_for(:title, t(".page_title")) %>
-<% breadcrumb :search_by_form %>
+<% breadcrumb :search_by_form, @word %>
 
 
 <div class="container">
@@ -26,4 +26,3 @@
     <% end %>
   </div>
 </div>
-<%= @word %>
