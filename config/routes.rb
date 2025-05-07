@@ -15,16 +15,16 @@ Rails.application.routes.draw do
   resources :user_sessions, only: %i[new create destroy]
   resources :users do
     resources :posts, only: %i[index]
-    resources :playlists, only: %i[index]
+    #resources :playlists, only: %i[index]
     resources :likes, only: %i[index]
     member do
       delete "destroy_avatar"
     end
   end
   resources :posts do
-    member do
-      post "add_to_playlist"
-    end
+    #member do
+    #  post "add_to_playlist"
+    #end
     resources :likes, only: %i[create destroy]
     resources :comments, only: %i[create edit update destroy], shallow: true do
       member do
@@ -49,12 +49,12 @@ Rails.application.routes.draw do
       get "autocomplete"
     end
   end
-  resources :playlists do
-    resources :posts, only: %i[show]
-    member do
-      delete "remove_playlist"
-    end
-  end
+  #resources :playlists do
+  #  resources :posts, only: %i[show]
+  #  member do
+  #    delete "remove_playlist"
+  #  end
+  #end
   resources :view_histories, only: %i[index] do
     collection do
       delete "all_view_history_delete"

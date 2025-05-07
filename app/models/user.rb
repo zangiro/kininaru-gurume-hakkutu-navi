@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :avatar, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
 
   has_many :posts, dependent: :destroy
-  has_many :playlists, dependent: :destroy
+  #has_many :playlists, dependent: :destroy
 
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
