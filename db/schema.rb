@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_16_121833) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_07_072351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -209,8 +209,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_16_121833) do
   add_foreign_key "post_genre_tags", "posts"
   add_foreign_key "post_outher_tags", "outher_tags"
   add_foreign_key "post_outher_tags", "posts"
-  add_foreign_key "post_playlists", "playlists"
-  add_foreign_key "post_playlists", "posts"
   add_foreign_key "post_taste_tags", "posts"
   add_foreign_key "post_taste_tags", "taste_tags"
   add_foreign_key "posts", "users"
