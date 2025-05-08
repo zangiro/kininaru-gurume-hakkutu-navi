@@ -1,7 +1,6 @@
 ja:
   helpers:
-    label:
-      #form_withの 「f.label :email」 などに適用されるdelete_confirm
+    label: # form_withの 「f.label :email」 などに適用される
       email: メールアドレス
       password: パスワード
     submit:
@@ -12,6 +11,8 @@ ja:
       decision: 決定
       cancel: キャンセル
       reset: リセット
+    dialog: # javascriptのダイアログなどで使う
+      delete_confirm: 本当に削除しますか？
   flash_message:
     logged_in: ログイン中です
     user_create: ユーザーの新規作成をしました
@@ -121,7 +122,6 @@ ja:
       your_my_page_now_closed: "%{name}さんのマイページは現在非公開です"
       avatar: アバター
       avatar_delete: アバター画像を削除
-      delete_confirm: 本当に削除しますか？
       avatar_not_registered: アバターは登録されてません
       introduction: "自己紹介 :%{introduction}"
       address: "所在地 :%{address}"
@@ -159,7 +159,6 @@ ja:
     index:
       page_title: 閲覧履歴
       view_histories: 閲覧履歴
-      delete_confirm: 本当に削除しますか？
       view_histories_delete: 閲覧履歴を削除する
       no_view_histories: 閲覧した記事がありません
   tags:
@@ -217,7 +216,6 @@ ja:
       descending-order: 降順にする
       no_postings: 投稿がありません
       closed_to_public: 非公開中
-      delete_confirm: 本当に削除しますか？
     show:
       posted_by: "投稿者:"
       source: "出典: %{post_source}"
