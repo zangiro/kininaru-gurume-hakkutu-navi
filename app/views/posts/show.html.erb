@@ -106,9 +106,11 @@
     <% @post_comments.each do |comment| %>
       <%= render "comments/comment", comment: comment %>
     <% end %>
-    <% if @post_comments.present? %>
+    <% if @all_post_comments.count >= 4 %>
       <%= turbo_frame_tag "show_all" do %>
-         <%= link_to "すべて表示する(あとでアイコン化)", replace_all_comments_post_comments_path(post_id: @post.id) %>
+        <div class="d-flex justify-content-center mt-2">
+          <%= link_to "すべてのコメントを表示する", replace_all_comments_post_comments_path(post_id: @post.id), class: "btn btn-light text-dark" %>
+        </div>
       <% end %>
     <% end %>
   <% end %>

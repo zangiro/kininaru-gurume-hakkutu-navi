@@ -42,6 +42,7 @@ class PostsController < ApplicationController
     @post_path = params[:post_path]
     @comment = Comment.new
     @post_comments = @post.comments.includes(:user).order(updated_at: :desc).limit(3)
+    @all_post_comments = @post.comments.includes(:user).order(updated_at: :desc)
     @word = params[:word] || []
 
     if logged_in?
