@@ -2,14 +2,16 @@ ja:
   helpers:
     label:
       #form_withの 「f.label :email」 などに適用される
-      email: メールアドレス？
-      password: パスワード？
+      email: メールアドレス？------
+      password: パスワード？--------
     submit:
       create: 登録?
       update: 更新？
       change: 変更？
+      request: 申請？
       decision: 決定？
       cancel: キャンセル？
+      reset: リセット０００
   flash_message:
     logged_in: ログイン中です？？
     user_create: ユーザーの新規作成をしました???
@@ -26,6 +28,8 @@ ja:
     delete_post: 記事を削除しました？？
     delete_view_histories: 閲覧履歴を削除しました??
     no_tag_entered: タグが入力されてません？？
+    password_reset_request_sending: 申請送信をしましたaa
+    password_reset_completion: パスワードがリセットされましたqqqqq
   breadcrumbs:
     top: トップページ！！
     login: ログイン！！
@@ -34,6 +38,7 @@ ja:
     user_edit: "%{name}さんのアカウント情報!!!"
     policy: プライバシーポリシー
     terms: 利用規約
+    password_resets: パスワードリセット
     liked_posts_index: いいねした記事!!
     view_histories: 閲覧履歴！！
     tags_index: タグ一覧！！
@@ -83,6 +88,14 @@ ja:
       or_login_with_your_google_account: またはGoogleアカウントでログイン??
       to_register_page: 新規登録ページへ？
       forgot_password?: パスワードをお忘れの方はこちら？
+  password_resets:
+    new:
+      page_title: パスワードリセット申請
+      password_reset_request: パスワードリセット申請
+      password_reset_request_info: 下記のメールアドレスにパスワードリセットの操作を行うメールを送信します
+    edit:
+      page_title: パスワード再設定111
+      password_reset: パスワード再設定111
   users:
     new:
       page_title: ユーザー登録？

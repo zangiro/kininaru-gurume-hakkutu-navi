@@ -1,22 +1,31 @@
+<% content_for(:title, t(".page_title")) %>
+
+
 <div class="container">
-<div class="row">
-<p>ページタイトル（仮）</p>
-<p>パンくずリスト（仮）</p>
-<h3>パスワード再設定</h3>
+  <div class="row mt-3">
+    <h3><%= t(".password_reset") %></h3>
 
-<%= form_with model: @user, url: password_reset_path(@token) do |f| %>
-  <div class="form-group">
-  <%= f.label :email %>
-  <%= @user.email %>
+    <%= form_with model: @user, url: password_reset_path(@token) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= @user.email %>
+      </div>
+
+      <div class="mt-3">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+
+      <div class="mt-3">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+
+      <div class="mt-3">
+        <%= f.submit t("helpers.submit.reset") %>
+      </div>
+    <% end %>
   </div>
-  <%= f.label :password %>
-  <%= f.password_field :password, class: "form-control" %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, class: "form-control" %>
-
-  <%= f.submit 'リセット' %>
-<% end %>
-
-</div>
 </div>

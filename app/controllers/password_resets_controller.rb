@@ -7,7 +7,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: params[:email])
     @user&.deliver_reset_password_instructions!
     # ランダムなトークンを含むURLを記載したメールをユーザーに送信
-    redirect_to login_path, success: "@申請送信をしました"
+    redirect_to login_path, success: t("flash_message.password_reset_request_sending")
   end
 
   def edit
@@ -30,9 +30,9 @@ class PasswordResetsController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.change_password(params[:user][:password])
       redirect_to login_path
-      flash[:success]= "パスワードがリセットされました"
+      flash[:success]= t("flash_message.password_reset_completion")
     else
-      flash.now[:danger] = "失敗"
+      flash.now[:danger] = t("flash_message.failure")
       render :edit, status: :unprocessable_entity
     end
   end

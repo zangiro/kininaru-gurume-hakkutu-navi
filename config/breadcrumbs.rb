@@ -37,6 +37,11 @@ crumb :search_by_form do |word|
   parent :root
 end
 
+crumb :password_resets do
+  link t("breadcrumbs.password_resets")
+  parent :root
+end
+
 #------------記事関連------------
 
 crumb :post_new do
