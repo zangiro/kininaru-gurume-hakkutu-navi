@@ -179,6 +179,8 @@ ja:
       no_tag_selected: タグが選択されてません
     search_by_form:
       page_title: 検索結果
+      search_results: 検索結果
+      target_not_found: 対象が見つかりませんでした
   posts:
     new:
       page_title: 記事新規作成
