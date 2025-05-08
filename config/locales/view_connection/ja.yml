@@ -2,229 +2,229 @@ ja:
   helpers:
     label:
       #form_withの 「f.label :email」 などに適用される
-      email: メールアドレス？------
-      password: パスワード？--------
+      email: メールアドレス
+      password: パスワード
     submit:
-      create: 登録?
-      update: 更新？
-      change: 変更？
-      request: 申請？
-      decision: 決定？
-      cancel: キャンセル？
-      reset: リセット０００
+      create: 登録
+      update: 更新
+      change: 変更
+      request: 申請
+      decision: 決定
+      cancel: キャンセル
+      reset: リセット
   flash_message:
-    logged_in: ログイン中です？？
-    user_create: ユーザーの新規作成をしました???
-    post_create: 記事の作成をしました??
-    post_create_failure: 記事の作成に失敗しました??
-    failure: 失敗しました？？
-    update_success: 更新しました？？
-    update_failure: 更新失敗しました？？
-    login_success: ログインしました？？
-    google_login_success: Googleアカウントでログインしました??
-    login_failure: ログインに失敗しました??
-    google_login_failure: Googleアカウントでログインに失敗しました??
-    logout: ログアウトしました???
-    delete_post: 記事を削除しました？？
-    delete_view_histories: 閲覧履歴を削除しました??
-    no_tag_entered: タグが入力されてません？？
-    password_reset_request_sending: 申請送信をしましたaa
-    password_reset_completion: パスワードがリセットされましたqqqqq
+    logged_in: ログイン中です
+    user_create: ユーザーの新規作成をしました
+    post_create: 記事の作成をしました
+    post_create_failure: 記事の作成に失敗しました
+    failure: 失敗しました
+    update_success: 更新しました
+    update_failure: 更新失敗しました
+    login_success: ログインしました
+    google_login_success: Googleアカウントでログインしました
+    login_failure: ログインに失敗しました
+    google_login_failure: Googleアカウントでログインに失敗しました
+    logout: ログアウトしました
+    delete_post: 記事を削除しました
+    delete_view_histories: 閲覧履歴を削除しました
+    no_tag_entered: タグが入力されてません
+    password_reset_request_sending: 申請送信をしました
+    password_reset_completion: パスワードがリセットされました
   breadcrumbs:
-    top: トップページ！！
-    login: ログイン！！
-    user_register: ユーザー登録！！
-    user_show: "%{name}さんのマイページ!!!"
-    user_edit: "%{name}さんのアカウント情報!!!"
+    top: トップページ
+    login: ログイン
+    user_register: ユーザー登録
+    user_show: "%{name}さんのマイページ"
+    user_edit: "%{name}さんのアカウント情報"
     policy: プライバシーポリシー
     terms: 利用規約
     password_resets: パスワードリセット
-    liked_posts_index: いいねした記事!!
-    view_histories: 閲覧履歴！！
-    tags_index: タグ一覧！！
-    search_results: 検索結果！！
-    post_new: 記事新規作成！！
-    post_edit: 記事編集！！！
-    post_index: 記事一覧！！
+    liked_posts_index: いいねした記事
+    view_histories: 閲覧履歴
+    tags_index: タグ一覧
+    search_results: 検索結果
+    post_new: 記事新規作成
+    post_edit: 記事編集
+    post_index: 記事一覧
   static_pages:
     top:
-      to_login_page: ログインページへ？
-      to_register_page: 新規登録ページへ？
-      app_title: 気になるグルメ発掘ナビ??
-      app_description: このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです。??
-      diagnosis_start: 診断スタート？？
-      operation_explanation: [操作説明？？]
-      operation_explanation_first: １、診断スタートボタンを押す。???
-      operation_explanation_second: ２、興味のあるジャンル、地域などを選ぶ。???
-      operation_explanation_third: ３、関連するグルメ情報(画像)が出る。??
-      operation_explanation_fourth: ４、クリックで詳細が表示される。？？？
-      operation_explanation_fifth: ５、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。???
+      to_login_page: ログインページへ
+      to_register_page: 新規登録ページへ
+      app_title: 気になるグルメ発掘ナビ
+      app_description: このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです。
+      diagnosis_start: 診断スタート
+      operation_explanation: [操作説明]
+      operation_explanation_first: １、診断スタートボタンを押す。
+      operation_explanation_second: ２、興味のあるジャンル、地域などを選ぶ。
+      operation_explanation_third: ３、関連するグルメ情報(画像)が出る。
+      operation_explanation_fourth: ４、クリックで詳細が表示される。
+      operation_explanation_fifth: ５、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。
     policy:
       page_title: プライバシーポリシー
     terms:
       page_title: 利用規約
   shared:
     header:
-      app_title: 気になるグルメ発掘ナビ??
-      search_form: タイトル タグ名で検索??
-      login_now: ログイン中？
-      posted_in: 投稿する？？
-      my_page: マイページ？？
-      your_account_information: アカウント情報？？
-      logout: ログアウト？？
+      app_title: 気になるグルメ発掘ナビ
+      search_form: タイトル タグ名で検索
+      login_now: ログイン中
+      posted_in: 投稿する
+      my_page: マイページ
+      your_account_information: アカウント情報
+      logout: ログアウト
     before_login_header:
-      app_title: 気になるグルメ発掘ナビ????
-      not_login: ログインしてません??
-      to_login_page: ログイン？
-      to_register_page: 新規登録？
+      app_title: 気になるグルメ発掘ナビ
+      not_login: ログインしてません
+      to_login_page: ログイン
+      to_register_page: 新規登録
     footer:
-      inquiry: お問い合わせ？？？
-      agree_terms: 利用規約？
-      privacy_policy: プライバシーポリシー？
+      inquiry: お問い合わせ
+      agree_terms: 利用規約
+      privacy_policy: プライバシーポリシー
   user_sessions:
     new:
-      page_title: ログイン？
+      page_title: ログイン
       login: ログイン
-      or_login_with_your_google_account: またはGoogleアカウントでログイン??
-      to_register_page: 新規登録ページへ？
-      forgot_password?: パスワードをお忘れの方はこちら？
+      or_login_with_your_google_account: またはGoogleアカウントでログイン
+      to_register_page: 新規登録ページへ
+      forgot_password?: パスワードをお忘れの方はこちら
   password_resets:
     new:
       page_title: パスワードリセット申請
       password_reset_request: パスワードリセット申請
       password_reset_request_info: 下記のメールアドレスにパスワードリセットの操作を行うメールを送信します
     edit:
-      page_title: パスワード再設定111
-      password_reset: パスワード再設定111
+      page_title: パスワード再設定
+      password_reset: パスワード再設定
   users:
     new:
-      page_title: ユーザー登録？
-      user_registration: ユーザー登録?
-      name_required: 名前(必須)?
-      email_required: メールアドレス(必須)?
-      password_required: パスワード(必須)?
-      password_confirmation_required: 再確認(必須)？
-      is_public: 公開設定?
-      permit: 許可？
-      not_permit: 不許可?
-      accept_terms_of_use: 利用規約に同意しますか？(必須)？？？？
-      agree_terms: 利用規約？
-      privacy_policy: プライバシーポリシー？
-      or_register_with_your_google_account: またはGoogleアカウントで新規登録??
-      to_login_page: ログインページへ？
-      to_top_page: トップページへ？
+      page_title: ユーザー登録
+      user_registration: ユーザー登録
+      name_required: 名前(必須)
+      email_required: メールアドレス(必須)
+      password_required: パスワード(必須)
+      password_confirmation_required: 再確認(必須)
+      is_public: 公開設定
+      permit: 許可
+      not_permit: 不許可
+      accept_terms_of_use: 利用規約に同意しますか？(必須)
+      agree_terms: 利用規約
+      privacy_policy: プライバシーポリシー
+      or_register_with_your_google_account: またはGoogleアカウントで新規登録
+      to_login_page: ログインページへ
+      to_top_page: トップページへ
     show:
-      page_title: ユーザー詳細?
-      my_page_with_name: "%{name}さんのマイページ??"
+      page_title: ユーザー詳細
+      my_page_with_name: "%{name}さんのマイページ"
       # t("oo", name: 名前) で「名前」を「name」という形で渡す
-      your_my_page_now_open: "%{name}さんのマイページは現在公開中です??"
-      your_my_page_now_closed: "%{name}さんのマイページは現在非公開です??"
-      avatar: アバター＠＠
+      your_my_page_now_open: "%{name}さんのマイページは現在公開中です"
+      your_my_page_now_closed: "%{name}さんのマイページは現在非公開です"
+      avatar: アバター
       avatar_delete: アバター画像を削除
-      avatar_not_registered: アバターは登録されてません??
-      introduction: "自己紹介 :%{introduction}?????"
-      address: "所在地 :%{address}?????"
-      to_posts_list: 投稿一覧??
-      to_likes_list: いいねした記事??
-      to_view_histories: 閲覧履歴？？？
+      avatar_not_registered: アバターは登録されてません
+      introduction: "自己紹介 :%{introduction}"
+      address: "所在地 :%{address}"
+      to_posts_list: 投稿一覧
+      to_likes_list: いいねした記事
+      to_view_histories: 閲覧履歴
     edit:
-      page_title: アカウント情報？？
-      your_account_information: "%{name}さんのアカウント情報???"
-      name_required: 名前?
-      email_required: メールアドレス?
-      password_required: パスワードの変更?
-      password_confirmation_required: パスワード変更時の再確認？
+      page_title: アカウント情報
+      your_account_information: "%{name}さんのアカウント情報"
+      name_required: 名前
+      email_required: メールアドレス
+      password_required: パスワードの変更
+      password_confirmation_required: パスワード変更時の再確認
       introduction: 自己紹介
       introduction_example: 〜例,こんにちは！〜
-      address: 所在地??
+      address: 所在地
       address_example: 〜例, 東京都新宿区〜
       avatar: アバター設定 / 以下の拡張子の画像が利用できます[ jpg, jpeg, png ]
       selected_avatar: 〜アバターに以下の画像が選択されてます〜
       is_public: 公開設定 / 以下の項目が他のユーザーにも閲覧できるようになります[ アバター, 自己紹介, 所在地, 投稿一覧, いいねした記事 ]
-      permit: 許可？
-      not_permit: 不許可?
-      accept_terms_of_use: 利用規約に同意しますか？(必須)？？？？
-      agree_terms: 利用規約？
-      privacy_policy: プライバシーポリシー？
-      to_login_page: ログインページへ？
-      to_top_page: トップページへ？
+      permit: 許可
+      not_permit: 不許可
+      accept_terms_of_use: 利用規約に同意しますか？(必須)
+      agree_terms: 利用規約
+      privacy_policy: プライバシーポリシー
+      to_login_page: ログインページへ
+      to_top_page: トップページへ
   likes:
     index:
-      page_title: いいねした記事？？
-      liked_posts: いいねした記事??
-      no_liked_posts: いいねした記事がありません??
-      closed_to_public: 非公開中??
+      page_title: いいねした記事
+      liked_posts: いいねした記事
+      no_liked_posts: いいねした記事がありません
+      closed_to_public: 非公開中
   view_histories:
     index:
-      page_title: 閲覧履歴？？
-      view_histories: 閲覧履歴？？？
-      delete_confirm: 本当に削除しますか？??
-      view_histories_delete: 閲覧履歴を削除する???
-      no_view_histories: 閲覧した記事がありません???
+      page_title: 閲覧履歴
+      view_histories: 閲覧履歴
+      delete_confirm: 本当に削除しますか？
+      view_histories_delete: 閲覧履歴を削除する
+      no_view_histories: 閲覧した記事がありません
   tags:
     index:
-      page_title: タグ選択？
-      please_select_tag: 気になるタグを選び「決定」を押してください(複数選択可)???
-      area: エリア？
-      genre: ジャンル？
-      taste: 味？
-      outher: その他？
+      page_title: タグ選択
+      please_select_tag: 気になるタグを選び「決定」を押してください(複数選択可)
+      area: エリア
+      genre: ジャンル
+      taste: 味
+      outher: その他
   searchs:
     index:
-      page_title: 検索結果？
-      search_results: 検索結果？
-      ascending-order: 昇順にする？
-      descending-order: 降順にする？
-      everyone_view_histories: みんなが閲覧している記事??
-      no_tag_selected: タグが選択されてません??
+      page_title: 検索結果
+      search_results: 検索結果
+      ascending-order: 昇順にする
+      descending-order: 降順にする
+      everyone_view_histories: みんなが閲覧している記事
+      no_tag_selected: タグが選択されてません
     search_by_form:
       page_title: 検索結果
   posts:
     new:
-      page_title: 記事新規作成??
-      create_new_post: 記事新規作成？？
+      page_title: 記事新規作成
+      create_new_post: 記事新規作成
     edit:
-      page_title: 記事編集？？
-      edit_post: 記事編集？？
+      page_title: 記事編集
+      edit_post: 記事編集
     post_info:
-      title: 料理名（必須）??
+      title: 料理名（必須）
       image_setting_info: 画像選択 / 以下の拡張子の画像が利用できます[ jpg, jpeg, png ]
-      main_image: メイン画像(必須)??
-      sub_image_first: サブ画像１??
-      sub_image_second: サブ画像２？？
+      main_image: メイン画像(必須)
+      sub_image_first: サブ画像１
+      sub_image_second: サブ画像２
       selected_main_image: 〜メイン画像に以下の画像が選択されてます〜
       selected_sub_image_first: 〜サブ画像1に以下の画像が選択されてます〜
       selected_sub_image_second: 〜サブ画像2に以下の画像が選択されてます〜
       please_select_image_again: もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
-      source: 出典？？
-      store_url: 店舗情報？？？
-      introduction: 一覧用紹介文？？
+      source: 出典
+      store_url: 店舗情報
+      introduction: 一覧用紹介文
       description: 詳細用紹介文(必須)
-      tag_setting_info: タグ設定情報 (複数登録する場合は単語の間に「 , 」を入れてください)????
-      area_tag_setting: タグ設定(地域)(必須)???
-      genre_tag_setting: タグ設定(ジャンル)???
-      taste_tag_setting: タグ設定(味)???
-      outher_tag_setting: タグ設定(その他)????
+      tag_setting_info: タグ設定情報 (複数登録する場合は単語の間に「 , 」を入れてください)
+      area_tag_setting: タグ設定(地域)(必須)
+      genre_tag_setting: タグ設定(ジャンル)
+      taste_tag_setting: タグ設定(味)
+      outher_tag_setting: タグ設定(その他)
     index:
-      page_title: 記事一覧？？
-      post_index: 記事一覧？？
-      post_edit: 編集する？？
-      post_delete: 削除する？？
-      ascending-order: 昇順にする？
-      descending-order: 降順にする？
-      no_postings: 投稿がありません？？
-      closed_to_public: 非公開中??
-      delete_confirm: 本当に削除しますか？??
+      page_title: 記事一覧
+      post_index: 記事一覧
+      post_edit: 編集する
+      post_delete: 削除する
+      ascending-order: 昇順にする
+      descending-order: 降順にする
+      no_postings: 投稿がありません
+      closed_to_public: 非公開中
+      delete_confirm: 本当に削除しますか？
     show:
-      posted_by: "投稿者:??"
-      source: "出典: %{post_source}????"
-      store_url: "店舗情報: %{post_store_url}???"
-      whose_comment: "%{user_name}さんのコメント???"
-      not_login_description: "ログインすると料理が提供されている近隣店舗を調べることができます??"
-      search_example: "例  出身地「東京」  料理名「味噌カレー牛乳ラーメン」の場合??"
-      google_map_description: "こちらの店舗で提供されている可能性があります??"
-      not_address_description: "出身地が設定されてません。設定すると料理が提供されている近隣店舗を調べることができます??"
-      not_found_description: "あなたの近隣ではこの料理が提供されている店舗は見つかりませんでした??"
+      posted_by: "投稿者:"
+      source: "出典: %{post_source}"
+      store_url: "店舗情報: %{post_store_url}"
+      whose_comment: "%{user_name}さんのコメント"
+      not_login_description: "ログインすると料理が提供されている近隣店舗を調べることができます"
+      search_example: "例  出身地「東京」  料理名「味噌カレー牛乳ラーメン」の場合"
+      google_map_description: "こちらの店舗で提供されている可能性があります"
+      not_address_description: "出身地が設定されてません。設定すると料理が提供されている近隣店舗を調べることができます"
+      not_found_description: "あなたの近隣ではこの料理が提供されている店舗は見つかりませんでした"
   controller:
     posts:
       map_search_target: "味噌カレー牛乳ラーメン"
