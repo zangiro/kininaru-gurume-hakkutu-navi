@@ -58,9 +58,9 @@ crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user,
   if post_path == "1"
     link "@#{post.title}"
     parent :post_index, user
-  #elsif post_path == "2"
-  #  link "@#{post.title}"
-  #  parent :playlist_show, playlist, user
+  elsif post_path == "2"
+    link "@#{post.title}"
+    parent :search_by_form, word
   elsif post_path == "3"
     link "@#{post.title}"
     parent :search_index, area_tags, genre_tags, taste_tags, outher_tags
@@ -70,31 +70,11 @@ crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user,
   elsif post_path == "5"
     link "@#{post.title}"
     parent :view_history_index, user
-  elsif post_path == "9"
-    link "@#{post.title}"
-    parent :search_by_form, word
   else
     link "@#{post.title}"
     parent :root
   end
 end
-
-#--------------プレイリスト関連--------------
-
-#crumb :playlist_index do |user|
-#  link "@#{user.name}さんのプレイリスト一覧", user_playlists_path(user)
-#  parent :user_show, user
-#end
-
-#crumb :playlist_new do |user|
-#  link "@プレイリスト作成"
-#  parent :playlist_index, user
-#end
-
-#crumb :playlist_show do |playlist, user|
-#  link "#{playlist.title}", playlist_path(playlist)
-#  parent :playlist_index, user
-#end
 
 #-----------------------------
 

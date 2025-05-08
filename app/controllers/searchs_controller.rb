@@ -57,7 +57,7 @@ class SearchsController < ApplicationController
     # @word = params[:q][:title_...]の形で直接searchs/search_by_formと入力するとエラー出る
     # .digはネストされたハッシュや配列から値を安全に取得するために使う。
     # この場合「:q」が存在しない場合NoMethodErrorになる。.digを使うと「:q」がnilでもエラーにならない。
-    @post_path = "9"
+    @post_path = "2"
   end
 
   def autocomplete
