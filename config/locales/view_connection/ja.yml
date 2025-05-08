@@ -1,7 +1,7 @@
 ja:
   helpers:
     label:
-      #form_withの 「f.label :email」 などに適用される
+      #form_withの 「f.label :email」 などに適用されるdelete_confirm
       email: メールアドレス
       password: パスワード
     submit:
@@ -25,7 +25,7 @@ ja:
     login_failure: ログインに失敗しました
     google_login_failure: Googleアカウントでログインに失敗しました
     logout: ログアウトしました
-    delete_post: 記事を削除しました
+    delete: 削除しました
     delete_view_histories: 閲覧履歴を削除しました
     no_tag_entered: タグが入力されてません
     password_reset_request_sending: 申請送信をしました
@@ -121,6 +121,7 @@ ja:
       your_my_page_now_closed: "%{name}さんのマイページは現在非公開です"
       avatar: アバター
       avatar_delete: アバター画像を削除
+      delete_confirm: 本当に削除しますか？
       avatar_not_registered: アバターは登録されてません
       introduction: "自己紹介 :%{introduction}"
       address: "所在地 :%{address}"

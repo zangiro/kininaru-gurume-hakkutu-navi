@@ -16,8 +16,13 @@
         <div>
           <%= t(".avatar") %>
         </div>
+
         <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
-        <%# button_to t(".avatar_delete"), destroy_avatar_user_path(@user), method: :delete %>
+          
+        <% if @user == current_user %>
+          <%= button_to t(".avatar_delete"), destroy_avatar_user_path(@user), method: :delete, form: { data: { turbo_confirm: t(".delete_confirm") } } %>
+        <% end %>
+
       <% else %>
         <%= t(".avatar_not_registered") %>
         <%# -------補足: avatar_not_registered アバターは登録されてません--------- %>

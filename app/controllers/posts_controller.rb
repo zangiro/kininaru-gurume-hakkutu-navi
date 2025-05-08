@@ -161,7 +161,7 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy
-    flash[:success] = t("flash_message.delete_post")
+    flash[:success] = t("flash_message.delete")
     redirect_to user_posts_path(current_user), status: :see_other
   end
 
