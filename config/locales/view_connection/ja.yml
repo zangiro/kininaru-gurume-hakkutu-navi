@@ -223,6 +223,7 @@ ja:
       source: "出典: %{post_source}"
       store_url: "店舗情報: %{post_store_url}"
       whose_comment: "%{user_name}さんのコメント"
+      all_comment_display: すべてのコメントを表示する
       not_login_description: "ログインすると料理が提供されている近隣店舗を調べることができます"
       search_example: "例  出身地「東京」  料理名「味噌カレー牛乳ラーメン」の場合"
       google_map_description: "こちらの店舗で提供されている可能性があります"

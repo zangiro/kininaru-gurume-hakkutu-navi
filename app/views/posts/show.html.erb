@@ -109,7 +109,7 @@
     <% if @all_post_comments.count >= 4 %>
       <%= turbo_frame_tag "show_all" do %>
         <div class="d-flex justify-content-center mt-2">
-          <%= link_to "すべてのコメントを表示する", replace_all_comments_post_comments_path(post_id: @post.id), class: "btn btn-light text-dark" %>
+          <%= link_to t(".all_comment_display"), replace_all_comments_post_comments_path(post_id: @post.id), class: "btn btn-light text-dark" %>
         </div>
       <% end %>
     <% end %>
