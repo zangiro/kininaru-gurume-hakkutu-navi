@@ -10,25 +10,26 @@
     <%= @user.is_public ? t(".your_my_page_now_open", name: @user.name) : t(".your_my_page_now_closed", name: @user.name) %>
   </div>
 
-  <div class="mt-2">
-    <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
-      <%= button_to '@@@画像を削除（仮）', destroy_avatar_user_path(@user), method: :delete %>
-    <% else %>
-      <%= t(".avatar_not_registered") %>
-      <%# -------補足: avatar_not_registered アバターは登録されてません--------- %>
-    <% end %>
-  </div>
-
-  <% if @user == current_user %>
-    <div class="mt-2">
-      <%= @user.address %>
-    </div>
-  <% end %>
-
   <% if @user.is_public || @user == current_user %>
     <div class="mt-2">
+      <% if @user.avatar.attached? %>
+        <div>
+          <%= t(".avatar") %>
+        </div>
+        <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
+        <%# button_to t(".avatar_delete"), destroy_avatar_user_path(@user), method: :delete %>
+      <% else %>
+        <%= t(".avatar_not_registered") %>
+        <%# -------補足: avatar_not_registered アバターは登録されてません--------- %>
+      <% end %>
+    </div>
+
+    <div class="mt-2">
       <%= t(".introduction", introduction: @user.introduction) %>
+    </div>
+
+    <div class="mt-2">
+      <%= t(".address", address: @user.address) %>
     </div>
 
     <div class="mt-2">
