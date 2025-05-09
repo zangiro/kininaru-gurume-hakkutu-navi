@@ -118,25 +118,25 @@
   <%# ---------------google map関連-------------- %>
 
   <% if !logged_in? %>
-    <div class="mt-3">
+    <div class="mt-5">
       <%= t(".not_login_description") %>
     </div>
     <div class="mt-3">
       <%= t(".search_example") %>
     </div>
   <% elsif logged_in? && current_user.address != nil && current_user.address != "" && @store.length != 0 %>
-    <div class="mt-3">
+    <div class="mt-5">
       <%= t(".google_map_description") %>
     </div>
   <% elsif current_user.address == nil || current_user.address == "" %>
-    <div class="mt-3">
+    <div class="mt-5">
       <%= t(".not_address_description") %>
     </div>
     <div class="mt-3">
       <%= t(".search_example") %>
     </div>
   <% elsif @store.length == 0 %>
-    <div class="mt-3">
+    <div class="mt-5">
       <%= t(".not_found_description") %>
     </div>
   <% end %>
