@@ -13,6 +13,8 @@ ja:
       reset: リセット
     dialog: # javascriptのダイアログなどで使う
       delete_confirm: 本当に削除しますか？
+      avatar_delete_confirm: アバター画像を削除します。本当に削除しますか？
+      comment_delete_confirm: このコメントを削除します。本当に削除しますか？
   flash_message:
     logged_in: ログイン中です
     user_create: ユーザーの新規作成をしました
@@ -121,7 +123,6 @@ ja:
       your_my_page_now_open: "%{name}さんのマイページは現在公開中です"
       your_my_page_now_closed: "%{name}さんのマイページは現在非公開です"
       avatar: アバター
-      avatar_delete: アバター画像を削除
       avatar_not_registered: アバターは登録されてません
       introduction: "自己紹介 :%{introduction}"
       address: "所在地 :%{address}"
@@ -227,6 +228,8 @@ ja:
       google_map_description: "こちらの店舗で提供されている可能性があります"
       not_address_description: "出身地が設定されてません。設定すると料理が提供されている近隣店舗を調べることができます"
       not_found_description: "あなたの近隣ではこの料理が提供されている店舗は見つかりませんでした"
+  comment:
+    comment_edit: コメント編集
   controller:
     posts:
       map_search_target: "味噌カレー牛乳ラーメン"
