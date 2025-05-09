@@ -2,22 +2,22 @@
 
 <div class="container bg-info d-none d-lg-block">
   <div class="row py-2">
-    <div class="col-3">
+    <div class="col-4">
       <%= link_to root_path, class: "btn btn-light" do %>
         <div class="d-flex align-items-center">
           <%= image_tag "logo-40.png" %>
-          <p>気になるグルメ発掘ナビ</p>
+          <p><%= t(".app_title") %></p>
         </div>
       <% end %>
     </div>
 
-    <div class="col-2"><%= t(".login_now") %></div>
+    <div class="col-1"></div>
 
     <div class="col-4">
       <%= render "shared/search_form" %>
     </div>
 
-    <div class="col-1"></div>
+    <div class="col-1"><%= t(".login_now") %></div>
 
     <div class="col-1">
       <% if current_user.avatar.attached? && @select_new_avatar != "1" %>
@@ -47,22 +47,16 @@
 
 <div class="container bg-info d-lg-none">
   <div class="row py-2">
-    <div class="col-3">
+    <div class="col-7">
       <%= link_to root_path, class: "btn btn-light" do %>
         <div class="d-flex align-items-center">
           <%= image_tag "logo-30.png" %>
-          <p>気ビ</p>
+          <p><%= t(".app_title") %></p>
         </div>
       <% end %>
     </div>
 
-    <div class="col-2"><%= t(".login_now") %></div>
-
-    <div class="col-4">
-      <%= render "shared/search_form" %>
-    </div>
-
-    <div class="col-1"></div>
+    <div class="col-2"></div>
 
     <div class="col-1">
       <% if current_user.avatar.attached? && @select_new_avatar != "1" %>
@@ -72,7 +66,7 @@
       <% end %>
     </div>
 
-    <div class="col-1">
+    <div class="col-2">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
