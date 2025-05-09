@@ -1,37 +1,39 @@
 <div class="container bg-info">
-  <div class="py-2">
-    <div class="row">
-      <div class="col-3">
-        <%# link_to t(".app_title"), root_path, class: 'text-dark' %>
-        <%= link_to root_path, class: "btn btn-light" do %>
-          <div class="d-flex align-items-center">
-            <%= image_tag "logo-40.png" %>
-            <p>気になるグルメ発掘ナビ</p>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-2"><%= t(".login_now") %></div>
-      <div class="col-4">
-        <%= render "shared/search_form" %>
-      </div>
-      <div class="col-1"></div>
-      <div class="col-1">
+  <div class="row py-2">
+    <div class="col-3">
+      <%= link_to root_path, class: "btn btn-light" do %>
+        <div class="d-flex align-items-center">
+          <%= image_tag "logo-40.png" %>
+          <p>気になるグルメ発掘ナビ</p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-2"><%= t(".login_now") %></div>
+
+    <div class="col-4">
+      <%= render "shared/search_form" %>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-1">
       <% if current_user.avatar.attached? && @select_new_avatar != "1" %>
         <a href="<%= user_path(current_user) %>">
           <%= image_tag current_user.avatar.variant(resize_to_fit: [40, 40]) %>
         </a>
       <% end %>
-      </div>
-      <div class="col-1">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><%= link_to t(".posted_in"), new_post_path, class: 'dropdown-item' %></li>
-            <li><%= link_to t(".my_page"), user_path(current_user), class: 'dropdown-item' %></li>
-            <li><%= link_to t(".your_account_information"), edit_user_path(current_user), class: 'dropdown-item' %></li>
-            <li><%= link_to t(".logout"), logout_path, data: { turbo_method: :delete }, class: 'dropdown-item' %></li>
-          </ul>
-        </div>
+    </div>
+
+    <div class="col-1">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><%= link_to t(".posted_in"), new_post_path, class: 'dropdown-item' %></li>
+          <li><%= link_to t(".my_page"), user_path(current_user), class: 'dropdown-item' %></li>
+          <li><%= link_to t(".your_account_information"), edit_user_path(current_user), class: 'dropdown-item' %></li>
+          <li><%= link_to t(".logout"), logout_path, data: { turbo_method: :delete }, class: 'dropdown-item' %></li>
+        </ul>
       </div>
     </div>
   </div>
