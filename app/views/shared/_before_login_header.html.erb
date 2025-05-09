@@ -1,27 +1,63 @@
-<div class="container bg-info">
-  <div class="py-2">
-    <div class="row">
-      <div class="col-2 bg-primary my-3">
-        <%= link_to t(".app_title"), root_path, class: 'text-dark' %>
-      </div>
-      <div class="col-3"><%= t(".not_login") %></div>
-      <div class="col-4">
-        <form class="d-flex">
-          <input class="form-control me-2 my-3" type="search" placeholder="あいまい検索用（未実装）" aria-label="Search">
-          <button class="btn btn-outline-success py-2" type="submit">@検索</button>
-        </form>
-      </div>
-      <div class="col-1"></div>
-      <div class="col-1"></div>
-      <div class="col-1">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><%= link_to t(".to_register_page"), new_user_path, class: 'dropdown-item' %></li>
-            <li><%= link_to t(".to_login_page"), login_path, class: 'dropdown-item' %></li>
-          </ul>
+<%# ------------------------画面サイズ大----------------------- %>
+
+<div class="container bg-info d-none d-lg-block">
+  <div class="row py-2">
+    <div class="col-4">
+      <%= link_to root_path, class: "btn btn-light" do %>
+        <div class="d-flex align-items-center">
+          <%= image_tag "logo-40.png" %>
+          <p><%= t(".app_title") %></p>
         </div>
+      <% end %>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-4">
+      <%= render "shared/search_form" %>
+    </div>
+
+    <div class="col-2"><%= t(".not_login") %></div>
+
+    <div class="col-1">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><%= link_to t(".to_register_page"), new_user_path, class: 'dropdown-item' %></li>
+          <li><%= link_to t(".to_login_page"), login_path, class: 'dropdown-item' %></li>
+        </ul>
       </div>
     </div>
   </div>
 </div>
+
+<%# ------------------------画面サイズ大----------------------- %>
+
+<%# ------------------------画面サイズ小----------------------- %>
+
+<div class="container bg-info d-lg-none">
+  <div class="row py-2">
+    <div class="col-7">
+      <%= link_to root_path, class: "btn btn-light" do %>
+        <div class="d-flex align-items-center">
+          <%= image_tag "logo-30.png" %>
+          <p><%= t(".app_title") %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-3"></div>
+
+    <div class="col-2">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><%= link_to t(".to_register_page"), new_user_path, class: 'dropdown-item' %></li>
+          <li><%= link_to t(".to_login_page"), login_path, class: 'dropdown-item' %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# ------------------------画面サイズ小----------------------- %>
