@@ -12,14 +12,14 @@ module ApplicationHelper
       charset: "utf-8",
       description: "今なにを食べたいかは二の次。まずはどんな美味しいグルメが私達の周りにあるかから始めませんか？お手軽操作で幅広いグルメ情報収集を目的としたアプリです。",
       keywords: "料理,グルメ,見た目,発掘,画像",
-      canonical: "https://myapp-young-night-9527.fly.dev/",
+      canonical: "https://kininaru-gurume.com",
       separator: "|",
       og: {
         site_name: :site,
         title: :title,
         description: :description,
         type: "website",
-        url: "https://myapp-young-night-9527.fly.dev/",
+        url: "https://kininaru-gurume.com",
         image: image_url("ogp.png"),
         local: "ja-JP"
       },
