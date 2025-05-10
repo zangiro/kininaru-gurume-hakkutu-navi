@@ -1,5 +1,5 @@
 default_url_options:
   protcol: "https"
-  host: "myapp-young-night-9527.fly.dev"
+  host: "kininaru-gurume.com"
 sorcery:
   google_callback_url: "https://myapp-young-night-9527.fly.dev/oauth/callback?provider=google"
