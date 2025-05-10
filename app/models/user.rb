@@ -6,8 +6,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true, length: { maximum: 255 }
-  # validates :is_public, inclusion: { in: [ true, false ], message: "@を選んでください" }
-  # あとでrailsi-18n化したい
   validate :agreement
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
   # 値が存在するならユニークな値、 もしくは値がない場合ならバリデーションが通る。
@@ -15,7 +13,6 @@ class User < ApplicationRecord
   validates :avatar, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
 
   has_many :posts, dependent: :destroy
-  has_many :playlists, dependent: :destroy
 
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post

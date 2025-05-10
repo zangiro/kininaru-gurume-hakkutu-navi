@@ -1,10 +1,22 @@
-<div class="row mt-3 p-2 bg-danger" id="comment-<%= comment.id %>">
+<div class="row mt-3 p-2 bg-light" id="comment-<%= comment.id %>">
   <div class="d-flex justify-content-between">
     <div class="d-flex flex-row">
-      <p><%= t("posts.show.whose_comment", user_name: comment.user.name) %></p>
+      <div>
+        <p><%= t("posts.show.whose_comment", user_name: comment.user.name) %></p>
+      </div>
+
       <% if logged_in? && current_user.own?(comment) %>
-        <%= link_to "編集", edit_comment_path(comment) %>
-        <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "@本当に削除しますか？" } %>
+        <div class="ms-2">
+          <%= link_to edit_comment_path(comment) do %>
+            <i class="bi bi-pencil"></i>
+          <% end %>
+        </div>
+
+        <div class="ms-2">
+          <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.comment_delete_confirm") } do %>
+            <i class="bi bi-basket"></i>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <p><%= comment.updated_at.strftime("%Y/%m/%d %H:%M:%S") %></p>

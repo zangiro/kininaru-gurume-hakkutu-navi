@@ -24,9 +24,6 @@ class Post < ApplicationRecord
   has_many :outher_tags, through: :post_outher_tags
   accepts_nested_attributes_for :post_outher_tags
 
-  has_many :post_playlists, dependent: :destroy
-  has_many :playlists, through: :post_playlists
-
   has_one_attached :main_image
   has_one_attached :sub_image_first
   has_one_attached :sub_image_second

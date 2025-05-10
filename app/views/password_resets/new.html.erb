@@ -1,14 +1,17 @@
-<div class="container">
-<div class="row">
-<p>ページタイトル（仮）</p>
-<p>パンくずリスト（仮）</p>
-<h3>パスワードリセット申請</h3>
-<p>@下記のメールアドレスにパスワードリセットの操作を行うメールを送信します</p>
-<%= form_with url: password_resets_path do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.submit '申請' %>
-<% end %>
+<% content_for(:title, t(".page_title")) %>
+<% breadcrumb :password_resets %>
 
-</div>
+
+<div class="container">
+  <div class="row">
+    <h3><%= t(".password_reset_request") %></h3>
+    <%= t(".password_reset_request_info") %>
+    <div class="mt-3">
+      <%= form_with url: password_resets_path do |f| %>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+        <%= f.submit t("helpers.submit.request") %>
+      <% end %>
+    </div>
+  </div>
 </div>

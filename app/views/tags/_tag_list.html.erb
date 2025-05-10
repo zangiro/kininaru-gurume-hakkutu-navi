@@ -13,8 +13,14 @@
 
     
     <%= turbo_frame_tag "replace_#{tag_type}" do %>
-      <%= link_to '追加する', send("replace_#{tag_type}_tags_path") %>
+      <div class="d-flex justify-content-center">
+        <%= link_to send("replace_#{tag_type}_tags_path") do %>
+          <i class="bi bi-caret-down"></i>
+          <%# --------下向き三角マーク-------- %>
+        <% end %>
+      </div>
     <% end %>
+
 
     <%# -------------  sendメソッドを使うことで、動的にパスを呼び出せる。sendメソッド使わないとエラーが出る  ------------- %>
     

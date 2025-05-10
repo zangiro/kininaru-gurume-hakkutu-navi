@@ -48,8 +48,7 @@ class UsersController < ApplicationController
   def destroy_avatar
     @user = current_user
     @user.avatar.purge
-
-    redirect_to user_path(current_user), success: "@仮----削除しました----------"
+    redirect_to user_path(current_user), success: t("flash_message.delete")
   end
 
   private

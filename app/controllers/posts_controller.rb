@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: %i[new create edit update destroy add_to_playlist]
+  before_action :require_login, only: %i[new create edit update destroy]
 
   def new
     @post = Post.new
@@ -35,8 +35,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @posted_user = @post.user
     @user = params[:user_id] ? User.find(params[:user_id]) : []
-    @playlist = params[:playlist_id] ? Playlist.find(params[:playlist_id]) : []
-    @user_playlists = logged_in? ? current_user.playlists : []
     @area_tags = params[:area_tags] || []
     @genre_tags = params[:genre_tags] || []
     @taste_tags = params[:taste_tags] || []
@@ -44,6 +42,8 @@ class PostsController < ApplicationController
     @post_path = params[:post_path]
     @comment = Comment.new
     @post_comments = @post.comments.includes(:user).order(updated_at: :desc).limit(3)
+    @all_post_comments = @post.comments.includes(:user).order(updated_at: :desc)
+    @word = params[:word] || []
 
     if logged_in?
       # 閲覧履歴を残す処理
@@ -162,16 +162,8 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy
-    flash[:success] = t("flash_message.delete_post")
+    flash[:success] = t("flash_message.delete")
     redirect_to user_posts_path(current_user), status: :see_other
-  end
-
-  def add_to_playlist
-    @post = Post.find(params[:id])
-    @playlist = Playlist.find(params[:playlist_id])
-    @playlist.posts << @post unless @playlist.posts.include?(@post)
-
-    redirect_to root_path, success: "@プレイリストに追加しました"
   end
 
   private

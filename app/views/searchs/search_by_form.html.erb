@@ -1,12 +1,14 @@
-<%# ーーーーーータイトル、パンくずリスト未定ーーーーー   %>
+<% content_for(:title, t(".page_title")) %>
+<% breadcrumb :search_by_form, @word %>
+
 
 <div class="container">
   <div class="row">
     <% if @posts.present? %>
-      <h3>@@検索</h3>
+      <h3><%= t(".search_results") %></h3>
       <% @posts.each do |post| %>
         <div class="bg-info col-2">
-          <a href="<%= post_path(post) %>">
+          <a href="<%= post_path(post, post_path: @post_path, word: @word) %>">
             <% if post.main_image.attached? %>
               <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
             <% end %>
@@ -20,7 +22,7 @@
 
       <%= paginate @posts, theme: "bootstrap-5" %>
     <% else %>
-      <h3>@@ない</h3>
+      <h3><%= t(".target_not_found") %></h3>
     <% end %>
   </div>
 </div>

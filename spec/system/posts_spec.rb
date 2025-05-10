@@ -184,7 +184,7 @@ RSpec.describe "Posts", type: :system do
         post
         visit user_posts_path(user)
         click_link "削除する"
-        expect(page).to have_content "記事を削除しました"
+        expect(page).to have_content "削除しました"
         expect(current_path).to eq user_posts_path(user)
       end
     end

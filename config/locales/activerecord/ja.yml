@@ -1,7 +1,5 @@
 ja:
   activerecord:
-    models:
-      user: ユーザー(必須)  (JAAC
     attributes:
       user:
         password: パスワード
@@ -19,4 +17,4 @@ ja:
       dish:
         description: 詳細用紹介文
       comment:
-        body: コメント〜〜〜
+        body: コメント

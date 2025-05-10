@@ -22,6 +22,26 @@ crumb :user_show do |user|
   parent :root
 end
 
+crumb :policy do
+  link t("breadcrumbs.policy")
+  parent :root
+end
+
+crumb :terms do
+  link t("breadcrumbs.terms")
+  parent :root
+end
+
+crumb :search_by_form do |word|
+  link t("breadcrumbs.search_results"), search_by_form_searchs_path(q: { title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont: word })
+  parent :root
+end
+
+crumb :password_resets do
+  link t("breadcrumbs.password_resets")
+  parent :root
+end
+
 #------------記事関連------------
 
 crumb :post_new do
@@ -39,13 +59,13 @@ crumb :post_edit do |user|
   parent :post_index, user
 end
 
-crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, playlist, post_path|
+crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, word, post_path|
   if post_path == "1"
     link "@#{post.title}"
     parent :post_index, user
   elsif post_path == "2"
     link "@#{post.title}"
-    parent :playlist_show, playlist, user
+    parent :search_by_form, word
   elsif post_path == "3"
     link "@#{post.title}"
     parent :search_index, area_tags, genre_tags, taste_tags, outher_tags
@@ -59,23 +79,6 @@ crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user,
     link "@#{post.title}"
     parent :root
   end
-end
-
-#--------------プレイリスト関連--------------
-
-crumb :playlist_index do |user|
-  link "@#{user.name}さんのプレイリスト一覧", user_playlists_path(user)
-  parent :user_show, user
-end
-
-crumb :playlist_new do |user|
-  link "@プレイリスト作成"
-  parent :playlist_index, user
-end
-
-crumb :playlist_show do |playlist, user|
-  link "#{playlist.title}", playlist_path(playlist)
-  parent :playlist_index, user
 end
 
 #-----------------------------
