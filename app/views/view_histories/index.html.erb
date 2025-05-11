@@ -1,19 +1,38 @@
 <% content_for(:title, t(".page_title")) %>
 <% breadcrumb :view_history_index, @user %>
 
+
 <div class="container">
-<div class="row">
-  <% if @view_history_posts.present? %>
-    <h3><%= t(".view_histories") %></h3>
-    <%= link_to t(".view_histories_delete"), all_view_history_delete_view_histories_path, data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.delete_confirm") } %>
+  <div class="row">
+    <% if @view_history_posts.present? %>
+      <h3><%= t(".view_histories") %></h3>
+      <%= link_to t(".view_histories_delete"), all_view_history_delete_view_histories_path, data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.delete_confirm") } %>
 
-    <% @view_history_posts.each do |post| %>
-      <%= render "post_image", post: post %>
+      <% @view_history_posts.each do |post| %>
+        <%# ーーーーー画面XXLでcol-2で表示ーーーーーーーー %>
+          <div class="col-2 mb-1 d-none d-xxl-block">
+            <%= render "post_image", post: post %>
+          </div>
+
+          <%# ーーーーー画面LG以上、XXL以下でcol-3で表示ーーーーーーーー %>
+          <div class="col-3 mb-1 d-none d-lg-block d-xxl-none">
+            <%= render "post_image", post: post %>
+          </div>
+
+          <%# ーーーーー画面MD以上、LG以下でcol-4で表示ーーーーーーーー %>
+          <div class="col-4 mb-1 d-none d-md-block d-lg-none">
+            <%= render "post_image", post: post %>
+          </div>
+
+          <%# ーーーーー画面MD以下でcol-6で表示ーーーーーーーー %>
+          <div class="col-6 mb-1 d-md-none">
+            <%= render "post_image", post: post %>
+          </div>
+      <% end %>
+
+      <%= paginate @view_history_posts, theme: "bootstrap-5" %>
+    <% else %>
+      <h3><%= t(".no_view_histories") %></h3>
     <% end %>
-
-    <%= paginate @view_history_posts, theme: "bootstrap-5" %>
-  <% else %>
-    <h3><%= t(".no_view_histories") %></h3>
-  <% end %>
-</div>
+  </div>
 </div>
