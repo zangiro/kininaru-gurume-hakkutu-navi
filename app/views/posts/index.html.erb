@@ -3,69 +3,70 @@
 
 
 <div class="container">
-<div class="row">
+  <div class="row">
 
-<%# -------------------本人用------------------- %>
-<% if @user == current_user %>
-  <% if @user_posts.present? %>
-    <div class="d-flex">
-    <h3><%= t(".post_index") %></h3>
-      <div class="dropdown ms-auto">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><%= link_to t(".ascending-order"), user_posts_path(@user, latest: "true"), class: 'dropdown-item' %></li>
-            <li><%= link_to t(".descending-order"), user_posts_path(@user, old: "true"), class: 'dropdown-item' %></li>
-            <%# ---------------補足:  ascending-order 昇順。  descending-order 降順----------------------------- %>
-          </ul>
-      </div>
-    </div>
+    <%# -------------------本人用------------------- %>
+    <% if @user == current_user %>
+      <% if @user_posts.present? %>
+        <div class="d-flex">
+        <h3><%= t(".post_index") %></h3>
+          <div class="dropdown ms-auto">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><%= link_to t(".ascending-order"), user_posts_path(@user, latest: "true"), class: 'dropdown-item' %></li>
+                <li><%= link_to t(".descending-order"), user_posts_path(@user, old: "true"), class: 'dropdown-item' %></li>
+                <%# ---------------補足:  ascending-order 昇順。  descending-order 降順----------------------------- %>
+              </ul>
+          </div>
+        </div>
 
-    <% @user_posts.each do |post| %>
-      <div class="row">
-      <div class="py-4 my-1 bg-info">
-      <%= link_to post.title, post_path(post, user_id: @user.id, post_path: @post_path) %>
-      <%= link_to t(".post_edit"), edit_post_path(post) %>
-      <%= link_to t(".post_delete"), post_path(post), data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.delete_confirm") } %>
-      </div>
-      </div>
+        <% @user_posts.each do |post| %>
+          <div class="row">
+          <div class="py-4 my-1 bg-info">
+          <%= link_to post.title, post_path(post, user_id: @user.id, post_path: @post_path) %>
+        <%= link_to t(".post_edit"), edit_post_path(post) %>
+        <%= link_to t(".post_delete"), post_path(post), data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.delete_confirm") } %>
+        </div>
+        </div>
+        <% end %>
+
+        <%= paginate @user_posts, theme: "bootstrap-5" %>
+      <% else %>
+        <h3><%= t(".no_postings") %></h3>
+        <%# ----------補足: no_postings  投稿がありません---------- %>
+      <% end %>
+
+      <%# -------------------来訪者用--------------------- %>
+
+    <% elsif @user.is_public %>
+      <% if @user_posts.present? %>
+        <div class="d-flex">
+          <h1><%= t(".post_index") %></h1>
+
+          <div class="dropdown ms-auto">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><%= link_to t(".ascending-order"), user_posts_path(@user, latest: "true"), class: 'dropdown-item' %></li>
+              <li><%= link_to t(".descending-order"), user_posts_path(@user, old: "true"), class: 'dropdown-item' %></li>
+            </ul>
+          </div>
+        </div>
+
+        <% @user_posts.each do |post| %>
+        <div class="row">
+        <div class="py-4 my-1 bg-info">
+        <%= link_to post.title, post_path(post, user_id: @user.id, post_path: @post_path) %>
+        </div>
+        </div>
+        <% end %>
+
+        <%= paginate @user_posts, theme: "bootstrap-5" %>
+      <% else %>
+        <h3><%= t(".no_postings") %></h3>
+      <% end %>
+
+    <% else %>
+      <h3><%= t(".closed_to_public") %></h3>
     <% end %>
-    <%= paginate @user_posts, theme: "bootstrap-5" %>
-  <% else %>
-    <h3><%= t(".no_postings") %></h3>
-    <%# ----------補足: no_postings  投稿がありません---------- %>
-  <% end %>
-
-<%# -------------------来訪者用--------------------- %>
-
-<% elsif @user.is_public %>
-  <% if @user_posts.present? %>
-    <div class="d-flex">
-      <h1><%= t(".post_index") %></h1>
-      <div class="dropdown ms-auto">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><%= link_to t(".ascending-order"), user_posts_path(@user, latest: "true"), class: 'dropdown-item' %></li>
-            <li><%= link_to t(".descending-order"), user_posts_path(@user, old: "true"), class: 'dropdown-item' %></li>
-          </ul>
-      </div>
-    </div>
-
-    <% @user_posts.each do |post| %>
-      <div class="row">
-      <div class="py-4 my-1 bg-info">
-      <%= link_to post.title, post_path(post, user_id: @user.id, post_path: @post_path) %>
-      </div>
-      </div>
-    <% end %>
-    <%= paginate @user_posts, theme: "bootstrap-5" %>
-  <% else %>
-    <h3><%= t(".no_postings") %></h3>
-  <% end %>
-
-<% else %>
-  <h3><%= t(".closed_to_public") %></h3>
-<% end %>
-
-
-</div>
+  </div>
 </div>
