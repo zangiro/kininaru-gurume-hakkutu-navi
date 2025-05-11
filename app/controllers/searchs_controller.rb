@@ -13,11 +13,11 @@ class SearchsController < ApplicationController
     @post_ids = @area_posts.pluck(:id) + @genre_posts.pluck(:id) + @taste_posts.pluck(:id) + @outher_posts.pluck(:id)
 
     if params[:latest]
-      @search_posts = Post.where(id: @post_ids).order(created_at: :desc).page(params[:page]).per(3)
+      @search_posts = Post.where(id: @post_ids).order(created_at: :desc).page(params[:page]).per(36)
     elsif params[:old]
-      @search_posts = Post.where(id: @post_ids).order(created_at: :asc).page(params[:page]).per(3)
+      @search_posts = Post.where(id: @post_ids).order(created_at: :asc).page(params[:page]).per(36)
     else
-      @search_posts = Post.where(id: @post_ids).page(params[:page]).per(12)
+      @search_posts = Post.where(id: @post_ids).page(params[:page]).per(36)
     end
     # 簡略化用メソッドを実装したい。現在NoMethodErrorで未実装。記事一覧と同様処理で行けそう
 
@@ -28,6 +28,8 @@ class SearchsController < ApplicationController
     # ページネーションありでも動作確認
 
     @maximum_number = Post.how_many_posts?(@search_posts.count)
+    # how_many_posts?は@search_postsの数に応じて変数に数字を代入する。
+    # おすすめ表示で使用。ヒット数が少なければおおっきい数字を。多ければ0~少ない数字を返す。
 
     # モデルを使わないパターン　最大画像数18
     # if @search_posts.count == 0
@@ -47,7 +49,10 @@ class SearchsController < ApplicationController
     else
       @all_users_view_histories = ViewHistory.order(created_at: :desc).limit(30)
     end
+    # ログインの有無でおすすめとして参照するデータを少し変える。
+
     @recommendations = Post.joins(:view_histories).where(view_histories: { id: @all_users_view_histories }).group("posts.id").order("COUNT(posts.id) DESC").limit(@maximum_number)
+    # この変数はおすすめ表示で使用。閲覧履歴を参照してより多く閲覧されてるものを、タグ検索のヒット数が一定以下の場合表示する。
   end
 
   def search_by_form
