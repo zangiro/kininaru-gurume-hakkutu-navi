@@ -17,7 +17,7 @@ class SearchsController < ApplicationController
     elsif params[:old]
       @search_posts = Post.where(id: @post_ids).order(created_at: :asc).page(params[:page]).per(3)
     else
-      @search_posts = Post.where(id: @post_ids).page(params[:page]).per(3)
+      @search_posts = Post.where(id: @post_ids).page(params[:page]).per(12)
     end
     # 簡略化用メソッドを実装したい。現在NoMethodErrorで未実装。記事一覧と同様処理で行けそう
 
