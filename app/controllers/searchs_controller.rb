@@ -23,27 +23,11 @@ class SearchsController < ApplicationController
 
     @post_path = "3"
 
-    # ----------------------おすすめ表示--------------------------
-
-    # ページネーションありでも動作確認
-
+    # ----------------------以下おすすめ表示--------------------------
     @maximum_number = Post.how_many_posts?(@search_posts.count)
     # how_many_posts?は@search_postsの数に応じて変数に数字を代入する。
     # おすすめ表示で使用。ヒット数が少なければおおっきい数字を。多ければ0~少ない数字を返す。
 
-    # モデルを使わないパターン　最大画像数18
-    # if @search_posts.count == 0
-    #  @maximum_number = 18
-    # elsif @search_posts.count <= 6
-    #  @maximum_number = 12
-    # elsif @search_posts.count <= 12
-    #  @maximum_number = 6
-    # else
-    #  @maximum_number = 0
-    # end
-
-    # テスト用の閲覧履歴のデータを使わないで記事を取得するパターン
-    # @recommendations = Post.all.limit(@maximum_number)
     if logged_in?
       @all_users_view_histories = ViewHistory.where.not(user_id: current_user.id).order(created_at: :desc).limit(30)
     else
