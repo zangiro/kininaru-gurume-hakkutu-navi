@@ -55,14 +55,7 @@ ja:
       to_login_page: ログインページへ
       to_register_page: 新規登録ページへ
       app_title: 気になるグルメ発掘ナビ
-      app_description: このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです。
       diagnosis_start: 診断スタート
-      operation_explanation: [操作説明]
-      operation_explanation_first: １、診断スタートボタンを押す。
-      operation_explanation_second: ２、興味のあるジャンル、地域などを選ぶ。
-      operation_explanation_third: ３、関連するグルメ情報(画像)が出る。
-      operation_explanation_fourth: ４、クリックで詳細が表示される。
-      operation_explanation_fifth: ５、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。
     policy:
       page_title: プライバシーポリシー
     terms:
