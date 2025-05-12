@@ -41,7 +41,7 @@ class SearchsController < ApplicationController
 
   def search_by_form
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page]).per(5)
+    @posts = @q.result(distinct: true).page(params[:page]).per(36)
     @word = params.dig(:q, :title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont) || []
     # @word = params[:q][:title_...]の形で直接searchs/search_by_formと入力するとエラー出る
     # .digはネストされたハッシュや配列から値を安全に取得するために使う。

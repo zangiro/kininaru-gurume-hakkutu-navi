@@ -13,14 +13,11 @@
               <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
             <% end %>
           </a>
-
-          <div class="row">
-            <%= post.dish.introduction %>
-          </div>
         </div>
       <% end %>
 
       <%= paginate @posts, theme: "bootstrap-5" %>
+
     <% else %>
       <h3><%= t(".target_not_found") %></h3>
     <% end %>
