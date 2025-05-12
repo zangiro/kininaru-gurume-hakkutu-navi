@@ -47,6 +47,17 @@ class SearchsController < ApplicationController
     # .digはネストされたハッシュや配列から値を安全に取得するために使う。
     # この場合「:q」が存在しない場合NoMethodErrorになる。.digを使うと「:q」がnilでもエラーにならない。
     @post_path = "2"
+
+    # ----------------------以下おすすめ表示--------------------------
+    @maximum_number = Post.how_many_posts?(@posts.count)
+
+    if logged_in?
+      @all_users_view_histories = ViewHistory.where.not(user_id: current_user.id).order(created_at: :desc).limit(30)
+    else
+      @all_users_view_histories = ViewHistory.order(created_at: :desc).limit(30)
+    end
+
+    @recommendations = Post.joins(:view_histories).where(view_histories: { id: @all_users_view_histories }).group("posts.id").order("COUNT(posts.id) DESC").limit(@maximum_number)
   end
 
   def autocomplete

@@ -182,6 +182,7 @@ ja:
     search_by_form:
       page_title: 検索結果
       search_results: 検索結果
+      everyone_view_histories: みんなが閲覧している記事
       target_not_found: 対象が見つかりませんでした
   posts:
     new:

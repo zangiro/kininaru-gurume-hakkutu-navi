@@ -31,8 +31,82 @@
 
       <%= paginate @posts, theme: "bootstrap-5" %>
 
+
+
+      <%# ーーーーーーーーーーーーーーーーーーーー検索数が一定以下のときおすすめを表示するーーーーーーーーーーーーーーーーーーーーーーーーー %>
+
+      <% if @recommendations.present? %>
+        <div class='row'>
+          <div>
+            <hr class="my-4">
+            <%# -----HTMLの水平線を描画するタグ----- %>
+            <h6><%= t(".everyone_view_histories") %></h6>
+          </div>
+
+          <% @recommendations.each do |post| %>
+
+            <%# ーーーーー画面XXLでcol-2で表示ーーーーーーーー %>
+            <div class="col-2 mb-1 d-none d-xxl-block">
+              <%= render "post_image_for_search_form", post: post %>
+            </div>
+
+            <%# ーーーーー画面LG以上、XXL以下でcol-3で表示ーーーーーーーー %>
+            <div class="col-3 mb-1 d-none d-lg-block d-xxl-none">
+              <%= render "post_image_for_search_form", post: post %>
+            </div>
+
+            <%# ーーーーー画面MD以上、LG以下でcol-4で表示ーーーーーーーー %>
+            <div class="col-4 mb-1 d-none d-md-block d-lg-none">
+              <%= render "post_image_for_search_form", post: post %>
+            </div>
+
+            <%# ーーーーー画面MD以下でcol-6で表示ーーーーーーーー %>
+            <div class="col-6 mb-1 d-md-none">
+              <%= render "post_image_for_search_form", post: post %>
+            </div>
+
+          <% end %>
+        </div>
+      <% end %>
+      <%# ーーーーーーーーーーーーーーーーーーーー おすすめ表示end ーーーーーーーーーーーーーーーーーーーーーーーーー %>
+
     <% else %>
       <h3><%= t(".target_not_found") %></h3>
+
+      <%# ーーーーーーーーーーーーーーーーーーーー検索数が一定以下のときおすすめを表示するーーーーーーーーーーーーーーーーーーーーーーーーー %>
+      <div class='row'>
+        <div>
+          <hr class="my-4">
+          <%# -----HTMLの水平線を描画するタグ----- %>
+          <h6><%= t(".everyone_view_histories") %></h6>
+        </div>
+
+        <% @recommendations.each do |post| %>
+
+          <%# ーーーーー画面XXLでcol-2で表示ーーーーーーーー %>
+          <div class="col-2 mb-1 d-none d-xxl-block">
+            <%= render "post_image_for_index", post: post %>
+          </div>
+
+          <%# ーーーーー画面LG以上、XXL以下でcol-3で表示ーーーーーーーー %>
+          <div class="col-3 mb-1 d-none d-lg-block d-xxl-none">
+            <%= render "post_image_for_index", post: post %>
+          </div>
+
+          <%# ーーーーー画面MD以上、LG以下でcol-4で表示ーーーーーーーー %>
+          <div class="col-4 mb-1 d-none d-md-block d-lg-none">
+            <%= render "post_image_for_index", post: post %>
+          </div>
+
+          <%# ーーーーー画面MD以下でcol-6で表示ーーーーーーーー %>
+          <div class="col-6 mb-1 d-md-none">
+            <%= render "post_image_for_index", post: post %>
+          </div>
+
+        <% end %>
+      </div>
+      <%# ーーーーーーーーーーーーーーーーーーーー おすすめ表示end ーーーーーーーーーーーーーーーーーーーーーーーーー %>
+
     <% end %>
   </div>
 </div>
