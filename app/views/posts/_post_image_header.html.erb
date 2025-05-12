@@ -1,0 +1,9 @@
+<div class="d-flex">
+  <%= link_to edit_post_path(post) do %>
+    <i class="bi bi-pencil"></i>
+  <% end %>
+
+  <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.post_delete_confirm") } do %>
+    <i class="bi bi-basket"></i>
+  <% end %>
+</div>

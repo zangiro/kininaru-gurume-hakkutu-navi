@@ -22,31 +22,46 @@
         </div>
 
         <% @user_posts.each do |post| %>
-          <div class="mb-4 col-2">
-            <div class="d-flex justify-content-between">
-              <div>
-                <%= truncate(post.title, length: 20, omission: '...') %>
-                <%# ーーーーーーtruncateはRailsのヘルパーメソッドで文字列を指定した長さで切り詰める機能がある。lengthで文字数を指定ーーーーーーーーーーー %>
-                <%# ーーーーーーomissionは、切り詰めた際に追加する文字列を指定するためのオプション。ーーーーーーーーーーーー %>
-              </div>
-  
-              <div class="d-flex">
-                <%= link_to edit_post_path(post) do %>
-                  <i class="bi bi-pencil"></i>
-                <% end %>
-                <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.delete_confirm") } do %>
-                  <i class="bi bi-basket"></i>
-                <% end %>
-              </div>
-            </div>
 
+          <%# ーーーーー画面XXLでcol-2で表示ーーーーーーーー %>
+          <div class="col-2 mb-4 d-none d-xxl-block">
             <div>
               <%= render "post_image", post: post %>
             </div>
+
+            <%= render "post_image_header", post: post %>
+          </div>
+
+          <%# ーーーーー画面LG以上、XXL以下でcol-3で表示ーーーーーーーー %>
+          <div class="col-3 mb-4 d-none d-lg-block d-xxl-none">
+            <div>
+              <%= render "post_image", post: post %>
+            </div>
+
+            <%= render "post_image_header", post: post %>
+          </div>
+
+          <%# ーーーーー画面MD以上、LG以下でcol-4で表示ーーーーーーーー %>
+          <div class="col-4 mb-4 d-none d-md-block d-lg-none">
+            <div>
+              <%= render "post_image", post: post %>
+            </div>
+
+            <%= render "post_image_header", post: post %>
+          </div>
+
+          <%# ーーーーー画面MD以下でcol-6で表示ーーーーーーーー %>
+          <div class="col-6 mb-4 d-md-none">
+            <div>
+              <%= render "post_image", post: post %>
+            </div>
+
+            <%= render "post_image_header", post: post %>
           </div>
         <% end %>
 
         <%= paginate @user_posts, theme: "bootstrap-5" %>
+
       <% else %>
         <h3><%= t(".no_postings") %></h3>
         <%# ----------補足: no_postings  投稿がありません---------- %>
@@ -69,14 +84,38 @@
         </div>
 
         <% @user_posts.each do |post| %>
-        <div class="row">
-        <div class="py-4 my-1 bg-info">
-        <%= link_to post.title, post_path(post, user_id: @user.id, post_path: @post_path) %>
-        </div>
-        </div>
+
+          <%# ーーーーー画面XXLでcol-2で表示ーーーーーーーー %>
+          <div class="col-2 mb-4 d-none d-xxl-block">
+            <div>
+              <%= render "post_image", post: post %>
+            </div>
+          </div>
+
+          <%# ーーーーー画面LG以上、XXL以下でcol-3で表示ーーーーーーーー %>
+          <div class="col-3 mb-4 d-none d-lg-block d-xxl-none">
+            <div>
+              <%= render "post_image", post: post %>
+            </div>
+          </div>
+
+          <%# ーーーーー画面MD以上、LG以下でcol-4で表示ーーーーーーーー %>
+          <div class="col-4 mb-4 d-none d-md-block d-lg-none">
+            <div>
+              <%= render "post_image", post: post %>
+            </div>
+          </div>
+
+          <%# ーーーーー画面MD以下でcol-6で表示ーーーーーーーー %>
+          <div class="col-6 mb-4 d-md-none">
+            <div>
+              <%= render "post_image", post: post %>
+            </div>
+          </div>
         <% end %>
 
         <%= paginate @user_posts, theme: "bootstrap-5" %>
+
       <% else %>
         <h3><%= t(".no_postings") %></h3>
       <% end %>

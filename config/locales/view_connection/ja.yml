@@ -13,6 +13,7 @@ ja:
       reset: リセット
     dialog: # javascriptのダイアログなどで使う
       delete_confirm: 本当に削除しますか？
+      post_delete_confirm: 記事を削除します。本当に削除しますか？
       avatar_delete_confirm: アバター画像を削除します。本当に削除しますか？
       comment_delete_confirm: このコメントを削除します。本当に削除しますか？
   flash_message:
