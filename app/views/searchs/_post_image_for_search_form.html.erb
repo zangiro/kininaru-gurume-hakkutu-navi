@@ -1,0 +1,5 @@
+<a href="<%= post_path(post, post_path: @post_path, word: @word) %>">
+  <% if post.main_image.attached? %>
+    <%= image_tag post.main_image.variant(resize_and_pad: [200, 200]) %>
+  <% end %>
+</a>
