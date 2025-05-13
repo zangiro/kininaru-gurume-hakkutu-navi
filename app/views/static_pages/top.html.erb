@@ -84,116 +84,101 @@
   <hr class="my-4 mt-5">
   <%# -----HTMLの水平線を描画するタグ----- %>
 
-  <div class="d-flex justify-content-center">
-    <h3>本アプリでは以下のような機能が使用できます。</h3>
+  <div class="d-flex justify-content-center mt-5">
+    <h3>当アプリでは以下のような機能が使用できます</h3>
   </div>
 
-  <div class="d-flex justify-content-evenly mt-3">
+  <div class="d-flex justify-content-evenly mt-5">
     <div class="row bg-primary-subtle w-25">
-      <div class="mt-2">
-        <h4>当方は、お客様から以下の情報を取得します</h4>
+      <div class="mt-3">
+        <h4 class="text-center">簡単操作でパッと検索</h4>
       </div>
-      <div>
-        <p>当方が、お客様から取得した情報に関して安全管理のために講じた措置につきましては、末尾記載のお問い合わせ先にご連絡をいただきましたら、法令の定めに従い個別にご回答させていただきます。
-        </p>
+
+      <div class="mt-2">
+        <p class="text-center">使い方は調べてみたいジャンルなどのタグをポチポチっと選ぶだけ</p>
+        <p class="text-center">関連するグルメ情報を<br>ズラ〜っと見れます！</p>
       </div>
     </div>
 
     <div class="row bg-primary-subtle w-25">
-     <div class="mt-2">
-      <h4>事業パートナーと共同利用する場合（具体的な共同利用がある場合は、その内容を別途公表します。）</h4>
+      <div class="mt-3">
+        <h4 class="text-center">見て楽しい！<br>知って楽しい！</h4>
       </div>
-      <div>
-        <p>当方は、お客様のアクセス解析のために、「Googleアナリティクス」を利用しています。Googleアナリティクスは、トラフィックデータの収集のためにCookieを使用しています。トラフィックデータは匿名で収集されており、個人を特定するものではありません。Cookieを無効にすれば、これらの情報の収集を拒否することができます。
-        </p>
+
+      <div class="mt-2">
+        <p class="text-center">当アプリは様々なグルメ情報を画像で一気に閲覧できます。ちょっとした時間にサッといろんなグルメ情報を見て</p>
+        <p class="text-center">見た目がいい<br>美味しそう？</p>
+        <p class="text-center">そんな気になるグルメがあったらクリックして詳細を確認してみよう！</p>
       </div>
     </div>
 
     <div class="row bg-primary-subtle w-25">
-      <div class="mt-2">
-        <h4>お客様の情報の開示、情報の訂正、利用停止、削除をご希望の場合は</h4>
+      <div class="mt-3">
+        <h4 class="text-center">おすすめ表示機能</h4>
       </div>
       <div>
-        <p>当方は、必要に応じて、このプライバシーポリシーの内容を変更します。この場合、変更後のプライバシーポリシーの施行時期と内容を適切な方法により周知または通知します。
-        </p>
+        <p class="text-center">トップページや検索結果ページではみんなが見てるグルメ情報が表示されます<br>みんながどんな記事を見てるか確認してみよう！</p>
       </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column align-items-center mt-5">
+    <h3>さっそくグルメ情報を探してみよう！</h3>
+    <p>下記のボタンで検索ページへいけます</p>
+  </div>
+
+  <div class="d-flex justify-content-around">
+    <div class=" w-50 mt-3">
+      <%= link_to t(".diagnosis_start"), tags_path, class: 'd-flex align-items-center justify-content-center bg-danger display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
     </div>
   </div>
 
   <%# ----------------------------ログイン後の機能説明の行----------------------------- %>
 
-  <div class="d-flex justify-content-center mt-5">
-    <h3>本アプリでは以下のような機能が使用できます。</h3>
-  </div>
-
-  <div class="d-flex justify-content-evenly mt-3">
-    <div class="row bg-primary-subtle w-25">
-      <div class="mt-2">
-        <h4>当方は、お客様から以下の情報を取得します</h4>
-      </div>
-      <div>
-        <p>当方が、お客様から取得した情報に関して安全管理のために講じた措置につきましては、末尾記載のお問い合わせ先にご連絡をいただきましたら、法令の定めに従い個別にご回答させていただきます。
-        </p>
-      </div>
-    </div>
-
-    <div class="row bg-primary-subtle w-25">
-     <div class="mt-2">
-      <h4>事業パートナーと共同利用する場合（具体的な共同利用がある場合は、その内容を別途公表します。）</h4>
-      </div>
-      <div>
-        <p>当方は、お客様のアクセス解析のために、「Googleアナリティクス」を利用しています。Googleアナリティクスは、トラフィックデータの収集のためにCookieを使用しています。トラフィックデータは匿名で収集されており、個人を特定するものではありません。Cookieを無効にすれば、これらの情報の収集を拒否することができます。
-        </p>
-      </div>
-    </div>
-
-    <div class="row bg-primary-subtle w-25">
-      <div class="mt-2">
-        <h4>お客様の情報の開示、情報の訂正、利用停止、削除をご希望の場合は</h4>
-      </div>
-      <div>
-        <p>当方は、必要に応じて、このプライバシーポリシーの内容を変更します。この場合、変更後のプライバシーポリシーの施行時期と内容を適切な方法により周知または通知します。
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="d-flex justify-content-evenly mt-3">
-    <div class="row bg-primary-subtle w-25">
-      <div class="mt-2">
-        <h4>当方は、お客様から以下の情報を取得します</h4>
-      </div>
-      <div>
-        <p>当方が、お客様から取得した情報に関して安全管理のために講じた措置につきましては、末尾記載のお問い合わせ先にご連絡をいただきましたら、法令の定めに従い個別にご回答させていただきます。
-        </p>
-      </div>
-    </div>
-
-    <div class="row bg-primary-subtle w-25">
-     <div class="mt-2">
-      <h4>事業パートナーと共同利用する場合（具体的な共同利用がある場合は、その内容を別途公表します。）</h4>
-      </div>
-      <div>
-        <p>当方は、お客様のアクセス解析のために、「Googleアナリティクス」を利用しています。Googleアナリティクスは、トラフィックデータの収集のためにCookieを使用しています。トラフィックデータは匿名で収集されており、個人を特定するものではありません。Cookieを無効にすれば、これらの情報の収集を拒否することができます。
-        </p>
-      </div>
-    </div>
-
-    <div class="row bg-primary-subtle w-25">
-      <div class="mt-2">
-        <h4>お客様の情報の開示、情報の訂正、利用停止、削除をご希望の場合は</h4>
-      </div>
-      <div>
-        <p>当方は、必要に応じて、このプライバシーポリシーの内容を変更します。この場合、変更後のプライバシーポリシーの施行時期と内容を適切な方法により周知または通知します。
-        </p>
-      </div>
-    </div>
-  </div>
+  <hr class="my-4 mt-5">
+  <%# -----HTMLの水平線を描画するタグ----- %>
 
   <div class="d-flex justify-content-center mt-5">
-    <div class="w-50">
-      <%= link_to t(".diagnosis_start"), tags_path, class: 'd-flex align-items-center justify-content-center bg-danger display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
+    <h3>ログインすることでさらに使える機能が増えます</h3>
+  </div>
+
+  <div class="d-flex justify-content-evenly mt-5">
+    <div class="row bg-primary-subtle w-25">
+      <div class="mt-3">
+        <h4 class="text-center">新たな記事の投稿</h4>
+      </div>
+      <div class="mt-3">
+        <p class="text-center">料理の情報なら何でもOK！<br>あなたの知ってる美味しい・面白いグルメ情報を投稿してみんなと共有しよう！</p>
+      </div>
+    </div>
+
+    <div class="row bg-primary-subtle w-25">
+      <div class="mt-3">
+        <h4 class="text-center">気になるグルメがあったら実際にお店に行ってみよう</h4>
+      </div>
+      <div class="my-3">
+        <p class="text-center">所在地を登録することで記事の料理が提供されている近隣店舗を調べることができます</p>
+      </div>
     </div>
   </div>
 
+  <div class="d-flex justify-content-evenly my-5">
+    <div class="row bg-primary-subtle w-25">
+      <div class="mt-3">
+        <h4 class="text-center">閲覧履歴機能</h4>
+      </div>
+      <div>
+        <p class="text-center">過去に見た記事を後から見返すことができます</p>
+      </div>
+    </div>
+
+    <div class="row bg-primary-subtle w-25">
+      <div class="mt-3">
+        <h4 class="text-center">いいね機能</h4>
+      </div>
+      <div class="my-3">
+        <p class="text-center">記事の「いいね」ボタンを押すことにより気に入った記事を後から見返すことができます</p>
+      </div>
+    </div>
+  </div>
 </div>

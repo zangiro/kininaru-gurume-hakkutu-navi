@@ -55,7 +55,7 @@ ja:
       to_login_page: ログインページへ
       to_register_page: 新規登録ページへ
       app_title: 気になるグルメ発掘ナビ
-      diagnosis_start: 診断スタート
+      diagnosis_start: タグ検索を行う
     policy:
       page_title: プライバシーポリシー
     terms:
