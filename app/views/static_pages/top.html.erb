@@ -15,18 +15,36 @@
   <%# ----------------------------ロゴの行----------------------------- %>
   <div class="d-flex justify-content-around mt-3">
 
-    <div class="row">
-      <% if @recommendations[1].present? %>
-        <%= render "post_image", posts: @recommendations, number: 0 %>
-      <% end %>
+    <div class="d-none d-xl-block">
+      <div class="mb-3">
+        <% if @recommendations[0].present? %>
+          <%= render "post_image", posts: @recommendations, number: 0 %>
+        <% end %>
+      </div>
+
+      <div>
+        <% if @recommendations[1].present? %>
+          <%= render "post_image", posts: @recommendations, number: 1 %>
+        <% end %>
+      </div>
     </div>
 
     <div class="row">
       <%= image_tag "main-600.png" %>
     </div>
 
-    <div class="row">
-      <%= render "post_image", posts: @recommendations, number: 1 %>
+    <div class="d-none d-xl-block">
+      <div class="mb-3">
+        <% if @recommendations[2].present? %>
+          <%= render "post_image", posts: @recommendations, number: 2 %>
+        <% end %>
+      </div>
+
+      <div>
+        <% if @recommendations[3].present? %>
+          <%= render "post_image", posts: @recommendations, number: 3 %>
+        <% end %>
+      </div>
     </div>
 
   </div>
@@ -35,20 +53,34 @@
 
   <div class="d-flex justify-content-around mt-3">
 
-    <div class="row">
-      <% if @recommendations[3].present? %>
-        <%= render "post_image", posts: @recommendations, number: 2 %>
-      <% end %>
-    </div>
-
-    <div class="row bg-info w-50 mt-5" style="height: 90px;">
-      <div class="d-flex align-items-center">
-        <%= t(".app_description") %>
+    <div class="d-none d-lg-block">
+      <div>
+        <% if @recommendations[4].present? %>
+          <%= render "post_image", posts: @recommendations, number: 4 %>
+        <% end %>
       </div>
     </div>
 
-    <div class="row">
-      <%= render "post_image", posts: @recommendations, number: 3 %>
+    <%# ーーーーー画面LG以上で表示ーーーーーーーー %>
+    <div class="d-none d-lg-block bg-info w-50 mt-5" style="height: 90px;">
+      <div class="d-flex align-items-center m-3">
+        <p>このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです</p>
+      </div>
+    </div>
+
+    <%# ーーーーー画面LG以上で非表示ーーーーーーーー %>
+    <div class="d-lg-none bg-info mt-5">
+      <div class="d-flex align-items-center m-3">
+        <p>このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです</p>
+      </div>
+    </div>
+
+    <div class="d-none d-lg-block">
+      <div>
+        <% if @recommendations[5].present? %>
+          <%= render "post_image", posts: @recommendations, number: 5 %>
+        <% end %>
+      </div>
     </div>
   </div>
 
@@ -56,64 +88,220 @@
 
   <div class="d-flex justify-content-around mt-3">
 
-    <div class="row">
-      <% if @recommendations[5].present? %>
-        <%= render "post_image", posts: @recommendations, number: 4 %>
-      <% end %>
+    <div class="d-none d-lg-block">
+      <div>
+        <% if @recommendations[6].present? %>
+          <%= render "post_image", posts: @recommendations, number: 6 %>
+        <% end %>
+      </div>
     </div>
 
-    <div class="row mt-5">
+    <div class="w-50 mt-5">
         <%= link_to t(".diagnosis_start"), tags_path, class: 'd-flex align-items-center justify-content-center bg-danger display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
     </div>
 
-    <div class="row">
-      <%= render "post_image", posts: @recommendations, number: 5 %>
+    <div class="d-none d-lg-block">
+      <div>
+        <% if @recommendations[7].present? %>
+          <%= render "post_image", posts: @recommendations, number: 7 %>
+        <% end %>
+      </div>
     </div>
   </div>
 
-  <%# ----------------------------アプリの使用説明の行----------------------------- %>
-  
-  <div class="d-flex justify-content-around mt-3">
+  <%# ----------------------------アプリ基本機能説明の行----------------------------- %>
+  <hr class="my-4 mt-5">
+  <%# -----HTMLの水平線を描画するタグ----- %>
 
-    <div class="row">
-      <% if @recommendations[7].present? %>
-        <%= render "post_image", posts: @recommendations, number: 6 %>
-      <% end %>
+  <div class="d-flex justify-content-center mt-5">
+    <h3>当アプリでは以下のような機能が使用できます</h3>
+  </div>
+
+  <%# ーーーーーーーーーー画面LG以上で表示ーーーーーーーー %>
+  <div class="d-none d-lg-block">
+    <div class="d-flex justify-content-evenly mt-5">
+
+      <div class="bg-primary-subtle w-25 p-3">
+        <div class="mt-3">
+          <h4 class="text-center">簡単操作でパッと検索</h4>
+        </div>
+
+        <div class="mt-5">
+          <p class="text-center">使い方は調べてみたいジャンルなどのタグをポチポチっと選ぶだけ</p>
+          <p class="text-center">関連するグルメ情報を<br>ズラ〜っと見れます！</p>
+        </div>
+      </div>
+
+      <div class="bg-primary-subtle w-25 p-3">
+        <div class="mt-3">
+          <h4 class="text-center">見て楽しい！<br>知って楽しい！</h4>
+        </div>
+
+        <div class="mt-2">
+          <p class="text-center">当アプリは様々なグルメ情報を画像で一気に閲覧できます。ちょっとした時間にサッといろんなグルメ情報を見て</p>
+          <p class="text-center">見た目がいい<br>美味しそう？</p>
+          <p class="text-center">そんな気になるグルメがあったらクリックして詳細を確認してみよう！</p>
+        </div>
+      </div>
+
+      <div class="bg-primary-subtle w-25 p-3">
+        <div class="mt-3">
+          <h4 class="text-center">おすすめ表示機能</h4>
+        </div>
+        <div class="mt-5">
+          <p class="text-center">トップページや検索結果ページではみんなが見てるグルメ情報が表示されます<br>みんながどんな記事を見てるか確認してみよう！</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <%# ーーーーーーーーーー画面LG以上で表示 ここまでーーーーーーーー %>
+
+  <%# ーーーーー画面LG以上で非表示ーーーーーーーー %>
+  <div class="d-lg-none">
+    <div class="bg-primary-subtle mt-3 p-2">
+      <div class="mt-3">
+        <h4 class="text-center">簡単操作でパッと検索</h4>
+      </div>
+
+      <div class="mt-5">
+        <p class="text-center">使い方は調べてみたいジャンルなどのタグをポチポチっと選ぶだけ</p>
+        <p class="text-center">関連するグルメ情報をズラ〜っと見れます！</p>
+      </div>
     </div>
 
-    <div class="row mt-5 bg-info" style="height: 150px;">
-      <%= t(".operation_explanation") %><br>
-      <%= t(".operation_explanation_first") %><br>
-      <%= t(".operation_explanation_second") %><br>
-      <%= t(".operation_explanation_third") %><br>
-      <%= t(".operation_explanation_fourth") %><br>
-      <%= t(".operation_explanation_fifth") %>
+    <div class="bg-primary-subtle mt-3 p-2">
+      <div class="mt-3">
+        <h4 class="text-center">見て楽しい！　知って楽しい！</h4>
+      </div>
+
+      <div class="mt-5">
+      <p class="text-center">当アプリは様々なグルメ情報を画像で一気に閲覧できます</p>
+      <p class="text-center">ちょっとした時間にサッといろんなグルメ情報を見て</p>
+      <p class="text-center">見た目がいい？　美味しそう？</p>
+      <p class="text-center">そんな気になるグルメがあったらクリックして詳細を確認してみよう！</p>
+      </div>
     </div>
 
-    <div class="row">
-      <%= render "post_image", posts: @recommendations, number: 7 %>
+    <div class="bg-primary-subtle mt-3 p-2">
+      <div class="mt-3">
+        <h4 class="text-center">おすすめ表示機能</h4>
+      </div>
+
+      <div class="mt-5">
+        <p class="text-center">トップページや検索結果ページではみんなが見てるグルメ情報が表示されます</p>
+        <p class="text-center">みんながどんな記事を見てるか確認してみよう！</p>
+      </div>
+    </div>
+  </div>
+  <%# ーーーーー画面LG以上で非表示  ここまでーーーーーーーー %>
+
+  <div class="d-flex flex-column align-items-center mt-5">
+    <h3>さっそくグルメ情報を探してみよう！</h3>
+    <p>下記のボタンで検索ページへいけます</p>
+  </div>
+
+  <div class="d-flex justify-content-around">
+    <div class=" w-50 mt-3">
+      <%= link_to t(".diagnosis_start"), tags_path, class: 'd-flex align-items-center justify-content-center bg-danger display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
     </div>
   </div>
 
+  <%# ----------------------------ログイン後の機能説明の行----------------------------- %>
 
-</div>
+  <hr class="my-4 mt-5">
+  <%# -----HTMLの水平線を描画するタグ----- %>
 
+  <div class="d-flex justify-content-center mt-5">
+    <h3>ログインすることでさらに使える機能が増えます</h3>
+  </div>
 
+  <%# ーーーーーーーーーー画面LG以上で表示ーーーーーーーー %>
+  <div class="d-none d-lg-block">
+    <div class="d-flex justify-content-evenly mt-5">
+      <div class="row bg-primary-subtle w-25">
+        <div class="mt-3">
+          <h4 class="text-center">新たな記事の投稿</h4>
+        </div>
+        <div class="mt-3">
+          <p class="text-center">料理の情報なら何でもOK！<br>あなたの知ってる美味しい・面白いグルメ情報を投稿してみんなと共有しよう！</p>
+        </div>
+      </div>
 
+      <div class="row bg-primary-subtle w-25">
+        <div class="mt-3">
+          <h4 class="text-center">気になるグルメがあったら実際にお店に行ってみよう</h4>
+        </div>
+        <div class="my-3">
+          <p class="text-center">所在地を登録することで記事の料理が提供されている近隣店舗を調べることができます</p>
+        </div>
+      </div>
+    </div>
 
+    <div class="d-flex justify-content-evenly my-5">
+      <div class="row bg-primary-subtle w-25">
+        <div class="mt-3">
+          <h4 class="text-center">閲覧履歴機能</h4>
+        </div>
+        <div>
+          <p class="text-center">過去に見た記事を後から見返すことができます</p>
+        </div>
+      </div>
 
-
-
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="bg-info w-75" style="height: 400px;">
-      紹介絵
+      <div class="row bg-primary-subtle w-25">
+        <div class="mt-3">
+          <h4 class="text-center">いいね機能</h4>
+        </div>
+        <div class="my-3">
+          <p class="text-center">記事の「いいね」ボタンを押すことにより気に入った記事を後から見返すことができます</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+  <%# ーーーーーーーーーー画面LG以上で表示 ここまでーーーーーーーー %>
 
-<div class="container mt-3">
-  <div class="row justify-content-center">
-  <%= link_to t(".diagnosis_start"), tags_path, class: 'd-flex align-items-center justify-content-center w-25 bg-danger text-center display-6', style: 'height: 80px; text-decoration: none; color: white;' %>
+  <%# ーーーーー画面LG以上で非表示ーーーーーーーー %>
+  <div class="d-lg-none">
+    <div class="bg-primary-subtle mt-3 p-2">
+      <div class="mt-3">
+        <h4 class="text-center">新たな記事の投稿</h4>
+      </div>
+
+      <div class="mt-5">
+        <p class="text-center">料理の情報なら何でもOK！</p>
+        <p class="text-center">あなたの知ってる美味しい・面白いグルメ情報を投稿してみんなと共有しよう！</p>
+      </div>
+    </div>
+
+    <div class="bg-primary-subtle mt-3 p-2">
+      <div class="mt-3">
+        <h4 class="text-center">気になるグルメがあったら実際にお店に行ってみよう</h4>
+      </div>
+
+      <div class="mt-5">
+        <p class="text-center">所在地を登録することで記事の料理が提供されている近隣店舗を調べることができます</p>
+      </div>
+    </div>
+
+    <div class="bg-primary-subtle mt-3 p-2">
+      <div class="mt-3">
+        <h4 class="text-center">閲覧履歴機能</h4>
+      </div>
+
+      <div class="mt-5">
+        <p class="text-center">過去に見た記事を後から見返すことができます</p>
+      </div>
+    </div>
+
+    <div class="bg-primary-subtle mt-3 p-2">
+      <div class="mt-3">
+        <h4 class="text-center">いいね機能</h4>
+      </div>
+
+      <div class="mt-5">
+        <p class="text-center">記事の「いいね」ボタンを押すことにより気に入った記事を後から見返すことができます</p>
+      </div>
+    </div>
   </div>
+  <%# ーーーーー画面LG以上で非表示  ここまでーーーーーーーー %>
 </div>

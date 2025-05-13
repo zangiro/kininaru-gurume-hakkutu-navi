@@ -1,7 +1,7 @@
 <%= turbo_stream.replace "taste_tags_turbo_stream" do %>
   <div class="row bg-info mb-3">
     <% @taste_tags.each_with_index do |taste_tag, taste_index| %>
-      <div class="form-check form-check-inline col-3">
+      <div class="form-check form-check-inline col-3 m-1">
         <input class="form-check-input" type="checkbox" name="taste_tags[]" id="taste_box<%= taste_index %>" value="<%= taste_tag.name %>">
         <label class="form-check-label" for="taste_box<%= taste_index %>">
           <%= taste_tag.name %> (<%= taste_tag.count %>)

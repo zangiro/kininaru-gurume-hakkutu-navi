@@ -1,43 +1,46 @@
 <% content_for(:title, t(".page_title")) %>
 <% breadcrumb :tag_index %>
 
+
 <div class="container">
-  <h3><%= t(".please_select_tag") %></h3>
+  <div class="row">
+    <h3><%= t(".please_select_tag") %></h3>
 
-  <%= form_with url: searchs_path, method: :get do %>
+    <%= form_with url: searchs_path, method: :get do %>
 
-    <h3><%= t(".area") %></h3>
+      <h3><%= t(".area") %></h3>
 
-    <%# -----------------area_tags_turbo_streamの範囲-------------------- %>
+      <%# -----------------area_tags_turbo_streamの範囲-------------------- %>
 
-    <%= render "tag_list", tags: @area_tags, tag_type: "area_tags" %>
+      <%= render "tag_list", tags: @area_tags, tag_type: "area_tags" %>
 
-    <%# -----------------area_tags_turbo_streamの範囲-------------------- %>
+      <%# -----------------area_tags_turbo_streamの範囲-------------------- %>
 
-    <h3><%= t(".genre") %></h3>
+      <h3><%= t(".genre") %></h3>
 
-    <%# -----------------genre_tags_turbo_streamの範囲-------------------- %>
+      <%# -----------------genre_tags_turbo_streamの範囲-------------------- %>
 
-    <%= render "tag_list", tags: @genre_tags, tag_type: "genre_tags" %>
+      <%= render "tag_list", tags: @genre_tags, tag_type: "genre_tags" %>
 
-    <%# -----------------genre_tags_turbo_streamの範囲-------------------- %>
+      <%# -----------------genre_tags_turbo_streamの範囲-------------------- %>
 
-    <h3><%= t(".taste") %></h3>
+      <h3><%= t(".taste") %></h3>
 
-    <%# -----------------taste_tags_turbo_streamの範囲-------------------- %>
+      <%# -----------------taste_tags_turbo_streamの範囲-------------------- %>
 
-    <%= render "tag_list", tags: @taste_tags, tag_type: "taste_tags" %>
+      <%= render "tag_list", tags: @taste_tags, tag_type: "taste_tags" %>
 
-    <%# -----------------taste_tags_turbo_streamの範囲-------------------- %>
+      <%# -----------------taste_tags_turbo_streamの範囲-------------------- %>
 
-    <h3><%= t(".outher") %></h3>
+      <h3><%= t(".outher") %></h3>
 
-    <%# -----------------outher_tags_turbo_streamの範囲-------------------- %>
+      <%# -----------------outher_tags_turbo_streamの範囲-------------------- %>
 
-    <%= render "tag_list", tags: @outher_tags, tag_type: "outher_tags" %>
+      <%= render "tag_list", tags: @outher_tags, tag_type: "outher_tags" %>
 
-    <%# -----------------outher_tags_turbo_streamの範囲-------------------- %>
+      <%# -----------------outher_tags_turbo_streamの範囲-------------------- %>
 
-    <%= submit_tag t("helpers.submit.decision") %>
+      <%= submit_tag t("helpers.submit.decision") %>
     <% end %>
+  </div>
 </div>

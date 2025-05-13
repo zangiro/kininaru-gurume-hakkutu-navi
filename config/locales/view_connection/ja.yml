@@ -13,6 +13,7 @@ ja:
       reset: リセット
     dialog: # javascriptのダイアログなどで使う
       delete_confirm: 本当に削除しますか？
+      post_delete_confirm: 記事を削除します。本当に削除しますか？
       avatar_delete_confirm: アバター画像を削除します。本当に削除しますか？
       comment_delete_confirm: このコメントを削除します。本当に削除しますか？
   flash_message:
@@ -54,14 +55,7 @@ ja:
       to_login_page: ログインページへ
       to_register_page: 新規登録ページへ
       app_title: 気になるグルメ発掘ナビ
-      app_description: このアプリは簡単操作で自分の知らないご当地グルメ、郷土料理発見を目的とするアプリです。
-      diagnosis_start: 診断スタート
-      operation_explanation: [操作説明]
-      operation_explanation_first: １、診断スタートボタンを押す。
-      operation_explanation_second: ２、興味のあるジャンル、地域などを選ぶ。
-      operation_explanation_third: ３、関連するグルメ情報(画像)が出る。
-      operation_explanation_fourth: ４、クリックで詳細が表示される。
-      operation_explanation_fifth: ５、現在地を入力すると、その料理が食べられる一番近くのお店への経路情報が出る。
+      diagnosis_start: タグ検索を行う
     policy:
       page_title: プライバシーポリシー
     terms:
@@ -142,7 +136,7 @@ ja:
       address_example: 〜例, 東京都新宿区〜
       avatar: アバター設定 / 以下の拡張子の画像が利用できます[ jpg, jpeg, png ]
       selected_avatar: 〜アバターに以下の画像が選択されてます〜
-      is_public: 公開設定 / 以下の項目が他のユーザーにも閲覧できるようになります[ アバター, 自己紹介, 所在地, 投稿一覧, いいねした記事 ]
+      is_public: 公開設定 / 以下の項目が他のユーザーにも閲覧できるようになります[ アバター, 自己紹介, 投稿一覧, いいねした記事 ]
       permit: 許可
       not_permit: 不許可
       accept_terms_of_use: 利用規約に同意しますか？(必須)
@@ -181,6 +175,7 @@ ja:
     search_by_form:
       page_title: 検索結果
       search_results: 検索結果
+      everyone_view_histories: みんなが閲覧している記事
       target_not_found: 対象が見つかりませんでした
   posts:
     new:
@@ -211,8 +206,6 @@ ja:
     index:
       page_title: 記事一覧
       post_index: 記事一覧
-      post_edit: 編集する
-      post_delete: 削除する
       ascending-order: 昇順にする
       descending-order: 降順にする
       no_postings: 投稿がありません

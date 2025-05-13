@@ -1,9 +1,9 @@
 class TagsController < ApplicationController
   def index
-    @area_tags = AreaTag.joins(:posts).group(:name).select("name, COUNT(*) as count").order("count DESC").limit(9)
-    @genre_tags = GenreTag.joins(:posts).group(:name).select("name, COUNT(*) as count").order("count DESC").limit(9)
-    @taste_tags = TasteTag.joins(:posts).group(:name).select("name, COUNT(*) as count").order("count DESC").limit(9)
-    @outher_tags = OutherTag.joins(:posts).group(:name).select("name, COUNT(*) as count").order("count DESC").limit(9)
+    @area_tags = AreaTag.joins(:posts).group(:name).select("name, COUNT(*) as count").order("count DESC").limit(21)
+    @genre_tags = GenreTag.joins(:posts).group(:name).select("name, COUNT(*) as count").order("count DESC").limit(21)
+    @taste_tags = TasteTag.joins(:posts).group(:name).select("name, COUNT(*) as count").order("count DESC").limit(21)
+    @outher_tags = OutherTag.joins(:posts).group(:name).select("name, COUNT(*) as count").order("count DESC").limit(21)
   end
 
   def replace_area_tags

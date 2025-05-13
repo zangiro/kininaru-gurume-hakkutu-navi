@@ -33,9 +33,11 @@
       <%= t(".introduction", introduction: @user.introduction) %>
     </div>
 
-    <div class="mt-2">
-      <%= t(".address", address: @user.address) %>
-    </div>
+    <% if @user == current_user %>
+      <div class="mt-2">
+        <%= t(".address", address: @user.address) %>
+      </div>
+    <% end %>
 
     <div class="mt-2">
       <%= link_to t(".to_posts_list"), user_posts_path(@user) %>
