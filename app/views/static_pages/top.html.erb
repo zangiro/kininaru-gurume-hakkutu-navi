@@ -117,50 +117,84 @@
     <h3>当アプリでは以下のような機能が使用できます</h3>
   </div>
 
-  <div class="d-flex justify-content-evenly mt-5">
+  <%# ーーーーーーーーーー画面LG以上で表示ーーーーーーーー %>
+  <div class="d-none d-lg-block">
+    <div class="d-flex justify-content-evenly mt-5">
 
-    <%# ーーーーー画面LG以上で表示 アプリ説明Aーーーーーーーー %>
-    <div class="d-none d-lg-block row bg-primary-subtle w-25">
+      <div class="bg-primary-subtle w-25 p-3">
+        <div class="mt-3">
+          <h4 class="text-center">簡単操作でパッと検索</h4>
+        </div>
+
+        <div class="mt-5">
+          <p class="text-center">使い方は調べてみたいジャンルなどのタグをポチポチっと選ぶだけ</p>
+          <p class="text-center">関連するグルメ情報を<br>ズラ〜っと見れます！</p>
+        </div>
+      </div>
+
+      <div class="bg-primary-subtle w-25 p-3">
+        <div class="mt-3">
+          <h4 class="text-center">見て楽しい！<br>知って楽しい！</h4>
+        </div>
+
+        <div class="mt-2">
+          <p class="text-center">当アプリは様々なグルメ情報を画像で一気に閲覧できます。ちょっとした時間にサッといろんなグルメ情報を見て</p>
+          <p class="text-center">見た目がいい<br>美味しそう？</p>
+          <p class="text-center">そんな気になるグルメがあったらクリックして詳細を確認してみよう！</p>
+        </div>
+      </div>
+
+      <div class="bg-primary-subtle w-25 p-3">
+        <div class="mt-3">
+          <h4 class="text-center">おすすめ表示機能</h4>
+        </div>
+        <div class="mt-5">
+          <p class="text-center">トップページや検索結果ページではみんなが見てるグルメ情報が表示されます<br>みんながどんな記事を見てるか確認してみよう！</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <%# ーーーーーーーーーー画面LG以上で表示 ここまでーーーーーーーー %>
+
+  <%# ーーーーー画面LG以上で非表示ーーーーーーーー %>
+  <div class="d-lg-none">
+    <div class="bg-primary-subtle mt-3 p-2">
       <div class="mt-3">
         <h4 class="text-center">簡単操作でパッと検索</h4>
       </div>
 
       <div class="mt-5">
         <p class="text-center">使い方は調べてみたいジャンルなどのタグをポチポチっと選ぶだけ</p>
-        <p class="text-center">関連するグルメ情報を<br>ズラ〜っと見れます！</p>
+        <p class="text-center">関連するグルメ情報をズラ〜っと見れます！</p>
       </div>
     </div>
 
-    <%# ーーーーー画面LG以上で非表示 アプリ説明Aーーーーーーーー %>
-    
-
-    <%# ーーーーー画面LG以上で表示 アプリ説明Bーーーーーーーー %>
-    <div class="d-none d-lg-block row bg-primary-subtle w-25">
+    <div class="bg-primary-subtle mt-3 p-2">
       <div class="mt-3">
-        <h4 class="text-center">見て楽しい！<br>知って楽しい！</h4>
+        <h4 class="text-center">見て楽しい！　知って楽しい！</h4>
       </div>
 
-      <div class="mt-2">
-        <p class="text-center">当アプリは様々なグルメ情報を画像で一気に閲覧できます。ちょっとした時間にサッといろんなグルメ情報を見て</p>
-        <p class="text-center">見た目がいい<br>美味しそう？</p>
-        <p class="text-center">そんな気になるグルメがあったらクリックして詳細を確認してみよう！</p>
+      <div class="mt-5">
+      <p class="text-center">当アプリは様々なグルメ情報を画像で一気に閲覧できます</p>
+      <p class="text-center">ちょっとした時間にサッといろんなグルメ情報を見て</p>
+      <p class="text-center">見た目がいい？　美味しそう？</p>
+      <p class="text-center">そんな気になるグルメがあったらクリックして詳細を確認してみよう！</p>
       </div>
     </div>
 
-    <%# ーーーーー画面LG以上で非表示 アプリ説明Bーーーーーーーー %>
-
-    <%# ーーーーー画面LG以上で表示 アプリ説明Cーーーーーーーー %>
-    <div class="d-none d-lg-block row bg-primary-subtle w-25">
+    <div class="bg-primary-subtle mt-3 p-2">
       <div class="mt-3">
         <h4 class="text-center">おすすめ表示機能</h4>
       </div>
+
       <div class="mt-5">
-        <p class="text-center">トップページや検索結果ページではみんなが見てるグルメ情報が表示されます<br>みんながどんな記事を見てるか確認してみよう！</p>
+        <p class="text-center">トップページや検索結果ページではみんなが見てるグルメ情報が表示されます</p>
+        <p class="text-center">みんながどんな記事を見てるか確認してみよう！</p>
       </div>
     </div>
-
-    <%# ーーーーー画面LG以上で非表示 アプリ説明Cーーーーーーーー %>
   </div>
+  <%# ーーーーー画面LG以上で非表示  ここまでーーーーーーーー %>
 
   <div class="d-flex flex-column align-items-center mt-5">
     <h3>さっそくグルメ情報を探してみよう！</h3>
