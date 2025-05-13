@@ -54,7 +54,6 @@ RSpec.describe "Posts", type: :system do
           attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
-          fill_in "一覧用紹介文", with: "いちらんせつめい"
           fill_in "詳細用紹介文", with: "しょうさいせつめい"
           fill_in "post[post_area_tags_attributes][0][area_tag_attributes][name]", with: "エリアA,エリアB"
           fill_in "post[post_genre_tags_attributes][0][genre_tag_attributes][name]", with: "ジャンルA,ジャンルB"
@@ -76,7 +75,6 @@ RSpec.describe "Posts", type: :system do
           attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
-          fill_in "一覧用紹介文", with: "いちらんせつめい"
           fill_in "詳細用紹介文", with: "しょうさいせつめい"
           fill_in "post[post_area_tags_attributes][0][area_tag_attributes][name]", with: "エリアA,エリアB"
           fill_in "post[post_genre_tags_attributes][0][genre_tag_attributes][name]", with: "ジャンルA,ジャンルB"
@@ -98,7 +96,6 @@ RSpec.describe "Posts", type: :system do
           attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
-          fill_in "一覧用紹介文", with: "いちらんせつめい"
           fill_in "詳細用紹介文", with: "しょうさいせつめい"
           fill_in "post[post_area_tags_attributes][0][area_tag_attributes][name]", with: "エリアA,エリアB"
           fill_in "post[post_genre_tags_attributes][0][genre_tag_attributes][name]", with: "ジャンルA,ジャンルB"
@@ -120,7 +117,6 @@ RSpec.describe "Posts", type: :system do
           attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
-          fill_in "一覧用紹介文", with: "いちらんせつめい"
           fill_in "詳細用紹介文", with: ""
           fill_in "post[post_area_tags_attributes][0][area_tag_attributes][name]", with: "エリアA,エリアB"
           fill_in "post[post_genre_tags_attributes][0][genre_tag_attributes][name]", with: "ジャンルA,ジャンルB"
@@ -142,7 +138,6 @@ RSpec.describe "Posts", type: :system do
           attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/1.jpg")
           fill_in "出典", with: "出典A"
           fill_in "店舗情報", with: "店A"
-          fill_in "一覧用紹介文", with: "いちらんせつめい"
           fill_in "詳細用紹介文", with: "しょうさいせつめい"
           fill_in "post[post_area_tags_attributes][0][area_tag_attributes][name]", with: ""
           fill_in "post[post_genre_tags_attributes][0][genre_tag_attributes][name]", with: "ジャンルA,ジャンルB"
@@ -165,7 +160,6 @@ RSpec.describe "Posts", type: :system do
           attach_file "サブ画像２", Rails.root.join("spec/fixtures/files/susi.jpg")
           fill_in "出典", with: "出典B"
           fill_in "店舗情報", with: "店B"
-          fill_in "一覧用紹介文", with: "いちらんせつめいB"
           fill_in "詳細用紹介文", with: "しょうさいせつめいB"
           fill_in "post[post_area_tags_attributes][0][area_tag_attributes][name]", with: "エリアA,エリアB"
           fill_in "post[post_genre_tags_attributes][0][genre_tag_attributes][name]", with: "ジャンルA,ジャンルB"

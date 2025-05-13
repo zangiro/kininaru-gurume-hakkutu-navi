@@ -127,16 +127,21 @@
   </div>
 
   <div class="mt-3">
+    <%= f.label :source_url, t("posts.post_info.source_url") %>
+    <%= f.text_field :source_url, class: "form-control" %>
+  </div>
+
+  <div class="mt-3">
+    <%= f.label :store, t("posts.post_info.store") %>
+    <%= f.text_field :store, class: "form-control" %>
+  </div>
+
+  <div class="mt-3">
     <%= f.label :store_url, t("posts.post_info.store_url") %>
     <%= f.text_field :store_url, class: "form-control" %>
   </div>
 
   <%= f.fields_for :dish do |dish_f| %>
-    <div class="mt-3">
-      <%= dish_f.label :introduction, t("posts.post_info.introduction") %>
-      <%= dish_f.text_area :introduction, class: "form-control" %>
-    </div>
-
     <div class="mt-3">
       <%= dish_f.label :description, t("posts.post_info.description") %>
       <%= dish_f.text_area :description, class: "form-control" , rows: 9 %>

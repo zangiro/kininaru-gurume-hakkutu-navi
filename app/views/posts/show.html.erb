@@ -35,9 +35,17 @@
   </div>
 
   <div class="row">
-    <% if @post.store_url.present? %>
-      <%= t(".store_url", post_store_url: @post.store_url) %>
+    <%= @post.source_url %>
+  </div>
+
+  <div class="row">
+    <% if @post.store.present? %>
+      <%= t(".store", post_store: @post.store) %>
     <% end %>
+  </div>
+
+  <div class="row">
+    <%= @post.store_url %>
   </div>
 
   <%# -----------------------画像関連-------------------------- %>
