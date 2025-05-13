@@ -195,7 +195,9 @@ ja:
       selected_sub_image_second: 〜サブ画像2に以下の画像が選択されてます〜
       please_select_image_again: もう一度画像を選んでください。選択がない場合既存の画像があればそちらが適用されます。
       source: 出典
-      store_url: 店舗情報
+      source_url: 出典のURL
+      store: 店舗情報
+      store_url: 店舗情報のURL
       introduction: 一覧用紹介文
       description: 詳細用紹介文(必須)
       tag_setting_info: タグ設定情報 (複数登録する場合は単語の間に「 , 」を入れてください)
@@ -213,7 +215,7 @@ ja:
     show:
       posted_by: "投稿者:"
       source: "出典: %{post_source}"
-      store_url: "店舗情報: %{post_store_url}"
+      store: "店舗情報: %{post_store}"
       whose_comment: "%{user_name}さんのコメント"
       all_comment_display: すべてのコメントを表示する
       not_login_description: "ログインすると料理が提供されている近隣店舗を調べることができます"
