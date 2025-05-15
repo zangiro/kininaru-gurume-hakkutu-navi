@@ -1,6 +1,8 @@
 crumb :root do
-  link t("breadcrumbs.top"), root_path
+  link raw('<i class="bi bi-house"></i>'), root_path
 end
+# rawメソッドを使うことでHTMLがそのままレンダリング
+# rawを使うときは注意が必要で、不正なHTMLが混入しないように気をつける必要ある
 
 crumb :login do
   link t("breadcrumbs.login")
@@ -60,7 +62,7 @@ crumb :post_edit do |user|
 end
 
 crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, word, post_path|
-  title = post.title.length > 13 ? truncate(post.title, length: 13, omission: '...') : post.title
+  title = post.title.length > 13 ? truncate(post.title, length: 13, omission: "...") : post.title
   # truncateはRailsのヘルパーメソッドで文字列を指定した長さで切り詰める機能がある。lengthで文字数を指定
   # omissionは、切り詰めた際に追加する文字列を指定するためのオプション
   if post_path == "1"
