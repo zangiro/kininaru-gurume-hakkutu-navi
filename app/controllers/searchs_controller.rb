@@ -29,9 +29,9 @@ class SearchsController < ApplicationController
     # おすすめ表示で使用。ヒット数が少なければおおっきい数字を。多ければ0~少ない数字を返す。
 
     if logged_in?
-      @all_users_view_histories = ViewHistory.where.not(user_id: current_user.id).order(created_at: :desc).limit(30)
+      @all_users_view_histories = ViewHistory.where.not(user_id: current_user.id).order(created_at: :desc).limit(50)
     else
-      @all_users_view_histories = ViewHistory.order(created_at: :desc).limit(30)
+      @all_users_view_histories = ViewHistory.order(created_at: :desc).limit(50)
     end
     # ログインの有無でおすすめとして参照するデータを少し変える。
 
@@ -52,9 +52,9 @@ class SearchsController < ApplicationController
     @maximum_number = Post.how_many_posts?(@posts.count)
 
     if logged_in?
-      @all_users_view_histories = ViewHistory.where.not(user_id: current_user.id).order(created_at: :desc).limit(30)
+      @all_users_view_histories = ViewHistory.where.not(user_id: current_user.id).order(created_at: :desc).limit(50)
     else
-      @all_users_view_histories = ViewHistory.order(created_at: :desc).limit(30)
+      @all_users_view_histories = ViewHistory.order(created_at: :desc).limit(50)
     end
 
     @recommendations = Post.joins(:view_histories).where(view_histories: { id: @all_users_view_histories }).group("posts.id").order("COUNT(posts.id) DESC").limit(@maximum_number)
