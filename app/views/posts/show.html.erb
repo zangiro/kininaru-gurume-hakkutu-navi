@@ -52,7 +52,7 @@
 
   <div class="d-flex justify-content-center">
 
-  <div class="row mb-2">
+  <div class="row mt-4 mb-4">
   <% if @post.main_image.attached? %>
     <%= image_tag @post.main_image.variant(resize_to_fit: [600, 600]) %>
   <% end %>
@@ -80,6 +80,9 @@
 
   </div>
 
+  <hr class="my-4 mt-5">
+  <%# -----HTMLの水平線を描画するタグ----- %>
+
   <div class="row">
     <%= @post.dish.description %>
   </div>
@@ -104,6 +107,8 @@
     <% end %>
   <% end %>
 
+  <hr class="my-4 mt-5 mb-5">
+  <%# -----HTMLの水平線を描画するタグ----- %>
 
   <%# ------------コメント関連------------ %>
   <% if logged_in? %>
@@ -122,6 +127,9 @@
       <% end %>
     <% end %>
   <% end %>
+
+  <hr class="my-4 mt-5">
+  <%# -----HTMLの水平線を描画するタグ----- %>
 
   <%# ---------------google map関連-------------- %>
 
