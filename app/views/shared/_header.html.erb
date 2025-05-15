@@ -56,17 +56,11 @@
       <% end %>
     </div>
 
-    <div class="col-2"></div>
-
-    <div class="col-1">
-      <% if current_user.avatar.attached? && @select_new_avatar != "1" %>
-        <a href="<%= user_path(current_user) %>">
-          <%= image_tag current_user.avatar.variant(resize_to_fit: [40, 40]) %>
-        </a>
-      <% end %>
+    <div class="col-4">
+      <%= render "shared/search_form" %>
     </div>
 
-    <div class="col-2">
+    <div class="col-1">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">

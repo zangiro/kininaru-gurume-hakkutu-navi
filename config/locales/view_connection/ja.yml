@@ -63,7 +63,7 @@ ja:
   shared:
     header:
       app_title: 気になるグルメ発掘ナビ
-      search_form: タイトル タグ名で検索
+      search_form: 検索
       login_now: ログイン中
       posted_in: 投稿する
       my_page: マイページ
@@ -214,12 +214,15 @@ ja:
       closed_to_public: 非公開中
     show:
       posted_by: "投稿者:"
-      source: "出典: %{post_source}"
-      store: "店舗情報: %{post_store}"
+      tag: "タグ:"
+      source: "出典:　%{post_source}"
+      source_url: "出典リンク:　%{post_source_url}"
+      store: "店舗:　%{post_store}"
+      store_url: "店舗リンク:　%{post_store_url}"
       whose_comment: "%{user_name}さんのコメント"
       all_comment_display: すべてのコメントを表示する
       not_login_description: "ログインすると料理が提供されている近隣店舗を調べることができます"
-      search_example: "例  出身地「東京」  料理名「味噌カレー牛乳ラーメン」の場合"
+      search_example: "例:　出身地「東京」  料理名「味噌カレー牛乳ラーメン」の場合"
       google_map_description: "こちらの店舗で提供されている可能性があります"
       not_address_description: "出身地が設定されてません。設定すると料理が提供されている近隣店舗を調べることができます"
       not_found_description: "あなたの近隣ではこの料理が提供されている店舗は見つかりませんでした"
@@ -228,3 +231,10 @@ ja:
   controller:
     posts:
       map_search_target: "味噌カレー牛乳ラーメン"
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: 前
+      next: 次
+      truncate: ...
