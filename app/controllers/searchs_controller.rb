@@ -61,7 +61,7 @@ class SearchsController < ApplicationController
   end
 
   def autocomplete
-    @posts = Post.where("title like ?", "%#{params[:q]}%")
+    @posts = Post.where("title like ?", "%#{params[:q]}%").limit(10)
     render partial: "autocomplete"
   end
 end

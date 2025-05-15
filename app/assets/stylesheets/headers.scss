@@ -1,0 +1,9 @@
+[data-controller="autocomplete"] {
+  position: relative; /* 親要素にrelativeを設定 */
+}
+
+[data-autocomplete-target="results"] {
+  position: absolute; /* 絶対位置にする */
+  z-index: 1000; /* 他の要素より前面に表示 */
+  width: 100%; /* 幅を検索フィールドに合わせる */
+}
