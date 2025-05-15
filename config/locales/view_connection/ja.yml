@@ -228,3 +228,10 @@ ja:
   controller:
     posts:
       map_search_target: "味噌カレー牛乳ラーメン"
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: 前
+      next: 次
+      truncate: ...
