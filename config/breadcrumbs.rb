@@ -61,22 +61,22 @@ end
 
 crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, word, post_path|
   if post_path == "1"
-    link "@#{post.title}"
+    link "#{post.title}"
     parent :post_index, user
   elsif post_path == "2"
-    link "@#{post.title}"
+    link "#{post.title}"
     parent :search_by_form, word
   elsif post_path == "3"
-    link "@#{post.title}"
+    link "#{post.title}"
     parent :search_index, area_tags, genre_tags, taste_tags, outher_tags
   elsif post_path == "4"
-    link "@#{post.title}"
+    link "#{post.title}"
     parent :like_index, user
   elsif post_path == "5"
-    link "@#{post.title}"
+    link "#{post.title}"
     parent :view_history_index, user
   else
-    link "@#{post.title}"
+    link "#{post.title}"
     parent :root
   end
 end
