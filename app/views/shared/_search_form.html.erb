@@ -10,7 +10,9 @@
 
     </div>
     <div class="ms-2">
-      <%= f.submit t("helpers.submit.decision"), class: 'btn btn-primary' %>
+      <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
+        <i class="bi bi-search"></i>
+      <% end %>
     </div>
   </div>
 <% end %>

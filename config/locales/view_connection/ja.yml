@@ -63,7 +63,7 @@ ja:
   shared:
     header:
       app_title: 気になるグルメ発掘ナビ
-      search_form: タイトル タグ名で検索
+      search_form: 検索
       login_now: ログイン中
       posted_in: 投稿する
       my_page: マイページ
