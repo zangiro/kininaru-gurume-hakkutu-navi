@@ -4,49 +4,70 @@
 
 
 <div class="container">
-  <div class="row">
-    <%= @post.title %>
+  <div class="mt-3">
+    <h3><%= @post.title %></h3>
   </div>
 
-  <div class="row">
+  <div class="d-flex flex-row mt-2">
+    <div class="me-2">
+      <%= t(".tag") %>
+    </div>
+
     <% @post.area_tags.each do |area_tag| %>
-      <%= area_tag.name %>
+      <div class="me-2">
+        <%= area_tag.name %>
+      </div>
     <% end %>
     <% @post.genre_tags.each do |genre_tag| %>
-      <%= genre_tag.name %>
+      <div class="me-2">
+        <%= genre_tag.name %>
+      </div>
     <% end %>
     <% @post.taste_tags.each do |taste_tag| %>
-      <%= taste_tag.name %>
+      <div class="me-2">
+        <%= taste_tag.name %>
+      </div>
     <% end %>
     <% @post.outher_tags.each do |outher_tag| %>
-      <%= outher_tag.name %>
+      <div class="me-2">
+        <%= outher_tag.name %>
+      </div>
     <% end %>
   </div>
 
-  <div class="d-flex flex-row">
-    <div><%= t(".posted_by") %></div>
-    <div><%= link_to @posted_user.name, user_path(@posted_user) %></div>
+  <div class="d-flex flex-row mt-2">
+    <div class="me-2">
+      <%= t(".posted_by") %>
+    </div>
+
+    <div>
+      <%= link_to @posted_user.name, user_path(@posted_user) %>
+    </div>
   </div>
 
-  <div class="row">
-    <% if @post.source.present? %>
+  <% if @post.source.present? %>
+    <div class="mt-2">
       <%= t(".source", post_source: @post.source) %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
-  <div class="row">
-    <%= @post.source_url %>
-  </div>
+  <% if @post.source_url.present? %>
+    <div class="mt-2">
+      <%= t(".source_url", post_source_url: @post.source_url) %>
+    </div>
+  <% end %>
 
-  <div class="row">
-    <% if @post.store.present? %>
+  <% if @post.store.present? %>
+    <div class="mt-2">
       <%= t(".store", post_store: @post.store) %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
-  <div class="row">
-    <%= @post.store_url %>
-  </div>
+  <% if @post.store.present? %>
+    <div class="mt-2">
+      <%= t(".store_url", post_store_url: @post.store_url) %>
+    </div>
+  <% end %>
 
   <%# -----------------------画像関連-------------------------- %>
 
@@ -135,25 +156,25 @@
 
   <% if !logged_in? %>
     <div class="mt-5">
-      <%= t(".not_login_description") %>
+      <h5><%= t(".not_login_description") %></h5>
     </div>
     <div class="mt-3">
       <%= t(".search_example") %>
     </div>
   <% elsif logged_in? && current_user.address != nil && current_user.address != "" && @store.length != 0 %>
     <div class="mt-5">
-      <%= t(".google_map_description") %>
+      <h5><%= t(".google_map_description") %></h5>
     </div>
   <% elsif current_user.address == nil || current_user.address == "" %>
     <div class="mt-5">
-      <%= t(".not_address_description") %>
+      <h5><%= t(".not_address_description") %></h5>
     </div>
     <div class="mt-3">
       <%= t(".search_example") %>
     </div>
   <% elsif @store.length == 0 %>
     <div class="mt-5">
-      <%= t(".not_found_description") %>
+      <h5><%= t(".not_found_description") %></h5>
     </div>
   <% end %>
 
