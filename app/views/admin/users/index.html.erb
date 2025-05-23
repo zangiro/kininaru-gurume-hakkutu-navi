@@ -22,7 +22,11 @@
               <td><%= user.id %></th>
               <td><%= user.name %></td>
               <td><%= user.email %></td>
-              <td>@mdo</td>
+              <% if user.account_status == 0 %>
+                <td>通常状態</td>
+              <% else %>
+                <td class="bg-info">停止状態</td>
+              <% end %>
               <td>
               <a href="<%= edit_admin_user_path(user) %>" class="btn btn-outline-primary btn-sm">編集</a>
               </td>

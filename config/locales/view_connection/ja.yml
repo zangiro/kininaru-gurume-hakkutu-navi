@@ -139,6 +139,7 @@ ja:
       is_public: 公開設定 / 以下の項目が他のユーザーにも閲覧できるようになります[ アバター, 自己紹介, 投稿一覧, いいねした記事 ]
       permit: 許可
       not_permit: 不許可
+      account_status: アカウント状態
       accept_terms_of_use: 利用規約に同意しますか？(必須)
       agree_terms: 利用規約
       privacy_policy: プライバシーポリシー
