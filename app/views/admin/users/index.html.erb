@@ -2,12 +2,38 @@
 
 
 <div class="container">
-  <div class="row">
-    <% @users.each do |user| %>
-      <div>
-        <%= user.name %>
-        <%= user.email %>
-      </div>
-    <% end %>
+  <div class="row bg-danger-subtle">
+    <h2>管理ページ / ユーザー一覧</h2>
+    <div class="table-responsive">
+      <table class="table table-sm table-striped  table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th>メールアドレス</th>
+            <th>状態</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></th>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td>@mdo</td>
+              <td>
+              <a href="<%= edit_admin_user_path(user) %>" class="btn btn-outline-primary btn-sm">編集</a>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%= paginate @users, theme: "bootstrap-5" %>
+
+    <%= link_to "管理ページトップへ", admin_homes_path %>
   </div>
 </div>

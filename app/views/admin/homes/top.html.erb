@@ -1,1 +1,11 @@
-とっぷ
+<% content_for(:title, t(".page_title")) %>
+
+
+<div class="container min-vh-100 bg-danger-subtle">
+  <div class="row">
+    <h2>管理ページトップ</h2>
+    <div class="mt-2">
+      <%= link_to "ユーザー一覧", admin_users_path %>
+    </div>
+  </div>
+</div>

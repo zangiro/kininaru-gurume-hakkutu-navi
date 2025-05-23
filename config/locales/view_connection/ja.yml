@@ -245,3 +245,5 @@ ja:
     users:
       index:
         page_title: 管理ページ / ユーザー一覧
+      edit:
+        page_title: 管理ページ / ユーザー編集
