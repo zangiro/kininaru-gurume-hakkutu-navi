@@ -238,3 +238,10 @@ ja:
       previous: 前
       next: 次
       truncate: ...
+  admin:
+    homes:
+      top:
+        page_title: 管理ページ
+    users:
+      index:
+        page_title: 管理ページ / ユーザー一覧

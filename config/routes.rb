@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
 
   namespace :admin do
+    get "homes", to: "homes#top"
     resources :users, only: %i[index edit update destroy]
   end
 

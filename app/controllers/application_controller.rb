@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
   def set_search
     @q = Post.ransack(params[:q])
   end
+
+  def admin_user
+    redirect_to tags_path unless current_user.admin?
+  end
 end
