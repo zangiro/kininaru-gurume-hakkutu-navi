@@ -16,6 +16,8 @@ ja:
       post_delete_confirm: 記事を削除します。本当に削除しますか？
       avatar_delete_confirm: アバター画像を削除します。本当に削除しますか？
       comment_delete_confirm: このコメントを削除します。本当に削除しますか？
+    info:
+      account_is_suspended: このアカウントは現在停止中です。お問い合わせは「お問い合わせフォーム」をご利用ください
   flash_message:
     logged_in: ログイン中です
     user_create: ユーザーの新規作成をしました
@@ -28,7 +30,7 @@ ja:
     google_login_success: Googleアカウントでログインしました
     login_failure: ログインに失敗しました
     google_login_failure: Googleアカウントでログインに失敗しました
-    account_is_suspended: このアカウントは現在停止中です。お問い合わせは「お問い合わせフォーム」をご利用ください。
+    account_is_suspended: このアカウントは現在停止中です。お問い合わせは「お問い合わせフォーム」をご利用ください
     logout: ログアウトしました
     delete: 削除しました
     delete_view_histories: 閲覧履歴を削除しました

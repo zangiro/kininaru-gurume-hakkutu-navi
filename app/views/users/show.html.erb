@@ -3,57 +3,62 @@
 
 
 <div class="container">
-<div class="row">
-  <h1><%= t(".my_page_with_name", name: @user.name) %></h1>
+  <div class="row">
+    <h1><%= t(".my_page_with_name", name: @user.name) %></h1>
+    
+    <% if @user.account_status == 0 %>
+      <div class="mt-2">
+        <%= @user.is_public ? t(".your_my_page_now_open", name: @user.name) : t(".your_my_page_now_closed", name: @user.name) %>
+      </div>
 
-  <div class="mt-2">
-    <%= @user.is_public ? t(".your_my_page_now_open", name: @user.name) : t(".your_my_page_now_closed", name: @user.name) %>
-  </div>
+      <% if @user.is_public || @user == current_user %>
+        <div class="mt-2">
+          <% if @user.avatar.attached? %>
+            <div>
+              <%= t(".avatar") %>
+              <% if @user == current_user %>
+                <%= link_to destroy_avatar_user_path(@user), data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.avatar_delete_confirm") } do %>
+                  <i class="bi bi-basket"></i>
+                <% end %>
+              <% end %>
+            </div>
 
-  <% if @user.is_public || @user == current_user %>
-    <div class="mt-2">
-      <% if @user.avatar.attached? %>
-        <div>
-          <%= t(".avatar") %>
-          <% if @user == current_user %>
-            <%= link_to destroy_avatar_user_path(@user), data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.avatar_delete_confirm") } do %>
-              <i class="bi bi-basket"></i>
-            <% end %>
+            <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
+          <% else %>
+            <%= t(".avatar_not_registered") %>
+            <%# -------補足: avatar_not_registered アバターは登録されてません--------- %>
           <% end %>
         </div>
 
-        <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
-      <% else %>
-        <%= t(".avatar_not_registered") %>
-        <%# -------補足: avatar_not_registered アバターは登録されてません--------- %>
+        <div class="mt-2">
+          <%= t(".introduction", introduction: @user.introduction) %>
+        </div>
+
+        <% if @user == current_user %>
+          <div class="mt-2">
+            <%= t(".address", address: @user.address) %>
+          </div>
+        <% end %>
+
+        <div class="mt-2">
+          <%= link_to t(".to_posts_list"), user_posts_path(@user) %>
+        </div>
+
+        <div class="mt-2">
+          <%= link_to t(".to_likes_list"), user_likes_path(@user) %>
+        </div>
       <% end %>
-    </div>
 
-    <div class="mt-2">
-      <%= t(".introduction", introduction: @user.introduction) %>
-    </div>
 
-    <% if @user == current_user %>
+      <% if @user == current_user %>
+        <div class="mt-2">
+          <%= link_to t(".to_view_histories"), view_histories_path %>
+        </div>
+      <% end %>
+    <% else %>
       <div class="mt-2">
-        <%= t(".address", address: @user.address) %>
+        <h4><%= t("helpers.info.account_is_suspended") %></h4>
       </div>
     <% end %>
-
-    <div class="mt-2">
-      <%= link_to t(".to_posts_list"), user_posts_path(@user) %>
-    </div>
-
-    <div class="mt-2">
-      <%= link_to t(".to_likes_list"), user_likes_path(@user) %>
-    </div>
-  <% end %>
-
-
-  <% if @user == current_user %>
-    <div class="mt-2">
-      <%= link_to t(".to_view_histories"), view_histories_path %>
-    </div>
-  <% end %>
-
-</div>
+  </div>
 </div>
