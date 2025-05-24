@@ -8,6 +8,10 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = Post.includes(:user)
+               .where(user: @user)
+               .order(id: :asc)
+               .page(params[:page]).per(10)
   end
 
   def edit

@@ -28,7 +28,7 @@
                 <td class="bg-info">停止状態</td>
               <% end %>
               <td>
-              <a href="<%= edit_admin_user_path(user) %>" class="btn btn-outline-primary btn-sm">編集</a>
+                <%= link_to "編集", edit_admin_user_path(user) %>
               </td>
             </tr>
           <% end %>

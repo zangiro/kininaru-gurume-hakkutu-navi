@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="row bg-danger-subtle">
-    <h2>管理ページ / 記事一覧</h2>
+    <h2>管理ページ / 全体の記事一覧</h2>
     <div class="table-responsive">
       <table class="table table-sm table-striped  table-bordered">
         <thead>
@@ -13,6 +13,7 @@
             <th>サブ画像1</th>
             <th>サブ画像2</th>
             <th>投稿者名</th>
+            <th>操作</th>
           </tr>
         </thead>
 
@@ -35,6 +36,10 @@
               </td>
 
               <td><%= link_to post.user.name, admin_user_path(post.user) %></td>
+              
+              <td>
+                <%= link_to "削除", admin_post_path(post), data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.post_delete_confirm") } %>
+              </td>
             </tr>
           <% end %>
         </tbody>
