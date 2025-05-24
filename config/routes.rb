@@ -54,7 +54,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "homes", to: "homes#top"
-    resources :users, only: %i[index edit update destroy]
+    resources :users, only: %i[index edit update]
+    resources :posts, only: %i[index destroy]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
