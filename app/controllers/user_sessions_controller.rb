@@ -7,6 +7,12 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
+      if @user.account_status == 1
+      # account_statusが1（停止中）ならログアウト
+        logout
+        redirect_to root_path, danger: t("flash_message.account_is_suspended")
+        return
+      end
       redirect_to root_path, success: t("flash_message.login_success")
     else
       flash.now[:danger] = t("flash_message.login_failure")

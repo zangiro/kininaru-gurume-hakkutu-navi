@@ -9,6 +9,12 @@ class OauthsController < ApplicationController
     if (@user = login_from(provider))
       # 既存のユーザーをプロバイダ情報を元に検索し、存在すればログイン
 
+      if @user.account_status == 1
+      # account_statusが1（停止中）ならログアウト
+        logout
+        redirect_to root_path, danger: t("flash_message.account_is_suspended")
+        return
+      end
       redirect_to root_path, success: t("flash_message.google_login_success")
     else
       begin
