@@ -1,7 +1,4 @@
-<%# content_for(:title, t(".page_title")) %>
-
-
-<div class="container">
+<<div class="container">
   <div class="row bg-danger-subtle">
     <h2>管理ページ / 全体の記事一覧</h2>
     <div class="table-responsive">
@@ -48,6 +45,7 @@
 
     <%= paginate @posts, theme: "bootstrap-5" %>
 
+    <%= link_to "ユーザー一覧", admin_users_path %>
     <%= link_to "管理ページトップへ", admin_homes_path %>
   </div>
 </div>
