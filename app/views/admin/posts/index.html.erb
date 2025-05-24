@@ -34,7 +34,7 @@
                 <% end %>
               </td>
 
-              <td><%= post.user.name %></td>
+              <td><%= link_to post.user.name, admin_user_path(post.user) %></td>
             </tr>
           <% end %>
         </tbody>

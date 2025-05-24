@@ -54,7 +54,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "homes", to: "homes#top"
-    resources :users, only: %i[index edit update]
+    resources :users, only: %i[index show edit update]
     resources :posts, only: %i[index destroy]
   end
 
