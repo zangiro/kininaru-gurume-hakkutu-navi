@@ -4,6 +4,14 @@
 <div class="container min-vh-100 bg-danger-subtle">
   <div class="row">
     <h2>管理ページトップ</h2>
+    <h4>
+      現在の管理者は
+      <% @admin_users.each do |admin_user| %>
+        <%= admin_user.name %>、
+        <% end %>
+      です
+    </h4>
+
     <div class="mt-2">
       <%= link_to "ユーザー一覧", admin_users_path %>
     </div>
