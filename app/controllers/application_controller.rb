@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user
-    redirect_to tags_path unless current_user.admin?
+    unless current_user.admin?
+      redirect_to root_path, success: t("flash_message.administrator_access_only")
+    end
   end
 end

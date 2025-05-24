@@ -34,6 +34,7 @@ ja:
     no_tag_entered: タグが入力されてません
     password_reset_request_sending: 申請送信をしました
     password_reset_completion: パスワードがリセットされました
+    administrator_access_only: 管理者のみアクセスできます
   breadcrumbs:
     top: トップページ
     login: ログイン
