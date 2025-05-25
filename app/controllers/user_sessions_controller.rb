@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
     if @user
       if @user.account_status == 1
-      # account_statusが1（停止中）ならログアウト
+        # account_statusが1（停止中）ならログアウト
         logout
         redirect_to root_path, danger: t("flash_message.account_is_suspended")
         return

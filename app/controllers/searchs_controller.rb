@@ -39,7 +39,7 @@ class SearchsController < ApplicationController
     @maximum_number = Post.how_many_posts?(@search_posts.count)
     # how_many_posts?は@search_postsの数に応じて変数に数字を代入する。
     # おすすめ表示で使用。ヒット数が少なければおおっきい数字を。多ければ0~少ない数字を返す。
-    
+
     if logged_in?
       @all_users_view_histories = ViewHistory.joins(:user)
                                              .where.not(user_id: current_user.id)
