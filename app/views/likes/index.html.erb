@@ -4,43 +4,47 @@
 
 <div class="container">
   <div class="row">
+    <% if @user.account_status == 1 %>
+      <div class="mt-2">
+        <h4><%= t("helpers.info.account_is_suspended") %></h4>
+      </div>
+  
+    <%# -------------------本人&来訪者用------------------- %>
+    <% elsif @user == current_user || @user.is_public %>
 
-  <%# -------------------本人&来訪者用------------------- %>
-  <% if @user == current_user || @user.is_public %>
+      <% if @user_like_posts.present? %>
+        <h3><%= t(".liked_posts")%></h3>
 
-    <% if @user_like_posts.present? %>
-      <h3><%= t(".liked_posts")%></h3>
+        <% @user_like_posts.each do |post| %>
+          <%# ーーーーー画面XXLでcol-2で表示ーーーーーーーー %>
+          <div class="col-2 mb-1 d-none d-xxl-block">
+            <%= render "post_image", post: post %>
+          </div>
 
-      <% @user_like_posts.each do |post| %>
-        <%# ーーーーー画面XXLでcol-2で表示ーーーーーーーー %>
-        <div class="col-2 mb-1 d-none d-xxl-block">
-          <%= render "post_image", post: post %>
-        </div>
+          <%# ーーーーー画面LG以上、XXL以下でcol-3で表示ーーーーーーーー %>
+          <div class="col-3 mb-1 d-none d-lg-block d-xxl-none">
+            <%= render "post_image", post: post %>
+          </div>
 
-        <%# ーーーーー画面LG以上、XXL以下でcol-3で表示ーーーーーーーー %>
-        <div class="col-3 mb-1 d-none d-lg-block d-xxl-none">
-          <%= render "post_image", post: post %>
-        </div>
+          <%# ーーーーー画面MD以上、LG以下でcol-4で表示ーーーーーーーー %>
+          <div class="col-4 mb-1 d-none d-md-block d-lg-none">
+            <%= render "post_image", post: post %>
+          </div>
 
-        <%# ーーーーー画面MD以上、LG以下でcol-4で表示ーーーーーーーー %>
-        <div class="col-4 mb-1 d-none d-md-block d-lg-none">
-          <%= render "post_image", post: post %>
-        </div>
+          <%# ーーーーー画面MD以下でcol-6で表示ーーーーーーーー %>
+          <div class="col-6 mb-1 d-md-none">
+            <%= render "post_image", post: post %>
+          </div>
+        <% end %>
 
-        <%# ーーーーー画面MD以下でcol-6で表示ーーーーーーーー %>
-        <div class="col-6 mb-1 d-md-none">
-          <%= render "post_image", post: post %>
-        </div>
+        <%= paginate @user_like_posts, theme: "bootstrap-5" %>
+      <% else %>
+        <h3><%= t(".no_liked_posts") %></h3>
       <% end %>
 
-      <%= paginate @user_like_posts, theme: "bootstrap-5" %>
     <% else %>
-      <h3><%= t(".no_liked_posts") %></h3>
+      <h3><%= t(".closed_to_public") %></h3>
     <% end %>
-
-  <% else %>
-    <h3><%= t(".closed_to_public") %></h3>
-  <% end %>
 
   </div>
 </div>

@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
   def set_search
     @q = Post.ransack(params[:q])
   end
+
+  def admin_user
+    unless current_user.admin?
+      redirect_to root_path, success: t("flash_message.administrator_access_only")
+    end
+  end
 end

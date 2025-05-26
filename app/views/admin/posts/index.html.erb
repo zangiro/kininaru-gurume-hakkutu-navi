@@ -1,0 +1,51 @@
+<<div class="container">
+  <div class="row bg-danger-subtle">
+    <h2>管理ページ / 全体の記事一覧</h2>
+    <div class="table-responsive">
+      <table class="table table-sm table-striped  table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>メイン画像</th>
+            <th>サブ画像1</th>
+            <th>サブ画像2</th>
+            <th>投稿者名</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= post.id %></td>
+              <td><%= image_tag post.main_image.variant(resize_and_pad: [100, 100]) %></td>
+
+              <td>
+                <% if post.sub_image_first.attached? %>
+                  <%= image_tag post.sub_image_first.variant(resize_and_pad: [100, 100]) %>
+                <% end %>
+              </td>
+
+              <td>
+                <% if post.sub_image_second.attached? %>
+                  <%= image_tag post.sub_image_second.variant(resize_and_pad: [100, 100]) %>
+                <% end %>
+              </td>
+
+              <td><%= link_to post.user.name, admin_user_path(post.user) %></td>
+              
+              <td>
+                <%= link_to "削除", admin_post_path(post), data: { turbo_method: :delete, turbo_confirm: t("helpers.dialog.post_delete_confirm") } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%= paginate @posts, theme: "bootstrap-5" %>
+
+    <%= link_to "ユーザー一覧", admin_users_path %>
+    <%= link_to "管理ページトップへ", admin_homes_path %>
+  </div>
+</div>

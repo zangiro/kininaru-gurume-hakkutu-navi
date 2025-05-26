@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row bg-danger-subtle">
+    <h2>管理ページ / <%= @user.name %>さんの記事一覧</h2>
+
+    <div class="mt-3">
+      <%= link_to "ユーザー編集", edit_admin_user_path(@user) %>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-sm table-striped  table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>メイン画像</th>
+            <th>サブ画像1</th>
+            <th>サブ画像2</th>
+            <th>投稿者名</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= post.id %></td>
+              <td><%= image_tag post.main_image.variant(resize_and_pad: [100, 100]) %></td>
+
+              <td>
+                <% if post.sub_image_first.attached? %>
+                  <%= image_tag post.sub_image_first.variant(resize_and_pad: [100, 100]) %>
+                <% end %>
+              </td>
+
+              <td>
+                <% if post.sub_image_second.attached? %>
+                  <%= image_tag post.sub_image_second.variant(resize_and_pad: [100, 100]) %>
+                <% end %>
+              </td>
+
+              <td><%= post.user.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%= paginate @posts, theme: "bootstrap-5" %>
+
+    <div class="mt-2">
+      <%= link_to "記事一覧", admin_posts_path %>
+    </div>
+
+    <%= link_to "管理ページトップへ", admin_homes_path %>
+  </div>
+</div>

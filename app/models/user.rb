@@ -73,4 +73,8 @@ class User < ApplicationRecord
     id == object&.user_id
   end
   # current_user.own?(comment)と使い、コメントの作成者がログイン中のユーザーのものか確認してる
+
+  def admin?
+    self.admin
+  end
 end
