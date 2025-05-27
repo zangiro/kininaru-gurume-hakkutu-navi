@@ -21,17 +21,17 @@
           <% @posts.each do |post| %>
             <tr>
               <td><%= post.id %></td>
-              <td><%= image_tag post.main_image.variant(resize_and_pad: [100, 100]) %></td>
+              <td><%= image_tag post.main_image.variant(resize_to_fill: [100, 100]) %></td>
 
               <td>
                 <% if post.sub_image_first.attached? %>
-                  <%= image_tag post.sub_image_first.variant(resize_and_pad: [100, 100]) %>
+                  <%= image_tag post.sub_image_first.variant(resize_to_fill: [100, 100]) %>
                 <% end %>
               </td>
 
               <td>
                 <% if post.sub_image_second.attached? %>
-                  <%= image_tag post.sub_image_second.variant(resize_and_pad: [100, 100]) %>
+                  <%= image_tag post.sub_image_second.variant(resize_to_fill: [100, 100]) %>
                 <% end %>
               </td>
 
