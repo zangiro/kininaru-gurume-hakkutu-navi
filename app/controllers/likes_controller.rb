@@ -3,7 +3,7 @@ class LikesController < ApplicationController
     @user = User.find(params[:user_id])
     @user_like_posts = @user.like_posts.joins(:user)
                                        .where.not(users: { account_status: 1 })
-                                       .page(params[:page]).per(30)
+                                       .page(params[:page]).per(24)
     @post_path = "4"
   end
 

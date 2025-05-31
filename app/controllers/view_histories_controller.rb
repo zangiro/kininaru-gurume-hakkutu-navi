@@ -5,7 +5,7 @@ class ViewHistoriesController < ApplicationController
     @view_history_posts = current_user.view_history_posts.joins(:user)
                                                          .where.not(users: { account_status: 1 })
                                                          .order("view_histories.created_at DESC")
-                                                         .page(params[:page]).per(30)
+                                                         .page(params[:page]).per(24)
     @user = current_user
     @post_path = "5"
   end

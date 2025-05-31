@@ -25,11 +25,11 @@ class SearchsController < ApplicationController
     @post_ids = @area_posts.pluck(:id) + @genre_posts.pluck(:id) + @taste_posts.pluck(:id) + @outher_posts.pluck(:id)
 
     if params[:latest]
-      @search_posts = Post.where(id: @post_ids).order(created_at: :desc).page(params[:page]).per(30)
+      @search_posts = Post.where(id: @post_ids).order(created_at: :desc).page(params[:page]).per(24)
     elsif params[:old]
-      @search_posts = Post.where(id: @post_ids).order(created_at: :asc).page(params[:page]).per(30)
+      @search_posts = Post.where(id: @post_ids).order(created_at: :asc).page(params[:page]).per(24)
     else
-      @search_posts = Post.where(id: @post_ids).page(params[:page]).per(30)
+      @search_posts = Post.where(id: @post_ids).page(params[:page]).per(24)
     end
     # 簡略化用メソッドを実装したい。現在NoMethodErrorで未実装。記事一覧と同様処理で行けそう
 
@@ -70,7 +70,7 @@ class SearchsController < ApplicationController
                .joins(:user)
                .where.not(users: { account_status: 1 })
                .page(params[:page])
-               .per(30)
+               .per(24)
     @word = params.dig(:q, :title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont) || []
     # @word = params[:q][:title_...]の形で直接searchs/search_by_formと入力するとエラー出る
     # .digはネストされたハッシュや配列から値を安全に取得するために使う。

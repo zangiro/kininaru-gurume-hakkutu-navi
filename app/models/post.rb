@@ -73,16 +73,14 @@ class Post < ApplicationRecord
 
   def self.how_many_posts?(posts_count)
     if posts_count == 0
-      30
-    elsif posts_count <= 6
       24
-    elsif posts_count <= 12
+    elsif posts_count <= 6
       18
-    elsif posts_count <= 18
+    elsif posts_count <= 12
       12
-    elsif posts_count <= 24
+    elsif posts_count <= 18
       6
-    else
+    elsif posts_count <= 24
       0
     end
   end
