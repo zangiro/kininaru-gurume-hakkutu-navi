@@ -18,11 +18,11 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     if params[:latest]
-      @user_posts = @user.posts.all.latest.page(params[:page]).per(24)
+      @user_posts = @user.posts.all.latest.page(params[:page]).per(POSTS_PER_PAGE)
     elsif params[:old]
-      @user_posts = @user.posts.all.old.page(params[:page]).per(24)
+      @user_posts = @user.posts.all.old.page(params[:page]).per(POSTS_PER_PAGE)
     else
-      @user_posts = @user.posts.all.latest.page(params[:page]).per(24)
+      @user_posts = @user.posts.all.latest.page(params[:page]).per(POSTS_PER_PAGE)
     end
 
     # @user_posts = @user.posts.test(params[:latest] ? 'latest' : (params[:old] ? 'old' : nil)).page(params[:page]).per(5)
