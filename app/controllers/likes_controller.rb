@@ -1,8 +1,7 @@
 class LikesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @user_like_posts = @user.like_posts.joins(:user)
-                                       .where.not(users: { account_status: 1 })
+    @user_like_posts = @user.like_posts.active_users
                                        .page(params[:page]).per(POSTS_PER_PAGE)
     @post_path = "4"
   end
