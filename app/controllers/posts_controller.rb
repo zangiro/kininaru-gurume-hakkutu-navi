@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     @outher_tags = params[:outher_tags] || []
     @post_path = params[:post_path]
     @comment = Comment.new
-    @post_comments = @post.comments.includes(:user).order(updated_at: :desc).limit(3)
+    @post_comments = @post.comments.includes(:user).order(updated_at: :desc).limit(MAXIMUM_COMMENT)
     @all_post_comments = @post.comments.includes(:user).order(updated_at: :desc)
     @word = params[:word] || []
 
@@ -57,15 +57,15 @@ class PostsController < ApplicationController
       @map_center_latitude = current_user.latitude
       @map_center_longitude = current_user.longitude
       @client = GooglePlaces::Client.new(ENV["GOOGLE_MAPS_API_KEY"])
-      @store = @client.spots(@map_center_latitude, @map_center_longitude, name: @post.title, radius: 2500, language: "ja")
+      @store = @client.spots(@map_center_latitude, @map_center_longitude, name: @post.title, radius: GOOGLE_MAP_RADIUS, language: "ja")
       # google_placesで店舗の検索を行う。
       # @map_center_latitude, @map_center_longitudeでマップ中心を決める。
       # nameで単語検索。radiusで検索する範囲（半径/m）を指定。languageで日本語で情報を取得。
     else
-      @map_center_latitude = 35.6803997   # 東京の緯度
-      @map_center_longitude = 139.7690174   # 東京の経度
+      @map_center_latitude = TOKYO_LATITUDE   # 東京の緯度
+      @map_center_longitude = TOKYO_LONGITUDE   # 東京の経度
       @client = GooglePlaces::Client.new(ENV["GOOGLE_MAPS_API_KEY"])
-      @store = @client.spots(35.6803997, 139.7690174, name: I18n.t("controller.posts.map_search_target"), radius: 2500, language: "ja")
+      @store = @client.spots(TOKYO_LATITUDE, TOKYO_LONGITUDE, name: I18n.t("controller.posts.map_search_target"), radius: GOOGLE_MAP_RADIUS, language: "ja")
     end
   end
 
