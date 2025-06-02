@@ -30,7 +30,6 @@ class SearchsController < ApplicationController
     # 簡略化用メソッドを実装したい。現在NoMethodErrorで未実装。記事一覧と同様処理で行けそう
 
     @post_path = "3"
-    #{ joins(:user).where.not(users: { account_status: ACCOUNT_STATUS_INACTIVE }) }
 
     # ----------------------以下おすすめ表示--------------------------
     @maximum_number = Post.how_many_posts?(@search_posts.count)
@@ -41,11 +40,11 @@ class SearchsController < ApplicationController
       @all_users_view_histories = ViewHistory.active_users
                                              .where.not(user_id: current_user.id)
                                              .latest
-                                             .limit(50)
+                                             .limit(MAXIMUM_VIEW_HISTORY)
     else
       @all_users_view_histories = ViewHistory.active_users
                                              .latest
-                                             .limit(50)
+                                             .limit(MAXIMUM_VIEW_HISTORY)
     end
     # ログインの有無でおすすめとして参照するデータを少し変える。
 
@@ -77,11 +76,11 @@ class SearchsController < ApplicationController
       @all_users_view_histories = ViewHistory.active_users
                                              .where.not(user_id: current_user.id)
                                              .latest
-                                             .limit(50)
+                                             .limit(MAXIMUM_VIEW_HISTORY)
     else
       @all_users_view_histories = ViewHistory.active_users
                                              .latest
-                                             .limit(50)
+                                             .limit(MAXIMUM_VIEW_HISTORY)
     end
 
     @recommendations = Post.joins(:view_histories)
@@ -95,7 +94,7 @@ class SearchsController < ApplicationController
   def autocomplete
     @posts = Post.where("title like ?", "%#{params[:q]}%")
                  .active_users
-                 .limit(10)
+                 .limit(MAXIMUM_AUTOCOMPLATE)
     render partial: "autocomplete"
   end
 end
