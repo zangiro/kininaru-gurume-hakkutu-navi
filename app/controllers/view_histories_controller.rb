@@ -2,10 +2,9 @@ class ViewHistoriesController < ApplicationController
   before_action :require_login, only: %i[index all_view_history_delete]
 
   def index
-    @view_history_posts = current_user.view_history_posts.joins(:user)
-                                                         .where.not(users: { account_status: 1 })
+    @view_history_posts = current_user.view_history_posts.active_users
                                                          .order("view_histories.created_at DESC")
-                                                         .page(params[:page]).per(24)
+                                                         .page(params[:page]).per(POSTS_PER_PAGE)
     @user = current_user
     @post_path = "5"
   end
