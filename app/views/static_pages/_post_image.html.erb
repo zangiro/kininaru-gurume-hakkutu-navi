@@ -1,5 +1,5 @@
 <% if posts[number].present? && posts[number].main_image.attached? %>
   <a href="<%= post_path(posts[number]) %>">
-    <%= image_tag posts[number].main_image.variant(resize_to_fill: [200, 200]) %>
+    <%= image_tag posts[number].decorated.resized_main_image_small %>
   </a>
 <% end %>
