@@ -69,5 +69,5 @@
 https://www.figma.com/design/fQ8mAXdM7n3zbtiJbPCkt9/%E5%8D%92%E5%88%B6%E4%BD%9C%E7%94%A8?node-id=0-1&p=f&t=gx8iWT5gnubTgq2Y-0
 
 ## ■ ER図
-![kininaru-gureme](https://gyazo.com/bcaa7d5f8863c264b677e63c8665a83d)
+[![kininaru-gureme](https://i.gyazo.com/bcaa7d5f8863c264b677e63c8665a83d.png)](https://gyazo.com/bcaa7d5f8863c264b677e63c8665a83d)
 詳細は[こちら](https://dbdiagram.io/d/683fd04161dc3bf08d7c3962)
