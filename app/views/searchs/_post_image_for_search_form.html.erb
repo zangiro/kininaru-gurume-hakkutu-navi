@@ -1,6 +1,6 @@
 <a href="<%= post_path(post, post_path: @post_path, word: @word) %>">
   <% if post.main_image.attached? %>
-    <%= image_tag post.main_image.variant(resize_to_fill: [200, 200]) %>
+    <%= image_tag post.decorated.resized_main_image_small %>
   <% end %>
 </a>
 
