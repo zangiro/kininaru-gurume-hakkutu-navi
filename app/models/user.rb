@@ -77,4 +77,8 @@ class User < ApplicationRecord
   def admin?
     self.admin
   end
+
+  def decorated
+    UserDecorator.new(self)
+  end
 end

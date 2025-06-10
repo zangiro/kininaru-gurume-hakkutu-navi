@@ -24,8 +24,4 @@ class PostDecorator < Draper::Decorator
   def resized_sub_image_second_large
     sub_image_second.variant(resize_to_fit: [ 400, 400 ]).processed
   end
-
-  #def resized_avatar
-  #  avatar.variant(resize_to_fill: [200, 200]).processed
-  #end
 end
