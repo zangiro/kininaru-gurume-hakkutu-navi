@@ -75,7 +75,7 @@
 
   <div class="row mt-4 mb-4">
   <% if @post.main_image.attached? %>
-    <%= image_tag @post.main_image.variant(resize_to_fit: [600, 600]) %>
+    <%= image_tag @post.decorated.resized_main_image_for_show %>
   <% end %>
   </div>
 
@@ -86,7 +86,7 @@
 
     <div class="row">
       <% if @post.sub_image_first.attached? %>
-        <%= image_tag @post.sub_image_first.variant(resize_to_fit: [400, 400]) %>
+        <%= image_tag @post.decorated.resized_sub_image_first_for_show %>
       <% end %>
     </div>
 
@@ -95,7 +95,7 @@
 
     <div class="row">
       <% if @post.sub_image_second.attached? %>
-        <%= image_tag @post.sub_image_second.variant(resize_to_fit: [400, 400]) %>
+        <%= image_tag @post.decorated.resized_sub_image_second_for_show %>
       <% end %>
     </div>
 
