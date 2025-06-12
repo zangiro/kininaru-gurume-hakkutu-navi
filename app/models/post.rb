@@ -86,6 +86,10 @@ class Post < ApplicationRecord
     end
   end
 
+  def decorated
+    PostDecorator.new(self)
+  end
+
 
   # def post_test(word)
   #  if word == 'latest'

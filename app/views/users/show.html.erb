@@ -23,7 +23,7 @@
               <% end %>
             </div>
 
-            <%= image_tag @user.avatar.variant(resize_to_fit: [200, 200]) %>
+            <%= image_tag @user.decorated.resized_avatar %>
           <% else %>
             <%= t(".avatar_not_registered") %>
             <%# -------補足: avatar_not_registered アバターは登録されてません--------- %>

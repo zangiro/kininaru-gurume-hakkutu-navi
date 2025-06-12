@@ -31,7 +31,7 @@
             <%= t("posts.post_info.selected_main_image") %>
           </div>
           <div class="mt-1">
-            <%= image_tag post.main_image.variant(resize_to_fill: [200, 200]) %>
+            <%= image_tag post.decorated.resized_main_image_small %>
           </div>
         <% end %>
         <%# ----persisted?はpostオブジェクトがデータベースに保存されているかどうかを確認するメソッド。システムスペック時、「画像添付→編集失敗」でrenderで戻るとき「xxx.attached?」がtrueになってエラーになるのを防ぐ---- %>
@@ -68,7 +68,7 @@
             <%= t("posts.post_info.selected_sub_image_first") %>
           </div>
           <div class="mt-1">
-            <%= image_tag post.sub_image_first.variant(resize_to_fill: [200, 200]) %>
+            <%= image_tag post.decorated.resized_sub_image_first_small %>
           </div>
         <% end %>
 
@@ -103,7 +103,7 @@
             <%= t("posts.post_info.selected_sub_image_second") %>
           </div>
           <div class="mt-1">
-            <%= image_tag post.sub_image_second.variant(resize_to_fill: [200, 200]) %>
+            <%= image_tag post.decorated.resized_sub_image_second_small %>
           </div>
         <% end %>
 
