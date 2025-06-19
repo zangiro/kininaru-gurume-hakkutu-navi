@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     # @user_posts = @user.posts.test(params[:latest] ? 'latest' : (params[:old] ? 'old' : nil)).page(params[:page]).per(5)
     # 簡略化用メソッド「post_test」を実装したい。現在NoMethodErrorで未実装。
 
-    @post_path = "1"
+    @post_path = POST_INDEX_POST_PATH
   end
 
   def show

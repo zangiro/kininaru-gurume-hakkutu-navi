@@ -3,7 +3,7 @@ class LikesController < ApplicationController
     @user = User.find(params[:user_id])
     @user_like_posts = @user.like_posts.active_users
                                        .page(params[:page]).per(POSTS_PER_PAGE)
-    @post_path = "4"
+    @post_path = LIKE_INDEX_POST_PATH
   end
 
   def create

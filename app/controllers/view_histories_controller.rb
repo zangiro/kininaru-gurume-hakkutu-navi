@@ -6,7 +6,7 @@ class ViewHistoriesController < ApplicationController
                                                          .order("view_histories.created_at DESC")
                                                          .page(params[:page]).per(POSTS_PER_PAGE)
     @user = current_user
-    @post_path = "5"
+    @post_path = VIEW_HISTORY_INDEX_POST_PATH
   end
 
   def all_view_history_delete
