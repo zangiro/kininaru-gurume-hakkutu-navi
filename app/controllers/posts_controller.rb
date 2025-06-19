@@ -88,15 +88,15 @@ class PostsController < ApplicationController
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
     if params[:post][:main_image].present?
-      @select_new_main_image = "1"
+      @select_new_main_image = MAIN_IMAGE_SELECTED
     end
 
     if params[:post][:sub_image_first].present?
-      @select_new_sub_image_first = "1"
+      @select_new_sub_image_first = SUB_IMAGE_FIRST_SELECTED
     end
 
     if params[:post][:sub_image_second].present?
-      @select_new_sub_image_second = "1"
+      @select_new_sub_image_second = SUB_IMAGE_SECOND_SELECTED
     end
 
     if @form_input_area_tag != [ "" ] && @post.update(filtered_params)
@@ -128,15 +128,15 @@ class PostsController < ApplicationController
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
     if params[:post][:main_image].present?
-      @select_new_main_image = "1"
+      @select_new_main_image = MAIN_IMAGE_SELECTED
     end
 
     if params[:post][:sub_image_first].present?
-      @select_new_sub_image_first = "1"
+      @select_new_sub_image_first = SUB_IMAGE_FIRST_SELECTED
     end
 
     if params[:post][:sub_image_second].present?
-      @select_new_sub_image_second = "1"
+      @select_new_sub_image_second = SUB_IMAGE_SECOND_SELECTED
     end
 
     if @form_input_area_tag != [ "" ] && @post.save
