@@ -26,7 +26,7 @@
 
     <div class="mt-2">
       <div data-preview-target="existing">
-        <% if post.persisted? && post.main_image.attached? && @select_new_main_image != "1" %>
+        <% if post.persisted? && post.main_image.attached? && @select_new_main_image != MAIN_IMAGE_SELECTED %>
           <div class="mt-1">
             <%= t("posts.post_info.selected_main_image") %>
           </div>
@@ -37,7 +37,7 @@
         <%# ----persisted?はpostオブジェクトがデータベースに保存されているかどうかを確認するメソッド。システムスペック時、「画像添付→編集失敗」でrenderで戻るとき「xxx.attached?」がtrueになってエラーになるのを防ぐ---- %>
         <%# ----記事編集時、画像を選択してから編集失敗した場合のエラーを防ぐため、変数で編集失敗した場合かを識別---- %>
 
-        <% if @select_new_main_image == "1" %>
+        <% if @select_new_main_image == MAIN_IMAGE_SELECTED %>
           <div class="py-2 ps-2 bg-danger-subtle">
             <%= t("posts.post_info.please_select_image_again") %>
           </div>
@@ -63,7 +63,7 @@
 
     <div class="mt-2">
       <div data-preview-target="existing">
-        <% if post.persisted? && post.sub_image_first.attached? && @select_new_sub_image_first != "1" %>
+        <% if post.persisted? && post.sub_image_first.attached? && @select_new_sub_image_first != SUB_IMAGE_FIRST_SELECTED %>
           <div class="mt-1">
             <%= t("posts.post_info.selected_sub_image_first") %>
           </div>
@@ -72,7 +72,7 @@
           </div>
         <% end %>
 
-        <% if @select_new_sub_image_first == "1" %>
+        <% if @select_new_sub_image_first == SUB_IMAGE_FIRST_SELECTED %>
           <div class="py-2 ps-2 bg-danger-subtle">
             <%= t("posts.post_info.please_select_image_again") %>
           </div>
@@ -98,7 +98,7 @@
 
     <div class="mt-2">
       <div data-preview-target="existing">
-        <% if post.persisted? && post.sub_image_second.attached? && @select_new_sub_image_second != "1" %>
+        <% if post.persisted? && post.sub_image_second.attached? && @select_new_sub_image_second != SUB_IMAGE_SECOND_SELECTED %>
           <div class="mt-1">
             <%= t("posts.post_info.selected_sub_image_second") %>
           </div>
@@ -107,7 +107,7 @@
           </div>
         <% end %>
 
-        <% if @select_new_sub_image_second == "1" %>
+        <% if @select_new_sub_image_second == SUB_IMAGE_SECOND_SELECTED %>
           <div class="py-2 ps-2 bg-danger-subtle">
             <%= t("posts.post_info.please_select_image_again") %>
           </div>

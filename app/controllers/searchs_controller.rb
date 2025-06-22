@@ -29,7 +29,7 @@ class SearchsController < ApplicationController
     end
     # 簡略化用メソッドを実装したい。現在NoMethodErrorで未実装。記事一覧と同様処理で行けそう
 
-    @post_path = "3"
+    @post_path = SEARCH_INDEX_POST_PATH
 
     # ----------------------以下おすすめ表示--------------------------
     @maximum_number = Post.how_many_posts?(@search_posts.count)
@@ -67,7 +67,7 @@ class SearchsController < ApplicationController
     # @word = params[:q][:title_...]の形で直接searchs/search_by_formと入力するとエラー出る
     # .digはネストされたハッシュや配列から値を安全に取得するために使う。
     # この場合「:q」が存在しない場合NoMethodErrorになる。.digを使うと「:q」がnilでもエラーにならない。
-    @post_path = "2"
+    @post_path = SEARCH_BY_FORM_POST_PATH
 
     # ----------------------以下おすすめ表示--------------------------
     @maximum_number = Post.how_many_posts?(@posts.count)

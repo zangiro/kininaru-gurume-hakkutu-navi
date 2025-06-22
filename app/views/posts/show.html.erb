@@ -140,7 +140,7 @@
     <% @post_comments.each do |comment| %>
       <%= render "comments/comment", comment: comment %>
     <% end %>
-    <% if @all_post_comments.count >= 4 %>
+    <% if @all_post_comments.count >= INITIAL_COMMENT_MAX %>
       <%= turbo_frame_tag "show_all" do %>
         <div class="d-flex justify-content-center mt-2">
           <%= link_to t(".all_comment_display"), replace_all_comments_post_comments_path(post_id: @post.id), class: "btn btn-light text-dark" %>
@@ -161,7 +161,7 @@
     <div class="mt-3">
       <%= t(".search_example") %>
     </div>
-  <% elsif logged_in? && current_user.address != nil && current_user.address != "" && @store.length != 0 %>
+  <% elsif logged_in? && current_user.address != nil && current_user.address != "" && @store.length != NO_STORE_HIT %>
     <div class="mt-5">
       <h5><%= t(".google_map_description") %></h5>
     </div>
@@ -172,7 +172,7 @@
     <div class="mt-3">
       <%= t(".search_example") %>
     </div>
-  <% elsif @store.length == 0 %>
+  <% elsif @store.length == NO_STORE_HIT %>
     <div class="mt-5">
       <h5><%= t(".not_found_description") %></h5>
     </div>
