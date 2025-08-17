@@ -7,7 +7,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: "気になるグルメ発掘ナビ",
-      title: "画像でおいしそうなグルメ情報の発掘をサポートするアプリ",
+      title: "気になるグルメ発掘ナビ",
       reverse: true,
       charset: "utf-8",
       description: "今なにを食べたいかは二の次。まずはどんな美味しいグルメが私達の周りにあるかから始めませんか？お手軽操作で幅広いグルメ情報収集を目的としたアプリです。",
