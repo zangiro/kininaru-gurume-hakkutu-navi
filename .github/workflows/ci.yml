@@ -85,6 +85,7 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgresql
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}  # 追加
         run: bundle exec rspec
 
       - name: Keep screenshots from failed system tests
