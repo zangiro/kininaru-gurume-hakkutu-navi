@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  validates :title, presence: true, length: { maximum: 255 }
+  validates :title, presence: true, length: { maximum: MAXIMUM_INPUT }
   validates :main_image, presence: true, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
   validates :sub_image_first, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
   validates :sub_image_second, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
@@ -54,24 +54,6 @@ class Post < ApplicationRecord
     end
   end
 
-  # def self.how_many_posts?(posts_count)
-  #  if posts_count == 0
-  #    36
-  #  elsif posts_count <= 6
-  #    30
-  #  elsif posts_count <= 12
-  #    24
-  #  elsif posts_count <= 18
-  #    18
-  #  elsif posts_count <= 24
-  #    12
-  #  elsif posts_count <= 30
-  #    6
-  #  else
-  #    0
-  #  end
-  # end
-
   def self.how_many_posts?(posts_count)
     if posts_count == 0
       24
@@ -85,22 +67,12 @@ class Post < ApplicationRecord
       0
     end
   end
+  # 1ページの最大表示数(24)を基準として
+  # 24 - posts_count(取得した記事)の結果をおすすめの枠として表示します。
 
   def decorated
     PostDecorator.new(self)
   end
-
-
-  # def post_test(word)
-  #  if word == 'latest'
-  #    latest
-  #  elsif word == 'old'
-  #    old
-  #  else
-  #    nil
-  #  end
-  # end
-  # 記事一覧やタグ検索時の簡略化用メソッド。現在NoMethodErrorで未実装
 
   def self.ransackable_attributes(auth_object = nil)
     [ "title" ]  # 検索可能な属性をここに追加

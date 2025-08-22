@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, length: { minimum: MINIMUM_INPUT }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, presence: true, uniqueness: true
-  validates :name, presence: true, length: { maximum: 255 }
+  validates :name, presence: true, length: { maximum: MAXIMUM_INPUT }
   validate :agreement
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
   # 値が存在するならユニークな値、 もしくは値がない場合ならバリデーションが通る。
@@ -37,10 +37,7 @@ class User < ApplicationRecord
 
   def agreement
     if new_record?
-      unless agree_terms == "1" || agree_terms == true
-        errors.add(:agree_terms, "に同意されてません")
-        #  あとでrailsi-18n化したい
-      end
+      errors.add(:agree_terms, "に同意されてません") unless agree_terms == AGREE_TERMS_SELECTED || agree_terms == true
     end
   end
   # agree_termsのチェックボックスを押すと値が"1"かtrueになる

@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :admin_user
 
   def index
-    @users = User.order(:id).page(params[:page]).per(10)
+    @users = User.order(:id).page(params[:page]).per(MAXIMUM_ADMINPAGE_USER)
   end
 
   def show
@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
     @posts = Post.includes(:user)
                .where(user: @user)
                .order(id: :asc)
-               .page(params[:page]).per(10)
+               .page(params[:page]).per(MAXIMUM_ADMINPAGE_USER)
   end
 
   def edit

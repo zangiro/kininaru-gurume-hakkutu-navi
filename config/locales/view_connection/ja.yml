@@ -11,6 +11,8 @@ ja:
       decision: 決定
       cancel: キャンセル
       reset: リセット
+      delete: 削除
+      edit: 編集
     dialog: # javascriptのダイアログなどで使う
       delete_confirm: 本当に削除しますか？
       post_delete_confirm: 記事を削除します。本当に削除しますか？
@@ -18,6 +20,23 @@ ja:
       comment_delete_confirm: このコメントを削除します。本当に削除しますか？
     info:
       account_is_suspended: このアカウントは現在停止中です。お問い合わせは「お問い合わせフォーム」をご利用ください
+    link:
+      user_index: ユーザー一覧
+      post_index: 記事一覧
+      admin_top: 管理ページトップ
+      edit: 編集
+    word:
+      id: ID
+      main_image: メイン画像
+      sub_image_first: サブ画像１
+      sub_image_second: サブ画像２
+      poster: 投稿者
+      operation: 操作
+      name: 名前
+      e-mail: メールアドレス
+      account_status: 状態
+      account_status_normal: 通常状態
+      account_status_stop: 停止状態
   flash_message:
     logged_in: ログイン中です
     user_create: ユーザーの新規作成をしました
@@ -246,6 +265,18 @@ ja:
   admin:
     homes:
       top:
+        page_title: 管理ページトップ
+        now_admin: 現在の管理者
+    posts:
+      index:
+        page_title: 管理ページ / 全体の記事一覧
     users:
       index:
+        page_title: 管理ページ / ユーザー一覧
       edit:
+        page_title: 管理ページ / ユーザー編集
+        user_name_is: "ユーザー名:　%{user_name}"
+        account_status_select_normal: 通常状態:0
+        account_status_select_stop: 停止状態:1
+      show:
+        page_title: "管理ページ / %{user_name}さんの記事一覧"

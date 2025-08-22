@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row bg-danger-subtle">
-    <h2>管理ページ / ユーザー一覧</h2>
+    <h2><%= t(".page_title") %></h2>
     <div class="table-responsive">
       <table class="table table-sm table-striped  table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>名前</th>
-            <th>メールアドレス</th>
-            <th>状態</th>
-            <th>操作</th>
+            <th><%= t("helpers.word.id") %></th>
+            <th><%= t("helpers.word.name") %></th>
+            <th><%= t("helpers.word.e-mail") %></th>
+            <th><%= t("helpers.word.account_status") %></th>
+            <th><%= t("helpers.word.poster") %></th>
           </tr>
         </thead>
 
@@ -19,13 +19,13 @@
               <td><%= user.id %></td>
               <td><%= user.name %></td>
               <td><%= user.email %></td>
-              <% if user.account_status == 0 %>
-                <td>通常状態</td>
+              <% if user.account_status == ACCOUNT_STATUS_ACTIVE %>
+                <td><%= t("helpers.word.account_status_normal") %></td>
               <% else %>
-                <td class="bg-info">停止状態</td>
+                <td class="bg-info"><%= t("helpers.word.account_status_stop") %></td>
               <% end %>
               <td>
-                <%= link_to "編集", edit_admin_user_path(user) %>
+                <%= link_to t("helpers.submit.edit"), edit_admin_user_path(user) %>
               </td>
             </tr>
           <% end %>
@@ -35,7 +35,7 @@
 
     <%= paginate @users, theme: "bootstrap-5" %>
 
-    <%= link_to "記事一覧", admin_posts_path %>
-    <%= link_to "管理ページトップへ", admin_homes_path %>
+    <%= link_to t("helpers.link.post_index"), admin_posts_path %>
+    <%= link_to t("helpers.link.admin_top"), admin_homes_path %>
   </div>
 </div>

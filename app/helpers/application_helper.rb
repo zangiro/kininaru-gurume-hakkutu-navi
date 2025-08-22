@@ -10,7 +10,7 @@ module ApplicationHelper
       title: "気になるグルメ発掘ナビ",
       reverse: true,
       charset: "utf-8",
-      description: "今なにを食べたいかは二の次。まずはどんな美味しいグルメが私達の周りにあるかから始めませんか？お手軽操作で幅広いグルメ情報収集を目的としたアプリです。",
+      description: "お手軽操作で幅広いグルメ情報収集を目的としたアプリです。各地にある未発見グルメを探してみよう！",
       keywords: "料理,グルメ,見た目,発掘,画像",
       canonical: "https://kininaru-gurume.com",
       separator: "|",
