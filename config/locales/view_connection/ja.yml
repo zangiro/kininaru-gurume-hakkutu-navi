@@ -18,6 +18,9 @@ ja:
       comment_delete_confirm: このコメントを削除します。本当に削除しますか？
     info:
       account_is_suspended: このアカウントは現在停止中です。お問い合わせは「お問い合わせフォーム」をご利用ください
+    link:
+      user_index: ユーザー一覧
+      post_index: 記事一覧
   flash_message:
     logged_in: ログイン中です
     user_create: ユーザーの新規作成をしました
@@ -246,6 +249,8 @@ ja:
   admin:
     homes:
       top:
+        page_title: 管理ページトップ
+        now_admin: 現在の管理者
     users:
       index:
       edit:
