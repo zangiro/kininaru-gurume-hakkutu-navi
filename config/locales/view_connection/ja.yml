@@ -24,6 +24,7 @@ ja:
       user_index: ユーザー一覧
       post_index: 記事一覧
       admin_top: 管理ページトップ
+      edit: 編集
     word:
       id: ID
       main_image: メイン画像
@@ -273,3 +274,9 @@ ja:
       index:
         page_title: 管理ページ / ユーザー一覧
       edit:
+        page_title: 管理ページ / ユーザー編集
+        user_name_is: "ユーザー名:　%{user_name}"
+        account_status_select_normal: 通常状態:0
+        account_status_select_stop: 停止状態:1
+      show:
+        page_title: "管理ページ / %{user_name}さんの記事一覧"

@@ -1,7 +1,7 @@
 <div class="container min-vh-100 bg-danger-subtle">
   <div class="row">
-    <h2>管理ページ / ユーザー編集</h2>
-    <h1>ユーザー名：<%= @user.name %></h1>
+    <h2><%= t(".page_title") %></h2>
+    <h1><%= t(".user_name_is", user_name: @user.name) %></h1>
 
     <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
@@ -13,7 +13,7 @@
 
       <div class="mb-3">
         <%= f.label :account_status, t("users.edit.account_status"), class: "form-label" %>
-        <%= f.select :account_status, [['通常状態:0', 0], ['停止状態:1', 1]], { include_blank: true }, class: "form-control" %>
+        <%= f.select :account_status, [[ t(".account_status_select_normal"), 0], [ t(".account_status_select_stop"), 1]], { include_blank: true }, class: "form-control" %>
       </div>
 
       <div class="mt-3">
