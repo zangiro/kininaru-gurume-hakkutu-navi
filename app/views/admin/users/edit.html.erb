@@ -13,7 +13,7 @@
 
       <div class="mb-3">
         <%= f.label :account_status, t("users.edit.account_status"), class: "form-label" %>
-        <%= f.select :account_status, [[ t(".account_status_select_normal"), 0], [ t(".account_status_select_stop"), 1]], { include_blank: true }, class: "form-control" %>
+        <%= f.select :account_status, [[ t(".account_status_select_normal"), ACCOUNT_STATUS_ACTIVE], [ t(".account_status_select_stop"), ACCOUNT_STATUS_INACTIVE]], { include_blank: true }, class: "form-control" %>
       </div>
 
       <div class="mt-3">
