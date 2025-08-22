@@ -12,6 +12,7 @@ ja:
       cancel: キャンセル
       reset: リセット
       delete: 削除
+      edit: 編集
     dialog: # javascriptのダイアログなどで使う
       delete_confirm: 本当に削除しますか？
       post_delete_confirm: 記事を削除します。本当に削除しますか？
@@ -33,6 +34,8 @@ ja:
       name: 名前
       e-mail: メールアドレス
       account_status: 状態
+      account_status_normal: 通常状態
+      account_status_stop: 停止状態
   flash_message:
     logged_in: ログイン中です
     user_create: ユーザーの新規作成をしました
@@ -268,4 +271,5 @@ ja:
         page_title: 管理ページ / 全体の記事一覧
     users:
       index:
+        page_title: 管理ページ / ユーザー一覧
       edit:

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row bg-danger-subtle">
-    <h2>管理ページ / ユーザー一覧</h2>
+    <h2><%= t(".page_title") %></h2>
     <div class="table-responsive">
       <table class="table table-sm table-striped  table-bordered">
         <thead>
@@ -20,12 +20,12 @@
               <td><%= user.name %></td>
               <td><%= user.email %></td>
               <% if user.account_status == 0 %>
-                <td>通常状態</td>
+                <td><%= t("helpers.word.account_status_normal") %></td>
               <% else %>
-                <td class="bg-info">停止状態</td>
+                <td class="bg-info"><%= t("helpers.word.account_status_stop") %></td>
               <% end %>
               <td>
-                <%= link_to "編集", edit_admin_user_path(user) %>
+                <%= link_to t("helpers.submit.edit"), edit_admin_user_path(user) %>
               </td>
             </tr>
           <% end %>
