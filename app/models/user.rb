@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, presence: true, uniqueness: true
-  validates :name, presence: true, length: { maximum: 255 }
+  validates :name, presence: true, length: { maximum: MAXIMUM_INPUT }
   validate :agreement
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
   # 値が存在するならユニークな値、 もしくは値がない場合ならバリデーションが通る。

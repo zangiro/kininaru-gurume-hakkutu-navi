@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  validates :title, presence: true, length: { maximum: 255 }
+  validates :title, presence: true, length: { maximum: MAXIMUM_INPUT }
   validates :main_image, presence: true, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
   validates :sub_image_first, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
   validates :sub_image_second, blob: { content_type: [ "image/jpg", "image/jpeg", "image/png" ] }
@@ -67,6 +67,8 @@ class Post < ApplicationRecord
       0
     end
   end
+  # 1ページの最大表示数(24)を基準として
+  # 24 - posts_count(取得した記事)の結果をおすすめの枠として表示します。
 
   def decorated
     PostDecorator.new(self)
