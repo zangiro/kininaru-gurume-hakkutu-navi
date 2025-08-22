@@ -27,7 +27,6 @@ class SearchsController < ApplicationController
     else
       @search_posts = Post.where(id: @post_ids).page(params[:page]).per(POSTS_PER_PAGE)
     end
-    # 簡略化用メソッドを実装したい。現在NoMethodErrorで未実装。記事一覧と同様処理で行けそう
 
     @post_path = SEARCH_INDEX_POST_PATH
 

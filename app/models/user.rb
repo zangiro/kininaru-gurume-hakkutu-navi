@@ -39,7 +39,6 @@ class User < ApplicationRecord
     if new_record?
       unless agree_terms == "1" || agree_terms == true
         errors.add(:agree_terms, "に同意されてません")
-        #  あとでrailsi-18n化したい
       end
     end
   end
