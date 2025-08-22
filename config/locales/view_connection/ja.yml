@@ -23,6 +23,16 @@ ja:
       user_index: ユーザー一覧
       post_index: 記事一覧
       admin_top: 管理ページトップ
+    word:
+      id: ID
+      main_image: メイン画像
+      sub_image_first: サブ画像１
+      sub_image_second: サブ画像２
+      poster: 投稿者
+      operation: 操作
+      name: 名前
+      e-mail: メールアドレス
+      account_status: 状態
   flash_message:
     logged_in: ログイン中です
     user_create: ユーザーの新規作成をしました
@@ -256,12 +266,6 @@ ja:
     posts:
       index:
         page_title: 管理ページ / 全体の記事一覧
-        id: ID
-        main_image: メイン画像
-        sub_image_first: サブ画像１
-        sub_image_second: サブ画像２
-        poster: 投稿者
-        operation: 操作
     users:
       index:
       edit:
