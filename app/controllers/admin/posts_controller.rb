@@ -4,9 +4,9 @@ class Admin::PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:user)
-                 .where.not(users: { account_status: 1 })
+                 .where.not(users: { account_status: ACCOUNT_STATUS_INACTIVE })
                  .order(id: :asc)
-                 .page(params[:page]).per(50)
+                 .page(params[:page]).per(POSTS_PER_PAGE)
   end
 
   def destroy

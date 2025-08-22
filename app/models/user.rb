@@ -37,9 +37,7 @@ class User < ApplicationRecord
 
   def agreement
     if new_record?
-      unless agree_terms == "1" || agree_terms == true
-        errors.add(:agree_terms, "に同意されてません")
-      end
+      errors.add(:agree_terms, "に同意されてません") unless agree_terms == AGREE_TERMS_SELECTED || agree_terms == true
     end
   end
   # agree_termsのチェックボックスを押すと値が"1"かtrueになる
