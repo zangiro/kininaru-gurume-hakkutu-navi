@@ -43,10 +43,8 @@ class PostsController < ApplicationController
     @word = params[:word] || []
 
     if logged_in?
-      # 閲覧履歴を残す処理
-      if current_user.view_history_include?(@post)
-        current_user.view_history_minus(@post)
-      end
+      # 閲覧履歴の処理
+      current_user.view_history_minus(@post) if current_user.view_history_include?(@post)
       current_user.view_history_plus(@post)
     end
 

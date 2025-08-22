@@ -54,7 +54,7 @@
 
           <div class="mt-2">
             <div data-preview-target="existing">
-              <% if @user.avatar.attached? && @select_new_avatar != "1" %>
+              <% if @user.avatar.attached? && @select_new_avatar != AVATAR_IMAGE_SELECTED %>
                 <div class="mt-1">
                   <%= t(".selected_avatar") %>
                 </div>
@@ -63,7 +63,7 @@
                 </div>
               <% end %>
 
-              <% if @select_new_avatar == "1" %>
+              <% if @select_new_avatar == AVATAR_IMAGE_SELECTED %>
                 <div class="py-2 ps-2 bg-danger-subtle">
                   <%= t("posts.post_info.please_select_image_again") %>
                 </div>

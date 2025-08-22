@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     end
 
     if params[:user][:avatar].present?
-      @select_new_avatar = "1"
+      @select_new_avatar = AVATAR_IMAGE_SELECTED
     end
 
     if @user.update(user_params)
