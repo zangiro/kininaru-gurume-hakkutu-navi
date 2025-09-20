@@ -76,7 +76,6 @@ class Post < ApplicationRecord
     return 12 if posts_count <= 12
     return 6 if posts_count <= 18
     return 0 if posts_count <= 24
-  
     0
   end
   # 1ページの最大表示数(24)を基準として
