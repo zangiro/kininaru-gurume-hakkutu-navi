@@ -64,7 +64,7 @@
 
 | カテゴリ | 技術 |
 | ---- | ---- |
-| フロントエンド | Bootstrap 5.3.3 / JavaScript |
+| フロントエンド | Bootstrap 5.3.3 / Stimulus |
 | バックエンド | Rails 7.2.2 (Ruby 3.2.3) |
 | データベース | PostgreSQL |
 | 開発環境 | Docker |
