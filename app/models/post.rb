@@ -37,22 +37,20 @@ class Post < ApplicationRecord
   scope :active_users, -> { joins(:user).where.not(users: { account_status: ACCOUNT_STATUS_INACTIVE }) }
 
   def update_tags(input_tag, tag_type)
-    # update時を例にの入力例「"ああ","いい","うう"」 
-    # postコントローラーのupdateメソッド実行時、重複して「"ああ","いい","うう","ああ,いい,うう"」となる
+    # タグ欄に "犬","猫" と入力した場合
     input_tags = input_tag.join(",").split(",").map(&:strip)
-    # join後 => "ああ,いい,うう,ああ,いい,うう"
-    # split後 => ["ああ", "いい", "うう", "ああ", "いい", "うう"]
-    # strip...空白削除   "ああ   " => "ああ"となる。
+    # join後 => "犬,猫"
+    # split後 => ["犬", "猫"]
+    # strip => 余分な空白削除
 
     old_tags = self.send("#{tag_type}_tags").pluck(:name) unless self.send("#{tag_type}_tags").nil?
-    # 現在の対象のタグを確認。　この場合は「"ああ","いい","うう","ああ,いい,うう"」
+    # 現在の対象のタグを確認
     # self => この場合は@postのこと
     # send("#{tag_type}_tags") => ""内の文字列をテーブルとして扱う
     delete_tags = old_tags - input_tags
     # 削除予定タグ
-    # delete_tags=> ["ああ,いい,うう"]
     new_tags = input_tags - old_tags
-    # 新しくインスタンス作成予定タグ
+    # 新規作成予定タグ
 
     delete_tags.each do |old_tag_name|
       old_tag = self.send("#{tag_type}_tags").find_by(name: old_tag_name)
