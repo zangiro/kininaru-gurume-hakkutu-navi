@@ -70,18 +70,14 @@ class Post < ApplicationRecord
     end
   end
 
-  def self.how_many_posts?(posts_count)
-    if posts_count == 0
-      24
-    elsif posts_count <= 6
-      18
-    elsif posts_count <= 12
-      12
-    elsif posts_count <= 18
-      6
-    elsif posts_count <= 24
-      0
-    end
+  def self.recommended_post_count_calculation(posts_count)
+    return 24 if posts_count == 0
+    return 18 if posts_count <= 6
+    return 12 if posts_count <= 12
+    return 6 if posts_count <= 18
+    return 0 if posts_count <= 24
+  
+    0
   end
   # 1ページの最大表示数(24)を基準として
   # 24 - posts_count(取得した記事)の結果をおすすめの枠として表示します。
