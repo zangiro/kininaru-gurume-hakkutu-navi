@@ -1,14 +1,13 @@
 <%= search_form_for @q, url: search_by_form_searchs_path do |f| %>
   <div class="d-flex flex-row">
     <div data-controller="autocomplete" data-autocomplete-url-value="/searchs/autocomplete" role="combobox">
-
       <%= f.search_field :title_or_dish_description_or_dish_introduction_or_area_tags_name_or_genre_tags_name_or_taste_tags_name_or_outher_tags_name_cont, data: { autocomplete_target: 'input' }, class: 'form-control', placeholder: t("shared.header.search_form") %>
       <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
 
       <ul class="list-group" data-autocomplete-target="results">
       </ul>
-
     </div>
+
     <div class="ms-2">
       <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
         <i class="bi bi-search"></i>
