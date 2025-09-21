@@ -19,14 +19,12 @@
       </div>
     <% end %>
 
-    <%# ---------↓googleログイン部分--------- %>
+    <%# googleログイン部分 始 %>
 
     <hr class="my-4">
-    <%# -----HTMLの水平線を描画するタグ----- %>
 
     <div class="d-flex justify-content-center">
       <div>
-
         <div class="mb-3">
           <h5><%= t(".or_login_with_your_google_account") %></h5>
         </div>
@@ -36,13 +34,12 @@
             <%= image_tag "sign_in@2x.png" %>
           <% end %>
         </div>
-
       </div>
     </div>
 
     <hr class="my-4">
 
-    <%# ---------googleログイン部分--------- %>
+    <%# googleログイン部分 始 %>
 
     <div class='text-center'>
       <%= link_to t(".to_register_page"), new_user_path %>
