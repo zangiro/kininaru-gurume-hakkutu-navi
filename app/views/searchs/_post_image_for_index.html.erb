@@ -1,6 +1,4 @@
 <a href="<%= post_path(post, area_tags: @area_tags, genre_tags: @genre_tags, taste_tags: @taste_tags, outher_tags: @outher_tags, post_path: @post_path) %>">
-  <%# 記事詳細を呼び出すとき選択したタグ情報も送る %>
-
   <% if post.main_image.attached? %>
     <%= image_tag post.decorated.resized_main_image_small %>
   <% end %>
@@ -8,6 +6,4 @@
 
 <div class="mt-1">
   <%= truncate(post.title, length: MAXIMUM_POST_TITLE, omission: '...') %>
-  <%# ーーーーーーtruncateはRailsのヘルパーメソッドで文字列を指定した長さで切り詰める機能がある。lengthで文字数を指定ーーーーーーーーーーー %>
-  <%# ーーーーーーomissionは、切り詰めた際に追加する文字列を指定するためのオプション。ーーーーーーーーーーーー %>
 </div>

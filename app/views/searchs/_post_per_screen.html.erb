@@ -1,0 +1,39 @@
+<%# 画面XXL %>
+<div class="col-2 mb-1 d-none d-xxl-block">
+  <% case search_methods %>
+  <% when "search_form" %>
+    <%= render "post_image_for_search_form", post: post %>
+  <% when "tag_index" %>
+    <%= render "post_image_for_index", post: post %>
+  <% end %>
+</div>
+
+<%# 画面LG以上、XXL以下 %>
+<div class="col-3 mb-1 d-none d-lg-block d-xxl-none">
+  <% case search_methods %>
+  <% when "search_form" %>
+    <%= render "post_image_for_search_form", post: post %>
+  <% when "tag_index" %>
+    <%= render "post_image_for_index", post: post %>
+  <% end %>
+</div>
+
+<%# 画面MD以上、LG以下 %>
+<div class="col-4 mb-1 d-none d-md-block d-lg-none">
+  <% case search_methods %>
+  <% when "search_form" %>
+    <%= render "post_image_for_search_form", post: post %>
+  <% when "tag_index" %>
+    <%= render "post_image_for_index", post: post %>
+  <% end %>
+</div>
+
+<%# 画面MD以下 %>
+<div class="col-6 mb-1 d-md-none">
+  <% case search_methods %>
+  <% when "search_form" %>
+    <%= render "post_image_for_search_form", post: post %>
+  <% when "tag_index" %>
+    <%= render "post_image_for_index", post: post %>
+  <% end %>
+</div>

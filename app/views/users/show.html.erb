@@ -1,12 +1,11 @@
 <% content_for(:title, t(".page_title")) %>
 <% breadcrumb :user_show, @user %>
 
-
 <div class="container">
   <div class="row">
     <h1><%= t(".my_page_with_name", name: @user.name) %></h1>
     
-    <% if @user.account_status == 0 %>
+    <% if @user.account_status == ACCOUNT_STATUS_ACTIVE %>
       <div class="mt-2">
         <%= @user.is_public ? t(".your_my_page_now_open", name: @user.name) : t(".your_my_page_now_closed", name: @user.name) %>
       </div>
@@ -26,7 +25,6 @@
             <%= image_tag @user.decorated.resized_avatar %>
           <% else %>
             <%= t(".avatar_not_registered") %>
-            <%# -------補足: avatar_not_registered アバターは登録されてません--------- %>
           <% end %>
         </div>
 
@@ -48,7 +46,6 @@
           <%= link_to t(".to_likes_list"), user_likes_path(@user) %>
         </div>
       <% end %>
-
 
       <% if @user == current_user %>
         <div class="mt-2">

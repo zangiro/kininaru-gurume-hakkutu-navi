@@ -1,12 +1,10 @@
 <% content_for(:title, t(".page_title")) %>
 <% breadcrumb :user_new %>
 
-
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-lg-8 mx-auto">
       <h1><%= t(".user_registration") %></h1>
-      <%# ---------補足: registration 登録--------- %>
 
       <%= form_with model: @user do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
@@ -39,20 +37,18 @@
           <%= f.radio_button :is_public, true, id: "is_public_true" %>
           <label for="is_public_true" class="me-3">
             <%= t(".permit") %>
-            <%# ---------補足: permit 許可--------- %>
           </label>
 
           <%= f.radio_button :is_public, false, id: "is_public_false" %>
           <label for="is_public_false" class="me-3">
             <%= t(".not_permit") %>
-            <%# ---------補足: not_permit 不許可--------- %>
           </label>
         </div>
 
         <div class="mb-3">
           <%= f.label :agree_terms, t(".accept_terms_of_use") %>
           <%= f.check_box :agree_terms %>
-          <%# ---------補足: agree_terms 利用規約, accept_terms_of_use 利用規約に同意しますか？--------- %>
+          <%# 補足: agree_terms 利用規約, accept_terms_of_use 利用規約に同意しますか？ %>
         </div>
 
         <div class="mb-3">
@@ -61,16 +57,14 @@
         </div>
 
         <%= f.submit t("helpers.submit.create"), class: "btn btn-primary" %>
-
       <% end %>
 
-      <%# ---------↓googleログイン部分--------- %>
+      <%# googleログイン部分 %>
 
       <hr class="my-4">
 
       <div class="d-flex justify-content-center">
         <div>
-
           <div class="mb-3">
             <h5><%= t(".or_register_with_your_google_account") %></h5>
           </div>
@@ -80,13 +74,10 @@
               <%= image_tag "sign_up@2x.png" %>
             <% end %>
           </div>
-
         </div>
       </div>
 
       <hr class="my-4">
-
-      <%# ---------googleログイン部分--------- %>
 
       <div class='text-center'>
         <%= link_to t(".to_login_page"), login_path %>
