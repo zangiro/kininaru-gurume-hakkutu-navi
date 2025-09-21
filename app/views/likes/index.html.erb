@@ -12,25 +12,7 @@
         <h3><%= t(".liked_posts")%></h3>
 
         <% @user_like_posts.each do |post| %>
-          <%# 画面XXL %>
-          <div class="col-2 mb-1 d-none d-xxl-block">
-            <%= render "post_image", post: post %>
-          </div>
-
-          <%# 画面LG以上、XXL以下 %>
-          <div class="col-3 mb-1 d-none d-lg-block d-xxl-none">
-            <%= render "post_image", post: post %>
-          </div>
-
-          <%# 画面MD以上、LG以下 %>
-          <div class="col-4 mb-1 d-none d-md-block d-lg-none">
-            <%= render "post_image", post: post %>
-          </div>
-
-          <%# 画面MD以下 %>
-          <div class="col-6 mb-1 d-md-none">
-            <%= render "post_image", post: post %>
-          </div>
+          <%= render "shared/post_per_screen", post: post, search_methods: "outher" %>
         <% end %>
 
         <%= paginate @user_like_posts, theme: "bootstrap-5" %>
