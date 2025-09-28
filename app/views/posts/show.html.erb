@@ -1,7 +1,5 @@
 <% content_for(:title, "@#{@post.title}") %>
 <% breadcrumb :post_show, @post, @area_tags, @genre_tags, @taste_tags, @outher_tags, @user, @word, @post_path %>
-<%# パンくずリスト呼ぶとき選択したタグ情報を保持する %>
-
 
 <div class="container">
   <div class="mt-3">
@@ -18,16 +16,19 @@
         <%= area_tag.name %>
       </div>
     <% end %>
+
     <% @post.genre_tags.each do |genre_tag| %>
       <div class="me-2">
         <%= genre_tag.name %>
       </div>
     <% end %>
+
     <% @post.taste_tags.each do |taste_tag| %>
       <div class="me-2">
         <%= taste_tag.name %>
       </div>
     <% end %>
+
     <% @post.outher_tags.each do |outher_tag| %>
       <div class="me-2">
         <%= outher_tag.name %>
@@ -69,21 +70,17 @@
     </div>
   <% end %>
 
-  <%# -----------------------画像関連-------------------------- %>
+  <%# 以下画像関連 %>
 
   <div class="d-flex justify-content-center">
-
-  <div class="row mt-4 mb-4">
-  <% if @post.main_image.attached? %>
-    <%= image_tag @post.decorated.resized_main_image_large %>
-  <% end %>
+    <div class="row mt-4 mb-4">
+      <% if @post.main_image.attached? %>
+        <%= image_tag @post.decorated.resized_main_image_large %>
+      <% end %>
+    </div>
   </div>
-
-  </div>
-
 
   <div class="d-flex justify-content-center align-items-start">
-
     <div class="row">
       <% if @post.sub_image_first.attached? %>
         <%= image_tag @post.decorated.resized_sub_image_first_large %>
@@ -98,40 +95,33 @@
         <%= image_tag @post.decorated.resized_sub_image_second_large %>
       <% end %>
     </div>
-
   </div>
 
   <hr class="my-4 mt-5">
-  <%# -----HTMLの水平線を描画するタグ----- %>
 
   <div class="row">
     <%= @post.dish.description %>
   </div>
 
 
-  <%# -------------いいね機能関連---------------------- %>
+  <%# 以下いいね機能関連 %>
 
   <% if logged_in? && @post.user_id != current_user.id %>
     <% if current_user.like_include?(@post) %>
-
       <%= link_to post_like_path(@post), id: "bad-#{@post.id}", data: { turbo_method: :delete } do %>
         <i class="bi bi-hand-thumbs-up-fill"></i>
       <% end %>
-
     <% else %>
-
       <%= link_to post_likes_path(post_id: @post.id), id: "good-#{@post.id}", data: { turbo_method: :post } do %>
         <i class="bi bi-hand-thumbs-up"></i>
       <% end %>
-
-
     <% end %>
   <% end %>
 
   <hr class="my-4 mt-5 mb-5">
-  <%# -----HTMLの水平線を描画するタグ----- %>
 
-  <%# ------------コメント関連------------ %>
+  <%# 以下コメント関連 %>
+
   <% if logged_in? %>
     <%= render "comments/form", comment: @comment, post: @post %>
   <% end %>
@@ -140,6 +130,7 @@
     <% @post_comments.each do |comment| %>
       <%= render "comments/comment", comment: comment %>
     <% end %>
+
     <% if @all_post_comments.count >= INITIAL_COMMENT_MAX %>
       <%= turbo_frame_tag "show_all" do %>
         <div class="d-flex justify-content-center mt-2">
@@ -150,14 +141,14 @@
   <% end %>
 
   <hr class="my-4 mt-5">
-  <%# -----HTMLの水平線を描画するタグ---- %>
 
-  <%# ---------------google map関連-------------- %>
+  <%# 以下google map関連 %>
 
   <% if !logged_in? %>
     <div class="mt-5">
       <h5><%= t(".not_login_description") %></h5>
     </div>
+
     <div class="mt-3">
       <%= t(".search_example") %>
     </div>
@@ -169,6 +160,7 @@
     <div class="mt-5">
       <h5><%= t(".not_address_description") %></h5>
     </div>
+
     <div class="mt-3">
       <%= t(".search_example") %>
     </div>
@@ -181,9 +173,6 @@
   <div class="mt-3" id="map" style="height: 600px;"></div>
 
 </div> 
-
-
-
 
 <script>
   // 地図を初期化する関数
@@ -224,7 +213,6 @@
       });
       // マーカーをクリックしたときの処理
       // anchorは情報ウィンドウがどのマーカーに対して表示されるかを指定している
-
     <% end %>
   }
 </script>

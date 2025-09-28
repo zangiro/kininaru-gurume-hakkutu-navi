@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_one :dish, dependent: :destroy
-  accepts_nested_attributes_for :dish  # allow_destroy: true
+  accepts_nested_attributes_for :dish
 
   has_many :post_area_tags, dependent: :destroy
   has_many :area_tags, through: :post_area_tags
@@ -14,7 +14,7 @@ class Post < ApplicationRecord
 
   has_many :post_genre_tags, dependent: :destroy
   has_many :genre_tags, through: :post_genre_tags
-  accepts_nested_attributes_for :post_genre_tags  # allow_destroy: true
+  accepts_nested_attributes_for :post_genre_tags
 
   has_many :post_taste_tags, dependent: :destroy
   has_many :taste_tags, through: :post_taste_tags
@@ -37,37 +37,26 @@ class Post < ApplicationRecord
   scope :active_users, -> { joins(:user).where.not(users: { account_status: ACCOUNT_STATUS_INACTIVE }) }
 
   def update_tags(input_tag, tag_type)
-    # タグ欄に "犬","猫" と入力した場合
     input_tags = input_tag.join(",").split(",").map(&:strip)
-    # join後 => "犬,猫"
-    # split後 => ["犬", "猫"]
-    # strip => 余分な空白削除
 
     old_tags = self.send("#{tag_type}_tags").pluck(:name) unless self.send("#{tag_type}_tags").nil?
-    # 現在の対象のタグを確認
-    # self => この場合は@postのこと
-    # send("#{tag_type}_tags") => ""内の文字列をテーブルとして扱う
     delete_tags = old_tags - input_tags
-    # 削除予定タグ
     new_tags = input_tags - old_tags
-    # 新規作成予定タグ
 
     delete_tags.each do |old_tag_name|
       old_tag = self.send("#{tag_type}_tags").find_by(name: old_tag_name)
       self.send("#{tag_type}_tags").delete(old_tag) if old_tag
-      # find_byで対象に削除候補(old_tag_name)があるか確認
-      # ifを使い、存在する場合だけ削除
     end
 
     new_tags.uniq.each do |new_tag_name|
       new_tag = "#{tag_type.capitalize}Tag".constantize.find_or_create_by(name: new_tag_name)
       self.send("#{tag_type}_tags") << new_tag unless self.send("#{tag_type}_tags").include?(new_tag)
-      # capitalizeで先頭文字を大文字化。
-      # 例...tag_type = "hello"
-      # "#{tag_type}_tags" => "HelloTag"
-      # constantizeでrubyクラスとして扱う
-      # find_or_create_by...対象(new_tag_name)がレコードに存在しない場合のみ新規レコードとして作成
     end
+
+    # strip: 余分な空白削除
+    # send("#{tag_type}_tags"):  "" 内の文字列をテーブルとして扱う
+    # capitalize: 先頭文字を大文字化
+    # constantize: rubyクラスとして扱う
   end
 
   def self.recommended_post_count_calculation(posts_count)

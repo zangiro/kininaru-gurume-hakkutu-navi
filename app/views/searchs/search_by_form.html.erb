@@ -7,7 +7,7 @@
       <h3><%= t(".search_results") %></h3>
 
       <% @posts.each do |post| %>
-        <%= render "post_per_screen", post: post, search_methods: "search_form" %>
+        <%= render "shared/post_per_screen", post: post, search_methods: "search_form" %>
       <% end %>
 
       <%= paginate @posts, theme: "bootstrap-5" %>
@@ -22,7 +22,7 @@
 
           <%# おすすめを表示 %>
           <% @recommendations.each do |post| %>
-            <%= render "post_per_screen", post: post, search_methods: "search_form" %>
+            <%= render "shared/post_per_screen", post: post, search_methods: "search_form" %>
           <% end %>
         </div>
       <% end %>
@@ -38,7 +38,7 @@
 
         <%# おすすめを表示 %>
         <% @recommendations.each do |post| %>
-          <%= render "post_per_screen", post: post, search_methods: "search_form" %>
+          <%= render "shared/post_per_screen", post: post, search_methods: "search_form" %>
         <% end %>
       </div>
     <% end %>

@@ -10,7 +10,6 @@ class OauthsController < ApplicationController
       # 既存のユーザーをプロバイダ情報を元に検索し、存在すればログイン
 
       if @user.account_status == ACCOUNT_STATUS_INACTIVE
-        # account_statusがACCOUNT_STATUS_INACTIVE（つまり 1 で停止中）ならログアウト
         logout
         redirect_to root_path, danger: t("flash_message.account_is_suspended")
         return

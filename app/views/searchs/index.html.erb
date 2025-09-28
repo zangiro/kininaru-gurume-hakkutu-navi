@@ -19,7 +19,7 @@
       </div>
 
       <% @search_posts.each do |post| %>
-        <%= render "post_per_screen", post: post, search_methods: "tag_index" %>
+        <%= render "shared/post_per_screen", post: post, search_methods: "tag_index" %>
       <% end %>
 
       <%= paginate @search_posts, theme: "bootstrap-5" %>
@@ -34,7 +34,7 @@
 
           <%# おすすめを表示 %>
           <% @recommendations.each do |post| %>
-            <%= render "post_per_screen", post: post, search_methods: "tag_index" %>
+            <%= render "shared/post_per_screen", post: post, search_methods: "tag_index" %>
           <% end %>
         </div>
       <% end %>
@@ -48,7 +48,7 @@
 
         <%# おすすめを表示 %>
         <% @recommendations.each do |post| %>
-          <%= render "post_per_screen", post: post, search_methods: "tag_index" %>
+          <%= render "shared/post_per_screen", post: post, search_methods: "tag_index" %>
         <% end %>
       </div>
     <% end %>
