@@ -82,17 +82,9 @@ class PostsController < ApplicationController
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
-    if params[:post][:main_image].present?
-      @select_new_main_image = MAIN_IMAGE_SELECTED
-    end
-
-    if params[:post][:sub_image_first].present?
-      @select_new_sub_image_first = SUB_IMAGE_FIRST_SELECTED
-    end
-
-    if params[:post][:sub_image_second].present?
-      @select_new_sub_image_second = SUB_IMAGE_SECOND_SELECTED
-    end
+    @select_new_main_image = MAIN_IMAGE_SELECTED if params[:post][:main_image].present?
+    @select_new_sub_image_first = SUB_IMAGE_FIRST_SELECTED if params[:post][:sub_image_first].present?
+    @select_new_sub_image_second = SUB_IMAGE_SECOND_SELECTED if params[:post][:sub_image_second].present?
 
     if @form_input_area_tag != [ "" ] && @post.update(filtered_params)
       @post.update_tags(@form_input_area_tag, "area")
@@ -122,17 +114,10 @@ class PostsController < ApplicationController
     @form_input_taste_tag = params[:post][:post_taste_tags_attributes].values.map { |tag| tag[:taste_tag_attributes][:name] }
     @form_input_outher_tag = params[:post][:post_outher_tags_attributes].values.map { |tag| tag[:outher_tag_attributes][:name] }
 
-    if params[:post][:main_image].present?
-      @select_new_main_image = MAIN_IMAGE_SELECTED
-    end
+    @select_new_main_image = MAIN_IMAGE_SELECTED if params[:post][:main_image].present?
+    @select_new_sub_image_first = SUB_IMAGE_FIRST_SELECTED if params[:post][:sub_image_first].present?
+    @select_new_sub_image_second = SUB_IMAGE_SECOND_SELECTED if params[:post][:sub_image_second].present?
 
-    if params[:post][:sub_image_first].present?
-      @select_new_sub_image_first = SUB_IMAGE_FIRST_SELECTED
-    end
-
-    if params[:post][:sub_image_second].present?
-      @select_new_sub_image_second = SUB_IMAGE_SECOND_SELECTED
-    end
 
     if @form_input_area_tag != [ "" ] && @post.save
       @post.update_tags(@form_input_area_tag, "area")

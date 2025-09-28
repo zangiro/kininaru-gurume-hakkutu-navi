@@ -30,10 +30,7 @@ class SearchsController < ApplicationController
 
     @post_path = SEARCH_INDEX_POST_PATH
 
-    # ----------------------以下おすすめ表示--------------------------
     @maximum_number = Post.recommended_post_count_calculation(@search_posts.count)
-    # recommended_post_count_calculationは@search_postsの数に応じて変数に数字を代入する。
-    # おすすめ表示で使用。ヒット数が少なければおおっきい数字を。多ければ0~少ない数字を返す。
 
     if logged_in?
       @all_users_view_histories = ViewHistory.active_users
@@ -45,7 +42,6 @@ class SearchsController < ApplicationController
                                              .latest
                                              .limit(MAXIMUM_VIEW_HISTORY)
     end
-    # ログインの有無でおすすめとして参照するデータを少し変える。
 
     @recommendations = Post.joins(:view_histories)
                            .where(view_histories: { id: @all_users_view_histories })
@@ -53,7 +49,6 @@ class SearchsController < ApplicationController
                            .group("posts.id")
                            .order("COUNT(posts.id) DESC")
                            .limit(@maximum_number)
-    # この変数はおすすめ表示で使用。閲覧履歴を参照してより多く閲覧されてるものを、タグ検索のヒット数が一定以下の場合表示する。
   end
 
   def search_by_form
@@ -68,7 +63,6 @@ class SearchsController < ApplicationController
     # この場合「:q」が存在しない場合NoMethodErrorになる。.digを使うと「:q」がnilでもエラーにならない。
     @post_path = SEARCH_BY_FORM_POST_PATH
 
-    # ----------------------以下おすすめ表示--------------------------
     @maximum_number = Post.recommended_post_count_calculation(@posts.count)
 
     if logged_in?
