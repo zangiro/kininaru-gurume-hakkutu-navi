@@ -1,15 +1,12 @@
 <% content_for(:title, t(".page_title")) %>
 <% breadcrumb :post_index, @user %>
 
-
 <div class="container">
   <div class="row">
-    <% if @user.account_status == 1 %>
+    <% if @user.account_status == ACCOUNT_STATUS_INACTIVE %>
       <div class="mt-2">
         <h4><%= t("helpers.info.account_is_suspended") %></h4>
       </div>
-
-    <%# -------------------本人用------------------- %>
     <% elsif @user == current_user %>
       <% if @user_posts.present? %>
         <div class="d-flex">
@@ -20,60 +17,20 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><%= link_to t(".ascending-order"), user_posts_path(@user, latest: "true"), class: 'dropdown-item' %></li>
               <li><%= link_to t(".descending-order"), user_posts_path(@user, old: "true"), class: 'dropdown-item' %></li>
-              <%# ---------------補足:  ascending-order 昇順。  descending-order 降順----------------------------- %>
             </ul>
           </div>
         </div>
 
         <% @user_posts.each do |post| %>
-
-          <%# ーーーーー画面XXLでcol-2で表示ーーーーーーーー %>
-          <div class="col-2 mb-4 d-none d-xxl-block">
-            <div>
-              <%= render "post_image", post: post %>
-            </div>
-
-            <%= render "post_image_header", post: post %>
-          </div>
-
-          <%# ーーーーー画面LG以上、XXL以下でcol-3で表示ーーーーーーーー %>
-          <div class="col-3 mb-4 d-none d-lg-block d-xxl-none">
-            <div>
-              <%= render "post_image", post: post %>
-            </div>
-
-            <%= render "post_image_header", post: post %>
-          </div>
-
-          <%# ーーーーー画面MD以上、LG以下でcol-4で表示ーーーーーーーー %>
-          <div class="col-4 mb-4 d-none d-md-block d-lg-none">
-            <div>
-              <%= render "post_image", post: post %>
-            </div>
-
-            <%= render "post_image_header", post: post %>
-          </div>
-
-          <%# ーーーーー画面MD以下でcol-6で表示ーーーーーーーー %>
-          <div class="col-6 mb-4 d-md-none">
-            <div>
-              <%= render "post_image", post: post %>
-            </div>
-
-            <%= render "post_image_header", post: post %>
-          </div>
+          <%= render "shared/post_per_screen", post: post, search_methods: "post_index" %>
         <% end %>
 
         <%= paginate @user_posts, theme: "bootstrap-5" %>
-
       <% else %>
         <h3><%= t(".no_postings") %></h3>
-        <%# ----------補足: no_postings  投稿がありません---------- %>
       <% end %>
-
-      <%# -------------------来訪者用--------------------- %>
-
     <% elsif @user.is_public %>
+      <%# 以下来訪者用ページ %>
       <% if @user_posts.present? %>
         <div class="d-flex">
           <h1><%= t(".post_index") %></h1>
@@ -88,42 +45,13 @@
         </div>
 
         <% @user_posts.each do |post| %>
-
-          <%# ーーーーー画面XXLでcol-2で表示ーーーーーーーー %>
-          <div class="col-2 mb-4 d-none d-xxl-block">
-            <div>
-              <%= render "post_image", post: post %>
-            </div>
-          </div>
-
-          <%# ーーーーー画面LG以上、XXL以下でcol-3で表示ーーーーーーーー %>
-          <div class="col-3 mb-4 d-none d-lg-block d-xxl-none">
-            <div>
-              <%= render "post_image", post: post %>
-            </div>
-          </div>
-
-          <%# ーーーーー画面MD以上、LG以下でcol-4で表示ーーーーーーーー %>
-          <div class="col-4 mb-4 d-none d-md-block d-lg-none">
-            <div>
-              <%= render "post_image", post: post %>
-            </div>
-          </div>
-
-          <%# ーーーーー画面MD以下でcol-6で表示ーーーーーーーー %>
-          <div class="col-6 mb-4 d-md-none">
-            <div>
-              <%= render "post_image", post: post %>
-            </div>
-          </div>
+          <%= render "shared/post_per_screen", post: post, search_methods: "outher" %>
         <% end %>
 
         <%= paginate @user_posts, theme: "bootstrap-5" %>
-
       <% else %>
         <h3><%= t(".no_postings") %></h3>
       <% end %>
-
     <% else %>
       <h3><%= t(".closed_to_public") %></h3>
     <% end %>
