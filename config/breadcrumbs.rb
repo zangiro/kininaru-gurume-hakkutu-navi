@@ -44,8 +44,6 @@ crumb :password_resets do
   parent :root
 end
 
-#------------記事関連------------
-
 crumb :post_new do
   link t("breadcrumbs.post_new"), new_post_path
   parent :root
@@ -63,8 +61,7 @@ end
 
 crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user, word, post_path|
   title = post.title.length > MAXIMUM_POST_TITLE ? truncate(post.title, length: MAXIMUM_POST_TITLE, omission: "...") : post.title
-  # truncateはRailsのヘルパーメソッドで文字列を指定した長さで切り詰める機能がある。lengthで文字数を指定
-  # omissionは、切り詰めた際に追加する文字列を指定するためのオプション
+
   if post_path == POST_INDEX_POST_PATH
     link title
     parent :post_index, user
@@ -85,8 +82,6 @@ crumb :post_show do |post, area_tags, genre_tags, taste_tags, outher_tags, user,
     parent :root
   end
 end
-
-#-----------------------------
 
 crumb :tag_index do
   link t("breadcrumbs.tags_index"), tags_path
